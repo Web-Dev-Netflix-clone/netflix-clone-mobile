@@ -12,10 +12,9 @@ export default function useCachedResources() {
     const loadResourcesAndDataAsync = async () => {
       try {
         await Font.loadAsync({
-          // 'open-sans': require('../../assets/fonts/Open_Sans/OpenSans-Regular.ttf'),
-          // 'open-sans-medium': require('../../assets/fonts/Open_Sans/OpenSans-Medium.ttf'),
-          // 'open-sans-bold': require('../../assets/fonts/Open_Sans/OpenSans-Bold.ttf'),
-          // impact: require('../../assets/fonts/impact/impact.ttf'),
+          'netflix-sans-light': require('../../assets/fonts/netflix-sans/netflix-sans-light.otf'),
+          'netflix-sans-medium': require('../../assets/fonts/netflix-sans/netflix-sans-medium.otf'),
+          'netflix-sans-bold': require('../../assets/fonts/netflix-sans/netflix-sans-bold.otf'),
         });
       } catch (error) {
         console.warn(error);

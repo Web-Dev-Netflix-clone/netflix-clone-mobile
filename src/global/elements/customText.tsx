@@ -35,7 +35,7 @@ export const CustomText = ({ style, children }: TextProps) => (
 export const CustomTextInput = (props: TextInputProps) => {
   const {
     style,
-    placeholderTextColor = TYPOGRAPHY.COLOR.Secondary,
+    placeholderTextColor = TYPOGRAPHY.COLOR.Blue,
     textInputRef,
     disabled = false,
     onSubmit,

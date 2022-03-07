@@ -5,23 +5,33 @@
 
 const COLOR = {
   // CTA
-  Primary: '#495056',
-  Secondary: '#4c78e2',
-  Tertiary: '#87ceeb',
-  Default: '#FFFFFF',
-  Neutral: '#fafafa',
-  DefaultSelected: '#222222',
-  PrimaryGrey: '#f0f0f0',
-  SecondaryGrey: '#E5E7EB',
-  TertiaryGrey: '#b7c5c6',
-  BrandRed: '#ee2a28',
-  BrandBlack: '#212322',
-  Border: '#E7E7E8',
-  Success: '#2BC480',
-  Warning: '#D91E5B',
+  White: '#FFFFFF',
+  Black: '#000000',
+  BlackSecondary: '#060606',
 
-  // Status Bar
-  StatusBar: 'transparent',
+  Dark: '#141414',
+  DarkSecondary: '#181818',
+  DarkTertiary: '#333333',
+
+  Grey: '#808080',
+  GreySecondary: '#4f5054',
+  GreyLight: '#c1c1c1',
+
+  Neutral: '#fafafa',
+
+  RedPrimary: '#E50914',
+  RedSecondary: '#ac1307',
+  RedTertiary: '#b40813',
+
+  Green: '#46d369',
+  GreenSecondary: '#1cb831',
+
+  Blue: '#0073E6',
+  BlueSecondary: '#017af3',
+  BlueDark: '#082452',
+  Border: '#E7E7E8',
+
+  Transparent: 'transparent',
 };
 
 const FONT_SIZES = {
@@ -37,42 +47,43 @@ const FONT_SIZES = {
 };
 
 const FONT = {
-  Primary: 'open-sans',
-  PrimaryMedium: 'open-sans-medium',
-  PrimaryBold: 'open-sans-bold',
+  PrimaryRegular: 'netflix-sans-medium',
+  PrimaryLight: 'netflix-sans-light',
+  PrimaryBold: 'netflix-sans-bold',
   default: {
-    fontFamily: 'open-sans',
+    fontFamily: 'netflix-sans-medium',
     fontSize: 14,
   },
   body: {
-    fontFamily: 'open-sans',
+    fontFamily: 'netflix-sans-medium',
     fontSize: 14,
     lineHeight: 18,
     marginBottom: 8,
   },
   h1: {
-    fontFamily: 'open-sans',
+    fontFamily: 'netflix-sans-bold',
     fontSize: 26,
     marginBottom: 10,
   },
   h2: {
-    fontFamily: 'open-sans',
+    fontFamily: 'netflix-sans-bold',
     fontSize: 20,
     marginBottom: 10,
   },
   h3: {
-    fontFamily: 'open-sans',
+    fontFamily: 'netflix-sans-bold',
     fontSize: 14,
     marginBottom: 10,
   },
   h4: {
-    fontFamily: 'open-sans',
-    fontSize: 12,
+    fontFamily: 'netflix-sans-bold',
+    fontSize: 10,
     marginBottom: 10,
   },
+
   subtitle: {
-    color: COLOR.DefaultSelected,
-    fontFamily: 'open-sans',
+    color: COLOR.GreySecondary,
+    fontFamily: 'netflix-sans-medium',
     fontSize: 12,
     letterSpacing: 0.2,
     marginBottom: 8,

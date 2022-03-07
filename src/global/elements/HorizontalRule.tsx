@@ -20,7 +20,7 @@ export const HorizontalRule = ({
   const ruleStyle = {
     flex: 1,
     height: ruleWidth ? ruleWidth : 1,
-    backgroundColor: color ? color : TYPOGRAPHY.COLOR.TertiaryGrey,
+    backgroundColor: color ? color : TYPOGRAPHY.COLOR.GreyLight,
   };
 
   const shadowStyles = {
@@ -40,7 +40,7 @@ export const HorizontalRule = ({
               style={{
                 width: 50,
                 textAlign: 'center',
-                color: TYPOGRAPHY.COLOR.TertiaryGrey,
+                color: TYPOGRAPHY.COLOR.GreyLight,
               }}>
               {text}
             </Text>

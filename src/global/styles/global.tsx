@@ -7,18 +7,6 @@ import { TYPOGRAPHY } from './typography';
 // helemaal naar het project inrichten. We kunnen hier ook altijd dingen
 // toevoegen wanneer je iets vaak hergebruikt.
 
-const FONT_SIZES = {
-  xxxsm: 4,
-  xxsm: 6,
-  xsm: 10,
-  sm: 12,
-  md: 16,
-  lg: 24,
-  xl: 32,
-  xxl: 40,
-  xxxl: 80,
-};
-
 const SPACING = {
   xxxsm: 2,
   xxsm: 4,
@@ -35,7 +23,7 @@ const SPACING = {
 const LAYOUT = StyleSheet.create({
   SafeArea: {
     flex: 1,
-    backgroundColor: TYPOGRAPHY.COLOR.Default,
+    backgroundColor: TYPOGRAPHY.COLOR.Dark,
   },
   container: {
     flex: 1,
@@ -69,7 +57,7 @@ const CTA = {
     primary: {
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: TYPOGRAPHY.COLOR.Secondary,
+      backgroundColor: TYPOGRAPHY.COLOR.GreyLight,
       height: TYPOGRAPHY.BUTTON.primary.height,
       borderWidth: TYPOGRAPHY.BUTTON.primary.borderWidth,
       borderRadius: TYPOGRAPHY.BUTTON.primary.borderRadius,
@@ -77,22 +65,22 @@ const CTA = {
       paddingHorizontal: TYPOGRAPHY.BUTTON.primary.paddingHorizontal,
     },
     primaryText: {
-      color: TYPOGRAPHY.COLOR.Default,
+      color: TYPOGRAPHY.COLOR.White,
       fontSize: (TYPOGRAPHY.BUTTON.primary.text as TextStyle).fontSize,
     },
     secondary: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      borderColor: TYPOGRAPHY.COLOR.Primary,
-      backgroundColor: TYPOGRAPHY.COLOR.Default,
+      borderColor: TYPOGRAPHY.COLOR.GreyLight,
+      backgroundColor: TYPOGRAPHY.COLOR.Dark,
       height: TYPOGRAPHY.BUTTON.secondary.height,
       borderWidth: TYPOGRAPHY.BUTTON.secondary.borderWidth,
       borderRadius: TYPOGRAPHY.BUTTON.secondary.borderRadius,
     },
     secondaryText: {
       textAlign: 'center',
-      color: TYPOGRAPHY.COLOR.Primary,
+      color: TYPOGRAPHY.COLOR.Grey,
       fontSize: (TYPOGRAPHY.BUTTON.secondary.text as TextStyle).fontSize,
     },
   }),
@@ -104,32 +92,32 @@ const CTA = {
 const TEXT = StyleSheet.create({
   Default: {
     textAlign: 'left',
-    fontFamily: TYPOGRAPHY.FONT.Primary,
+    fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
     fontSize: 14,
-    color: TYPOGRAPHY.COLOR.Primary,
+    color: TYPOGRAPHY.COLOR.White,
   },
   Secondary: {
     textAlign: 'left',
-    fontFamily: TYPOGRAPHY.FONT.Primary,
+    fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
     fontSize: 12,
-    color: TYPOGRAPHY.COLOR.Default,
+    color: TYPOGRAPHY.COLOR.White,
   },
   Bold: {
     textAlign: 'left',
     fontSize: 14,
-    fontFamily: TYPOGRAPHY.FONT.Primary,
-    color: TYPOGRAPHY.COLOR.Primary,
+    fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
+    color: TYPOGRAPHY.COLOR.White,
   },
 });
 
 const TEXT_INPUT = {
   Style: StyleSheet.create({
     Default: {
-      color: TYPOGRAPHY.COLOR.DefaultSelected,
+      color: TYPOGRAPHY.COLOR.Dark,
       height: TYPOGRAPHY.FONT.input.height,
       borderRadius: TYPOGRAPHY.FONT.input.borderRadius,
       backgroundColor: TYPOGRAPHY.COLOR.Border,
-      fontFamily: TYPOGRAPHY.FONT.Primary,
+      fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
       borderColor: TYPOGRAPHY.COLOR.Border,
       fontSize: TYPOGRAPHY.FONT.input.fontSize,
       borderWidth: TYPOGRAPHY.FONT.input.borderWidth,
@@ -139,16 +127,16 @@ const TEXT_INPUT = {
       fontSize: 12,
       textAlign: 'left',
       borderWidth: 1,
-      fontFamily: TYPOGRAPHY.FONT.Primary,
+      fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
       borderColor: TYPOGRAPHY.COLOR.Border,
-      color: TYPOGRAPHY.COLOR.Primary,
+      color: TYPOGRAPHY.COLOR.Dark,
     },
   }),
 };
 
 export const BRAND_HEADER = StyleSheet.create({
   header: {
-    color: TYPOGRAPHY.COLOR.DefaultSelected,
+    color: TYPOGRAPHY.COLOR.Dark,
     fontSize: 42,
     fontWeight: 'bold',
     fontFamily: 'impact',
@@ -213,7 +201,6 @@ const GLOBAL = {
   CTA,
   TEXT,
   TEXT_INPUT,
-  FONT_SIZES,
   SPACING,
   SHADOWS,
 };
