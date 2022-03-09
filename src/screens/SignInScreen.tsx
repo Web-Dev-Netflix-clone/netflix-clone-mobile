@@ -7,6 +7,7 @@ import { TYPOGRAPHY } from '../global/styles/typography';
 const SignInScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [inputActive, setInputActive] = useState(false);
 
   return (
     <View
@@ -24,25 +25,38 @@ const SignInScreen = () => {
           mode='outlined'
           value={email}
           autoComplete=''
-          style={styles.input}
+          style={
+            inputActive
+              ? {
+                  ...styles.input,
+                  backgroundColor: TYPOGRAPHY.COLOR.GreySecondary,
+                }
+              : styles.input
+          }
           outlineColor='transparent'
-          activeOutlineColor='white'
+          activeOutlineColor='#FFF'
           selectionColor='#fff'
+          onFocus={() => setInputActive(true)}
+          onBlur={() => setInputActive(false)}
         />
         <TextInput
           label='Password'
           mode='outlined'
           value={password}
           autoComplete=''
-          style={styles.input}
+          style={
+            inputActive
+              ? {
+                  ...styles.input,
+                  backgroundColor: TYPOGRAPHY.COLOR.GreySecondary,
+                }
+              : styles.input
+          }
           outlineColor='transparent'
           activeOutlineColor='#fff'
           selectionColor='#fff'
-          onFocus={() => {
-            style: {
-              backgroundColor: 'red';
-            }
-          }}
+          onFocus={() => setInputActive(true)}
+          onBlur={() => setInputActive(false)}
         />
       </View>
 
@@ -91,8 +105,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: GLOBAL.SPACING.sm,
     paddingTop: GLOBAL.SPACING.md,
-    backgroundColor: TYPOGRAPHY.COLOR.GreySecondary,
+    backgroundColor: TYPOGRAPHY.COLOR.DarkTertiary,
     color: TYPOGRAPHY.COLOR.White,
     borderColor: 'transparent',
   },
 });
+function setBackgoundColor(arg0: string): void {
+  throw new Error('Function not implemented.');
+}
