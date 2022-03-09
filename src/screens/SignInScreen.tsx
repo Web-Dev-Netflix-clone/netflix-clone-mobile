@@ -110,6 +110,3 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
 });
-function setBackgoundColor(arg0: string): void {
-  throw new Error('Function not implemented.');
-}
