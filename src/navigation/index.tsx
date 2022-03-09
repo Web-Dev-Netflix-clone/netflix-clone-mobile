@@ -1,3 +1,7 @@
+import { Pressable, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import netflixLogo from '../../assets/netflix-logos/netflix-logo-2560x1440.png';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -14,6 +18,10 @@ import {
   DrawerStackParams,
   RootStackParams,
 } from './navigation';
+
+import { GLOBAL } from '../global/styles/global';
+import { TYPOGRAPHY } from '../global/styles/typography';
+import { IMGSTYLES } from '../global/styles/imgStyles';
 
 // Dit is even de basis... we moeten nog even uitvogelen hoe we dit precies gaan doen.
 // In ieder geval kloppen alle imports en types voorlopig ;-)
@@ -34,9 +42,34 @@ const Stack = createNativeStackNavigator<RootStackParams>();
 export const RootNavigator = () => {
   return (
     <Stack.Navigator initialRouteName='Signin'>
-      <Stack.Screen name='Signin' component={SignInScreen} />
       <Stack.Screen name='Home' component={HomeScreen} />
       {/* temporary stack screen for signin modal - development */}
+      <Stack.Screen
+        name='Signin'
+        component={SignInScreen}
+        options={({ navigation }) => ({
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: TYPOGRAPHY.COLOR.Black,
+          },
+          title: '',
+          headerLeft: () => (
+            <Pressable
+              style={{ flexDirection: 'row', alignItems: 'center' }}
+              onPress={() => navigation.goBack()}>
+              <Ionicons
+                name='arrow-back'
+                size={24}
+                color={TYPOGRAPHY.COLOR.White}
+              />
+              <Image
+                style={[IMGSTYLES.headerLogo, { marginLeft: -15 }]}
+                source={netflixLogo}
+              />
+            </Pressable>
+          ),
+        })}
+      />
     </Stack.Navigator>
   );
 };
