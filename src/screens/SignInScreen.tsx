@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
@@ -10,16 +16,21 @@ const SignInScreen = () => {
   const [inputActive, setInputActive] = useState(false);
 
   return (
-    <View
+    <KeyboardAvoidingView
       style={[
         GLOBAL.LAYOUT.SafeArea,
         {
           backgroundColor: TYPOGRAPHY.COLOR.Black,
-          padding: GLOBAL.SPACING.sm,
+          padding: GLOBAL.SPACING.md,
+
           justifyContent: 'center',
         },
       ]}>
-      <View style={{ marginBottom: GLOBAL.SPACING.md }}>
+      <View
+        style={{
+          marginBottom: GLOBAL.SPACING.md,
+          paddingTop: GLOBAL.SPACING.xxl,
+        }}>
         <TextInput
           label='Email or phone number'
           mode='outlined'
@@ -33,6 +44,7 @@ const SignInScreen = () => {
                 }
               : styles.input
           }
+          placeholderTextColor='#fff'
           outlineColor='transparent'
           activeOutlineColor='#FFF'
           selectionColor='#fff'
@@ -79,22 +91,36 @@ const SignInScreen = () => {
           justifyContent: 'space-between',
           height: 150,
         }}>
-        <Text style={GLOBAL.TEXT.Secondary}>Need help?</Text>
+        <Pressable onPress={() => console.log('click')}>
+          <Text
+            style={[
+              GLOBAL.TEXT.Secondary,
+              { color: TYPOGRAPHY.COLOR.GreyLight },
+            ]}>
+            Need help?
+          </Text>
+        </Pressable>
 
-        <Text style={GLOBAL.TEXT.Secondary}>New to netflix? Sign up now.</Text>
+        <Pressable onPress={() => console.log('click')}>
+          <Text style={GLOBAL.TEXT.Secondary}>
+            New to netflix? Sign up now.
+          </Text>
+        </Pressable>
 
         <View
           style={{
             alignItems: 'center',
             paddingHorizontal: GLOBAL.SPACING.md,
           }}>
-          <Text style={TYPOGRAPHY.FONT.subtitle}>
-            Sign in is protected by Google reCAPTCHA to ensure you're not a bot.
-            Learn more.
-          </Text>
+          <Pressable onPress={() => console.log('click')}>
+            <Text style={TYPOGRAPHY.FONT.subtitle}>
+              Sign in is protected by Google reCAPTCHA to ensure you're not a
+              bot. Learn more.
+            </Text>
+          </Pressable>
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
