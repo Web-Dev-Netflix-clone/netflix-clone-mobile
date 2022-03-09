@@ -33,6 +33,7 @@ export const Navigation = () => {
   return (
     <NavigationContainer theme={navTheme}>
       <RootNavigator />
+      {/* <DrawerTabNavigator /> */}
     </NavigationContainer>
   );
 };
@@ -41,8 +42,16 @@ const Stack = createNativeStackNavigator<RootStackParams>();
 
 export const RootNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName='Signin'>
-      <Stack.Screen name='Home' component={HomeScreen} />
+    <Stack.Navigator initialRouteName='Home'>
+      <Stack.Screen
+        name='Home'
+        component={HomeScreen}
+        options={({ navigation }) => ({
+          headerShown: true,
+          title: '',
+          headerTransparent: true,
+        })}
+      />
       {/* temporary stack screen for signin modal - development */}
       <Stack.Screen
         name='Signin'
@@ -79,7 +88,7 @@ const Drawer = createDrawerNavigator<DrawerStackParams>();
 export const DrawerTabNavigator = () => {
   return (
     <Drawer.Navigator>
-      <Stack.Screen name='Home' component={HomeScreen} />
+      <Stack.Screen name='Home' component={BottomTabNavigator} />
     </Drawer.Navigator>
   );
 };
@@ -101,6 +110,9 @@ export const BottomTabNavigator = () => {
   return (
     <BottomTab.Navigator>
       <BottomTab.Screen name='Home' component={HomeScreen} />
+      <BottomTab.Screen name='Games' component={HomeScreen} />
+      <BottomTab.Screen name='ComingSoon' component={HomeScreen} />
+      <BottomTab.Screen name='Downloads' component={HomeScreen} />
     </BottomTab.Navigator>
   );
 };

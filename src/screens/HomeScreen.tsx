@@ -1,20 +1,32 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ImageBackground, ScrollView } from 'react-native';
+import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
+import image from '../../assets/images/posters/stranger-things.jpg';
+import { TagMapper } from '../components/TagMapper';
 
 const HomeScreen = () => {
   return (
-    <View>
-      <Text>Font Native Regular: Home Screen</Text>
-      <Text style={{ fontFamily: TYPOGRAPHY.FONT.PrimaryLight }}>
-        Font: Netflix Light
-      </Text>
-      <Text style={{ fontFamily: TYPOGRAPHY.FONT.PrimaryRegular }}>
-        Font: Netflix Regular
-      </Text>
-      <Text style={{ fontFamily: TYPOGRAPHY.FONT.PrimaryBold }}>
-        Font: Netflix Bold
-      </Text>
+    <View style={[GLOBAL.LAYOUT.container]}>
+      <ImageBackground
+        source={image}
+        resizeMode='cover'
+        style={{ flex: 0.65 }}
+      />
+      <View
+        style={{
+          marginTop: -25,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: 'transparent',
+        }}>
+        <TagMapper
+          tags={['Explosive', 'Exciting', 'Action', 'Drama', 'Horror']}
+          symbol={'•'}
+          tagColor='#fff'
+          symbolColor='gold'
+        />
+      </View>
     </View>
   );
 };
