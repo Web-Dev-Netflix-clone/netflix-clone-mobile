@@ -1,5 +1,5 @@
 import React from 'react';
-import { BlurView } from 'expo-blur';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import ComingSoonScreen from '../screens/ComingSoonScreen';
