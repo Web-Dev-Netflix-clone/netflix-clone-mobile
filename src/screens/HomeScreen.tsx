@@ -14,16 +14,19 @@ import { TagMapper } from '../components/TagMapper';
 import { DATA } from '../../assets/MockData/DummyData';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
+import { LaneRankOne } from '../../assets/svg/LaneRank';
 
 const HomeScreen = () => {
   const renderItem = ({ item }: { item: any }) => (
-    <PressableCard
-      background={image}
-      onClick={() => console.log('click')}
-      title={item.title}
-      height={200}
-      width={150}
-    />
+    <View>
+      <PressableCard
+        background={image}
+        onClick={() => console.log('click')}
+        title={item.title}
+        height={200}
+        width={150}
+      />
+    </View>
   );
 
   // DIMENONSIONS API GEBRUIKEN => voor height?!
