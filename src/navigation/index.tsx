@@ -13,6 +13,7 @@ import { LoginStack } from './AuthStack';
 const navTheme = DefaultTheme;
 navTheme.colors.background = 'transparent';
 
+// Temporary variable for mimicking SignIn logic
 const isSignedIn = true;
 
 export const Navigation = () => {
