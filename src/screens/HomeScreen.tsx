@@ -26,6 +26,8 @@ const HomeScreen = () => {
     />
   );
 
+  // DIMENONSIONS API GEBRUIKEN => voor height?!
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600 }}>
