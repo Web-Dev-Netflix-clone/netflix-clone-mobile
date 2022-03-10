@@ -8,15 +8,18 @@ import HomeScreen from '../screens/HomeScreen';
 
 import { RootStackParams } from './navigation';
 import { DrawerTabNavigator } from './Drawer';
+import { LoginStack } from './AuthStack';
 
 const navTheme = DefaultTheme;
 navTheme.colors.background = 'transparent';
 
+// Temporary variable for mimicking SignIn logic
+const isSignedIn = true;
+
 export const Navigation = () => {
   return (
     <NavigationContainer theme={navTheme}>
-      {/* <RootNavigator /> */}
-      <DrawerTabNavigator />
+      {!isSignedIn ? <LoginStack /> : <DrawerTabNavigator />}
     </NavigationContainer>
   );
 };
