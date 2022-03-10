@@ -9,7 +9,7 @@ import { TagMapper } from '../components/TagMapper';
 
 const HomeScreen = () => {
   return (
-    <View style={[GLOBAL.LAYOUT.container]}>
+    <ScrollView contentContainerStyle={{ flex: 1 }}>
       <ImageBackground
         source={image}
         resizeMode='cover'
@@ -17,7 +17,7 @@ const HomeScreen = () => {
       />
       <View
         style={{
-          marginTop: -25,
+          marginTop: -28,
           justifyContent: 'center',
           alignItems: 'center',
           backgroundColor: 'transparent',
@@ -67,7 +67,7 @@ const HomeScreen = () => {
           </Text>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
