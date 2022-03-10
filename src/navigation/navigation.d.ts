@@ -1,5 +1,5 @@
 export type BottomTabParams = {
-  Home: undefined;
+  Home2: undefined;
   Games: undefined;
   ComingSoon: undefined;
   Downloads: undefined;
