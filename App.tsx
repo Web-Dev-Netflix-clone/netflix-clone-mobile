@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux';
 import { store } from './src/state/store';
 import { Navigation } from './src/navigation';
+import { StatusBar } from 'expo-status-bar';
 
 import useCachedResources from './src/hooks/useCachedResources';
 import StartupScreen from './src/screens/StartupScreen';
@@ -18,6 +19,7 @@ const MainScreen = () => {
       // ReduxStore wrapped de gehele navigatie dus de volledige app
       <Provider store={store}>
         <Navigation />
+        <StatusBar style='light' />
       </Provider>
     );
   } else {

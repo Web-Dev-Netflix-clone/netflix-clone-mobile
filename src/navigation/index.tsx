@@ -29,6 +29,8 @@ import { IMGSTYLES } from '../global/styles/imgStyles';
 const navTheme = DefaultTheme;
 navTheme.colors.background = 'transparent';
 
+const isLoggedIn = true;
+
 export const Navigation = () => {
   return (
     <NavigationContainer theme={navTheme}>

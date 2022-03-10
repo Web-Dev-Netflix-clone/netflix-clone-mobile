@@ -50,9 +50,10 @@ const styles = (height?: number, width?: number) =>
   StyleSheet.create({
     card: {
       flexBasis: width,
-      backgroundColor: TYPOGRAPHY.COLOR.Default,
+      backgroundColor: TYPOGRAPHY.COLOR.Black,
       margin: GLOBAL.SPACING.sm,
       height: height,
+      width: width,
       borderRadius: 4,
     },
     image: {
