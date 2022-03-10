@@ -26,12 +26,11 @@ import { IMGSTYLES } from '../global/styles/imgStyles';
 // Dit is even de basis... we moeten nog even uitvogelen hoe we dit precies gaan doen.
 // In ieder geval kloppen alle imports en types voorlopig ;-)
 
-const navTheme = DefaultTheme;
-navTheme.colors.background = 'transparent';
+const isLoggedIn = true;
 
 export const Navigation = () => {
   return (
-    <NavigationContainer theme={navTheme}>
+    <NavigationContainer>
       <RootNavigator />
       {/* <DrawerTabNavigator /> */}
     </NavigationContainer>

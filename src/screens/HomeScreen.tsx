@@ -1,71 +1,108 @@
 import React from 'react';
-import { View, Text, ImageBackground, ScrollView } from 'react-native';
-import { Button, IconButton } from 'react-native-paper';
-import { GLOBAL } from '../global/styles/global';
-import { Ionicons } from '@expo/vector-icons';
-import { TYPOGRAPHY } from '../global/styles/typography';
+import {
+  View,
+  ImageBackground,
+  ScrollView,
+  FlatList,
+  Text,
+} from 'react-native';
+
 import image from '../../assets/images/posters/stranger-things.jpg';
+import InfoBar from '../components/InfoBar';
+import { PressableCard } from '../components/PressableCard';
 import { TagMapper } from '../components/TagMapper';
+import { DATA } from '../../assets/MockData/DummyData';
+import { TYPOGRAPHY } from '../global/styles/typography';
+import { GLOBAL } from '../global/styles/global';
 
 const HomeScreen = () => {
+  const renderItem = ({ item }: { item: any }) => (
+    <PressableCard
+      background={image}
+      onClick={() => console.log('click')}
+      title={item.title}
+      height={200}
+      width={150}
+    />
+  );
+
   return (
-    <ScrollView contentContainerStyle={{ flex: 1 }}>
-      <ImageBackground
-        source={image}
-        resizeMode='cover'
-        style={{ flex: 0.65 }}
-      />
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={{ height: 600 }}>
+        <ImageBackground
+          source={image}
+          resizeMode='cover'
+          style={{ flex: 1 }}
+        />
+        <View
+          style={{
+            marginTop: -28,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'transparent',
+          }}>
+          <TagMapper
+            tags={['Explosive', 'Exciting', 'Action', 'Drama', 'Horror']}
+            symbol={'•'}
+            tagColor='#fff'
+            symbolColor='gold'
+          />
+        </View>
+        <InfoBar />
+      </View>
+
       <View
-        style={{
-          marginTop: -28,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: 'transparent',
-        }}>
-        <TagMapper
-          tags={['Explosive', 'Exciting', 'Action', 'Drama', 'Horror']}
-          symbol={'•'}
-          tagColor='#fff'
-          symbolColor='gold'
+        style={[
+          {
+            backgroundColor: TYPOGRAPHY.COLOR.Black,
+            paddingVertical: GLOBAL.SPACING.md,
+          },
+        ]}>
+        <Text style={[TYPOGRAPHY.FONT.h2, { color: '#FFF' }]}>
+          Top 10 in the Netherlands Today
+        </Text>
+        <FlatList
+          horizontal
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
         />
       </View>
+
       <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-          alignItems: 'center',
-          paddingVertical: GLOBAL.SPACING.sm,
-          backgroundColor: TYPOGRAPHY.COLOR.BlackSecondary,
-        }}>
-        <View
-          style={{
-            alignItems: 'center',
-          }}>
-          <Ionicons name='add' size={30} color={TYPOGRAPHY.COLOR.White} />
-          <Text style={{ fontSize: TYPOGRAPHY.FONT_SIZES.sm, color: '#fff' }}>
-            My List
-          </Text>
-        </View>
-        <Button
-          style={{ backgroundColor: '#fff' }}
-          icon='play'
-          color='#000'
-          onPress={() => console.log('Pressed')}>
-          Play
-        </Button>
-        <View
-          style={{
-            alignItems: 'center',
-          }}>
-          <Ionicons
-            name='information-circle-outline'
-            size={30}
-            color={TYPOGRAPHY.COLOR.White}
-          />
-          <Text style={{ fontSize: TYPOGRAPHY.FONT_SIZES.sm, color: '#fff' }}>
-            Info
-          </Text>
-        </View>
+        style={[
+          {
+            backgroundColor: TYPOGRAPHY.COLOR.Black,
+            paddingVertical: GLOBAL.SPACING.md,
+          },
+        ]}>
+        <Text style={[TYPOGRAPHY.FONT.h2, { color: '#FFF' }]}>
+          Top 10 in the Netherlands Today
+        </Text>
+        <FlatList
+          horizontal
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
+
+      <View
+        style={[
+          {
+            backgroundColor: TYPOGRAPHY.COLOR.Black,
+            paddingVertical: GLOBAL.SPACING.md,
+          },
+        ]}>
+        <Text style={[TYPOGRAPHY.FONT.h2, { color: '#FFF' }]}>
+          Top 10 in the Netherlands Today
+        </Text>
+        <FlatList
+          horizontal
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
       </View>
     </ScrollView>
   );
