@@ -18,3 +18,9 @@ export interface IMovieCard {
   imageUrls: string[]; // dit is dus bijvoorbeeld ['https://blabla.nl','https://hupelepup.nl']
   imageUrl: string; // "http://ditdat.com"
 }
+
+export interface CarouselData {
+  img: string;
+  header: string;
+  text: string;
+}
