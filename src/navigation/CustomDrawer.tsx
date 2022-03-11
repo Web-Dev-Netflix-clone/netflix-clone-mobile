@@ -180,14 +180,17 @@ const CustomDrawer = (props: any) => {
             style={{
               flexDirection: 'row',
               justifyContent: 'space-evenly',
-              paddingTop: 20,
+              paddingTop: GLOBAL.SPACING.md,
             }}>
             <View
               style={{
                 alignItems: 'center',
                 justifyContent: 'center',
-                paddingRight: GLOBAL.SPACING.md,
+                padding: GLOBAL.SPACING.sm,
                 borderRightWidth: 2,
+                width: 100,
+                height: 100,
+                borderColor: TYPOGRAPHY.COLOR.Grey,
               }}>
               <Image
                 source={require('../../assets/social-icons/whatsapp-logo.png')}
@@ -206,8 +209,11 @@ const CustomDrawer = (props: any) => {
               style={{
                 alignItems: 'center',
                 justifyContent: 'center',
-                paddingRight: GLOBAL.SPACING.md,
+                padding: GLOBAL.SPACING.sm,
                 borderRightWidth: 2,
+                width: 100,
+                height: 100,
+                borderColor: TYPOGRAPHY.COLOR.Grey,
               }}>
               <Image
                 source={require('../../assets/social-icons/gmail-logo.png')}
@@ -232,8 +238,11 @@ const CustomDrawer = (props: any) => {
               style={{
                 alignItems: 'center',
                 justifyContent: 'center',
-                paddingRight: GLOBAL.SPACING.md,
+                padding: GLOBAL.SPACING.sm,
                 borderRightWidth: 2,
+                width: 100,
+                height: 100,
+                borderColor: TYPOGRAPHY.COLOR.Grey,
               }}>
               <Image
                 source={require('../../assets/social-icons/messages-logo.png')}
@@ -248,7 +257,16 @@ const CustomDrawer = (props: any) => {
                 Messages
               </Text>
             </View>
-            <View style={{ alignItems: 'center' }}>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: GLOBAL.SPACING.sm,
+
+                width: 100,
+                height: 100,
+                borderColor: TYPOGRAPHY.COLOR.Grey,
+              }}>
               <Feather name='more-horizontal' size={40} />
               <Text
                 style={[
