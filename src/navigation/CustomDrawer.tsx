@@ -147,6 +147,29 @@ const CustomDrawer = (props: any) => {
             ]}>
             Terms & Conditions
           </Text>
+          <View
+            style={[
+              GLOBAL.LAYOUT.rowCenter,
+              {
+                padding: GLOBAL.SPACING.sm,
+                marginHorizontal: GLOBAL.SPACING.sm,
+                backgroundColor: TYPOGRAPHY.COLOR.Black,
+              },
+            ]}>
+            <Text
+              style={[
+                TYPOGRAPHY.FONT.body,
+                { paddingRight: GLOBAL.SPACING.sm, marginBottom: 0 },
+              ]}>
+              http://www.netflix.com/nl/n79e23....
+            </Text>
+            <Button
+              uppercase={false}
+              style={{ backgroundColor: TYPOGRAPHY.COLOR.White, width: '30%' }}
+              color={TYPOGRAPHY.COLOR.Black}>
+              Copy Link
+            </Button>
+          </View>
         </View>
 
         <View
