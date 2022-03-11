@@ -35,7 +35,7 @@ export const DrawerTabNavigator = () => {
         title: '',
         headerTransparent: true,
         drawerPosition: 'right',
-        drawerStyle: { right: 0 },
+        drawerStyle: { right: 0, width: '100%' },
         drawerIcon: () => (
           <Ionicons
             name='md-home-outline'

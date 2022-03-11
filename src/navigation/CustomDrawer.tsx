@@ -2,11 +2,12 @@ import React from 'react';
 import {
   View,
   Text,
-  ImageBackground,
-  Image,
   TouchableOpacity,
   useWindowDimensions,
+  Pressable,
 } from 'react-native';
+
+import { Ionicons } from '@expo/vector-icons';
 import {
   DrawerContentScrollView,
   DrawerItemList,
@@ -14,46 +15,55 @@ import {
 } from '@react-navigation/drawer';
 
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
 import { TYPOGRAPHY } from '../global/styles/typography';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { GLOBAL } from '../global/styles/global';
 
 const CustomDrawer = (props: any) => {
+  const navigation = useNavigation();
+
   const width = useWindowDimensions().width * 0.3;
 
   return (
     <View
       style={{
         flex: 1,
-
         backgroundColor: TYPOGRAPHY.COLOR.Black,
       }}>
       <DrawerContentScrollView
         {...props}
         contentContainerStyle={{
-          backgroundColor: TYPOGRAPHY.COLOR.Dark,
+          backgroundColor: TYPOGRAPHY.COLOR.Black,
         }}>
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 18,
-            fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
-          }}>
-          John Doe
-        </Text>
         <View
-          style={{
-            flexDirection: 'row',
-          }}>
+          style={[
+            GLOBAL.LAYOUT.rowCenter,
+            {
+              backgroundColor: TYPOGRAPHY.COLOR.Black,
+              paddingVertical: GLOBAL.SPACING.sm,
+            },
+          ]}>
+          <Pressable
+            onPress={() => navigation.dispatch(DrawerActions.closeDrawer())}>
+            <Ionicons
+              name='arrow-back'
+              size={26}
+              color={TYPOGRAPHY.COLOR.White}
+            />
+          </Pressable>
+
           <Text
             style={{
-              color: '#fff',
-              fontFamily: 'Roboto-Regular',
-              marginRight: 5,
+              color: TYPOGRAPHY.COLOR.White,
+              marginLeft: GLOBAL.SPACING.md,
+              fontSize: 18,
+              fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
             }}>
-            280 Coins
+            Profiles & More
           </Text>
-          {/* <FontAwesome5 name='coins' size={14} color='#fff' /> */}
         </View>
+        <View style={GLOBAL.LAYOUT.rowCenter}></View>
 
         <View
           style={{
