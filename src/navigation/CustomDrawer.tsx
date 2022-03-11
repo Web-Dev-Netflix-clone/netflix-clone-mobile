@@ -19,6 +19,7 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { GLOBAL } from '../global/styles/global';
+import Avatar from '../components/Avatar';
 
 const CustomDrawer = (props: any) => {
   const navigation = useNavigation();
@@ -63,7 +64,39 @@ const CustomDrawer = (props: any) => {
             Profiles & More
           </Text>
         </View>
-        <View style={GLOBAL.LAYOUT.rowCenter}></View>
+        <View
+          style={[GLOBAL.LAYOUT.rowCenter, { justifyContent: 'space-evenly' }]}>
+          <Avatar
+            imageSource={require('../../assets/netflix-avatars/avatar-blue.png')}
+            height={50}
+            width={50}
+            title={'User'}
+          />
+          <Avatar
+            imageSource={require('../../assets/netflix-avatars/avatar-red.png')}
+            height={50}
+            width={50}
+            title={'User'}
+          />
+          <Avatar
+            imageSource={require('../../assets/netflix-avatars/avatar-yellow.png')}
+            height={50}
+            width={50}
+            title={'User'}
+          />
+          <Avatar
+            imageSource={require('../../assets/netflix-avatars/avatar-kids.png')}
+            height={50}
+            width={50}
+            title={'User'}
+          />
+          <Avatar
+            height={50}
+            width={50}
+            title={'Add Prof...'}
+            iconName='md-add-circle'
+          />
+        </View>
 
         <View
           style={{
