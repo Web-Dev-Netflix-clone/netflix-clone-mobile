@@ -59,6 +59,7 @@ const FONT = {
     fontSize: 14,
     lineHeight: 18,
     marginBottom: 8,
+    color: COLOR.White,
   },
   h1: {
     fontFamily: 'netflix-sans-bold',
