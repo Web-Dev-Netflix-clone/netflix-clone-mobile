@@ -5,11 +5,12 @@ import {
   TouchableOpacity,
   useWindowDimensions,
   Pressable,
+  Image,
 } from 'react-native';
 
 import { Button } from 'react-native-paper';
 
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Feather } from '@expo/vector-icons';
 import {
   DrawerContentScrollView,
   DrawerItemList,
@@ -121,7 +122,7 @@ const CustomDrawer = (props: any) => {
             backgroundColor: TYPOGRAPHY.COLOR.Dark,
             paddingVertical: GLOBAL.SPACING.md,
           }}>
-          <View style={GLOBAL.LAYOUT.rowCenter}>
+          <View style={[GLOBAL.LAYOUT.rowCenter]}>
             <IonIcons
               name='chatbox-ellipses-outline'
               size={20}
@@ -143,7 +144,10 @@ const CustomDrawer = (props: any) => {
           <Text
             style={[
               TYPOGRAPHY.FONT.subtitle,
-              { textDecorationLine: 'underline' },
+              {
+                textDecorationLine: 'underline',
+                marginBottom: GLOBAL.SPACING.md,
+              },
             ]}>
             Terms & Conditions
           </Text>
@@ -159,6 +163,7 @@ const CustomDrawer = (props: any) => {
             <Text
               style={[
                 TYPOGRAPHY.FONT.body,
+                { fontSize: TYPOGRAPHY.FONT_SIZES.sm },
                 { paddingRight: GLOBAL.SPACING.sm, marginBottom: 0 },
               ]}>
               http://www.netflix.com/nl/n79e23....
@@ -169,6 +174,91 @@ const CustomDrawer = (props: any) => {
               color={TYPOGRAPHY.COLOR.Black}>
               Copy Link
             </Button>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              paddingTop: 20,
+            }}>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                paddingRight: GLOBAL.SPACING.md,
+                borderRightWidth: 2,
+              }}>
+              <Image
+                source={require('../../assets/social-icons/whatsapp-logo.png')}
+                style={{ height: 40, width: 40 }}
+              />
+              <Text
+                style={[
+                  TYPOGRAPHY.FONT.body,
+                  { fontSize: TYPOGRAPHY.FONT_SIZES.sm },
+                  { textAlign: 'left', marginTop: 5 },
+                ]}>
+                WhatsApp
+              </Text>
+            </View>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                paddingRight: GLOBAL.SPACING.md,
+                borderRightWidth: 2,
+              }}>
+              <Image
+                source={require('../../assets/social-icons/gmail-logo.png')}
+                style={{
+                  backgroundColor: '#fff',
+                  padding: 15,
+                  borderRadius: 5,
+                  height: 40,
+                  width: 40,
+                }}
+              />
+              <Text
+                style={[
+                  TYPOGRAPHY.FONT.body,
+                  { fontSize: TYPOGRAPHY.FONT_SIZES.sm },
+                  { textAlign: 'left', marginTop: 5 },
+                ]}>
+                Gmail
+              </Text>
+            </View>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                paddingRight: GLOBAL.SPACING.md,
+                borderRightWidth: 2,
+              }}>
+              <Image
+                source={require('../../assets/social-icons/messages-logo.png')}
+                style={{ height: 40, width: 40 }}
+              />
+              <Text
+                style={[
+                  TYPOGRAPHY.FONT.body,
+                  { fontSize: TYPOGRAPHY.FONT_SIZES.sm },
+                  { textAlign: 'left', marginTop: 5 },
+                ]}>
+                Messages
+              </Text>
+            </View>
+            <View style={{ alignItems: 'center' }}>
+              <Feather name='more-horizontal' size={40} />
+              <Text
+                style={[
+                  TYPOGRAPHY.FONT.body,
+                  { fontSize: TYPOGRAPHY.FONT_SIZES.sm },
+                  { textAlign: 'left', marginTop: 5 },
+                ]}>
+                More
+              </Text>
+            </View>
           </View>
         </View>
 
