@@ -8,6 +8,7 @@ import { DATA } from '../../assets/MockData/DummyData';
 
 import Lane from '../components/Lane';
 import { StandardLaneCard } from '../components/LaneRenderItems/StandardLaneCard';
+import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
 
 const HomeScreen = () => {
   // DIMENONSIONS API GEBRUIKEN => voor height?!
@@ -41,6 +42,7 @@ const HomeScreen = () => {
         data={DATA}
         renderItem={StandardLaneCard}
       />
+      <Lane title='Only On Netflix' data={DATA} renderItem={OnlyOnNetflix} />
     </ScrollView>
   );
 };
