@@ -1,3 +1,4 @@
+import { Children, ReactChildren, ReactNode } from 'react';
 import {
   Text,
   StyleSheet,
@@ -16,9 +17,10 @@ import { TYPOGRAPHY } from '../global/styles/typography';
 interface IPressableCard {
   background: ImageSourcePropType;
   onClick: () => void;
-  title: string;
+  title?: string;
   height?: number;
   width?: number;
+  children?: ReactNode;
 }
 
 export const PressableCard = ({
@@ -27,20 +29,24 @@ export const PressableCard = ({
   title,
   height = 170,
   width = 100,
+  children,
 }: IPressableCard) => {
   return (
     <Pressable
       onPress={onClick}
       style={[styles(height, width).card, GLOBAL.SHADOWS.shadowMedium]}>
       <ImageBackground style={styles().image} source={background} />
-      <View style={{ zIndex: 1, padding: 15 }}>
-        <Text
-          style={{
-            fontSize: TYPOGRAPHY.FONT_SIZES.xsm,
-            fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
-          }}>
-          {title}
-        </Text>
+      <View style={[{ padding: GLOBAL.SPACING.sm }]}>
+        {title && (
+          <Text
+            style={{
+              fontSize: TYPOGRAPHY.FONT_SIZES.xsm,
+              fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
+            }}>
+            {title}
+          </Text>
+        )}
+        {children}
       </View>
     </Pressable>
   );

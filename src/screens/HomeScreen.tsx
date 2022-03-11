@@ -1,34 +1,15 @@
 import React from 'react';
-import {
-  View,
-  ImageBackground,
-  ScrollView,
-  FlatList,
-  Text,
-} from 'react-native';
+import { View, ImageBackground, ScrollView } from 'react-native';
 
 import image from '../../assets/images/posters/stranger-things.jpg';
 import InfoBar from '../components/InfoBar';
-import { PressableCard } from '../components/PressableCard';
 import { TagMapper } from '../components/TagMapper';
 import { DATA } from '../../assets/MockData/DummyData';
-import { TYPOGRAPHY } from '../global/styles/typography';
-import { GLOBAL } from '../global/styles/global';
-import { LaneRankOne } from '../../assets/svg/LaneRank';
+
+import Lane from '../components/Lane';
+import { StandardLaneCard } from '../components/LaneRenderItems/StandardLaneCard';
 
 const HomeScreen = () => {
-  const renderItem = ({ item }: { item: any }) => (
-    <View>
-      <PressableCard
-        background={image}
-        onClick={() => console.log('click')}
-        title={item.title}
-        height={200}
-        width={150}
-      />
-    </View>
-  );
-
   // DIMENONSIONS API GEBRUIKEN => voor height?!
 
   return (
@@ -55,60 +36,11 @@ const HomeScreen = () => {
         </View>
         <InfoBar />
       </View>
-
-      <View
-        style={[
-          {
-            backgroundColor: TYPOGRAPHY.COLOR.Black,
-            paddingVertical: GLOBAL.SPACING.md,
-          },
-        ]}>
-        <Text style={[TYPOGRAPHY.FONT.h2, { color: '#FFF' }]}>
-          Top 10 in the Netherlands Today
-        </Text>
-        <FlatList
-          horizontal
-          data={DATA}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      </View>
-
-      <View
-        style={[
-          {
-            backgroundColor: TYPOGRAPHY.COLOR.Black,
-            paddingVertical: GLOBAL.SPACING.md,
-          },
-        ]}>
-        <Text style={[TYPOGRAPHY.FONT.h2, { color: '#FFF' }]}>
-          Top 10 in the Netherlands Today
-        </Text>
-        <FlatList
-          horizontal
-          data={DATA}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      </View>
-
-      <View
-        style={[
-          {
-            backgroundColor: TYPOGRAPHY.COLOR.Black,
-            paddingVertical: GLOBAL.SPACING.md,
-          },
-        ]}>
-        <Text style={[TYPOGRAPHY.FONT.h2, { color: '#FFF' }]}>
-          Top 10 in the Netherlands Today
-        </Text>
-        <FlatList
-          horizontal
-          data={DATA}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      </View>
+      <Lane
+        title='Top 10 in the Netherlands Today'
+        data={DATA}
+        renderItem={StandardLaneCard}
+      />
     </ScrollView>
   );
 };
