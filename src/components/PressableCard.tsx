@@ -11,9 +11,6 @@ import {
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
 
-// Ik heb dit component er even ingelaten als voorbeeld voor hoe je een redelijk
-// complex component kan typen! Weet niet of we het verder nog gaan gebruiken.
-
 interface IPressableCard {
   background: ImageSourcePropType;
   onClick: () => void;
