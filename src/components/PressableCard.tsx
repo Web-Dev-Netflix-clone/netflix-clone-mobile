@@ -29,23 +29,25 @@ export const PressableCard = ({
   children,
 }: IPressableCard) => {
   return (
-    <Pressable
-      onPress={onClick}
-      style={[styles(height, width).card, GLOBAL.SHADOWS.shadowMedium]}>
-      <ImageBackground style={styles().image} source={background} />
-      <View style={[{ padding: GLOBAL.SPACING.sm }]}>
-        {title && (
-          <Text
-            style={{
-              fontSize: TYPOGRAPHY.FONT_SIZES.xsm,
-              fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
-            }}>
-            {title}
-          </Text>
-        )}
-        {children}
-      </View>
-    </Pressable>
+    <View style={{ position: 'relative' }}>
+      <Pressable
+        onPress={onClick}
+        style={[styles(height, width).card, GLOBAL.SHADOWS.shadowMedium]}>
+        <ImageBackground style={styles().image} source={background} />
+        <View style={[{ padding: GLOBAL.SPACING.sm }]}>
+          {title && (
+            <Text
+              style={{
+                fontSize: TYPOGRAPHY.FONT_SIZES.xsm,
+                fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
+              }}>
+              {title}
+            </Text>
+          )}
+          {children}
+        </View>
+      </Pressable>
+    </View>
   );
 };
 
