@@ -10,15 +10,16 @@ import { BottomTabParams } from './navigation';
 import { Ionicons } from '@expo/vector-icons';
 
 const BottomTab = createBottomTabNavigator<BottomTabParams>();
+type Display = 'flex' | 'none';
 
 export const BottomTabNavigator = () => {
-  const [showTab, setShowTab] = useState('flex');
+  const [showTab, setShowTab] = useState<Display>('flex');
 
   return (
     <BottomTab.Navigator
       screenOptions={({ navigation, route }) => {
-        console.log('ROUTE', route);
-        route.showTab = setShowTab;
+        // console.log('ROUTE', route.params);
+
         return {
           headerShown: true,
           tabBarStyle: {
@@ -36,16 +37,22 @@ export const BottomTabNavigator = () => {
       <BottomTab.Screen
         name='Home2'
         component={HomeScreen}
-        options={({}) => ({
-          tabBarLabel: 'Home',
-          tabBarIcon: () => (
-            <Ionicons
-              name='md-home-outline'
-              size={26}
-              color={TYPOGRAPHY.COLOR.White}
-            />
-          ),
-        })}
+        options={({ route }) => {
+          console.log('ROUTE', route.params);
+          route.params = {};
+          if (route.params) route.params.showTab = setShowTab;
+
+          return {
+            tabBarLabel: 'Home',
+            tabBarIcon: () => (
+              <Ionicons
+                name='md-home-outline'
+                size={26}
+                color={TYPOGRAPHY.COLOR.White}
+              />
+            ),
+          };
+        }}
       />
       <BottomTab.Screen
         name='Games'

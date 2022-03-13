@@ -82,8 +82,8 @@ const HomeScreen = () => {
           color='#000'
           onPress={() => {
             console.log('ROUTE PARAMS', route);
-            route.showTab('none');
-            sheetRef.current?.snapTo(0);
+            route.params.showTab('none');
+            sheetRef?.current.snapTo(0);
           }}>
           Play Something
         </Button>
@@ -91,7 +91,7 @@ const HomeScreen = () => {
           ref={sheetRef}
           // initialSnap={0}
           onCloseEnd={() => {
-            route.showTab('flex');
+            route.params.showTab('flex');
           }}
           snapPoints={[200, 300, -20]}
           borderRadius={0}
