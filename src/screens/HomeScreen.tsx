@@ -20,6 +20,8 @@ import { useRoute } from '@react-navigation/native';
 
 const HomeScreen = () => {
   // DIMENONSIONS API GEBRUIKEN => voor height?!
+  // https://github.com/gorhom/react-native-portal
+  // https://github.com/gorhom/react-native-bottom-sheet/issues/249
 
   const sheetRef = React.useRef(null);
   const route = useRoute();
