@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TYPOGRAPHY } from '../global/styles/typography';
@@ -10,35 +10,49 @@ import { BottomTabParams } from './navigation';
 import { Ionicons } from '@expo/vector-icons';
 
 const BottomTab = createBottomTabNavigator<BottomTabParams>();
+type Display = 'flex' | 'none';
 
 export const BottomTabNavigator = () => {
+  const [showTab, setShowTab] = useState<Display>('flex');
+
   return (
     <BottomTab.Navigator
-      screenOptions={({ navigation }) => ({
-        headerShown: true,
-        tabBarStyle: {
-          backgroundColor: TYPOGRAPHY.COLOR.BlackSecondary,
-        },
-        title: '',
-        tabBarActiveTintColor: TYPOGRAPHY.COLOR.RedPrimary,
-        tabBarInactiveTintColor: TYPOGRAPHY.COLOR.Black,
-        tabBarShowLabel: true,
-        tabBarLabelStyle: { paddingBottom: 0, color: TYPOGRAPHY.COLOR.White },
-        headerTransparent: true,
-      })}>
+      screenOptions={({ navigation, route }) => {
+        // console.log('ROUTE', route.params);
+
+        return {
+          headerShown: true,
+          tabBarStyle: {
+            display: showTab,
+            backgroundColor: TYPOGRAPHY.COLOR.BlackSecondary,
+          },
+          title: '',
+          tabBarActiveTintColor: TYPOGRAPHY.COLOR.RedPrimary,
+          tabBarInactiveTintColor: TYPOGRAPHY.COLOR.Black,
+          tabBarShowLabel: true,
+          tabBarLabelStyle: { paddingBottom: 0, color: TYPOGRAPHY.COLOR.White },
+          headerTransparent: true,
+        };
+      }}>
       <BottomTab.Screen
         name='Home2'
         component={HomeScreen}
-        options={({}) => ({
-          tabBarLabel: 'Home',
-          tabBarIcon: () => (
-            <Ionicons
-              name='md-home-outline'
-              size={26}
-              color={TYPOGRAPHY.COLOR.White}
-            />
-          ),
-        })}
+        options={({ route }) => {
+          console.log('ROUTE', route.params);
+          route.params = {};
+          if (route.params) route.params.showTab = setShowTab;
+
+          return {
+            tabBarLabel: 'Home',
+            tabBarIcon: () => (
+              <Ionicons
+                name='md-home-outline'
+                size={26}
+                color={TYPOGRAPHY.COLOR.White}
+              />
+            ),
+          };
+        }}
       />
       <BottomTab.Screen
         name='Games'
