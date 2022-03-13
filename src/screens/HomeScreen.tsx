@@ -13,8 +13,14 @@ import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
 
+import Animated from 'react-native-reanimated';
+import BottomSheet from 'reanimated-bottom-sheet';
+import BottomSheetRenderContent from '../components/BottomSheet';
+
 const HomeScreen = () => {
   // DIMENONSIONS API GEBRUIKEN => voor height?!
+
+  const sheetRef = React.useRef(null);
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -72,9 +78,15 @@ const HomeScreen = () => {
           }}
           icon='shuffle'
           color='#000'
-          onPress={() => console.log('Pressed')}>
+          onPress={() => sheetRef.current?.snapTo(0)}>
           Play Something
         </Button>
+        <BottomSheet
+          ref={sheetRef}
+          snapPoints={[450, 300, 0]}
+          borderRadius={10}
+          renderContent={BottomSheetRenderContent}
+        />
       </View>
     </ScrollView>
   );
