@@ -16,11 +16,13 @@ import { GLOBAL } from '../global/styles/global';
 import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
 import BottomSheetRenderContent from '../components/BottomSheet';
+import { useRoute } from '@react-navigation/native';
 
 const HomeScreen = () => {
   // DIMENONSIONS API GEBRUIKEN => voor height?!
 
   const sheetRef = React.useRef(null);
+  const route = useRoute();
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -78,13 +80,21 @@ const HomeScreen = () => {
           }}
           icon='shuffle'
           color='#000'
-          onPress={() => sheetRef.current?.snapTo(0)}>
+          onPress={() => {
+            console.log('ROUTE PARAMS', route);
+            route.showTab('none');
+            sheetRef.current?.snapTo(0);
+          }}>
           Play Something
         </Button>
         <BottomSheet
           ref={sheetRef}
-          snapPoints={[450, 300, 0]}
-          borderRadius={10}
+          // initialSnap={0}
+          onCloseEnd={() => {
+            route.showTab('flex');
+          }}
+          snapPoints={[200, 300, -20]}
+          borderRadius={0}
           renderContent={BottomSheetRenderContent}
         />
       </View>

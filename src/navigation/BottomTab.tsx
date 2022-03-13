@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TYPOGRAPHY } from '../global/styles/typography';
@@ -12,20 +12,27 @@ import { Ionicons } from '@expo/vector-icons';
 const BottomTab = createBottomTabNavigator<BottomTabParams>();
 
 export const BottomTabNavigator = () => {
+  const [showTab, setShowTab] = useState('flex');
+
   return (
     <BottomTab.Navigator
-      screenOptions={({ navigation }) => ({
-        headerShown: true,
-        tabBarStyle: {
-          backgroundColor: TYPOGRAPHY.COLOR.BlackSecondary,
-        },
-        title: '',
-        tabBarActiveTintColor: TYPOGRAPHY.COLOR.RedPrimary,
-        tabBarInactiveTintColor: TYPOGRAPHY.COLOR.Black,
-        tabBarShowLabel: true,
-        tabBarLabelStyle: { paddingBottom: 0, color: TYPOGRAPHY.COLOR.White },
-        headerTransparent: true,
-      })}>
+      screenOptions={({ navigation, route }) => {
+        console.log('ROUTE', route);
+        route.showTab = setShowTab;
+        return {
+          headerShown: true,
+          tabBarStyle: {
+            display: showTab,
+            backgroundColor: TYPOGRAPHY.COLOR.BlackSecondary,
+          },
+          title: '',
+          tabBarActiveTintColor: TYPOGRAPHY.COLOR.RedPrimary,
+          tabBarInactiveTintColor: TYPOGRAPHY.COLOR.Black,
+          tabBarShowLabel: true,
+          tabBarLabelStyle: { paddingBottom: 0, color: TYPOGRAPHY.COLOR.White },
+          headerTransparent: true,
+        };
+      }}>
       <BottomTab.Screen
         name='Home2'
         component={HomeScreen}
