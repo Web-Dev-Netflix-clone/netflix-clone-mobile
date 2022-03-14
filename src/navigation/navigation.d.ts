@@ -10,6 +10,7 @@ export type BottomTabParams = {
 export type RootStackParams = {
   Home: undefined;
   Signin: undefined;
+  Welcome: undefined;
 };
 
 export type DrawerStackParams = {
