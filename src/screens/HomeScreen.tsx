@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 import { View, ImageBackground, ScrollView, Text } from 'react-native';
 import { Button } from 'react-native-paper';
@@ -22,6 +23,7 @@ const HomeScreen = () => {
   // DIMENONSIONS API GEBRUIKEN => voor height?!
   // https://github.com/gorhom/react-native-portal
   // https://github.com/gorhom/react-native-bottom-sheet/issues/249
+  // https://dev.to/jeff_codes/react-native-custom-bottombar-navigation-with-bottomsheet-1ep9
 
   const sheetRef = React.useRef(null);
   const route = useRoute();
