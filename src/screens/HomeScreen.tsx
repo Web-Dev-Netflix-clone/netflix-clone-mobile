@@ -14,19 +14,11 @@ import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
 
-import Animated from 'react-native-reanimated';
-import BottomSheet from 'reanimated-bottom-sheet';
-import BottomSheetRenderContent from '../components/BottomSheet';
-import { useRoute } from '@react-navigation/native';
-
 const HomeScreen = () => {
   // DIMENONSIONS API GEBRUIKEN => voor height?!
   // https://github.com/gorhom/react-native-portal
   // https://github.com/gorhom/react-native-bottom-sheet/issues/249
   // https://dev.to/jeff_codes/react-native-custom-bottombar-navigation-with-bottomsheet-1ep9
-
-  const sheetRef = React.useRef(null);
-  const route = useRoute();
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -85,22 +77,10 @@ const HomeScreen = () => {
           icon='shuffle'
           color='#000'
           onPress={() => {
-            console.log('ROUTE PARAMS', route);
-            route.params.showTab('none');
-            sheetRef?.current.snapTo(0);
+            console.log('Press');
           }}>
           Play Something
         </Button>
-        <BottomSheet
-          ref={sheetRef}
-          // initialSnap={0}
-          onCloseEnd={() => {
-            route.params.showTab('flex');
-          }}
-          snapPoints={[200, 300, -20]}
-          borderRadius={0}
-          renderContent={BottomSheetRenderContent}
-        />
       </View>
     </ScrollView>
   );

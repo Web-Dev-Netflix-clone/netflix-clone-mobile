@@ -27,8 +27,6 @@ import Avatar from '../components/Avatar';
 const CustomDrawer = (props: any) => {
   const navigation = useNavigation();
 
-  const width = useWindowDimensions().width * 0.3;
-
   return (
     <View
       style={{
