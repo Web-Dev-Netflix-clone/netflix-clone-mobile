@@ -1,16 +1,9 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  useWindowDimensions,
-  Pressable,
-  Image,
-} from 'react-native';
+import { View, Text } from 'react-native';
 
 import { Button } from 'react-native-paper';
 
-import { Ionicons, Feather } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import {
   DrawerContentScrollView,
   DrawerItemList,
@@ -20,7 +13,7 @@ import {
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
 import { TYPOGRAPHY } from '../global/styles/typography';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { GLOBAL } from '../global/styles/global';
 
 import { avatarData } from '../../assets/MockData/avatarData';
