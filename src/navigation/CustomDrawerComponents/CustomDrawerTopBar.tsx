@@ -4,6 +4,8 @@ import { GLOBAL } from '../../global/styles/global';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchInActive } from '../../state/action-creators/appStateActions';
 
 interface ICustomDrawerTopBar {
   title: string;
@@ -12,6 +14,7 @@ interface ICustomDrawerTopBar {
 
 const CustomDrawerTopBar = ({ title, iconName }: ICustomDrawerTopBar) => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   return (
     <View
@@ -23,7 +26,10 @@ const CustomDrawerTopBar = ({ title, iconName }: ICustomDrawerTopBar) => {
         },
       ]}>
       <Pressable
-        onPress={() => navigation.dispatch(DrawerActions.closeDrawer())}>
+        onPress={() => {
+          dispatch(searchInActive());
+          navigation.dispatch(DrawerActions.closeDrawer());
+        }}>
         <Ionicons
           // how to type this?
           //@ts-ignore
