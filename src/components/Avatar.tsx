@@ -5,6 +5,7 @@ import { TYPOGRAPHY } from '../global/styles/typography';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
 interface IAvatar {
+  id?: string;
   imageSource?: ImageSourcePropType;
   height: number;
   width: number;

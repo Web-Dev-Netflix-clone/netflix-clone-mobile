@@ -1,22 +1,22 @@
-const avatarData = [
+export const avatarData = [
   {
-    id: 1,
+    id: 'pUCVfegL06',
     title: 'Blue',
-    source: `require('../../assets/netflix-avatars/avatar-blue.png')`,
+    source: require('../../assets/netflix-avatars/avatar-blue.png'),
   },
   {
-    id: 2,
+    id: '8V79LjhttH',
     title: 'Red',
-    source: `require('../../assets/netflix-avatars/avatar-red.png')`,
+    source: require('../../assets/netflix-avatars/avatar-red.png'),
   },
   {
-    id: 3,
+    id: '7tmbIkwY05',
     title: 'Yellow',
-    source: `require('../../assets/netflix-avatars/avatar-yellow.png')`,
+    source: require('../../assets/netflix-avatars/avatar-yellow.png'),
   },
   {
-    id: 4,
+    id: 'bUuwae88wl',
     title: 'Kids',
-    source: `require('../../assets/netflix-avatars/avatar-kids.png')`,
+    source: require('../../assets/netflix-avatars/avatar-kids.png'),
   },
 ];
