@@ -14,11 +14,8 @@ import { useSelector } from '../hooks/useTypedSelector';
 
 const navTheme = DefaultTheme;
 navTheme.colors.background = 'transparent';
-
 export const Navigation = () => {
   const isSignedIn = useSelector((state) => state.userData.isLoggedIn);
-
-  console.log(isSignedIn);
 
   return (
     <NavigationContainer theme={navTheme}>
