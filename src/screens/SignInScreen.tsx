@@ -10,7 +10,7 @@ import { TextInput, Button } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
-import { fakeLogin, fetchUser } from '../state/action-creators/_userActions';
+import { fakeLogin } from '../state/action-creators/_userActions';
 
 const SignInScreen = () => {
   const dispatch = useDispatch();
