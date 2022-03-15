@@ -33,14 +33,14 @@ const HomeScreen = () => {
     outputRange: [0, -45],
   });
 
-  console.log(Constants.statusBarHeight);
+  // console.log(Constants.statusBarHeight);
 
   return (
     <ScrollView
       onScroll={(event) => {
         const offSetY = event.nativeEvent.contentOffset.y;
         scrollY.setValue(offSetY);
-        console.log(offSetY);
+        // console.log(offSetY);
       }}
       contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600 }}>
