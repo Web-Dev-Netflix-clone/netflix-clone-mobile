@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 
 import { Button } from 'react-native-paper';
 
@@ -26,6 +26,7 @@ import CustomDrawerTouchableLink from './CustomDrawerComponents/CustomDrawerTouc
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../state';
+import SearchBar from '../components/SearchBar';
 const CustomDrawer = (props: any) => {
   const navigation = useNavigation();
   const searchActive = useSelector(
@@ -45,7 +46,7 @@ const CustomDrawer = (props: any) => {
           backgroundColor: TYPOGRAPHY.COLOR.Black,
         }}>
         <CustomDrawerTopBar title={'Search'} />
-        <Text>Hello From Search Drawer</Text>
+        <SearchBar />
       </DrawerContentScrollView>
     </View>
   ) : (
