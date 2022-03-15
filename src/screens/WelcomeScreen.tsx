@@ -4,15 +4,21 @@ import {
   Text,
   SafeAreaView,
   TouchableOpacity,
-} from "react-native";
-import React, { useRef, useState } from "react";
-import Carousel, { Pagination } from "react-native-snap-carousel";
-import CAROUSELDATA from "../../assets/MockData/DummyCarouselData";
+} from 'react-native';
+import React, { useRef, useState } from 'react';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import CAROUSELDATA from '../../assets/MockData/DummyCarouselData';
 import CarouselCardItem, {
   SLIDER_WIDTH,
-} from "../components/Welcome/CarouselCardItem";
+} from '../components/Welcome/CarouselCardItem';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParams } from '../navigation/navigation';
 
 const WelcomeScreen = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+
   const isCarousel = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -20,7 +26,7 @@ const WelcomeScreen = () => {
     <SafeAreaView style={styles.container}>
       <View>
         <Carousel
-          layout="stack"
+          layout='stack'
           layoutCardOffset={18}
           ref={isCarousel}
           data={CAROUSELDATA}
@@ -41,14 +47,16 @@ const WelcomeScreen = () => {
             height: 10,
             borderRadius: 5,
             marginHorizontal: 0,
-            backgroundColor: "gray",
+            backgroundColor: 'gray',
           }}
           inactiveDotOpacity={0.4}
           inactiveDotScale={1}
           tappableDots={true}
         />
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => {}}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Signin')}>
         <Text style={styles.buttonText}>GET STARTED</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -60,19 +68,19 @@ export default WelcomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
-    justifyContent: "space-around",
+    backgroundColor: 'black',
+    justifyContent: 'space-around',
   },
   button: {
-    backgroundColor: "red",
+    backgroundColor: 'red',
     height: 50,
-    width: "100%",
+    width: '100%',
     borderRadius: 5,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonText: {
-    color: "white",
+    color: 'white',
     fontSize: 20,
   },
 });

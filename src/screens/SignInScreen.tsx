@@ -7,10 +7,14 @@ import {
   View,
 } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
+import { useDispatch } from 'react-redux';
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
+import { fakeLogin, fetchUser } from '../state/action-creators/_userActions';
 
 const SignInScreen = () => {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [inputActive, setInputActive] = useState(false);
@@ -81,7 +85,9 @@ const SignInScreen = () => {
           marginBottom: GLOBAL.SPACING.lg,
           paddingVertical: GLOBAL.SPACING.sm,
         }}
-        onPress={() => console.log('presss')}>
+        onPress={() => {
+          dispatch(fakeLogin());
+        }}>
         Sign In
       </Button>
 

@@ -16,3 +16,8 @@ export type RootStackParams = {
 export type DrawerStackParams = {
   Home: undefined;
 };
+
+export type AuthStackParams = {
+  Signin: undefined;
+  Welcome: undefined;
+};
