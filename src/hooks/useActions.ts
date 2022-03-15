@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { userActionCreators } from '../state';
+import { appStateActionCreators, userActionCreators } from '../state';
 
 const actionCreators: any = {
   ...userActionCreators,
+  ...appStateActionCreators,
 };
 
 // custom hook to neaten up the look of dispatching an action with Redux

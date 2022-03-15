@@ -24,12 +24,21 @@ import CustomDrawerSocialBox from './CustomDrawerComponents/CustomDrawerSocialBo
 import { drawerLinks } from '../../assets/MockData/drawerLinks';
 import CustomDrawerTouchableLink from './CustomDrawerComponents/CustomDrawerTouchableLink';
 
+import { useSelector } from 'react-redux';
+import { RootState } from '../state';
 const CustomDrawer = (props: any) => {
   const navigation = useNavigation();
-
+  const searchActive = useSelector(
+    (state: RootState) => state.appState.searchActive
+  );
   // console.log('PROPS is an object describing the Drawer', props);
 
-  return (
+  return searchActive ? (
+    <View>
+      <CustomDrawerTopBar title={'Search'} />
+      <Text>Hello From Search Drawer</Text>
+    </View>
+  ) : (
     <View
       style={{
         flex: 1,
@@ -163,16 +172,16 @@ const CustomDrawer = (props: any) => {
 
         {/* DrawerItemList => uncomment for auto react navigation links */}
         {/* <View
-          style={{
-            flex: 1,
-            backgroundColor: TYPOGRAPHY.COLOR.Black,
-            paddingTop: 10,
-          }}>
-          <DrawerItemList
-            style={{ backgroundColor: TYPOGRAPHY.COLOR.Black }}
-            {...props}
-          />
-        </View> */}
+        style={{
+          flex: 1,
+          backgroundColor: TYPOGRAPHY.COLOR.Black,
+          paddingTop: 10,
+        }}>
+        <DrawerItemList
+          style={{ backgroundColor: TYPOGRAPHY.COLOR.Black }}
+          {...props}
+        />
+      </View> */}
       </DrawerContentScrollView>
 
       <View

@@ -9,10 +9,16 @@ import { GLOBAL } from '../global/styles/global';
 import { Image, Pressable, View } from 'react-native';
 import CustomDrawer from './CustomDrawer';
 import Avatar from '../components/Avatar';
+import {
+  searchActive,
+  searchInActive,
+} from '../state/action-creators/appStateActions';
+import { useDispatch } from 'react-redux';
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 
 export const DrawerTabNavigator = () => {
+  const dispatch = useDispatch();
   return (
     <Drawer.Navigator
       drawerContent={(props) => <CustomDrawer {...props} />}
@@ -28,7 +34,7 @@ export const DrawerTabNavigator = () => {
               marginLeft: GLOBAL.SPACING.sm,
               marginTop: -GLOBAL.SPACING.sm,
             }}
-            onPress={() => console.log('press')}>
+            onPress={() => {}}>
             <Image
               source={require('../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png')}
               style={{ height: 30, width: 30 }}
@@ -54,7 +60,13 @@ export const DrawerTabNavigator = () => {
                 marginRight: GLOBAL.SPACING.sm,
                 marginTop: -GLOBAL.SPACING.sm,
               }}
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+              onPress={() => {
+                console.log('CLICKED ON SEARCH ACTIVE');
+
+                dispatch(searchActive());
+
+                navigation.dispatch(DrawerActions.openDrawer());
+              }}>
               <Ionicons
                 name='search'
                 size={26}
@@ -66,7 +78,9 @@ export const DrawerTabNavigator = () => {
                 marginRight: GLOBAL.SPACING.sm,
                 marginTop: -GLOBAL.SPACING.sm,
               }}
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+              onPress={() => {
+                navigation.dispatch(DrawerActions.openDrawer());
+              }}>
               <Avatar
                 imageSource={require('../../assets/netflix-avatars/avatar-yellow.png')}
                 height={20}
