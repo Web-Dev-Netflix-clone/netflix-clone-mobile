@@ -27,6 +27,8 @@ import Avatar from '../components/Avatar';
 const CustomDrawer = (props: any) => {
   const navigation = useNavigation();
 
+  // console.log('PROPS is an object describing the Drawer', props);
+
   return (
     <View
       style={{
