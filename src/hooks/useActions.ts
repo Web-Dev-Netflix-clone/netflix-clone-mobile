@@ -11,6 +11,7 @@ const actionCreators: any = {
 // binds the dispatch function to the action creator
 
 export const useActions = () => {
+  console.log('useActions', actionCreators);
   const dispatch = useDispatch();
 
   return bindActionCreators(actionCreators, dispatch);

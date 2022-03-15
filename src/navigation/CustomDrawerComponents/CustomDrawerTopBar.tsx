@@ -28,6 +28,7 @@ const CustomDrawerTopBar = ({ title, iconName }: ICustomDrawerTopBar) => {
       <Pressable
         onPress={() => {
           dispatch(searchInActive());
+          // searchInActive();
           navigation.dispatch(DrawerActions.closeDrawer());
         }}>
         <Ionicons

@@ -34,9 +34,19 @@ const CustomDrawer = (props: any) => {
   // console.log('PROPS is an object describing the Drawer', props);
 
   return searchActive ? (
-    <View>
-      <CustomDrawerTopBar title={'Search'} />
-      <Text>Hello From Search Drawer</Text>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: TYPOGRAPHY.COLOR.Black,
+      }}>
+      <DrawerContentScrollView
+        {...props}
+        contentContainerStyle={{
+          backgroundColor: TYPOGRAPHY.COLOR.Black,
+        }}>
+        <CustomDrawerTopBar title={'Search'} />
+        <Text>Hello From Search Drawer</Text>
+      </DrawerContentScrollView>
     </View>
   ) : (
     <View
