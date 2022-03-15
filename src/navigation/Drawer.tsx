@@ -9,10 +9,7 @@ import { GLOBAL } from '../global/styles/global';
 import { Image, Pressable, View } from 'react-native';
 import CustomDrawer from './CustomDrawer';
 import Avatar from '../components/Avatar';
-import {
-  searchActive,
-  searchInActive,
-} from '../state/action-creators/appStateActions';
+import { searchActive } from '../state/action-creators/appStateActions';
 import { useDispatch } from 'react-redux';
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
@@ -61,8 +58,7 @@ export const DrawerTabNavigator = () => {
                 marginTop: -GLOBAL.SPACING.sm,
               }}
               onPress={() => {
-                console.log('CLICKED ON SEARCH ACTIVE');
-
+                // searchActive();
                 dispatch(searchActive());
 
                 navigation.dispatch(DrawerActions.openDrawer());

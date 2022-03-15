@@ -19,14 +19,14 @@ export const reducer = (
 ): AppState => {
   switch (action.type) {
     case ActionType.SEARCH_ACTIVE:
-      console.log('inside active');
+      // console.log('inside active');
       return {
         ...state,
         searchActive: true,
       };
 
     case ActionType.SEARCH_INACTIVE:
-      console.log('inside inactive');
+      // console.log('inside inactive');
       return {
         ...state,
         searchActive: false,
