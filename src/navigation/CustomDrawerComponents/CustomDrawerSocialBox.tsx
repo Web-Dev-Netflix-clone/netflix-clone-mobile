@@ -3,7 +3,7 @@ import React from 'react';
 import { GLOBAL } from '../../global/styles/global';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 
-import { Ionicons, Feather } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 interface CustomDrawerSocialBox {
   imageSource?: ImageSourcePropType;

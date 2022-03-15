@@ -26,7 +26,6 @@ const SignInScreen = () => {
         {
           backgroundColor: TYPOGRAPHY.COLOR.Black,
           padding: GLOBAL.SPACING.md,
-
           justifyContent: 'center',
         },
       ]}>
