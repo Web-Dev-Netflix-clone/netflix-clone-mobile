@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 
 import { Button } from 'react-native-paper';
 
@@ -45,7 +45,33 @@ const CustomDrawer = (props: any) => {
           backgroundColor: TYPOGRAPHY.COLOR.Black,
         }}>
         <CustomDrawerTopBar title={'Search'} />
-        <Text>Hello From Search Drawer</Text>
+
+        <View
+          style={[
+            GLOBAL.LAYOUT.rowCenter,
+            {
+              backgroundColor: TYPOGRAPHY.COLOR.GreySecondary,
+              paddingVertical: GLOBAL.SPACING.sm,
+              paddingHorizontal: GLOBAL.SPACING.lg,
+              justifyContent: 'space-between',
+            },
+          ]}>
+          <IonIcons
+            name='search'
+            size={20}
+            color={TYPOGRAPHY.COLOR.GreyLight}
+          />
+          <TextInput
+            style={{ marginLeft: -60 }}
+            placeholder='Search for a show, movie, genre etc.'
+            placeholderTextColor={TYPOGRAPHY.COLOR.GreyLight}
+          />
+          <IonIcons
+            name='mic-outline'
+            size={20}
+            color={TYPOGRAPHY.COLOR.GreyLight}
+          />
+        </View>
       </DrawerContentScrollView>
     </View>
   ) : (
