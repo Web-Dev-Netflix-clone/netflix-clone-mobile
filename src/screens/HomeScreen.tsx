@@ -1,6 +1,12 @@
 //@ts-nocheck
 import React from 'react';
-import { View, ImageBackground, ScrollView, Text } from 'react-native';
+import {
+  View,
+  ImageBackground,
+  ScrollView,
+  Text,
+  Animated,
+} from 'react-native';
 import { Button } from 'react-native-paper';
 
 import image from '../../assets/images/posters/stranger-things.jpg';
@@ -13,6 +19,7 @@ import { StandardLaneCard } from '../components/LaneRenderItems/StandardLaneCard
 import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
+import Constants from 'expo-constants';
 
 const HomeScreen = () => {
   // DIMENONSIONS API GEBRUIKEN => voor height?!
@@ -20,8 +27,22 @@ const HomeScreen = () => {
   // https://github.com/gorhom/react-native-bottom-sheet/issues/249
   // https://dev.to/jeff_codes/react-native-custom-bottombar-navigation-with-bottomsheet-1ep9
 
+  const scrollY = new Animated.Value(0);
+  const translateY = scrollY.interpolate({
+    inputRange: [0, 45],
+    outputRange: [0, -45],
+  });
+
+  console.log(Constants.statusBarHeight);
+
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+    <ScrollView
+      onScroll={(event) => {
+        const offSetY = event.nativeEvent.contentOffset.y;
+        scrollY.setValue(offSetY);
+        console.log(offSetY);
+      }}
+      contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600 }}>
         <ImageBackground
           source={image}

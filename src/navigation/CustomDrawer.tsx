@@ -22,10 +22,19 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { GLOBAL } from '../global/styles/global';
+
+import { avatarData } from '../../assets/MockData/avatarData';
 import Avatar from '../components/Avatar';
+import CustomDrawerTopBar from './CustomDrawerComponents/CustomDrawerTopBar';
+import { socialIconsData } from '../../assets/MockData/socialIconsData';
+import CustomDrawerSocialBox from './CustomDrawerComponents/CustomDrawerSocialBox';
+import { drawerLinks } from '../../assets/MockData/drawerLinks';
+import CustomDrawerTouchableLink from './CustomDrawerComponents/CustomDrawerTouchableLink';
 
 const CustomDrawer = (props: any) => {
   const navigation = useNavigation();
+
+  // console.log('PROPS is an object describing the Drawer', props);
 
   return (
     <View
@@ -38,33 +47,9 @@ const CustomDrawer = (props: any) => {
         contentContainerStyle={{
           backgroundColor: TYPOGRAPHY.COLOR.Black,
         }}>
-        <View
-          style={[
-            GLOBAL.LAYOUT.rowCenter,
-            {
-              backgroundColor: TYPOGRAPHY.COLOR.Black,
-              paddingVertical: GLOBAL.SPACING.sm,
-            },
-          ]}>
-          <Pressable
-            onPress={() => navigation.dispatch(DrawerActions.closeDrawer())}>
-            <Ionicons
-              name='arrow-back'
-              size={26}
-              color={TYPOGRAPHY.COLOR.White}
-            />
-          </Pressable>
+        {/* Custom Drawer Component with back button */}
+        <CustomDrawerTopBar title={'Profiles & More'} />
 
-          <Text
-            style={{
-              color: TYPOGRAPHY.COLOR.White,
-              marginLeft: GLOBAL.SPACING.md,
-              fontSize: 18,
-              fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
-            }}>
-            Profiles & More
-          </Text>
-        </View>
         <View
           style={[
             GLOBAL.LAYOUT.rowCenter,
@@ -73,30 +58,17 @@ const CustomDrawer = (props: any) => {
               paddingVertical: GLOBAL.SPACING.sm,
             },
           ]}>
-          <Avatar
-            imageSource={require('../../assets/netflix-avatars/avatar-blue.png')}
-            height={50}
-            width={50}
-            title={'User'}
-          />
-          <Avatar
-            imageSource={require('../../assets/netflix-avatars/avatar-red.png')}
-            height={50}
-            width={50}
-            title={'User'}
-          />
-          <Avatar
-            imageSource={require('../../assets/netflix-avatars/avatar-yellow.png')}
-            height={50}
-            width={50}
-            title={'User'}
-          />
-          <Avatar
-            imageSource={require('../../assets/netflix-avatars/avatar-kids.png')}
-            height={50}
-            width={50}
-            title={'User'}
-          />
+          {/* Maps avatar pictures to the UI */}
+          {avatarData.map((avatar) => (
+            <Avatar
+              key={avatar.title}
+              imageSource={avatar.source}
+              height={50}
+              width={50}
+              title={avatar.title}
+            />
+          ))}
+
           <Avatar
             height={50}
             width={50}
@@ -104,6 +76,7 @@ const CustomDrawer = (props: any) => {
             iconName='md-add-circle'
           />
         </View>
+
         <View style={{ alignItems: 'center' }}>
           <Button
             icon='pencil'
@@ -180,116 +153,33 @@ const CustomDrawer = (props: any) => {
               justifyContent: 'space-evenly',
               paddingTop: GLOBAL.SPACING.md,
             }}>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: GLOBAL.SPACING.sm,
-                borderRightWidth: 2,
-                width: 100,
-                height: 100,
-                borderColor: TYPOGRAPHY.COLOR.Grey,
-              }}>
-              <Image
-                source={require('../../assets/social-icons/whatsapp-logo.png')}
-                style={{ height: 40, width: 40 }}
+            {/* Maps over icon data and creates social icons */}
+            {socialIconsData.map((icon, i) => (
+              <CustomDrawerSocialBox
+                key={icon.id}
+                imageSource={icon.source}
+                height={40}
+                width={40}
+                title={icon.title}
+                iconName={icon.iconName}
+                borderWidth={i === socialIconsData.length - 1 ? -1 : 2}
               />
-              <Text
-                style={[
-                  TYPOGRAPHY.FONT.body,
-                  { fontSize: TYPOGRAPHY.FONT_SIZES.sm },
-                  { textAlign: 'left', marginTop: 5 },
-                ]}>
-                WhatsApp
-              </Text>
-            </View>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: GLOBAL.SPACING.sm,
-                borderRightWidth: 2,
-                width: 100,
-                height: 100,
-                borderColor: TYPOGRAPHY.COLOR.Grey,
-              }}>
-              <Image
-                source={require('../../assets/social-icons/gmail-logo.png')}
-                style={{
-                  backgroundColor: '#fff',
-                  padding: 15,
-                  borderRadius: 5,
-                  height: 40,
-                  width: 40,
-                }}
-              />
-              <Text
-                style={[
-                  TYPOGRAPHY.FONT.body,
-                  { fontSize: TYPOGRAPHY.FONT_SIZES.sm },
-                  { textAlign: 'left', marginTop: 5 },
-                ]}>
-                Gmail
-              </Text>
-            </View>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: GLOBAL.SPACING.sm,
-                borderRightWidth: 2,
-                width: 100,
-                height: 100,
-                borderColor: TYPOGRAPHY.COLOR.Grey,
-              }}>
-              <Image
-                source={require('../../assets/social-icons/messages-logo.png')}
-                style={{ height: 40, width: 40 }}
-              />
-              <Text
-                style={[
-                  TYPOGRAPHY.FONT.body,
-                  { fontSize: TYPOGRAPHY.FONT_SIZES.sm },
-                  { textAlign: 'left', marginTop: 5 },
-                ]}>
-                Messages
-              </Text>
-            </View>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: GLOBAL.SPACING.sm,
-
-                width: 100,
-                height: 100,
-                borderColor: TYPOGRAPHY.COLOR.Grey,
-              }}>
-              <Feather name='more-horizontal' size={40} />
-              <Text
-                style={[
-                  TYPOGRAPHY.FONT.body,
-                  { fontSize: TYPOGRAPHY.FONT_SIZES.sm },
-                  { textAlign: 'left', marginTop: 5 },
-                ]}>
-                More
-              </Text>
-            </View>
+            ))}
           </View>
         </View>
 
-        <View
+        {/* DrawerItemList => uncomment for auto react navigation links */}
+        {/* <View
           style={{
             flex: 1,
             backgroundColor: TYPOGRAPHY.COLOR.Black,
             paddingTop: 10,
           }}>
-          {/* DrawerItemList => uncomment for links */}
-          {/* <DrawerItemList
-            // style={{ backgroundColor: TYPOGRAPHY.COLOR.Black }}
+          <DrawerItemList
+            style={{ backgroundColor: TYPOGRAPHY.COLOR.Black }}
             {...props}
-          /> */}
-        </View>
+          />
+        </View> */}
       </DrawerContentScrollView>
 
       <View
@@ -313,64 +203,18 @@ const CustomDrawer = (props: any) => {
 
       <View
         style={{
-          backgroundColor: '#000',
-          padding: 20,
+          padding: GLOBAL.SPACING.lg,
           borderTopWidth: 1,
           borderTopColor: '#ccc',
         }}>
-        <TouchableOpacity onPress={() => {}} style={{ paddingVertical: 15 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text
-              style={{
-                fontSize: 15,
-                color: TYPOGRAPHY.COLOR.White,
-                fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
-                marginLeft: 5,
-              }}>
-              App Settings
-            </Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => {}} style={{ paddingVertical: 15 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text
-              style={{
-                fontSize: 15,
-                color: TYPOGRAPHY.COLOR.White,
-                fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
-                marginLeft: 5,
-              }}>
-              Account
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}} style={{ paddingVertical: 15 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text
-              style={{
-                fontSize: 15,
-                color: TYPOGRAPHY.COLOR.White,
-                fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
-                marginLeft: 5,
-              }}>
-              Help
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}} style={{ paddingVertical: 15 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text
-              style={{
-                fontSize: 15,
-                color: TYPOGRAPHY.COLOR.White,
-                fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
-                marginLeft: 5,
-              }}>
-              Sign Out
-            </Text>
-          </View>
-        </TouchableOpacity>
+        {/* Maps the links */}
+        {drawerLinks.map((link) => (
+          <CustomDrawerTouchableLink
+            key={link.id}
+            title={link.title}
+            onClick={() => {}}
+          />
+        ))}
       </View>
     </View>
   );
