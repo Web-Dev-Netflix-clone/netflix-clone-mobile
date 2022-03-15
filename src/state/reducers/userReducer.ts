@@ -66,7 +66,7 @@ export const reducer = (
       return {
         ...state,
         loading: true,
-        isLoggedIn: false,
+        isLoggedIn: true,
       };
 
     case ActionType.FETCH_USER_ERROR:

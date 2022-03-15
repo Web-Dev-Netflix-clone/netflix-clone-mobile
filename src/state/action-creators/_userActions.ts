@@ -11,6 +11,14 @@ type SignWithEmail = {
 // DIT BEWAAR IK EVEN VOOR REFERENCE VERWIJDER IK LATER IN HET PROJECT!
 // Misschien kunnen we een deel van de logic wel hergebruiken voor de signin / singup etc.
 
+export const fakeLogin = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.FETCH_USER_SUCCESS,
+    });
+  };
+};
+
 export const fetchUser = (id: number) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
