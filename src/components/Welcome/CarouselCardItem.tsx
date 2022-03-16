@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 import { CarouselData } from "../../types/data.types";
+import { TYPOGRAPHY } from "../../global/styles/typography";
 
 export const SLIDER_WIDTH = Dimensions.get("window").width;
-export const SLIDER_HEIGHT = Dimensions.get("window").height * 0.7;
+export const SLIDER_HEIGHT = Dimensions.get("window").height * 0.8;
 
 const CarouselCardItem = ({
   item,
@@ -14,7 +15,7 @@ const CarouselCardItem = ({
   return (
     <View style={styles.container} key={index}>
       <Image
-        source={{ uri: item.img }}
+        source={item.source}
         style={[styles.image, { position: "relative" }]}
       />
       <View style={styles.textContainer}>
@@ -27,6 +28,7 @@ const CarouselCardItem = ({
 const styles = StyleSheet.create({
   container: {
     width: SLIDER_WIDTH,
+    backgroundColor: "black",
   },
   image: {
     width: SLIDER_WIDTH,
@@ -36,23 +38,23 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     position: "absolute",
-    top: "60%",
-    backgroundColor: "rgba(0, 0, 0, .65)",
-    paddingHorizontal: 30,
-    paddingTop: 20,
+    top: 0,
+    justifyContent: "flex-end",
   },
   header: {
     color: "white",
-    fontSize: 32,
-    fontWeight: "bold",
     textAlign: "center",
-    margin: 10,
+    marginHorizontal: 50,
+    marginBottom: 10,
+    fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
+    fontSize: TYPOGRAPHY.FONT_SIZES.xl,
   },
   text: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "bold",
+    color: TYPOGRAPHY.COLOR.GreyLight,
     textAlign: "center",
+    marginHorizontal: 100,
+    fontFamily: TYPOGRAPHY.FONT.PrimaryLight,
+    fontSize: TYPOGRAPHY.FONT_SIZES.md,
   },
 });
 

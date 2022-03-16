@@ -4,16 +4,17 @@ import {
   Text,
   SafeAreaView,
   TouchableOpacity,
-} from 'react-native';
-import React, { useRef, useState } from 'react';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
-import CAROUSELDATA from '../../assets/MockData/DummyCarouselData';
+} from "react-native";
+import React, { useRef, useState } from "react";
+import Carousel, { Pagination } from "react-native-snap-carousel";
+import CAROUSELDATA from "../../assets/MockData/DummyCarouselData";
 import CarouselCardItem, {
   SLIDER_WIDTH,
-} from '../components/Welcome/CarouselCardItem';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParams } from '../navigation/navigation';
+} from "../components/Welcome/CarouselCardItem";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParams } from "../navigation/navigation";
+import { TYPOGRAPHY } from "../global/styles/typography";
 
 const WelcomeScreen = () => {
   const navigation =
@@ -26,7 +27,7 @@ const WelcomeScreen = () => {
     <SafeAreaView style={styles.container}>
       <View>
         <Carousel
-          layout='stack'
+          layout="stack"
           layoutCardOffset={18}
           ref={isCarousel}
           data={CAROUSELDATA}
@@ -47,7 +48,7 @@ const WelcomeScreen = () => {
             height: 10,
             borderRadius: 5,
             marginHorizontal: 0,
-            backgroundColor: 'gray',
+            backgroundColor: "gray",
           }}
           inactiveDotOpacity={0.4}
           inactiveDotScale={1}
@@ -56,7 +57,8 @@ const WelcomeScreen = () => {
       </View>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('Signin')}>
+        onPress={() => navigation.navigate("Signin")}
+      >
         <Text style={styles.buttonText}>GET STARTED</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -68,19 +70,21 @@ export default WelcomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
-    justifyContent: 'space-around',
+    backgroundColor: "black",
+    justifyContent: "space-around",
   },
   button: {
-    backgroundColor: 'red',
+    backgroundColor: "red",
     height: 50,
-    width: '100%',
+    width: "95%",
     borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
   },
   buttonText: {
-    color: 'white',
-    fontSize: 20,
+    fontFamily: TYPOGRAPHY.FONT.PrimaryLight,
+    color: "white",
+    fontSize: TYPOGRAPHY.FONT_SIZES.md,
   },
 });
