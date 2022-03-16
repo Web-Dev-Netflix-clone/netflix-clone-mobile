@@ -20,7 +20,7 @@ export interface IMovieCard {
 }
 
 export interface CarouselData {
-  img: string;
+  source: any;
   header: string;
   text: string;
 }
