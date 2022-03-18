@@ -1,16 +1,16 @@
-import React from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { DrawerActions } from '@react-navigation/native';
-import { BottomTabNavigator } from './BottomTab';
-import { DrawerStackParams } from './navigation';
-import { Ionicons, Feather } from '@expo/vector-icons';
-import { TYPOGRAPHY } from '../global/styles/typography';
-import { GLOBAL } from '../global/styles/global';
-import { Image, Pressable, View } from 'react-native';
-import CustomDrawer from './CustomDrawer';
-import Avatar from '../components/Avatar';
-import { searchActive } from '../state/action-creators/appStateActions';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { DrawerActions } from "@react-navigation/native";
+import { BottomTabNavigator } from "./BottomTab";
+import { DrawerStackParams } from "./navigation";
+import { Ionicons, Feather } from "@expo/vector-icons";
+import { TYPOGRAPHY } from "../global/styles/typography";
+import { GLOBAL } from "../global/styles/global";
+import { Image, Pressable, View } from "react-native";
+import CustomDrawer from "./CustomDrawer";
+import Avatar from "../components/Avatar";
+import { searchActive } from "../state/action-creators/appStateActions";
+import { useDispatch } from "react-redux";
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 
@@ -19,7 +19,7 @@ export const DrawerTabNavigator = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => <CustomDrawer {...props} />}
-      initialRouteName='Home'
+      initialRouteName="Home"
       //@ts-ignore
       screenOptions={({ navigation }: { navigation: any }) => ({
         headerShown: true,
@@ -31,9 +31,10 @@ export const DrawerTabNavigator = () => {
               marginLeft: GLOBAL.SPACING.sm,
               marginTop: -GLOBAL.SPACING.sm,
             }}
-            onPress={() => {}}>
+            onPress={() => {}}
+          >
             <Image
-              source={require('../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png')}
+              source={require("../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png")}
               style={{ height: 30, width: 30 }}
             />
           </Pressable>
@@ -42,15 +43,17 @@ export const DrawerTabNavigator = () => {
           <View
             style={[
               GLOBAL.LAYOUT.rowCenter,
-              { width: '40%', justifyContent: 'space-between' },
-            ]}>
+              { width: "50%", justifyContent: "space-around" },
+            ]}
+          >
             <Pressable
               style={{
                 marginRight: GLOBAL.SPACING.sm,
                 marginTop: -GLOBAL.SPACING.sm,
               }}
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-              <Feather name='cast' size={26} color={TYPOGRAPHY.COLOR.White} />
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            >
+              <Feather name="cast" size={26} color={TYPOGRAPHY.COLOR.White} />
             </Pressable>
             <Pressable
               style={{
@@ -62,9 +65,10 @@ export const DrawerTabNavigator = () => {
                 dispatch(searchActive());
 
                 navigation.dispatch(DrawerActions.openDrawer());
-              }}>
+              }}
+            >
               <Ionicons
-                name='search'
+                name="search"
                 size={26}
                 color={TYPOGRAPHY.COLOR.White}
               />
@@ -76,28 +80,30 @@ export const DrawerTabNavigator = () => {
               }}
               onPress={() => {
                 navigation.dispatch(DrawerActions.openDrawer());
-              }}>
+              }}
+            >
               <Avatar
-                imageSource={require('../../assets/netflix-avatars/avatar-yellow.png')}
+                imageSource={require("../../assets/netflix-avatars/avatar-yellow.png")}
                 height={20}
                 width={20}
               />
             </Pressable>
           </View>
         ),
-        title: '',
+        title: "",
         headerTransparent: true,
-        drawerPosition: 'right',
-        drawerStyle: { right: 0, width: '100%' },
+        drawerPosition: "right",
+        drawerStyle: { right: 0, width: "100%" },
         drawerIcon: () => (
           <Ionicons
-            name='md-home-outline'
+            name="md-home-outline"
             size={26}
             color={TYPOGRAPHY.COLOR.Black}
           />
         ),
-      })}>
-      <Drawer.Screen name='Home' component={BottomTabNavigator} />
+      })}
+    >
+      <Drawer.Screen name="Home" component={BottomTabNavigator} />
     </Drawer.Navigator>
   );
 };

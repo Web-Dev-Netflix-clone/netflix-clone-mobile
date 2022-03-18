@@ -44,17 +44,17 @@ const styles = StyleSheet.create({
   header: {
     color: "white",
     textAlign: "center",
-    marginHorizontal: 50,
+    marginHorizontal: 20,
     marginBottom: 10,
     fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
-    fontSize: TYPOGRAPHY.FONT_SIZES.xl,
+    fontSize: TYPOGRAPHY.FONT_SIZES.xxl,
   },
   text: {
     color: TYPOGRAPHY.COLOR.GreyLight,
     textAlign: "center",
-    marginHorizontal: 100,
+    marginHorizontal: 80,
     fontFamily: TYPOGRAPHY.FONT.PrimaryLight,
-    fontSize: TYPOGRAPHY.FONT_SIZES.md,
+    fontSize: TYPOGRAPHY.FONT_SIZES.lg,
   },
 });
 
