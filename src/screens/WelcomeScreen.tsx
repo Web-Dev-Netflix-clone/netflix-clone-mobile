@@ -5,6 +5,8 @@ import {
   SafeAreaView,
   Modal,
   KeyboardAvoidingView,
+  Pressable,
+  Keyboard,
 } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -14,6 +16,8 @@ import { TYPOGRAPHY } from "../global/styles/typography";
 import WelcomeCarousel from "../components/Welcome/WelcomeCarousel";
 import { Button, IconButton, TextInput } from "react-native-paper";
 import { GLOBAL } from "../global/styles/global";
+import { StatusBar } from "expo-status-bar";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const WelcomeScreen = () => {
   const navigation =
@@ -36,8 +40,13 @@ const WelcomeScreen = () => {
           Get Started
         </Button>
       </View>
-      <Modal visible={isModalVisible} transparent={false} animationType="slide">
-        <KeyboardAvoidingView style={styles.modalContainer}>
+      <Modal
+        visible={isModalVisible}
+        transparent={false}
+        animationType="slide"
+        statusBarTranslucent={true}
+      >
+        <View style={styles.modalContainer}>
           <View style={styles.closeButtonContainer}>
             <IconButton
               icon="close"
@@ -77,7 +86,7 @@ const WelcomeScreen = () => {
           >
             Get Started
           </Button>
-        </KeyboardAvoidingView>
+        </View>
       </Modal>
     </SafeAreaView>
   );
