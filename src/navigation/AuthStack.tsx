@@ -33,23 +33,23 @@ export const LoginStack = () => {
             <View
               style={{
                 flexDirection: "row",
-                width: "70%",
-                justifyContent: "space-between",
+                width: "90%",
+                justifyContent: "space-around",
                 alignItems: "center",
               }}
             >
               <Pressable onPress={() => alert("Privacy Pressed!")}>
-                <Text style={GLOBAL.TEXT.Secondary}>PRIVACY</Text>
+                <Text style={GLOBAL.TEXT.Default}>PRIVACY</Text>
               </Pressable>
               <Pressable
                 onPress={() => {
                   navigation.navigate("Signin");
                 }}
               >
-                <Text style={GLOBAL.TEXT.Secondary}>LOGIN</Text>
+                <Text style={GLOBAL.TEXT.Default}>SIGN IN</Text>
               </Pressable>
               <Pressable onPress={() => alert("Ellipsis Pressed!")}>
-                <Ionicons name="ellipsis-vertical" size={20} color="black" />
+                <Ionicons name="ellipsis-vertical" size={20} color="gray" />
               </Pressable>
             </View>
           ),
