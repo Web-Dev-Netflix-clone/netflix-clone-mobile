@@ -47,18 +47,6 @@ const HomeScreen = () => {
         // console.log(offSetY);
       }}
       contentContainerStyle={{ flexGrow: 1 }}>
-      <DiscoverNav
-        style={{
-          backgroundColor: 'transparent',
-          position: 'absolute',
-          top: 60,
-          zIndex: 100,
-          width: '100%',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-evenly',
-        }}
-      />
       <View style={{ height: 600, position: 'relative' }}>
         <ImageBackground source={image} resizeMode='cover' style={{ flex: 1 }}>
           <LinearGradient
