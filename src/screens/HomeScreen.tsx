@@ -20,6 +20,7 @@ import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
 import Constants from 'expo-constants';
+import DiscoverNav from '../components/DiscoverNav';
 
 const HomeScreen = () => {
   // DIMENONSIONS API GEBRUIKEN => voor height?!
@@ -37,12 +38,25 @@ const HomeScreen = () => {
 
   return (
     <ScrollView
+      style={{ position: 'relative' }}
       onScroll={(event) => {
         const offSetY = event.nativeEvent.contentOffset.y;
         scrollY.setValue(offSetY);
         // console.log(offSetY);
       }}
       contentContainerStyle={{ flexGrow: 1 }}>
+      <DiscoverNav
+        style={{
+          backgroundColor: 'transparent',
+          position: 'absolute',
+          top: 60,
+          zIndex: 100,
+          width: '100%',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-evenly',
+        }}
+      />
       <View style={{ height: 600 }}>
         <ImageBackground
           source={image}
