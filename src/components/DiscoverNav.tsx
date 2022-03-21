@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { GLOBAL } from '../global/styles/global';
 import { IconButton } from 'react-native-paper';
 
