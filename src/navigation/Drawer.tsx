@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerActions } from '@react-navigation/native';
 import { BottomTabNavigator } from './BottomTab';
@@ -12,10 +13,15 @@ import Avatar from '../components/Avatar';
 import { searchActive } from '../state/action-creators/appStateActions';
 import { useDispatch } from 'react-redux';
 import DiscoverNav from '../components/DiscoverNav';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Dimensions } from 'react-native';
+const windowHeight = Dimensions.get('window').height;
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 
 export const DrawerTabNavigator = () => {
+  const [modalActive, setModalActive] = useState(false);
+
   const dispatch = useDispatch();
   return (
     <Drawer.Navigator
@@ -99,6 +105,7 @@ export const DrawerTabNavigator = () => {
             </View>
 
             <DiscoverNav
+              setModalActive={setModalActive}
               style={{
                 backgroundColor: 'transparent',
                 width: '100%',
@@ -107,6 +114,16 @@ export const DrawerTabNavigator = () => {
                 justifyContent: 'space-evenly',
               }}
             />
+            {modalActive && (
+              <LinearGradient
+                colors={[
+                  'rgba(0,0,0, 0.2)',
+                  'rgba(0,0,0, 0.2)',
+                  'rgba(0,0,0,0.3)',
+                ]}
+                style={[styles.background, { zIndex: 100 }]}
+              />
+            )}
           </View>
         ),
 
@@ -126,3 +143,13 @@ export const DrawerTabNavigator = () => {
     </Drawer.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: windowHeight,
+  },
+});
