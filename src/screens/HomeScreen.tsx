@@ -6,8 +6,10 @@ import {
   ScrollView,
   Text,
   Animated,
+  StyleSheet,
 } from 'react-native';
 import { Button } from 'react-native-paper';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import image from '../../assets/images/posters/stranger-things.jpg';
 import InfoBar from '../components/InfoBar';
@@ -57,12 +59,13 @@ const HomeScreen = () => {
           justifyContent: 'space-evenly',
         }}
       />
-      <View style={{ height: 600 }}>
-        <ImageBackground
-          source={image}
-          resizeMode='cover'
-          style={{ flex: 1 }}
-        />
+      <View style={{ height: 600, position: 'relative' }}>
+        <ImageBackground source={image} resizeMode='cover' style={{ flex: 1 }}>
+          <LinearGradient
+            colors={['rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.3)']}
+            style={[styles.background, { zIndex: 100 }]}
+          />
+        </ImageBackground>
         <View
           style={{
             marginTop: -28,
@@ -122,3 +125,13 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+const styles = StyleSheet.create({
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: '120%',
+  },
+});
