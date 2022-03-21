@@ -15,12 +15,14 @@ import { useDispatch } from 'react-redux';
 import DiscoverNav from '../components/DiscoverNav';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
+import CategoriesModal from '../components/CategoriesModal';
 const windowHeight = Dimensions.get('window').height;
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 
 export const DrawerTabNavigator = () => {
   const [modalActive, setModalActive] = useState(false);
+  console.log('MODALACTIVE', modalActive);
 
   const dispatch = useDispatch();
   return (
@@ -115,13 +117,9 @@ export const DrawerTabNavigator = () => {
               }}
             />
             {modalActive && (
-              <LinearGradient
-                colors={[
-                  'rgba(0,0,0, 0.2)',
-                  'rgba(0,0,0, 0.2)',
-                  'rgba(0,0,0,0.3)',
-                ]}
-                style={[styles.background, { zIndex: 100 }]}
+              <CategoriesModal
+                modalActive={modalActive}
+                setModalActive={setModalActive}
               />
             )}
           </View>

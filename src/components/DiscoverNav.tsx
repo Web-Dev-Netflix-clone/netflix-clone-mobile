@@ -1,5 +1,5 @@
 import { View, Text, ViewStyle } from 'react-native';
-import React, { SetStateAction, useState } from 'react';
+import React from 'react';
 import { GLOBAL } from '../global/styles/global';
 import { IconButton } from 'react-native-paper';
 import { TYPOGRAPHY } from '../global/styles/typography';
@@ -22,7 +22,10 @@ const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {
             icon='chevron-down'
             color='white'
             size={20}
-            onPress={() => setModalActive(true)}
+            onPress={() => {
+              console.log('PRESS MODAL OPEN');
+              setModalActive(true);
+            }}
           />
         </View>
       </View>
