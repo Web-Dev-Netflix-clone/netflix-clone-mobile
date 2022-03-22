@@ -19,6 +19,7 @@ export interface TextProps {
 type onSubmitEvent = ({
   nativeEvent,
 }: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
+
 export interface TextInputProps {
   style?: Object;
   value?: string;
