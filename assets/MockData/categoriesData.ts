@@ -20,7 +20,7 @@ export const categoriesData = [
     title: 'Blockbusters',
   },
   {
-    id: '8e85df05-b8df-449a-a1e2-df3d74da2569',
+    id: '8e85df15-b8df-449a-a1e2-df3d74da2569',
     title: 'Children & Family',
   },
   {
