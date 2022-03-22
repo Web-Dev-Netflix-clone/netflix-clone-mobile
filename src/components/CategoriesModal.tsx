@@ -12,6 +12,8 @@ import { IconButton } from 'react-native-paper';
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { LinearGradient } from 'expo-linear-gradient';
+import { categoriesData } from '../../assets/MockData/categoriesData';
+import { PressableText } from '../global/elements/PressableText';
 
 interface ICategoriesModal {
   style?: ViewStyle;
@@ -40,6 +42,16 @@ const CategoriesModal = ({
           <Pressable onPress={() => setModalActive(false)}>
             <Text style={[TYPOGRAPHY.FONT.h1, { color: '#fff' }]}>Home</Text>
           </Pressable>
+          {categoriesData?.map((category) => {
+            console.log(category.title);
+            return (
+              <PressableText
+                text={category.title}
+                textStyle={TYPOGRAPHY.FONT.body}
+              />
+              // <Text style={TYPOGRAPHY.FONT.body}>{category.title}</Text>
+            );
+          })}
         </ScrollView>
         <View style={styles.closeButtonContainer}>
           <IconButton
