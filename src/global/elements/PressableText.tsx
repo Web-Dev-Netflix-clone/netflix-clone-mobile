@@ -1,22 +1,27 @@
 import {
   Text,
+  Pressable,
+  PressableProps,
   TextStyle,
-  TouchableOpacity,
-  TouchableOpacityProps,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
 import { GLOBAL } from '../styles/global';
 
+// extending PressableProps with the & Operator
+
 export const PressableText = (
-  props: TouchableOpacityProps & {
+  props: PressableProps & {
     text: string;
     textStyle?: TextStyle;
     onClick?: () => void;
+    style?: ViewStyle;
   }
 ) => {
   return (
-    <TouchableOpacity
+    <Pressable
       onPress={props.onClick}
-      style={GLOBAL.LAYOUT.rowCenter}
+      style={props.style ? props.style : {}}
       {...props}>
       <Text
         style={[
@@ -25,6 +30,6 @@ export const PressableText = (
         ]}>
         {props.text}
       </Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };

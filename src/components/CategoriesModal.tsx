@@ -39,17 +39,18 @@ const CategoriesModal = ({
           style={[styles.background, { zIndex: 11 }]}
         />
         <ScrollView style={{ paddingTop: GLOBAL.SPACING.xxxxl, zIndex: 12 }}>
-          <Pressable onPress={() => setModalActive(false)}>
-            <Text style={[TYPOGRAPHY.FONT.h1, { color: '#fff' }]}>Home</Text>
-          </Pressable>
+          <PressableText
+            textStyle={{ ...TYPOGRAPHY.FONT.h1, color: '#fff' }}
+            text='Home'
+            onClick={() => setModalActive(false)}
+          />
           {categoriesData?.map((category) => {
-            console.log(category.title);
             return (
               <PressableText
+                key={category.id}
                 text={category.title}
                 textStyle={TYPOGRAPHY.FONT.body}
               />
-              // <Text style={TYPOGRAPHY.FONT.body}>{category.title}</Text>
             );
           })}
         </ScrollView>
@@ -70,8 +71,8 @@ export default CategoriesModal;
 
 const styles = StyleSheet.create({
   modalContainer: {
-    position: 'absolute',
-    flex: 1,
+    // position: 'absolute',
+    // flex: 1,
     padding: GLOBAL.SPACING.md,
     zIndex: 10,
     alignItems: 'center',
