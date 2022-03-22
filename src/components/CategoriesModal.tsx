@@ -35,33 +35,45 @@ const CategoriesModal = ({
       statusBarTranslucent={true}>
       <View style={[styles.modalContainer, style]}>
         <LinearGradient
-          colors={['rgba(0,0,0, 0.8)', 'rgba(0,0,0, 0.8)', 'rgba(0,0,0,0.8)']}
+          colors={['rgba(0,0,0, 0.9)', 'rgba(0,0,0, 0.9)', 'rgba(0,0,0,0.9)']}
           style={[styles.background, { zIndex: 11 }]}
         />
-        <ScrollView style={{ paddingTop: GLOBAL.SPACING.xxxxl, zIndex: 12 }}>
+        <ScrollView
+          style={{
+            paddingTop: GLOBAL.SPACING.xxxxl,
+            zIndex: 12,
+          }}>
           <PressableText
-            textStyle={{ ...TYPOGRAPHY.FONT.h1, color: '#fff' }}
+            textStyle={{ ...TYPOGRAPHY.FONT.h2, color: '#fff' }}
             text='Home'
             onClick={() => setModalActive(false)}
           />
-          {categoriesData?.map((category) => {
-            return (
-              <PressableText
-                key={category.id}
-                text={category.title}
-                textStyle={TYPOGRAPHY.FONT.body}
-              />
-            );
-          })}
+          <View style={{ paddingBottom: 150 }}>
+            {categoriesData?.map((category) => {
+              return (
+                <PressableText
+                  key={category.id}
+                  text={category.title}
+                  textStyle={{
+                    ...TYPOGRAPHY.FONT.h3,
+                    color: TYPOGRAPHY.COLOR.GreyLight,
+                    fontFamily: 'netflix-sans-light',
+                    fontSize: TYPOGRAPHY.FONT_SIZES.md,
+                    marginBottom: GLOBAL.SPACING.md,
+                  }}
+                />
+              );
+            })}
+          </View>
         </ScrollView>
-        <View style={styles.closeButtonContainer}>
-          <IconButton
-            icon='close-circle'
-            color='#fff'
-            size={40}
-            onPress={() => setModalActive(false)}
-          />
-        </View>
+      </View>
+      <View style={styles.closeButtonContainer}>
+        <IconButton
+          icon='close-circle'
+          color='#fff'
+          size={40}
+          onPress={() => setModalActive(false)}
+        />
       </View>
     </Modal>
   );
@@ -71,9 +83,6 @@ export default CategoriesModal;
 
 const styles = StyleSheet.create({
   modalContainer: {
-    // position: 'absolute',
-    // flex: 1,
-    padding: GLOBAL.SPACING.md,
     zIndex: 10,
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -81,7 +90,9 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   closeButtonContainer: {
-    position: 'relative',
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: '3%',
     zIndex: 12,
   },
   background: {
