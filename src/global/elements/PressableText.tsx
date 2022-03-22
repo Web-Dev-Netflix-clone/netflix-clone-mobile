@@ -1,11 +1,10 @@
-import { Text, Pressable, PressableProps } from 'react-native';
+import { Text, Pressable, PressableProps, TextStyle } from 'react-native';
 import { GLOBAL } from '../styles/global';
 
-// extending PressableProps with the & Operator
-
 export const PressableText = (
-  props: PressableProps & { text: string } & {
-    textStyle?: any; // HOW TO TYPE THIS FFS?!
+  props: PressableProps & {
+    text: string;
+    textStyle?: TextStyle;
     onClick?: () => void;
   }
 ) => {
