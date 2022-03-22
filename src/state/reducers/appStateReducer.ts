@@ -5,12 +5,14 @@ export interface AppState {
   loading: boolean;
   error: string | null;
   searchActive: boolean;
+  hideMainNav: boolean;
 }
 
 const initialState = {
   loading: false,
   error: null,
   searchActive: false,
+  hideMainNav: false,
 };
 
 export const reducer = (
@@ -30,6 +32,13 @@ export const reducer = (
       return {
         ...state,
         searchActive: false,
+      };
+
+    case ActionType.HIDE_MAINNAV:
+      console.log('INSIDE HIDE MAIN NAV');
+      return {
+        ...state,
+        hideMainNav: true,
       };
 
     default:

@@ -23,18 +23,21 @@ import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
 import Constants from 'expo-constants';
 import DiscoverNav from '../components/DiscoverNav';
+import { useActions } from '../hooks/useActions';
+import { useDispatch } from 'react-redux';
 
 const HomeScreen = () => {
-  // DIMENONSIONS API GEBRUIKEN => voor height?!
-  // https://github.com/gorhom/react-native-portal
-  // https://github.com/gorhom/react-native-bottom-sheet/issues/249
-  // https://dev.to/jeff_codes/react-native-custom-bottombar-navigation-with-bottomsheet-1ep9
+  const dispatch = useDispatch();
 
   const scrollY = new Animated.Value(0);
   const translateY = scrollY.interpolate({
     inputRange: [0, 45],
     outputRange: [0, -45],
   });
+
+  const { hideMainNav } = useActions();
+
+  const handleScroll = () => {};
 
   // console.log(Constants.statusBarHeight);
 
@@ -44,7 +47,11 @@ const HomeScreen = () => {
       onScroll={(event) => {
         const offSetY = event.nativeEvent.contentOffset.y;
         scrollY.setValue(offSetY);
-        // console.log(offSetY);
+        console.log(typeof offSetY, offSetY);
+        if (Math.floor(offSetY) > 65) {
+          console.log('Y == 65');
+          hideMainNav();
+        }
       }}
       contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600, position: 'relative' }}>
