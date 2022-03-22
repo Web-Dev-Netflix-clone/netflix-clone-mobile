@@ -22,7 +22,6 @@ const Drawer = createDrawerNavigator<DrawerStackParams>();
 
 export const DrawerTabNavigator = () => {
   const [modalActive, setModalActive] = useState(false);
-  console.log('MODALACTIVE', modalActive);
 
   const dispatch = useDispatch();
   return (

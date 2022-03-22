@@ -1,6 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, Modal, ViewStyle } from 'react-native';
-import { Button, IconButton } from 'react-native-paper';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Modal,
+  ViewStyle,
+  Pressable,
+  ScrollView,
+} from 'react-native';
+import { IconButton } from 'react-native-paper';
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -23,16 +31,21 @@ const CategoriesModal = ({
       transparent={true}
       animationType='fade'
       statusBarTranslucent={true}>
-      <View style={styles.modalContainer}>
+      <View style={[styles.modalContainer, style]}>
         <LinearGradient
-          colors={['rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.3)']}
-          style={[styles.background, { zIndex: 100 }]}
+          colors={['rgba(0,0,0, 0.8)', 'rgba(0,0,0, 0.8)', 'rgba(0,0,0,0.8)']}
+          style={[styles.background, { zIndex: 11 }]}
         />
+        <ScrollView style={{ paddingTop: GLOBAL.SPACING.xxxxl, zIndex: 12 }}>
+          <Pressable onPress={() => setModalActive(false)}>
+            <Text style={[TYPOGRAPHY.FONT.h1, { color: '#fff' }]}>Home</Text>
+          </Pressable>
+        </ScrollView>
         <View style={styles.closeButtonContainer}>
           <IconButton
-            icon='close'
-            color='gray'
-            size={30}
+            icon='close-circle'
+            color='#fff'
+            size={40}
             onPress={() => setModalActive(false)}
           />
         </View>
@@ -48,15 +61,15 @@ const styles = StyleSheet.create({
     position: 'absolute',
     flex: 1,
     padding: GLOBAL.SPACING.md,
-    zIndex: 100,
+    zIndex: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
     width: '100%',
     height: '100%',
-    backgroundColor: 'transparent',
   },
   closeButtonContainer: {
     position: 'relative',
-
-    zIndex: 101,
+    zIndex: 12,
   },
   background: {
     position: 'absolute',

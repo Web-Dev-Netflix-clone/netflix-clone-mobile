@@ -23,7 +23,6 @@ const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {
             color='white'
             size={20}
             onPress={() => {
-              console.log('PRESS MODAL OPEN');
               setModalActive(true);
             }}
           />
