@@ -16,3 +16,11 @@ export const searchInActive = () => {
     });
   };
 };
+
+export const hideMainNav = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.HIDE_MAINNAV,
+    });
+  };
+};

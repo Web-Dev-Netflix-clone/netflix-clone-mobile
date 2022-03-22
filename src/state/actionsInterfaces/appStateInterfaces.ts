@@ -1,3 +1,4 @@
+// import { Action } from 'redux';
 import { ActionType } from '../action-types/index';
 
 export interface SearchActive {
@@ -8,4 +9,8 @@ export interface SearchInActive {
   type: ActionType.SEARCH_INACTIVE;
 }
 
-export type TAppStateAction = SearchActive | SearchInActive
+export interface HideMainNav {
+  type: ActionType.HIDE_MAINNAV;
+}
+
+export type TAppStateAction = SearchActive | SearchInActive | HideMainNav;
