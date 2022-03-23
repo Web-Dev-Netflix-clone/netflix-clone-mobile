@@ -1,5 +1,5 @@
-import { ActionType } from "../action-types";
-import { Action, Dispatch } from "redux";
+import { ActionType } from '../action-types';
+import { Action, Dispatch } from 'redux';
 
 export const searchActive = () => {
   return async (dispatch: Dispatch<Action>) => {
@@ -31,6 +31,23 @@ export const showMainNav = () => {
     });
   };
 };
+
+export const scrollYZeroTrue = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.SCROLLY_ZERO_TRUE,
+    });
+  };
+};
+
+export const scrollYZeroFalse = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.SCROLLY_ZERO_FALSE,
+    });
+  };
+};
+
 export const showBottomSheet = () => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({

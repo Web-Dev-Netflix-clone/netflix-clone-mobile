@@ -27,6 +27,7 @@ export const DrawerTabNavigator = () => {
   const mainNavHiddenToggle = useSelector(
     (state) => state.appState.hideMainNav
   );
+  const scrollZero = useSelector((state) => state.appState.scrollYZero);
 
   return (
     <Drawer.Navigator
@@ -44,6 +45,9 @@ export const DrawerTabNavigator = () => {
                 {!mainNavHiddenToggle && (
                   <View
                     style={{
+                      backgroundColor: scrollZero
+                        ? 'transparent'
+                        : 'rgba(0,0,0,0.65)',
                       flexDirection: 'row',
                       paddingTop: 56,
                       justifyContent: 'space-between',
@@ -117,7 +121,9 @@ export const DrawerTabNavigator = () => {
                   style={{
                     backgroundColor: mainNavHiddenToggle
                       ? 'rgba(0,0,0,0.65)'
-                      : TYPOGRAPHY.COLOR.Transparent,
+                      : scrollZero
+                      ? 'transparent'
+                      : 'rgba(0,0,0,0.65)',
                     width: '100%',
                     height: mainNavHiddenToggle ? 90 : 50,
                     paddingTop: mainNavHiddenToggle ? 50 : 0,
