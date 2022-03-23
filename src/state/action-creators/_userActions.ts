@@ -19,6 +19,14 @@ export const fakeLogin = () => {
   };
 };
 
+export const fakeLogout = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.SIGNOUT_USER_SUCCESS,
+    });
+  };
+};
+
 export const fetchUser = (id: number) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
@@ -46,10 +54,7 @@ export const fetchUser = (id: number) => {
 export const signIn = ({ email, password }: SignWithEmail) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      // Dit is al een voorbeeld van een type die ik ook ff zo een twee drie niet weet
-      // ik krijg hier een error en heb nu geen zin daar een uur naar op zoek te gaan
-      // dus gebruik ik hieronder @ts-ignore
-      // @ts-ignore
+      //@ts-ignore
       const response = await axios.get('/signin', { email, password });
       const user = response.data;
 

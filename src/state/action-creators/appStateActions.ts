@@ -24,3 +24,10 @@ export const hideMainNav = () => {
     });
   };
 };
+export const showMainNav = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.SHOW_MAINNAV,
+    });
+  };
+};

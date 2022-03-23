@@ -1,11 +1,10 @@
 //@ts-nocheck
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   ImageBackground,
   ScrollView,
   Text,
-  Animated,
   StyleSheet,
 } from 'react-native';
 import { Button } from 'react-native-paper';
@@ -21,38 +20,30 @@ import { StandardLaneCard } from '../components/LaneRenderItems/StandardLaneCard
 import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
+import { Dimensions } from 'react-native';
+
 import Constants from 'expo-constants';
-import DiscoverNav from '../components/DiscoverNav';
+
 import { useActions } from '../hooks/useActions';
-import { useDispatch } from 'react-redux';
 
 const HomeScreen = () => {
-  const dispatch = useDispatch();
+  const { hideMainNav, showMainNav } = useActions();
+  const [offset, setOffSet] = useState();
+  const windowHeight = Dimensions.get('window').height;
 
-  const scrollY = new Animated.Value(0);
-  const translateY = scrollY.interpolate({
-    inputRange: [0, 45],
-    outputRange: [0, -45],
-  });
+  const handleScroll = (event) => {
+    const currentOffset = event.nativeEvent.contentOffset.y;
+    const direction = currentOffset > offset ? 'down' : 'up';
+    setOffSet(currentOffset);
 
-  const { hideMainNav } = useActions();
-
-  const handleScroll = () => {};
-
-  // console.log(Constants.statusBarHeight);
+    if (direction === 'up') showMainNav();
+    if (direction === 'down' && currentOffset > 65) hideMainNav();
+  };
 
   return (
     <ScrollView
       style={{ position: 'relative' }}
-      onScroll={(event) => {
-        const offSetY = event.nativeEvent.contentOffset.y;
-        scrollY.setValue(offSetY);
-        console.log(typeof offSetY, offSetY);
-        if (Math.floor(offSetY) > 65) {
-          console.log('Y == 65');
-          hideMainNav();
-        }
-      }}
+      onScroll={handleScroll}
       contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600, position: 'relative' }}>
         <ImageBackground source={image} resizeMode='cover' style={{ flex: 1 }}>
