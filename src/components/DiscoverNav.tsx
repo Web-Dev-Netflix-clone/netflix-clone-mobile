@@ -16,7 +16,13 @@ const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {
       <Text style={TYPOGRAPHY.FONT.body}>Films</Text>
 
       <View style={GLOBAL.LAYOUT.rowCenter}>
-        <Text style={TYPOGRAPHY.FONT.body}>Categories</Text>
+        <Text
+          onPress={() => {
+            setModalActive(true);
+          }}
+          style={TYPOGRAPHY.FONT.body}>
+          Categories
+        </Text>
         <View style={{ marginTop: -5 }}>
           <IconButton
             icon='chevron-down'

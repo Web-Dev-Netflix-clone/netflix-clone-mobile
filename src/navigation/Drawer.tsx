@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { DrawerActions, useNavigationState } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/native';
 import { BottomTabNavigator } from './BottomTab';
 import { DrawerStackParams } from './navigation';
 import { Ionicons, Feather } from '@expo/vector-icons';
@@ -33,120 +33,122 @@ export const DrawerTabNavigator = () => {
       drawerContent={(props) => <CustomDrawer {...props} />}
       initialRouteName='Home'
       //@ts-ignore
-      screenOptions={({ navigation }: { navigation: any }) => ({
-        headerShown: true,
-        // headerLeft: false,
+      screenOptions={({ navigation }: { navigation: any }) => {
+        return {
+          headerShown: true,
+          // headerLeft: false,
 
-        header: () => {
-          return (
-            <View>
-              {!mainNavHiddenToggle && (
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    paddingTop: 56,
-                    justifyContent: 'space-between',
-                  }}>
-                  <Pressable
-                    style={{
-                      marginLeft: GLOBAL.SPACING.sm,
-                      marginTop: -GLOBAL.SPACING.sm,
-                    }}
-                    onPress={() => {}}>
-                    <Image
-                      source={require('../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png')}
-                      style={{ height: 30, width: 30 }}
-                    />
-                  </Pressable>
+          header: () => {
+            return (
+              <View>
+                {!mainNavHiddenToggle && (
                   <View
-                    style={[
-                      GLOBAL.LAYOUT.rowCenter,
-                      { width: '50%', justifyContent: 'space-around' },
-                    ]}>
+                    style={{
+                      flexDirection: 'row',
+                      paddingTop: 56,
+                      justifyContent: 'space-between',
+                    }}>
                     <Pressable
                       style={{
-                        marginRight: GLOBAL.SPACING.sm,
+                        marginLeft: GLOBAL.SPACING.sm,
                         marginTop: -GLOBAL.SPACING.sm,
                       }}
-                      onPress={() =>
-                        navigation.dispatch(DrawerActions.openDrawer())
-                      }>
-                      <Feather
-                        name='cast'
-                        size={26}
-                        color={TYPOGRAPHY.COLOR.White}
+                      onPress={() => {}}>
+                      <Image
+                        source={require('../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png')}
+                        style={{ height: 30, width: 30 }}
                       />
                     </Pressable>
-                    <Pressable
-                      style={{
-                        marginRight: GLOBAL.SPACING.sm,
-                        marginTop: -GLOBAL.SPACING.sm,
-                      }}
-                      onPress={() => {
-                        searchActive();
+                    <View
+                      style={[
+                        GLOBAL.LAYOUT.rowCenter,
+                        { width: '50%', justifyContent: 'space-around' },
+                      ]}>
+                      <Pressable
+                        style={{
+                          marginRight: GLOBAL.SPACING.sm,
+                          marginTop: -GLOBAL.SPACING.sm,
+                        }}
+                        onPress={() =>
+                          navigation.dispatch(DrawerActions.openDrawer())
+                        }>
+                        <Feather
+                          name='cast'
+                          size={26}
+                          color={TYPOGRAPHY.COLOR.White}
+                        />
+                      </Pressable>
+                      <Pressable
+                        style={{
+                          marginRight: GLOBAL.SPACING.sm,
+                          marginTop: -GLOBAL.SPACING.sm,
+                        }}
+                        onPress={() => {
+                          searchActive();
 
-                        navigation.dispatch(DrawerActions.openDrawer());
-                      }}>
-                      <Ionicons
-                        name='search'
-                        size={26}
-                        color={TYPOGRAPHY.COLOR.White}
-                      />
-                    </Pressable>
-                    <Pressable
-                      style={{
-                        marginRight: GLOBAL.SPACING.sm,
-                        marginTop: -GLOBAL.SPACING.sm,
-                      }}
-                      onPress={() => {
-                        navigation.dispatch(DrawerActions.openDrawer());
-                      }}>
-                      <Avatar
-                        imageSource={require('../../assets/netflix-avatars/avatar-yellow.png')}
-                        height={20}
-                        width={20}
-                      />
-                    </Pressable>
+                          navigation.dispatch(DrawerActions.openDrawer());
+                        }}>
+                        <Ionicons
+                          name='search'
+                          size={26}
+                          color={TYPOGRAPHY.COLOR.White}
+                        />
+                      </Pressable>
+                      <Pressable
+                        style={{
+                          marginRight: GLOBAL.SPACING.sm,
+                          marginTop: -GLOBAL.SPACING.sm,
+                        }}
+                        onPress={() => {
+                          navigation.dispatch(DrawerActions.openDrawer());
+                        }}>
+                        <Avatar
+                          imageSource={require('../../assets/netflix-avatars/avatar-yellow.png')}
+                          height={20}
+                          width={20}
+                        />
+                      </Pressable>
+                    </View>
                   </View>
-                </View>
-              )}
+                )}
 
-              <DiscoverNav
-                setModalActive={setModalActive}
-                style={{
-                  backgroundColor: mainNavHiddenToggle
-                    ? 'rgba(0,0,0,0.65)'
-                    : TYPOGRAPHY.COLOR.Transparent,
-                  width: '100%',
-                  height: mainNavHiddenToggle ? 90 : 65,
-                  paddingTop: mainNavHiddenToggle ? 50 : 0,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-evenly',
-                }}
-              />
-              {modalActive && (
-                <CategoriesModal
-                  modalActive={modalActive}
+                <DiscoverNav
                   setModalActive={setModalActive}
+                  style={{
+                    backgroundColor: mainNavHiddenToggle
+                      ? 'rgba(0,0,0,0.65)'
+                      : TYPOGRAPHY.COLOR.Transparent,
+                    width: '100%',
+                    height: mainNavHiddenToggle ? 90 : 50,
+                    paddingTop: mainNavHiddenToggle ? 50 : 0,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-evenly',
+                  }}
                 />
-              )}
-            </View>
-          );
-        },
+                {modalActive && (
+                  <CategoriesModal
+                    modalActive={modalActive}
+                    setModalActive={setModalActive}
+                  />
+                )}
+              </View>
+            );
+          },
 
-        title: '',
-        headerTransparent: true,
-        drawerPosition: 'right',
-        drawerStyle: { right: 0, width: '100%' },
-        drawerIcon: () => (
-          <Ionicons
-            name='md-home-outline'
-            size={26}
-            color={TYPOGRAPHY.COLOR.Black}
-          />
-        ),
-      })}>
+          title: '',
+          headerTransparent: true,
+          drawerPosition: 'right',
+          drawerStyle: { right: 0, width: '100%' },
+          drawerIcon: () => (
+            <Ionicons
+              name='md-home-outline'
+              size={26}
+              color={TYPOGRAPHY.COLOR.Black}
+            />
+          ),
+        };
+      }}>
       <Drawer.Screen name='Home' component={BottomTabNavigator} />
     </Drawer.Navigator>
   );

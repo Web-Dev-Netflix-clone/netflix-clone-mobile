@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TYPOGRAPHY } from '../global/styles/typography';
@@ -8,25 +8,41 @@ import GamesScreen from '../screens/GamesScreen';
 import HomeScreen from '../screens/HomeScreen';
 import { BottomTabParams } from './navigation';
 import { Ionicons } from '@expo/vector-icons';
+import { useActions } from '../hooks/useActions';
+import { useNavigation } from '@react-navigation/native';
 
 const BottomTab = createBottomTabNavigator<BottomTabParams>();
 
 export const BottomTabNavigator = () => {
+  const { showMainNav } = useActions();
+  const navigation = useNavigation();
+
   return (
     <BottomTab.Navigator
-      screenOptions={({ navigation, route }) => ({
-        headerShown: true,
-        tabBarStyle: {
-          display: 'flex',
-          backgroundColor: TYPOGRAPHY.COLOR.BlackSecondary,
-        },
-        title: '',
-        tabBarActiveTintColor: TYPOGRAPHY.COLOR.RedPrimary,
-        tabBarInactiveTintColor: TYPOGRAPHY.COLOR.Black,
-        tabBarShowLabel: true,
-        tabBarLabelStyle: { paddingBottom: 0, color: TYPOGRAPHY.COLOR.White },
-        headerTransparent: true,
-      })}>
+      screenOptions={({ navigation, route }) => {
+        useEffect(() => {
+          // enforces showing the main nav when the screen changes
+          const unsubscribe = navigation.addListener('focus', () => {
+            showMainNav();
+          });
+
+          return unsubscribe;
+        }, [navigation]);
+
+        return {
+          headerShown: true,
+          tabBarStyle: {
+            display: 'flex',
+            backgroundColor: TYPOGRAPHY.COLOR.BlackSecondary,
+          },
+          title: '',
+          tabBarActiveTintColor: TYPOGRAPHY.COLOR.RedPrimary,
+          tabBarInactiveTintColor: TYPOGRAPHY.COLOR.Black,
+          tabBarShowLabel: true,
+          tabBarLabelStyle: { paddingBottom: 0, color: TYPOGRAPHY.COLOR.White },
+          headerTransparent: true,
+        };
+      }}>
       <BottomTab.Screen
         name='Home2'
         component={HomeScreen}
