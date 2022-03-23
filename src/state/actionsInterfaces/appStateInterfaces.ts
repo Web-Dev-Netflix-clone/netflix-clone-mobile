@@ -13,4 +13,12 @@ export interface HideMainNav {
   type: ActionType.HIDE_MAINNAV;
 }
 
-export type TAppStateAction = SearchActive | SearchInActive | HideMainNav;
+export interface showMainNav {
+  type: ActionType.SHOW_MAINNAV;
+}
+
+export type TAppStateAction =
+  | SearchActive
+  | SearchInActive
+  | HideMainNav
+  | showMainNav;

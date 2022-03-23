@@ -12,4 +12,5 @@ export enum ActionType {
   SEARCH_ACTIVE = 'search_active',
   SEARCH_INACTIVE = 'search_inactive',
   HIDE_MAINNAV = 'hide_mainnav',
+  SHOW_MAINNAV = 'show_mainnav',
 }

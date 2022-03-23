@@ -13,23 +13,21 @@ import Avatar from '../components/Avatar';
 import { searchActive } from '../state/action-creators/appStateActions';
 import { useDispatch } from 'react-redux';
 import DiscoverNav from '../components/DiscoverNav';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
 import CategoriesModal from '../components/CategoriesModal';
 import { useSelector } from '../hooks/useTypedSelector';
+import { useActions } from '../hooks/useActions';
 const windowHeight = Dimensions.get('window').height;
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 
 export const DrawerTabNavigator = () => {
   const [modalActive, setModalActive] = useState(false);
+  const { searchActive } = useActions();
   const mainNavHiddenToggle = useSelector(
     (state) => state.appState.hideMainNav
   );
 
-  console.log('HIDDEN TOGGLE', mainNavHiddenToggle);
-
-  const dispatch = useDispatch();
   return (
     <Drawer.Navigator
       drawerContent={(props) => <CustomDrawer {...props} />}
@@ -85,8 +83,7 @@ export const DrawerTabNavigator = () => {
                         marginTop: -GLOBAL.SPACING.sm,
                       }}
                       onPress={() => {
-                        // searchActive();
-                        dispatch(searchActive());
+                        searchActive();
 
                         navigation.dispatch(DrawerActions.openDrawer());
                       }}>
