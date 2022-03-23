@@ -1,55 +1,87 @@
-import { StyleSheet, Button, Dimensions } from "react-native";
-import React, { useCallback, useEffect } from "react";
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from "react-native-reanimated";
+import { Button, StyleSheet, Text, View, Image } from "react-native";
+import React from "react";
 
-const { height: SCREEN_HEIGHT } = Dimensions.get("window");
-export const MAX_TRANSLATE_Y = -SCREEN_HEIGHT / 3;
+type Props = {
+  toggleModal: () => void;
+};
 
-const BottomSheet = () => {
-  const translateY = useSharedValue(0);
-  const active = useSharedValue(false);
-
-  const toggleBottomSheet = useCallback((destination: number) => {
-    "worklet";
-    active.value = destination !== 0;
-
-    translateY.value = withTiming(destination);
-  }, []);
-
-  const isActive = useCallback(() => {
-    return active.value;
-  }, []);
-
-  useEffect(() => {
-    toggleBottomSheet(MAX_TRANSLATE_Y);
-  }, []);
-
-  const rBottomSheetStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateY: translateY.value }],
-    };
-  });
-
+const BottomSheet = ({ toggleModal }: Props) => {
   return (
-    <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
-      <Button title="Close" onPress={() => toggleBottomSheet(0)} />
-    </Animated.View>
+    <View style={styles.content}>
+      <View style={{ position: "absolute", top: 3, right: 0 }}>
+        <Button title="Hide" onPress={toggleModal} />
+      </View>
+      <View style={styles.movieInfo}>
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.image}
+            source={{
+              uri: "https://sm.ign.com/t/ign_za/cover/t/the-adam-p/the-adam-project_cnr4.256.jpg",
+            }}
+          />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={{ marginBottom: 5, fontWeight: "bold", fontSize: 18 }}>
+            The Adam Project
+          </Text>
+          <View style={styles.textSmall}>
+            <View>
+              <Text>2022</Text>
+            </View>
+            <View style={{ marginHorizontal: 20 }}>
+              <Text>1h 46m</Text>
+            </View>
+          </View>
+          <Text>
+            After accidentally crash-landing in 2022, time-traveling fighter
+            pilot Adam Reed teams up with his 12-year-old self on a mission to
+            save the future.
+          </Text>
+        </View>
+      </View>
+    </View>
   );
 };
 
 export default BottomSheet;
 
 const styles = StyleSheet.create({
-  bottomSheetContainer: {
-    height: SCREEN_HEIGHT,
-    width: "100%",
+  content: {
     backgroundColor: "white",
-    position: "absolute",
-    top: SCREEN_HEIGHT,
-    borderRadius: 20,
+    height: "35%",
+    padding: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 15,
+  },
+  movieInfo: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "80%",
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "red",
+  },
+  imageContainer: {
+    alignSelf: "flex-start",
+    width: "40%",
+    height: "80%",
+  },
+  image: {
+    height: "100%",
+    width: "100%",
+  },
+  textContainer: {
+    justifyContent: "flex-start",
+    height: "100%",
+    width: "60%",
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "blue",
+  },
+  textSmall: {
+    flexDirection: "row",
+    width: "100%",
   },
 });

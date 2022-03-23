@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
-import { View, Text, FlatList } from 'react-native';
-import { TYPOGRAPHY } from '../global/styles/typography';
-import { GLOBAL } from '../global/styles/global';
+import React from "react";
+import { View, Text, FlatList } from "react-native";
+import { TYPOGRAPHY } from "../global/styles/typography";
+import { GLOBAL } from "../global/styles/global";
 
 interface ILane {
   data: any;
@@ -17,8 +17,9 @@ const Lane = ({ data, renderItem, title }: ILane) => {
           backgroundColor: TYPOGRAPHY.COLOR.Black,
           paddingVertical: GLOBAL.SPACING.md,
         },
-      ]}>
-      <Text style={[TYPOGRAPHY.FONT.h2, { color: '#FFF' }]}>{title}</Text>
+      ]}
+    >
+      <Text style={[TYPOGRAPHY.FONT.h2, { color: "#FFF" }]}>{title}</Text>
       <FlatList
         horizontal
         data={data}
