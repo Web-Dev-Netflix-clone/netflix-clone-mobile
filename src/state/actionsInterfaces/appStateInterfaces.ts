@@ -1,5 +1,9 @@
+import {
+  showBottomSheet,
+  hideBottomSheet,
+} from "./../action-creators/appStateActions";
 // import { Action } from 'redux';
-import { ActionType } from '../action-types/index';
+import { ActionType } from "../action-types/index";
 
 export interface SearchActive {
   type: ActionType.SEARCH_ACTIVE;
@@ -17,8 +21,18 @@ export interface showMainNav {
   type: ActionType.SHOW_MAINNAV;
 }
 
+export interface showBottomSheet {
+  type: ActionType.SHOW_BOTTOMSHEET;
+}
+
+export interface hideBottomSheet {
+  type: ActionType.HIDE_BOTTOMSHEET;
+}
+
 export type TAppStateAction =
   | SearchActive
   | SearchInActive
   | HideMainNav
-  | showMainNav;
+  | showMainNav
+  | showBottomSheet
+  | hideBottomSheet;

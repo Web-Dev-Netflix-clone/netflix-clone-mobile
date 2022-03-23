@@ -6,8 +6,6 @@ import "react-native-gesture-handler";
 
 import useCachedResources from "./src/hooks/useCachedResources";
 import StartupScreen from "./src/screens/StartupScreen";
-import { useState } from "react";
-import { StyleSheet } from "react-native";
 
 export default function App() {
   return <MainScreen />;
@@ -15,11 +13,6 @@ export default function App() {
 
 const MainScreen = () => {
   const isLoaded = useCachedResources();
-  const [isVisible, setVisible] = useState(false);
-
-  const toggleModal = () => {
-    setVisible(!isVisible);
-  };
 
   if (isLoaded) {
     return (
@@ -32,9 +25,3 @@ const MainScreen = () => {
     return <StartupScreen />;
   }
 };
-const styles = StyleSheet.create({
-  view: {
-    justifyContent: "flex-end",
-    margin: 0,
-  },
-});
