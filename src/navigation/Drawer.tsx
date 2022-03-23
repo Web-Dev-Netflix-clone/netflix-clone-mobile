@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { DrawerActions } from '@react-navigation/native';
+import { DrawerActions, useNavigationState } from '@react-navigation/native';
 import { BottomTabNavigator } from './BottomTab';
 import { DrawerStackParams } from './navigation';
 import { Ionicons, Feather } from '@expo/vector-icons';
@@ -10,8 +10,7 @@ import { GLOBAL } from '../global/styles/global';
 import { Image, Pressable, View } from 'react-native';
 import CustomDrawer from './CustomDrawer';
 import Avatar from '../components/Avatar';
-import { searchActive } from '../state/action-creators/appStateActions';
-import { useDispatch } from 'react-redux';
+
 import DiscoverNav from '../components/DiscoverNav';
 import { Dimensions } from 'react-native';
 import CategoriesModal from '../components/CategoriesModal';
@@ -24,6 +23,7 @@ const Drawer = createDrawerNavigator<DrawerStackParams>();
 export const DrawerTabNavigator = () => {
   const [modalActive, setModalActive] = useState(false);
   const { searchActive } = useActions();
+
   const mainNavHiddenToggle = useSelector(
     (state) => state.appState.hideMainNav
   );
@@ -44,7 +44,7 @@ export const DrawerTabNavigator = () => {
                 <View
                   style={{
                     flexDirection: 'row',
-                    paddingTop: GLOBAL.SPACING.xxxl,
+                    paddingTop: 56,
                     justifyContent: 'space-between',
                   }}>
                   <Pressable
@@ -118,7 +118,8 @@ export const DrawerTabNavigator = () => {
                     ? 'rgba(0,0,0,0.65)'
                     : TYPOGRAPHY.COLOR.Transparent,
                   width: '100%',
-                  height: mainNavHiddenToggle ? 65 : 40,
+                  height: mainNavHiddenToggle ? 90 : 65,
+                  paddingTop: mainNavHiddenToggle ? 50 : 0,
                   flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'space-evenly',
