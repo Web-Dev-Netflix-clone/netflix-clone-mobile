@@ -1,11 +1,12 @@
-import { TAppStateAction } from './../actionsInterfaces/appStateInterfaces';
-import { ActionType } from '../action-types';
+import { TAppStateAction } from "./../actionsInterfaces/appStateInterfaces";
+import { ActionType } from "../action-types";
 
 export interface AppState {
   loading: boolean;
   error: string | null;
   searchActive: boolean;
   hideMainNav: boolean;
+  showBottomSheet: boolean;
 }
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   error: null,
   searchActive: false,
   hideMainNav: false,
+  showBottomSheet: false,
 };
 
 export const reducer = (
@@ -42,6 +44,18 @@ export const reducer = (
       return {
         ...state,
         hideMainNav: false,
+      };
+
+    case ActionType.SHOW_BOTTOMSHEET:
+      return {
+        ...state,
+        showBottomSheet: true,
+      };
+
+    case ActionType.HIDE_BOTTOMSHEET:
+      return {
+        ...state,
+        showBottomSheet: false,
       };
 
     default:

@@ -1,15 +1,14 @@
 import { Button, StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
+import { useActions } from "../hooks/useActions";
 
-type Props = {
-  toggleModal: () => void;
-};
+const BottomSheet = () => {
+  const { hideBottomSheet } = useActions();
 
-const BottomSheet = ({ toggleModal }: Props) => {
   return (
     <View style={styles.content}>
       <View style={{ position: "absolute", top: 3, right: 0 }}>
-        <Button title="Hide" onPress={toggleModal} />
+        <Button title="Hide" onPress={hideBottomSheet} />
       </View>
       <View style={styles.movieInfo}>
         <View style={styles.imageContainer}>

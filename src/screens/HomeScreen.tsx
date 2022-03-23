@@ -23,11 +23,11 @@ import { GLOBAL } from "../global/styles/global";
 import { Dimensions } from "react-native";
 
 import Constants from "expo-constants";
-
 import { useActions } from "../hooks/useActions";
+import { showBottomSheet } from "../state/action-creators/appStateActions";
 
 const HomeScreen = () => {
-  const { hideMainNav, showMainNav } = useActions();
+  const { hideMainNav, showMainNav, showBottomSheet } = useActions();
   const [offset, setOffSet] = useState();
   const windowHeight = Dimensions.get("window").height;
 
@@ -104,7 +104,7 @@ const HomeScreen = () => {
           icon="shuffle"
           color="#000"
           onPress={() => {
-            console.log("Press");
+            showBottomSheet();
           }}
         >
           Play Something
