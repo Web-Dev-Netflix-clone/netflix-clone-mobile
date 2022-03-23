@@ -9,13 +9,11 @@ import HomeScreen from '../screens/HomeScreen';
 import { BottomTabParams } from './navigation';
 import { Ionicons } from '@expo/vector-icons';
 import { useActions } from '../hooks/useActions';
-import { useNavigation } from '@react-navigation/native';
 
 const BottomTab = createBottomTabNavigator<BottomTabParams>();
 
 export const BottomTabNavigator = () => {
   const { showMainNav } = useActions();
-  const navigation = useNavigation();
 
   return (
     <BottomTab.Navigator

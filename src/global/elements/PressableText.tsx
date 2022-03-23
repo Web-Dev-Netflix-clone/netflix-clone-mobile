@@ -3,7 +3,6 @@ import {
   Pressable,
   PressableProps,
   TextStyle,
-  StyleProp,
   ViewStyle,
 } from 'react-native';
 import { GLOBAL } from '../styles/global';
