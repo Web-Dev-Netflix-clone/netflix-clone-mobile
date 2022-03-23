@@ -7,7 +7,6 @@ import {
   View,
 } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { useActions } from '../hooks/useActions';
