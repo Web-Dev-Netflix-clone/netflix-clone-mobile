@@ -1,5 +1,5 @@
 import { View, Text, ViewStyle } from 'react-native';
-import React, { SetStateAction, useState } from 'react';
+import React from 'react';
 import { GLOBAL } from '../global/styles/global';
 import { IconButton } from 'react-native-paper';
 import { TYPOGRAPHY } from '../global/styles/typography';
@@ -16,13 +16,21 @@ const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {
       <Text style={TYPOGRAPHY.FONT.body}>Films</Text>
 
       <View style={GLOBAL.LAYOUT.rowCenter}>
-        <Text style={TYPOGRAPHY.FONT.body}>Categories</Text>
+        <Text
+          onPress={() => {
+            setModalActive(true);
+          }}
+          style={TYPOGRAPHY.FONT.body}>
+          Categories
+        </Text>
         <View style={{ marginTop: -5 }}>
           <IconButton
             icon='chevron-down'
             color='white'
             size={20}
-            onPress={() => setModalActive(true)}
+            onPress={() => {
+              setModalActive(true);
+            }}
           />
         </View>
       </View>

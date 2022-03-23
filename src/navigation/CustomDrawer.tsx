@@ -27,8 +27,10 @@ import CustomDrawerTouchableLink from './CustomDrawerComponents/CustomDrawerTouc
 import { useSelector } from 'react-redux';
 import { RootState } from '../state';
 import SearchBar from '../components/SearchBar';
+import { useActions } from '../hooks/useActions';
 const CustomDrawer = (props: any) => {
   const navigation = useNavigation();
+  const { fakeLogout } = useActions();
   const searchActive = useSelector(
     (state: RootState) => state.appState.searchActive
   );
@@ -225,7 +227,9 @@ const CustomDrawer = (props: any) => {
           <CustomDrawerTouchableLink
             key={link.id}
             title={link.title}
-            onClick={() => {}}
+            onClick={
+              link.title === 'Sign Out' ? () => fakeLogout() : link.onClick
+            }
           />
         ))}
       </View>

@@ -16,3 +16,18 @@ export const searchInActive = () => {
     });
   };
 };
+
+export const hideMainNav = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.HIDE_MAINNAV,
+    });
+  };
+};
+export const showMainNav = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.SHOW_MAINNAV,
+    });
+  };
+};

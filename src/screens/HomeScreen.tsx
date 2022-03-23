@@ -1,11 +1,10 @@
 //@ts-nocheck
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   ImageBackground,
   ScrollView,
   Text,
-  Animated,
   StyleSheet,
 } from "react-native";
 import { Button } from "react-native-paper";
@@ -21,32 +20,30 @@ import { StandardLaneCard } from "../components/LaneRenderItems/StandardLaneCard
 import { OnlyOnNetflix } from "../components/LaneRenderItems/OnlyOnNetflix";
 import { TYPOGRAPHY } from "../global/styles/typography";
 import { GLOBAL } from "../global/styles/global";
+import { Dimensions } from "react-native";
+
 import Constants from "expo-constants";
-import DiscoverNav from "../components/DiscoverNav";
-import { Modal } from "../global/elements/Modal";
+
+import { useActions } from "../hooks/useActions";
 
 const HomeScreen = () => {
-  // DIMENONSIONS API GEBRUIKEN => voor height?!
-  // https://github.com/gorhom/react-native-portal
-  // https://github.com/gorhom/react-native-bottom-sheet/issues/249
-  // https://dev.to/jeff_codes/react-native-custom-bottombar-navigation-with-bottomsheet-1ep9
+  const { hideMainNav, showMainNav } = useActions();
+  const [offset, setOffSet] = useState();
+  const windowHeight = Dimensions.get("window").height;
 
-  const scrollY = new Animated.Value(0);
-  const translateY = scrollY.interpolate({
-    inputRange: [0, 45],
-    outputRange: [0, -45],
-  });
+  const handleScroll = (event) => {
+    const currentOffset = event.nativeEvent.contentOffset.y;
+    const direction = currentOffset > offset ? "down" : "up";
+    setOffSet(currentOffset);
 
-  // console.log(Constants.statusBarHeight);
+    if (direction === "up") showMainNav();
+    if (direction === "down" && currentOffset > 65) hideMainNav();
+  };
 
   return (
     <ScrollView
       style={{ position: "relative" }}
-      onScroll={(event) => {
-        const offSetY = event.nativeEvent.contentOffset.y;
-        scrollY.setValue(offSetY);
-        // console.log(offSetY);
-      }}
+      onScroll={handleScroll}
       contentContainerStyle={{ flexGrow: 1 }}
     >
       <View style={{ height: 600, position: "relative" }}>

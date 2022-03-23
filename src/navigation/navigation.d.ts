@@ -1,7 +1,5 @@
 export type BottomTabParams = {
-  Home2: {
-    showTab: () => void;
-  };
+  Home2: undeined;
   Games: undefined;
   ComingSoon: undefined;
   Downloads: undefined;
