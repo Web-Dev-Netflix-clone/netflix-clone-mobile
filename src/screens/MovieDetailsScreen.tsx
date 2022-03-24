@@ -190,6 +190,106 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
             Most Liked
           </Text>
         </View>
+        <View
+          style={[
+            GLOBAL.LAYOUT.rowCenter,
+            {
+              backgroundColor: 'transparent',
+              width: '70%',
+              justifyContent: 'space-evenly',
+            },
+          ]}>
+          <View
+            style={[
+              {
+                paddingVertical: GLOBAL.SPACING.md,
+                marginLeft: GLOBAL.SPACING.md,
+
+                justifyContent: 'center',
+                alignItems: 'center',
+              },
+            ]}>
+            <Ionicons
+              style={{ marginBottom: 5 }}
+              name='add-sharp'
+              size={30}
+              color={TYPOGRAPHY.COLOR.White}
+            />
+            <Text style={[TYPOGRAPHY.FONT.subtitle]}>My List</Text>
+          </View>
+          <View
+            style={[
+              {
+                paddingVertical: GLOBAL.SPACING.md,
+                width: '20%',
+                justifyContent: 'center',
+                alignItems: 'center',
+              },
+            ]}>
+            <Ionicons
+              style={{ marginBottom: 5 }}
+              name='md-thumbs-up-outline'
+              size={30}
+              color={TYPOGRAPHY.COLOR.White}
+            />
+            <Text style={[TYPOGRAPHY.FONT.subtitle]}>Rate</Text>
+          </View>
+          <View
+            style={[
+              {
+                paddingVertical: GLOBAL.SPACING.md,
+                width: '20%',
+                justifyContent: 'center',
+                alignItems: 'center',
+              },
+            ]}>
+            <Ionicons
+              style={{ marginBottom: 5 }}
+              name='share-social-sharp'
+              size={30}
+              color={TYPOGRAPHY.COLOR.White}
+            />
+            <Text style={[TYPOGRAPHY.FONT.subtitle]}>Share</Text>
+          </View>
+        </View>
+
+        <View>
+          <Text style={TYPOGRAPHY.FONT.body}>MORE LIKE THIS</Text>
+          <View
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              flexDirection: 'row',
+              backgroundColor: 'transparent',
+              justifyContent: 'space-evenly',
+              paddingVertical: GLOBAL.SPACING.md,
+            }}>
+            <View style={{ width: '30%' }}>
+              <ImageBackground
+                source={{
+                  uri: 'https://cdn.pocket-lint.com/r/s/970x/assets/images/140219-tv-news-feature-netflix-tips-and-tricks-how-to-master-your-binge-watching-experience-image4-rivlhfwq6o-jpg.webp?v1',
+                }}
+                style={{ width: '100%', height: 200 }}
+              />
+            </View>
+            <View style={{ width: '30%' }}>
+              <ImageBackground
+                source={{
+                  uri: 'https://cdn.pocket-lint.com/r/s/970x/assets/images/140219-tv-news-feature-netflix-tips-and-tricks-how-to-master-your-binge-watching-experience-image4-rivlhfwq6o-jpg.webp?v1',
+                }}
+                style={{ width: '100%', height: 200 }}
+              />
+            </View>
+            <View style={{ width: '30%' }}>
+              <ImageBackground
+                source={{
+                  uri: 'https://cdn.pocket-lint.com/r/s/970x/assets/images/140219-tv-news-feature-netflix-tips-and-tricks-how-to-master-your-binge-watching-experience-image4-rivlhfwq6o-jpg.webp?v1',
+                }}
+                style={{ width: '100%', height: 200 }}
+              />
+            </View>
+          </View>
+        </View>
       </ScrollView>
     </View>
   );
