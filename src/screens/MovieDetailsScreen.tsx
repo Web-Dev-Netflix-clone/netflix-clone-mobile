@@ -12,7 +12,7 @@ interface IMovieDetailsScreen {
 
 const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
   const [playing, setPlaying] = useState(true);
-  const [isMute, setMute] = useState(false);
+  const [isMute, setMute] = useState(true);
   const [showVideo, setShowVideo] = useState(-150);
   const [videoHeight, setVideoHeight] = useState(0);
 
@@ -22,21 +22,21 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
     setTimeout(() => {
       setShowVideo(100);
       setVideoHeight(300);
-    }, 5200);
+      setMute(!isMute);
+    }, 5000);
   }, []);
 
-  const onStateChange = (state: any) => {
+  const onStateChange = useCallback((state) => {
     if (state === 'ended') {
-      setPlaying(false);
+      controlRef.current?.seekTo(6.5, true);
+      setPlaying(true);
+      setMute(false);
     }
-    if (state !== 'playing') {
-      setPlaying(false);
-    }
-  };
+  }, []);
 
-  const togglePlaying = () => {
+  const togglePlaying = useCallback(() => {
     setPlaying((prev) => !prev);
-  };
+  }, []);
 
   const seekBackAndForth = (control: string) => {
     console.log('currentTime');
@@ -55,7 +55,7 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
   }: {
     name: string;
     onPress: () => void;
-  }) => <Icon onPress={onPress} name={name} size={40} color='#fff' />;
+  }) => <Icon onPress={onPress} name={name} size={20} color='#fff' />;
 
   const image = { uri: 'https://reactjs.org/logo-og.png' };
 
@@ -87,10 +87,10 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
           contentScale={1}
           //@ts-ignore
           ref={controlRef}
-          play={true}
-          mute={true}
+          play={playing}
+          mute={isMute}
           videoId={'JfVOs4VSpmA'}
-          // onChangeState={onStateChange}
+          onChangeState={onStateChange}
           initialPlayerParams={{
             loop: true,
             controls: false,
