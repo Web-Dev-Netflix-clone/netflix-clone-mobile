@@ -21,9 +21,9 @@ export const Navigation = () => {
 
   return (
     <NavigationContainer theme={navTheme}>
-      {/* {isSignedIn ? <LoginStack /> : <DrawerTabNavigator />}
-      <BottomSheet /> */}
-      <RootNavigator />
+      {isSignedIn ? <LoginStack /> : <DrawerTabNavigator />}
+      <BottomSheet />
+      {/* <RootNavigator /> */}
     </NavigationContainer>
   );
 };
