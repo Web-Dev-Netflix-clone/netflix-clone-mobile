@@ -18,6 +18,7 @@ const MainScreen = () => {
     return (
       <Provider store={store}>
         <Navigation />
+
         <StatusBar style='light' />
       </Provider>
     );

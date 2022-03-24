@@ -12,6 +12,7 @@ import Avatar from '../components/Avatar';
 
 import Animated, {
   Easing,
+  FadeInDown,
   FadeInUp,
   FadeOutUp,
   interpolateColor,
@@ -84,11 +85,14 @@ export const DrawerTabNavigator = () => {
               <View>
                 {!mainNavHiddenToggle && (
                   <Animated.View
-                    entering={FadeInUp.delay(80)}
+                    entering={FadeInDown.delay(80)}
                     layout={Layout.easing(Easing.ease).delay(1000)}
-                    exiting={FadeOutUp.delay(100)}
+                    exiting={FadeOutUp.delay(150)}
                     style={[
                       {
+                        backgroundColor: !scrollZero
+                          ? 'rgba(0,0,0,0.65)'
+                          : 'transparent',
                         flexDirection: 'row',
                         paddingTop: 56,
                         justifyContent: 'space-between',
