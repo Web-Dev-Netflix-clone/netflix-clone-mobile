@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerActions } from '@react-navigation/native';
 import { BottomTabNavigator } from './BottomTab';
@@ -10,6 +9,17 @@ import { GLOBAL } from '../global/styles/global';
 import { Image, Pressable, View } from 'react-native';
 import CustomDrawer from './CustomDrawer';
 import Avatar from '../components/Avatar';
+
+import Animated, {
+  Easing,
+  FadeInUp,
+  FadeOutUp,
+  interpolateColor,
+  Layout,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
 import DiscoverNav from '../components/DiscoverNav';
 import { Dimensions } from 'react-native';
@@ -24,10 +34,40 @@ export const DrawerTabNavigator = () => {
   const [modalActive, setModalActive] = useState(false);
   const { searchActive } = useActions();
 
+  const progress = useSharedValue(0);
+
+  const animatedBgColor = useAnimatedStyle(() => {
+    const backgroundColor = interpolateColor(
+      progress.value,
+      [0, 1],
+      ['rgba(0,0,0,0)', 'rgba(0,0,0,0.65)']
+    );
+
+    return {
+      backgroundColor,
+    };
+  });
+
   const mainNavHiddenToggle = useSelector(
     (state) => state.appState.hideMainNav
   );
   const scrollZero = useSelector((state) => state.appState.scrollYZero);
+
+  useEffect(() => {
+    if (scrollZero) {
+      progress.value = withTiming(0, {
+        duration: 280,
+        easing: Easing.exp,
+      });
+    }
+
+    if (!scrollZero) {
+      progress.value = withTiming(1, {
+        duration: 280,
+        easing: Easing.exp,
+      });
+    }
+  }, [scrollZero]);
 
   return (
     <Drawer.Navigator
@@ -43,15 +83,18 @@ export const DrawerTabNavigator = () => {
             return (
               <View>
                 {!mainNavHiddenToggle && (
-                  <View
-                    style={{
-                      backgroundColor: scrollZero
-                        ? 'transparent'
-                        : 'rgba(0,0,0,0.65)',
-                      flexDirection: 'row',
-                      paddingTop: 56,
-                      justifyContent: 'space-between',
-                    }}>
+                  <Animated.View
+                    entering={FadeInUp.delay(80)}
+                    layout={Layout.easing(Easing.ease).delay(1000)}
+                    exiting={FadeOutUp.delay(100)}
+                    style={[
+                      {
+                        flexDirection: 'row',
+                        paddingTop: 56,
+                        justifyContent: 'space-between',
+                      },
+                      animatedBgColor,
+                    ]}>
                     <Pressable
                       style={{
                         marginLeft: GLOBAL.SPACING.sm,
@@ -113,25 +156,27 @@ export const DrawerTabNavigator = () => {
                         />
                       </Pressable>
                     </View>
-                  </View>
+                  </Animated.View>
                 )}
 
-                <DiscoverNav
-                  setModalActive={setModalActive}
-                  style={{
-                    backgroundColor: mainNavHiddenToggle
-                      ? 'rgba(0,0,0,0.65)'
-                      : scrollZero
-                      ? 'transparent'
-                      : 'rgba(0,0,0,0.65)',
-                    width: '100%',
-                    height: mainNavHiddenToggle ? 90 : 50,
-                    paddingTop: mainNavHiddenToggle ? 50 : 0,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-evenly',
-                  }}
-                />
+                <Animated.View
+                  entering={FadeInUp}
+                  layout={Layout.easing(Easing.ease).delay(100)}
+                  exiting={FadeOutUp}
+                  style={[animatedBgColor]}>
+                  <DiscoverNav
+                    setModalActive={setModalActive}
+                    style={{
+                      width: '100%',
+                      height: mainNavHiddenToggle ? 90 : 50,
+                      paddingTop: mainNavHiddenToggle ? 50 : 0,
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'space-evenly',
+                    }}
+                  />
+                </Animated.View>
+
                 {modalActive && (
                   <CategoriesModal
                     modalActive={modalActive}
@@ -159,13 +204,3 @@ export const DrawerTabNavigator = () => {
     </Drawer.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  background: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: windowHeight,
-  },
-});

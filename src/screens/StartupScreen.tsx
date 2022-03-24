@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 const StartupScreen = () => {
   return (
     <View>
-      <Text>Startup Screen</Text>
+      <Text></Text>
     </View>
   );
 };
