@@ -1,10 +1,20 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { View, ViewStyle, StyleSheet, ImageBackground } from 'react-native';
+import {
+  View,
+  ViewStyle,
+  StyleSheet,
+  ImageBackground,
+  Text,
+} from 'react-native';
 import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe';
-import { Icon } from 'react-native-elements';
+import { Ionicons } from '@expo/vector-icons';
 import Animated, { BounceIn, Easing, Layout } from 'react-native-reanimated';
 
 import { IMGSTYLES } from '../global/styles/imgStyles';
+import { TYPOGRAPHY } from '../global/styles/typography';
+import { ScrollView } from 'react-native-gesture-handler';
+import { GLOBAL } from '../global/styles/global';
+import { white } from 'react-native-paper/lib/typescript/styles/colors';
 
 interface IMovieDetailsScreen {
   style: ViewStyle;
@@ -19,11 +29,13 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
   const controlRef = useRef<YoutubeIframeRef>();
 
   useEffect(() => {
-    setTimeout(() => {
+    const unsubscribe = setTimeout(() => {
       setShowVideo(100);
       setVideoHeight(300);
       setMute(!isMute);
     }, 5000);
+
+    () => unsubscribe;
   }, []);
 
   const onStateChange = useCallback((state) => {
@@ -48,16 +60,6 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
   };
 
   const muteVideo = () => setMute(!isMute);
-
-  const ControlIcon = ({
-    name,
-    onPress,
-  }: {
-    name: string;
-    onPress: () => void;
-  }) => <Icon onPress={onPress} name={name} size={20} color='#fff' />;
-
-  const image = { uri: 'https://reactjs.org/logo-og.png' };
 
   return (
     <View style={styles.container}>
@@ -88,7 +90,7 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
           //@ts-ignore
           ref={controlRef}
           play={playing}
-          mute={isMute}
+          mute={true}
           videoId={'JfVOs4VSpmA'}
           onChangeState={onStateChange}
           initialPlayerParams={{
@@ -102,25 +104,43 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
           forceAndroidAutoplay={true}
         />
       </Animated.View>
-
-      {/* <View style={styles.controlContainer}>
-        <ControlIcon
-          onPress={() => seekBackAndForth('rewind')}
-          name='skip-previous'
+      {showVideo > 0 && (
+        <Ionicons
+          style={{ position: 'absolute', top: 265, right: 10 }}
+          name={isMute ? 'volume-mute' : 'volume-mute'}
+          size={15}
+          color='white'
+          onPress={muteVideo}
         />
-        <ControlIcon
-          onPress={togglePlaying}
-          name={playing ? 'pause' : 'play-arrow'}
-        />
-        <ControlIcon
-          onPress={() => seekBackAndForth('forward')}
-          name='skip-next'
-        />
-      </View> */}
-      {/* <ControlIcon
-        onPress={muteVideo}
-        name={isMute ? 'volume-up' : 'volume-off'}
-      /> */}
+      )}
+      <ScrollView>
+        <Text style={[TYPOGRAPHY.FONT.h1, { color: '#fff' }]}>
+          The Amazing Spider-Man
+        </Text>
+        <View
+          style={[
+            GLOBAL.LAYOUT.rowCenter,
+            { width: '34%', justifyContent: 'space-between' },
+          ]}>
+          <Text style={[TYPOGRAPHY.FONT.body]}>2012</Text>
+          <Text
+            style={[
+              {
+                fontSize: 12,
+                fontFamily: 'netflix-sans-bold',
+                color: '#fff',
+                borderRadius: 25,
+                textAlign: 'center',
+                borderWidth: 2,
+                borderColor: '#fff',
+                padding: 2,
+              },
+            ]}>
+            12
+          </Text>
+          <Text style={[TYPOGRAPHY.FONT.body]}>2h 16m</Text>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -129,10 +149,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000',
-  },
-  controlContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
   },
 });
 
