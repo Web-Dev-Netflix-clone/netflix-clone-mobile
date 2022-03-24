@@ -9,7 +9,6 @@ import HomeScreen from '../screens/HomeScreen';
 import { BottomTabParams } from './navigation';
 import { Ionicons } from '@expo/vector-icons';
 import { useActions } from '../hooks/useActions';
-import { transparent } from 'react-native-paper/lib/typescript/styles/colors';
 
 const BottomTab = createBottomTabNavigator<BottomTabParams>();
 
