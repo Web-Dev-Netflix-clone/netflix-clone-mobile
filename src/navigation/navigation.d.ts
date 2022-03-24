@@ -9,6 +9,7 @@ export type RootStackParams = {
   Home: undefined;
   Signin: undefined;
   Welcome: undefined;
+  MovieDetail: undefined;
 };
 
 export type DrawerStackParams = {
