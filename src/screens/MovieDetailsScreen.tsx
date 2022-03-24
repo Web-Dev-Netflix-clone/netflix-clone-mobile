@@ -15,6 +15,7 @@ import { TYPOGRAPHY } from '../global/styles/typography';
 import { ScrollView } from 'react-native-gesture-handler';
 import { GLOBAL } from '../global/styles/global';
 import { white } from 'react-native-paper/lib/typescript/styles/colors';
+import { Button } from 'react-native-paper';
 
 interface IMovieDetailsScreen {
   style: ViewStyle;
@@ -139,6 +140,55 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
             12
           </Text>
           <Text style={[TYPOGRAPHY.FONT.body]}>2h 16m</Text>
+        </View>
+        <View
+          style={{
+            paddingVertical: GLOBAL.SPACING.md,
+            justifyContent: 'space-between',
+          }}>
+          <Button
+            style={{
+              backgroundColor: '#fff',
+              marginBottom: GLOBAL.SPACING.xsm,
+            }}
+            uppercase={false}
+            icon='play'
+            color='#000'
+            onPress={() => console.log('Pressed')}>
+            Play
+          </Button>
+          <Button
+            style={{ backgroundColor: TYPOGRAPHY.COLOR.DarkSecondary }}
+            uppercase={false}
+            icon='download'
+            color='#fff'
+            onPress={() => console.log('Pressed')}>
+            Download
+          </Button>
+        </View>
+        <View>
+          <Text style={[TYPOGRAPHY.FONT.subtitle, { color: '#fff' }]}>
+            In this reboot of the superhero franchise, high schooler Peter
+            Parker learns to wield his newfound powers while facing down
+            arch-villain The Lizard.
+          </Text>
+        </View>
+        <View
+          style={[
+            GLOBAL.LAYOUT.rowCenter,
+            {
+              width: '27%',
+              backgroundColor: TYPOGRAPHY.COLOR.RedPrimary,
+              borderRadius: 20,
+              padding: 4,
+              justifyContent: 'space-evenly',
+            },
+          ]}>
+          <Ionicons color={'#fff'} name={'thumbs-up-sharp'} size={12} />
+          <Text
+            style={[TYPOGRAPHY.FONT.body, { marginBottom: 0, fontSize: 12 }]}>
+            Most Liked
+          </Text>
         </View>
       </ScrollView>
     </View>
