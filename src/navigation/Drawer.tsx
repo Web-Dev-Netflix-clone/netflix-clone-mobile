@@ -84,9 +84,9 @@ export const DrawerTabNavigator = () => {
               <View>
                 {!mainNavHiddenToggle && (
                   <Animated.View
-                    entering={FadeInUp}
-                    layout={Layout.easing(Easing.ease).delay(500)}
-                    exiting={FadeOutUp}
+                    entering={FadeInUp.delay(80)}
+                    layout={Layout.easing(Easing.ease).delay(1000)}
+                    exiting={FadeOutUp.delay(100)}
                     style={[
                       {
                         flexDirection: 'row',
