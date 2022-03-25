@@ -4,9 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
-import HomeScreen from '../screens/HomeScreen';
-import WelcomeScreen from '../screens/WelcomeScreen';
-
 import { RootStackParams } from './navigation';
 import { DrawerTabNavigator } from './Drawer';
 import { LoginStack } from './AuthStack';
@@ -21,8 +18,8 @@ export const Navigation = () => {
 
   return (
     <NavigationContainer theme={navTheme}>
-      {isSignedIn ? <LoginStack /> : <DrawerTabNavigator />}
-      {/* <RootNavigator /> */}
+      {/* {isSignedIn ? <LoginStack /> : <DrawerTabNavigator />} */}
+      <RootNavigator />
       <BottomSheet />
     </NavigationContainer>
   );
