@@ -125,7 +125,7 @@ const MovieDetailsScreen = () => {
           />
           <PressableIconBox
             iconName={'md-thumbs-up-outline'}
-            text='My List'
+            text='Rate'
             onClick={() => {}}
           />
           <PressableIconBox
