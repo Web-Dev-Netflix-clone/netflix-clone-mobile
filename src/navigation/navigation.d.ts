@@ -1,5 +1,5 @@
 export type BottomTabParams = {
-  Home2: undeined;
+  Home2: undefined;
   Games: undefined;
   ComingSoon: undefined;
   Downloads: undefined;
@@ -23,5 +23,5 @@ export type AuthStackParams = {
 };
 
 export type MovieDetailStack = {
-  MovieDetail: undefined;
+  MovieDetail2: undefined;
 };

@@ -12,9 +12,9 @@ const MovieDetail = createStackNavigator<MovieDetailStack>();
 
 export const MovieDetailsStack = () => {
   return (
-    <MovieDetail.Navigator initialRouteName='MovieDetail'>
+    <MovieDetail.Navigator initialRouteName='MovieDetail2'>
       <MovieDetail.Screen
-        name='MovieDetail'
+        name='MovieDetail2'
         component={MovieDetailsScreen}
         options={({ navigation }) => ({
           headerShown: true,
