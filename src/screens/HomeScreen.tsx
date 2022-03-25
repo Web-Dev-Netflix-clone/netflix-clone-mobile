@@ -21,6 +21,7 @@ import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
 import { Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import Constants from 'expo-constants';
 import { useActions } from '../hooks/useActions';
@@ -33,6 +34,9 @@ const HomeScreen = () => {
     scrollYZeroFalse,
     scrollYZeroTrue,
   } = useActions();
+
+  const navigation = useNavigation();
+
   const [offset, setOffSet] = useState();
   const windowHeight = Dimensions.get('window').height;
 
@@ -78,9 +82,13 @@ const HomeScreen = () => {
       <Lane
         title='Top 10 in the Netherlands Today'
         data={DATA}
-        renderItem={StandardLaneCard}
+        LaneRenderItem={StandardLaneCard}
       />
-      <Lane title='Only On Netflix' data={DATA} renderItem={OnlyOnNetflix} />
+      <Lane
+        title='Only On Netflix'
+        data={DATA}
+        LaneRenderItem={OnlyOnNetflix}
+      />
 
       <View
         style={{

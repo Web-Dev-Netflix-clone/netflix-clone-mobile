@@ -5,11 +5,11 @@ import { GLOBAL } from '../global/styles/global';
 
 interface ILane {
   data: any;
-  renderItem: any;
+  LaneRenderItem: any;
   title: string;
 }
 
-const Lane = ({ data, renderItem, title }: ILane) => {
+const Lane = ({ data, LaneRenderItem, title }: ILane) => {
   return (
     <View
       style={[
@@ -22,7 +22,7 @@ const Lane = ({ data, renderItem, title }: ILane) => {
       <FlatList
         horizontal
         data={data}
-        renderItem={renderItem}
+        renderItem={(item) => <LaneRenderItem goTo={'MovieDetail'} />}
         keyExtractor={(item) => (item.id ? item.id : Math.random())}
       />
     </View>

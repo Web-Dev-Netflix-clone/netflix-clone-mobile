@@ -21,3 +21,7 @@ export type AuthStackParams = {
   Signin: undefined;
   Welcome: undefined;
 };
+
+export type MovieDetailStack = {
+  MovieDetail: undefined;
+};
