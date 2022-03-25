@@ -11,6 +11,7 @@ import { GLOBAL } from '../global/styles/global';
 import { Button } from 'react-native-paper';
 import CustomYoutubePlayer from '../components/CustomYoutubePlayer';
 import PillTag from '../components/PillTag';
+import PressableIconBox from '../components/PressableIconBox';
 
 const MovieDetailsScreen = () => {
   const [playing, setPlaying] = useState(false);
@@ -117,81 +118,37 @@ const MovieDetailsScreen = () => {
               justifyContent: 'space-evenly',
             },
           ]}>
-          <View
-            style={[
-              {
-                paddingVertical: GLOBAL.SPACING.md,
-                marginLeft: GLOBAL.SPACING.md,
-
-                justifyContent: 'center',
-                alignItems: 'center',
-              },
-            ]}>
-            <Ionicons
-              style={{ marginBottom: 5 }}
-              name='add-sharp'
-              size={30}
-              color={TYPOGRAPHY.COLOR.White}
-            />
-            <Text style={[TYPOGRAPHY.FONT.subtitle]}>My List</Text>
-          </View>
-          <View
-            style={[
-              {
-                paddingVertical: GLOBAL.SPACING.md,
-                width: '20%',
-                justifyContent: 'center',
-                alignItems: 'center',
-              },
-            ]}>
-            <Ionicons
-              style={{ marginBottom: 5 }}
-              name='md-thumbs-up-outline'
-              size={30}
-              color={TYPOGRAPHY.COLOR.White}
-            />
-            <Text style={[TYPOGRAPHY.FONT.subtitle]}>Rate</Text>
-          </View>
-          <View
-            style={[
-              {
-                paddingVertical: GLOBAL.SPACING.md,
-                width: '20%',
-                justifyContent: 'center',
-                alignItems: 'center',
-              },
-            ]}>
-            <Ionicons
-              style={{ marginBottom: 5 }}
-              name='share-social-sharp'
-              size={30}
-              color={TYPOGRAPHY.COLOR.White}
-            />
-            <Text style={[TYPOGRAPHY.FONT.subtitle]}>Share</Text>
-          </View>
+          <PressableIconBox
+            iconName={'add-sharp'}
+            text='My List'
+            onClick={() => {}}
+          />
+          <PressableIconBox
+            iconName={'md-thumbs-up-outline'}
+            text='My List'
+            onClick={() => {}}
+          />
+          <PressableIconBox
+            iconName={'share-social-sharp'}
+            text='Share'
+            onClick={() => {}}
+          />
         </View>
 
         <View>
           <Text style={TYPOGRAPHY.FONT.body}>MORE LIKE THIS</Text>
           <View style={GLOBAL.LAYOUT.imageGrid}>
-            <PressableCard
-              background={require('../../assets/background-images/netflix-screen.png')}
-              wrapperWidth={'30%'}
-              width={'100%'}
-              height={200}
-            />
-            <PressableCard
-              background={require('../../assets/background-images/netflix-screen.png')}
-              wrapperWidth={'30%'}
-              width={'100%'}
-              height={200}
-            />
-            <PressableCard
-              background={require('../../assets/background-images/netflix-screen.png')}
-              wrapperWidth={'30%'}
-              width={'100%'}
-              height={200}
-            />
+            {new Array(9).fill(0).map((item, i) => {
+              return (
+                <PressableCard
+                  key={i}
+                  background={require('../../assets/background-images/netflix-screen.png')}
+                  wrapperWidth={'30%'}
+                  width={'100%'}
+                  height={200}
+                />
+              );
+            })}
           </View>
         </View>
       </ScrollView>
