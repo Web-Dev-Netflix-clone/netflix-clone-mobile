@@ -13,10 +13,11 @@ import { TYPOGRAPHY } from '../global/styles/typography';
 
 interface IPressableCard {
   background: ImageSourcePropType;
-  onClick: () => void;
+  onClick?: () => void;
   title?: string;
   height?: number;
-  width?: number;
+  width?: number | string;
+  wrapperWidth?: number | string;
   children?: ReactNode;
 }
 
@@ -26,10 +27,11 @@ export const PressableCard = ({
   title,
   height = 170,
   width = 100,
+  wrapperWidth,
   children,
 }: IPressableCard) => {
   return (
-    <View style={{ position: 'relative' }}>
+    <View style={{ position: 'relative', width: wrapperWidth }}>
       <Pressable
         onPress={onClick}
         style={[styles(height, width).card, GLOBAL.SHADOWS.shadowMedium]}>
@@ -51,7 +53,7 @@ export const PressableCard = ({
   );
 };
 
-const styles = (height?: number, width?: number) =>
+const styles = (height?: number | string, width?: number | string) =>
   StyleSheet.create({
     card: {
       flexBasis: width,

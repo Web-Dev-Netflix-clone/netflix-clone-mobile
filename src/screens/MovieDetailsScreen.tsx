@@ -1,28 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Image,
-  View,
-  ViewStyle,
-  StyleSheet,
-  ImageBackground,
-  Text,
-} from 'react-native';
+import { Image, View, ScrollView, StyleSheet, Text } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 
+import { PressableCard } from '../components/PressableCard';
+
 import { TYPOGRAPHY } from '../global/styles/typography';
-import { ScrollView } from 'react-native-gesture-handler';
 import { GLOBAL } from '../global/styles/global';
 
 import { Button } from 'react-native-paper';
 import CustomYoutubePlayer from '../components/CustomYoutubePlayer';
 import PillTag from '../components/PillTag';
 
-interface IMovieDetailsScreen {
-  style: ViewStyle;
-}
-
-const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
+const MovieDetailsScreen = () => {
   const [playing, setPlaying] = useState(false);
   const [isMute, setIsMute] = useState(true);
   const [showVideo, setShowVideo] = useState(-150);
@@ -183,39 +173,25 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
 
         <View>
           <Text style={TYPOGRAPHY.FONT.body}>MORE LIKE THIS</Text>
-          <View
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              flexDirection: 'row',
-              backgroundColor: 'transparent',
-              justifyContent: 'space-evenly',
-              paddingVertical: GLOBAL.SPACING.md,
-            }}>
-            <View style={{ width: '30%' }}>
-              <ImageBackground
-                source={{
-                  uri: 'https://cdn.pocket-lint.com/r/s/970x/assets/images/140219-tv-news-feature-netflix-tips-and-tricks-how-to-master-your-binge-watching-experience-image4-rivlhfwq6o-jpg.webp?v1',
-                }}
-                style={{ width: '100%', height: 200 }}
-              />
-            </View>
-            <View style={{ width: '30%' }}>
-              <ImageBackground
-                source={{
-                  uri: 'https://cdn.pocket-lint.com/r/s/970x/assets/images/140219-tv-news-feature-netflix-tips-and-tricks-how-to-master-your-binge-watching-experience-image4-rivlhfwq6o-jpg.webp?v1',
-                }}
-                style={{ width: '100%', height: 200 }}
-              />
-            </View>
-            <View style={{ width: '30%' }}>
-              <ImageBackground
-                source={{
-                  uri: 'https://cdn.pocket-lint.com/r/s/970x/assets/images/140219-tv-news-feature-netflix-tips-and-tricks-how-to-master-your-binge-watching-experience-image4-rivlhfwq6o-jpg.webp?v1',
-                }}
-                style={{ width: '100%', height: 200 }}
-              />
-            </View>
+          <View style={GLOBAL.LAYOUT.imageGrid}>
+            <PressableCard
+              background={require('../../assets/background-images/netflix-screen.png')}
+              wrapperWidth={'30%'}
+              width={'100%'}
+              height={200}
+            />
+            <PressableCard
+              background={require('../../assets/background-images/netflix-screen.png')}
+              wrapperWidth={'30%'}
+              width={'100%'}
+              height={200}
+            />
+            <PressableCard
+              background={require('../../assets/background-images/netflix-screen.png')}
+              wrapperWidth={'30%'}
+              width={'100%'}
+              height={200}
+            />
           </View>
         </View>
       </ScrollView>
