@@ -12,6 +12,7 @@ import { Button } from 'react-native-paper';
 import CustomYoutubePlayer from '../components/CustomYoutubePlayer';
 import PillTag from '../components/PillTag';
 import PressableIconBox from '../components/PressableIconBox';
+import { movieGridData } from '../../assets/MockData/movieGridData';
 
 const MovieDetailsScreen = () => {
   const [playing, setPlaying] = useState(false);
@@ -138,14 +139,16 @@ const MovieDetailsScreen = () => {
         <View>
           <Text style={TYPOGRAPHY.FONT.body}>MORE LIKE THIS</Text>
           <View style={GLOBAL.LAYOUT.imageGrid}>
-            {new Array(9).fill(0).map((item, i) => {
+            {movieGridData.map((item, i) => {
               return (
                 <PressableCard
-                  key={i}
-                  background={require('../../assets/background-images/netflix-screen.png')}
+                  key={item.id}
+                  background={item.source}
                   wrapperWidth={'30%'}
                   width={'100%'}
                   height={200}
+                  cardRadius={0}
+                  style={{ backgroundColor: 'transparent' }}
                 />
               );
             })}

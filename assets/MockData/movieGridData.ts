@@ -1,4 +1,4 @@
-export const socialIconsData = [
+export const movieGridData = [
   {
     id: 'IgEqpIPdNLd331243fdfgd2',
     title: 'apocalypse now',
@@ -27,7 +27,7 @@ export const socialIconsData = [
   {
     id: '2k3DCtAe9dNQsssfffsfsf332334542',
     title: 'the joker',
-    source: require('../movie-posters/fight-club-poster.jpg'),
+    source: require('../movie-posters/joker-poster.jpg'),
   },
   {
     id: 'hjdBgEqpIsaadd3ffsafsPdN333Ldfgd2',
