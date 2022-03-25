@@ -27,6 +27,7 @@ import { Dimensions } from 'react-native';
 import CategoriesModal from '../components/CategoriesModal';
 import { useSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
+import MovieDetailsScreen from '../screens/MovieDetailsScreen';
 const windowHeight = Dimensions.get('window').height;
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
@@ -205,6 +206,7 @@ export const DrawerTabNavigator = () => {
         };
       }}>
       <Drawer.Screen name='Home' component={BottomTabNavigator} />
+      <Drawer.Screen name='MovieDetail' component={MovieDetailsScreen} />
     </Drawer.Navigator>
   );
 };

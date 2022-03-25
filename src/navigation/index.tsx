@@ -4,9 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
-import HomeScreen from '../screens/HomeScreen';
-import WelcomeScreen from '../screens/WelcomeScreen';
-
 import { RootStackParams } from './navigation';
 import { DrawerTabNavigator } from './Drawer';
 import { LoginStack } from './AuthStack';

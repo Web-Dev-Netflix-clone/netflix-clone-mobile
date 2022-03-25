@@ -37,6 +37,14 @@ const LAYOUT = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  imageGrid: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    justifyContent: 'space-evenly',
+    paddingVertical: SPACING.md,
+  },
 });
 
 const ELEMENTS = StyleSheet.create({
