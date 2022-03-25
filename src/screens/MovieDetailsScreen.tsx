@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
+  Image,
   View,
   ViewStyle,
   StyleSheet,
@@ -15,6 +16,7 @@ import { GLOBAL } from '../global/styles/global';
 
 import { Button } from 'react-native-paper';
 import CustomYoutubePlayer from '../components/CustomYoutubePlayer';
+import PillTag from '../components/PillTag';
 
 interface IMovieDetailsScreen {
   style: ViewStyle;
@@ -53,25 +55,29 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
         <View
           style={[
             GLOBAL.LAYOUT.rowCenter,
-            { width: '34%', justifyContent: 'space-between' },
+            {
+              width: '34%',
+              justifyContent: 'space-between',
+            },
           ]}>
-          <Text style={[TYPOGRAPHY.FONT.body]}>2012</Text>
           <Text
             style={[
-              {
-                fontSize: 12,
-                fontFamily: 'netflix-sans-bold',
-                color: '#fff',
-                borderRadius: 25,
-                textAlign: 'center',
-                borderWidth: 2,
-                borderColor: '#fff',
-                padding: 2,
-              },
+              TYPOGRAPHY.FONT.body,
+              { marginBottom: 0, color: TYPOGRAPHY.COLOR.GreyLight },
             ]}>
-            12
+            2012
           </Text>
-          <Text style={[TYPOGRAPHY.FONT.body]}>2h 16m</Text>
+          <Image
+            style={styles.icon}
+            source={require('../../assets/kijkwijzer-icons/12.jpg')}
+          />
+          <Text
+            style={[
+              TYPOGRAPHY.FONT.body,
+              { marginBottom: 0, color: TYPOGRAPHY.COLOR.GreyLight },
+            ]}>
+            2h 16m
+          </Text>
         </View>
         <View
           style={{
@@ -98,6 +104,7 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
             Download
           </Button>
         </View>
+
         <View>
           <Text style={[TYPOGRAPHY.FONT.subtitle, { color: '#fff' }]}>
             In this reboot of the superhero franchise, high schooler Peter
@@ -105,23 +112,12 @@ const MovieDetailsScreen = ({ style }: IMovieDetailsScreen) => {
             arch-villain The Lizard.
           </Text>
         </View>
-        <View
-          style={[
-            GLOBAL.LAYOUT.rowCenter,
-            {
-              width: '27%',
-              backgroundColor: TYPOGRAPHY.COLOR.RedPrimary,
-              borderRadius: 20,
-              padding: 4,
-              justifyContent: 'space-evenly',
-            },
-          ]}>
-          <Ionicons color={'#fff'} name={'thumbs-up-sharp'} size={12} />
-          <Text
-            style={[TYPOGRAPHY.FONT.body, { marginBottom: 0, fontSize: 12 }]}>
-            Most Liked
-          </Text>
-        </View>
+
+        <PillTag
+          iconName={'thumbs-up-sharp'}
+          backgroundColor={TYPOGRAPHY.COLOR.RedPrimary}
+          text={'Most liked'}
+        />
         <View
           style={[
             GLOBAL.LAYOUT.rowCenter,
@@ -231,6 +227,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000',
+  },
+  icon: {
+    height: 20,
+    width: 20,
+    borderRadius: 50,
+    marginHorizontal: GLOBAL.SPACING.sm,
   },
 });
 

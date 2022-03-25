@@ -72,7 +72,7 @@ const CustomYoutubePlayer = ({
         contentScale={1}
         //@ts-ignore
         ref={controlRef}
-        play={true}
+        play={false}
         mute={true}
         videoId={'JfVOs4VSpmA'}
         onChangeState={onStateChange}
