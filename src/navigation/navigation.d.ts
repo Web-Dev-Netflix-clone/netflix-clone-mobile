@@ -14,6 +14,7 @@ export type RootStackParams = {
 
 export type DrawerStackParams = {
   Home: undefined;
+  MovieDetail: undefined;
 };
 
 export type AuthStackParams = {

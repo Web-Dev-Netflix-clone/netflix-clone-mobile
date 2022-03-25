@@ -18,8 +18,8 @@ export const Navigation = () => {
 
   return (
     <NavigationContainer theme={navTheme}>
-      {/* {isSignedIn ? <LoginStack /> : <DrawerTabNavigator />} */}
-      <RootNavigator />
+      {isSignedIn ? <LoginStack /> : <DrawerTabNavigator />}
+      {/* <RootNavigator /> */}
       <BottomSheet />
     </NavigationContainer>
   );
