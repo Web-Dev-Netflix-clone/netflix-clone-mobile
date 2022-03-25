@@ -109,6 +109,7 @@ const MovieDetailsScreen = () => {
           iconName={'thumbs-up-sharp'}
           backgroundColor={TYPOGRAPHY.COLOR.RedPrimary}
           text={'Most liked'}
+          style={{ marginTop: GLOBAL.SPACING.sm }}
         />
         <View
           style={[
@@ -117,6 +118,7 @@ const MovieDetailsScreen = () => {
               backgroundColor: 'transparent',
               width: '70%',
               justifyContent: 'space-evenly',
+              paddingVertical: GLOBAL.SPACING.md,
             },
           ]}>
           <PressableIconBox

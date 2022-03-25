@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, ViewStyle } from 'react-native';
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { GLOBAL } from '../global/styles/global';
@@ -8,9 +8,10 @@ interface IPillTag {
   backgroundColor: string;
   iconName: string;
   text: string;
+  style?: ViewStyle;
 }
 
-const PillTag = ({ backgroundColor, iconName, text }: IPillTag) => {
+const PillTag = ({ backgroundColor, iconName, text, style }: IPillTag) => {
   return (
     <View
       style={[
@@ -22,6 +23,7 @@ const PillTag = ({ backgroundColor, iconName, text }: IPillTag) => {
           padding: 4,
           justifyContent: 'space-evenly',
         },
+        style,
       ]}>
       <Ionicons color={'#fff'} name={iconName} size={12} />
       <Text style={[TYPOGRAPHY.FONT.body, { marginBottom: 0, fontSize: 12 }]}>
