@@ -6,10 +6,10 @@ import { IMGSTYLES } from '../global/styles/imgStyles';
 import Octicons from '@expo/vector-icons/Octicons';
 
 interface ICustomYoutubePlayer {
-  isMute: Boolean;
+  isMute?: Boolean;
   setIsMute: (bool: any) => void;
   setPlaying: (bool: any) => void;
-  playing: Boolean;
+  playing?: Boolean;
   showVideo: number;
   videoHeight: number;
 }
@@ -45,61 +45,63 @@ const CustomYoutubePlayer = ({
     });
   };
 
-  const muteVideo = () => setIsMute(!isMute);
+  const muteVideo = () => {
+    setIsMute(!isMute);
+  };
 
   return (
-    <Animated.View
-      entering={BounceIn}
-      layout={Layout.easing(Easing.ease).delay(3000)}
-      style={{
-        height: 350,
-        backgroundColor: '#000',
-        zIndex: -1,
-      }}
-      pointerEvents='none'>
-      {showVideo < 0 && (
-        <ImageBackground
-          source={require('../../assets/background-images/netflix-screen.png')}
-          style={IMGSTYLES.responsive}
-        />
-      )}
+    <>
+      <Animated.View
+        entering={BounceIn}
+        layout={Layout.easing(Easing.ease).delay(3000)}
+        style={{
+          height: 350,
+          backgroundColor: '#000',
+          zIndex: -1,
+        }}
+        pointerEvents='none'>
+        {showVideo < 0 && (
+          <ImageBackground
+            source={require('../../assets/background-images/netflix-screen.png')}
+            style={IMGSTYLES.responsive}
+          />
+        )}
 
-      <YoutubePlayer
-        webViewStyle={{
-          marginTop: showVideo,
-        }}
-        height={videoHeight}
-        contentScale={1}
-        //@ts-ignore
-        ref={controlRef}
-        play={true}
-<<<<<<< HEAD
-        mute={false}
-=======
-        mute={true}
->>>>>>> f290f74513c6342fe834fd5a9b996cae390d446a
-        videoId={'JfVOs4VSpmA'}
-        onChangeState={onStateChange}
-        initialPlayerParams={{
-          loop: true,
-          controls: false,
-          modestbranding: false,
-          showClosedCaptions: false,
-          start: 0,
-          rel: false,
-        }}
-        forceAndroidAutoplay={true}
-      />
+        <YoutubePlayer
+          webViewStyle={{
+            marginTop: showVideo,
+          }}
+          height={videoHeight}
+          contentScale={1}
+          //@ts-ignore
+          ref={controlRef}
+          //@ts-ignore
+          play={playing}
+          //@ts-ignore
+          mute={isMute}
+          videoId={'JfVOs4VSpmA'}
+          onChangeState={onStateChange}
+          initialPlayerParams={{
+            loop: true,
+            controls: false,
+            modestbranding: false,
+            showClosedCaptions: false,
+            start: 0,
+            rel: false,
+          }}
+          forceAndroidAutoplay={true}
+        />
+      </Animated.View>
       {showVideo > 0 && (
         <Octicons
           style={{ position: 'absolute', top: 265, right: 10 }}
-          name={isMute ? 'mute' : 'unmute'}
+          name={isMute ? 'unmute' : 'mute'}
           size={15}
           color='white'
           onPress={muteVideo}
         />
       )}
-    </Animated.View>
+    </>
   );
 };
 
