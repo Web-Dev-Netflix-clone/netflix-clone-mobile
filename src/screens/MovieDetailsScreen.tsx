@@ -15,7 +15,7 @@ import PressableIconBox from '../components/PressableIconBox';
 import { movieGridData } from '../../assets/MockData/movieGridData';
 
 const MovieDetailsScreen = () => {
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const [isMute, setIsMute] = useState(true);
   const [showVideo, setShowVideo] = useState(-150);
   const [videoHeight, setVideoHeight] = useState(0);
