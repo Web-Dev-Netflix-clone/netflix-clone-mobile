@@ -3,7 +3,7 @@ import React, { useCallback, useRef } from 'react';
 import Animated, { BounceIn, Easing, Layout } from 'react-native-reanimated';
 import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe';
 import { IMGSTYLES } from '../global/styles/imgStyles';
-import { Ionicons } from '@expo/vector-icons';
+import Octicons from '@expo/vector-icons/Octicons';
 
 interface ICustomYoutubePlayer {
   isMute: Boolean;
@@ -18,13 +18,13 @@ const CustomYoutubePlayer = ({
   setIsMute,
   isMute,
   setPlaying,
-  playing = true,
+  playing,
   showVideo,
   videoHeight,
 }: ICustomYoutubePlayer) => {
   const controlRef = useRef<YoutubeIframeRef>();
 
-  const onStateChange = useCallback((state) => {
+  const onStateChange = useCallback((state: any) => {
     if (state === 'ended') {
       controlRef.current?.seekTo(6.5, true);
       setPlaying(true);
@@ -72,8 +72,8 @@ const CustomYoutubePlayer = ({
         contentScale={1}
         //@ts-ignore
         ref={controlRef}
-        play={false}
-        mute={true}
+        play={true}
+        mute={false}
         videoId={'JfVOs4VSpmA'}
         onChangeState={onStateChange}
         initialPlayerParams={{
@@ -87,9 +87,9 @@ const CustomYoutubePlayer = ({
         forceAndroidAutoplay={true}
       />
       {showVideo > 0 && (
-        <Ionicons
+        <Octicons
           style={{ position: 'absolute', top: 265, right: 10 }}
-          name={isMute ? 'volume-mute' : 'volume-mute'}
+          name={isMute ? 'mute' : 'unmute'}
           size={15}
           color='white'
           onPress={muteVideo}
