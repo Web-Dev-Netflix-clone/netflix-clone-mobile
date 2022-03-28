@@ -42,6 +42,8 @@ export const PressableCard = ({
         style={[
           styles(height, width, cardRadius).card,
           GLOBAL.SHADOWS.shadowMedium,
+          ,
+          style,
         ]}>
         <ImageBackground style={styles().image} source={background} />
         <View style={[{ padding: GLOBAL.SPACING.sm }]}>

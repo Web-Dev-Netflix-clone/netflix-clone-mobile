@@ -28,6 +28,7 @@ import CategoriesModal from '../components/CategoriesModal';
 import { useSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
 import MovieDetailsScreen from '../screens/MovieDetailsScreen';
+import { MovieDetailsStack } from './MovieDetailStack';
 const windowHeight = Dimensions.get('window').height;
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
@@ -206,7 +207,11 @@ export const DrawerTabNavigator = () => {
         };
       }}>
       <Drawer.Screen name='Home' component={BottomTabNavigator} />
-      <Drawer.Screen name='MovieDetail' component={MovieDetailsScreen} />
+      <Drawer.Screen
+        name='MovieDetail'
+        component={MovieDetailsStack}
+        options={{ headerShown: false }}
+      />
     </Drawer.Navigator>
   );
 };
