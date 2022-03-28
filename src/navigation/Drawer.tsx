@@ -29,12 +29,17 @@ import { useSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
 import MovieDetailsScreen from '../screens/MovieDetailsScreen';
 import { MovieDetailsStack } from './MovieDetailStack';
+import { RootState } from '../state';
 const windowHeight = Dimensions.get('window').height;
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 
 export const DrawerTabNavigator = () => {
   const [modalActive, setModalActive] = useState(false);
+  const showDiscoverNav = useSelector(
+    (state: RootState) => state.appState.showDiscoverNav
+  );
+
   const { searchActive } = useActions();
 
   const progress = useSharedValue(0);
@@ -54,20 +59,21 @@ export const DrawerTabNavigator = () => {
   const mainNavHiddenToggle = useSelector(
     (state) => state.appState.hideMainNav
   );
+
   const scrollZero = useSelector((state) => state.appState.scrollYZero);
 
   useEffect(() => {
     if (scrollZero) {
       progress.value = withTiming(0, {
-        duration: 280,
-        easing: Easing.exp,
+        duration: 150,
+        // easing: Easing.exp,
       });
     }
 
     if (!scrollZero) {
       progress.value = withTiming(1, {
-        duration: 280,
-        easing: Easing.exp,
+        duration: 150,
+        // easing: Easing.exp,
       });
     }
   }, [scrollZero]);
@@ -77,29 +83,36 @@ export const DrawerTabNavigator = () => {
       drawerContent={(props) => <CustomDrawer {...props} />}
       initialRouteName='Home'
       //@ts-ignore
-      screenOptions={({ navigation }: { navigation: any }) => {
+      screenOptions={({ navigation, route }: { navigation: any }) => {
         return {
           headerShown: true,
           // headerLeft: false,
 
-          header: () => {
+          header: ({ route }) => {
+            const routeName = route.name;
+
             return (
               <View>
                 {!mainNavHiddenToggle && (
                   <Animated.View
-                    entering={FadeInDown.delay(80)}
-                    layout={Layout.easing(Easing.ease).delay(1000)}
-                    exiting={FadeOutUp.delay(150)}
+                    entering={FadeInDown.delay(0)}
+                    layout={Layout.easing(Easing.ease).delay(200)}
+                    exiting={FadeOutUp.delay(0)}
                     style={[
                       {
-                        backgroundColor: !scrollZero
-                          ? 'rgba(0,0,0,0.65)'
-                          : 'transparent',
+                        backgroundColor: showDiscoverNav
+                          ? 'transparent'
+                          : 'rgba(0,0,0,0.65)',
                         flexDirection: 'row',
                         paddingTop: 56,
                         justifyContent: 'space-between',
                       },
                       animatedBgColor,
+                      {
+                        backgroundColor: showDiscoverNav
+                          ? 'transparent'
+                          : 'transparent',
+                      },
                     ]}>
                     <Pressable
                       style={{
@@ -165,23 +178,25 @@ export const DrawerTabNavigator = () => {
                   </Animated.View>
                 )}
 
-                <Animated.View
-                  entering={FadeInUp}
-                  layout={Layout.easing(Easing.ease).delay(100)}
-                  exiting={FadeOutUp}
-                  style={[animatedBgColor]}>
-                  <DiscoverNav
-                    setModalActive={setModalActive}
-                    style={{
-                      width: '100%',
-                      height: mainNavHiddenToggle ? 90 : 50,
-                      paddingTop: mainNavHiddenToggle ? 50 : 0,
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      justifyContent: 'space-evenly',
-                    }}
-                  />
-                </Animated.View>
+                {showDiscoverNav && (
+                  <Animated.View
+                    entering={FadeInUp}
+                    layout={Layout.easing(Easing.ease).delay(100)}
+                    exiting={FadeOutUp}
+                    style={[animatedBgColor]}>
+                    <DiscoverNav
+                      setModalActive={setModalActive}
+                      style={{
+                        width: '100%',
+                        height: mainNavHiddenToggle ? 90 : 50,
+                        paddingTop: mainNavHiddenToggle ? 50 : 0,
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-evenly',
+                      }}
+                    />
+                  </Animated.View>
+                )}
 
                 {modalActive && (
                   <CategoriesModal

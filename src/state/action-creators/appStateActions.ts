@@ -62,3 +62,19 @@ export const hideBottomSheet = () => {
     });
   };
 };
+
+export const hideDiscoverNav = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.HIDE_DISCOVERNAV,
+    });
+  };
+};
+
+export const showDiscoverNav = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.SHOW_DISCOVERNAV,
+    });
+  };
+};

@@ -17,4 +17,6 @@ export enum ActionType {
   HIDE_BOTTOMSHEET = 'hide_bottomsheet',
   SCROLLY_ZERO_TRUE = 'scrolly_zero_true',
   SCROLLY_ZERO_FALSE = 'scrolly_zero_false',
+  HIDE_DISCOVERNAV = 'hide_discovernav',
+  SHOW_DISCOVERNAV = 'show_discovernav',
 }

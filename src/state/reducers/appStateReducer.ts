@@ -1,3 +1,4 @@
+import { hideDiscoverNav } from './../action-creators/appStateActions';
 import { TAppStateAction } from './../actionsInterfaces/appStateInterfaces';
 import { ActionType } from '../action-types';
 
@@ -8,6 +9,7 @@ export interface AppState {
   hideMainNav: boolean;
   scrollYZero: boolean;
   showBottomSheet: boolean;
+  showDiscoverNav: boolean;
 }
 
 const initialState = {
@@ -17,6 +19,7 @@ const initialState = {
   hideMainNav: false,
   scrollYZero: true,
   showBottomSheet: false,
+  showDiscoverNav: true,
 };
 
 export const reducer = (
@@ -72,6 +75,18 @@ export const reducer = (
       return {
         ...state,
         showBottomSheet: false,
+      };
+
+    case ActionType.SHOW_DISCOVERNAV:
+      return {
+        ...state,
+        showDiscoverNav: true,
+      };
+
+    case ActionType.HIDE_DISCOVERNAV:
+      return {
+        ...state,
+        showDiscoverNav: false,
       };
 
     default:
