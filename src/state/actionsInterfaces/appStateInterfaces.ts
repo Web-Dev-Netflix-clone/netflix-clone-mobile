@@ -36,6 +36,14 @@ export interface hideBottomSheet {
   type: ActionType.HIDE_BOTTOMSHEET;
 }
 
+export interface showDiscoverNav {
+  type: ActionType.SHOW_DISCOVERNAV;
+}
+
+export interface hideDiscoverNav {
+  type: ActionType.HIDE_DISCOVERNAV;
+}
+
 export type TAppStateAction =
   | SearchActive
   | SearchInActive
@@ -44,4 +52,6 @@ export type TAppStateAction =
   | scrollYZeroFalse
   | scrollYZeroTrue
   | showBottomSheet
-  | hideBottomSheet;
+  | hideBottomSheet
+  | showDiscoverNav
+  | hideDiscoverNav;

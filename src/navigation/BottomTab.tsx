@@ -13,7 +13,7 @@ import { useActions } from '../hooks/useActions';
 const BottomTab = createBottomTabNavigator<BottomTabParams>();
 
 export const BottomTabNavigator = () => {
-  const { showMainNav } = useActions();
+  const { showMainNav, hideDiscoverNav, showDiscoverNav } = useActions();
 
   return (
     <BottomTab.Navigator
@@ -21,7 +21,12 @@ export const BottomTabNavigator = () => {
         useEffect(() => {
           // enforces showing the main nav when the screen changes
           const unsubscribe = navigation.addListener('focus', () => {
+            // console.log('ROUTE => inside bottom', route);
             showMainNav();
+
+            if (route.name !== 'Home2') hideDiscoverNav();
+
+            if (route.name === 'Home2') showDiscoverNav();
           });
 
           return unsubscribe;
