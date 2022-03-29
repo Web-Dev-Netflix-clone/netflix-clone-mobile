@@ -12,13 +12,13 @@ import BottomSheet from '../components/BottomSheet';
 import MovieDetailsScreen from '../screens/MovieDetailsScreen';
 
 const navTheme = DefaultTheme;
-navTheme.colors.background = 'transparent';
+navTheme.colors.background = '#000';
 export const Navigation = () => {
   const isSignedIn = useSelector((state) => state.userData.isLoggedIn);
 
   return (
     <NavigationContainer theme={navTheme}>
-      {!isSignedIn ? <LoginStack /> : <DrawerTabNavigator />}
+      {isSignedIn ? <LoginStack /> : <DrawerTabNavigator />}
       {/* <RootNavigator /> */}
       <BottomSheet />
     </NavigationContainer>

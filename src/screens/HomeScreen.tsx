@@ -22,7 +22,6 @@ import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
 import { Dimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import { useActions } from '../hooks/useActions';
 

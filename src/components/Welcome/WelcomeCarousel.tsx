@@ -4,6 +4,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import CAROUSELDATA from '../../../assets/MockData/DummyCarouselData';
 import CarouselCardItem, { SLIDER_WIDTH } from './CarouselCardItem';
 import { CarouselData } from '../../types/data.types';
+import { GLOBAL } from '../../global/styles/global';
 
 const WelcomeCarousel = () => {
   const isCarousel = useRef<Carousel<CarouselData>>(null);
@@ -32,8 +33,9 @@ const WelcomeCarousel = () => {
         dotStyle={{
           width: 10,
           height: 10,
-          borderRadius: 5,
-          marginHorizontal: 0,
+          borderRadius: 25,
+          padding: GLOBAL.SPACING.sm,
+          marginHorizontal: GLOBAL.SPACING.md,
           backgroundColor: 'gray',
         }}
         inactiveDotOpacity={0.4}

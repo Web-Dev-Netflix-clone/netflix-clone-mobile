@@ -36,6 +36,7 @@ const Drawer = createDrawerNavigator<DrawerStackParams>();
 
 export const DrawerTabNavigator = () => {
   const [modalActive, setModalActive] = useState(false);
+  const scrollZero = useSelector((state) => state.appState.scrollYZero);
   const showDiscoverNav = useSelector(
     (state: RootState) => state.appState.showDiscoverNav
   );
@@ -60,12 +61,10 @@ export const DrawerTabNavigator = () => {
     (state) => state.appState.hideMainNav
   );
 
-  const scrollZero = useSelector((state) => state.appState.scrollYZero);
-
   useEffect(() => {
     if (scrollZero) {
       progress.value = withTiming(0, {
-        duration: 150,
+        duration: 100,
         // easing: Easing.exp,
       });
     }
@@ -91,9 +90,9 @@ export const DrawerTabNavigator = () => {
               <View>
                 {!mainNavHiddenToggle && (
                   <Animated.View
-                    entering={FadeInDown.delay(0)}
+                    entering={FadeInDown.delay(250)}
                     layout={Layout.easing(Easing.ease).delay(200)}
-                    exiting={FadeOutUp.delay(0)}
+                    exiting={FadeOutUp.delay(200)}
                     style={[
                       {
                         backgroundColor: 'rgba(0,0,0,0.65)',
@@ -102,9 +101,6 @@ export const DrawerTabNavigator = () => {
                         justifyContent: 'space-between',
                       },
                       animatedBgColor,
-                      {
-                        backgroundColor: 'transparent',
-                      },
                     ]}>
                     <Pressable
                       style={{
@@ -172,16 +168,16 @@ export const DrawerTabNavigator = () => {
 
                 {showDiscoverNav && (
                   <Animated.View
-                    entering={FadeInUp}
-                    layout={Layout.easing(Easing.ease).delay(100)}
-                    exiting={FadeOutUp}
+                    entering={FadeInUp.delay(200)}
+                    layout={Layout.easing(Easing.ease).delay(200)}
+                    exiting={FadeOutUp.delay(200)}
                     style={[animatedBgColor]}>
                     <DiscoverNav
                       setModalActive={setModalActive}
                       style={{
                         width: '100%',
                         height: mainNavHiddenToggle ? 90 : 50,
-                        paddingTop: mainNavHiddenToggle ? 50 : 0,
+                        paddingTop: mainNavHiddenToggle ? 40 : 0,
                         flexDirection: 'row',
                         alignItems: 'center',
                         justifyContent: 'space-evenly',

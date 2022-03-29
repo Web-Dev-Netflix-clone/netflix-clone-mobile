@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, Modal, ViewStyle, ScrollView } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { LinearGradient } from 'expo-linear-gradient';
 import { categoriesData } from '../../assets/MockData/categoriesData';
+
 import { PressableText } from '../global/elements/PressableText';
 
 interface ICategoriesModal {
