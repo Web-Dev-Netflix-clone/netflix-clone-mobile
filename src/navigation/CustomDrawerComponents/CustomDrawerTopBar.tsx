@@ -1,5 +1,5 @@
-import { View, Text, Pressable } from 'react-native';
 import React from 'react';
+import { View, Text, Pressable } from 'react-native';
 import { GLOBAL } from '../../global/styles/global';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
@@ -9,7 +9,7 @@ import { searchInActive } from '../../state/action-creators/appStateActions';
 
 interface ICustomDrawerTopBar {
   title: string;
-  iconName?: string;
+  iconName?: any;
 }
 
 const CustomDrawerTopBar = ({ title, iconName }: ICustomDrawerTopBar) => {
@@ -32,8 +32,6 @@ const CustomDrawerTopBar = ({ title, iconName }: ICustomDrawerTopBar) => {
           navigation.dispatch(DrawerActions.closeDrawer());
         }}>
         <Ionicons
-          // how to type this?
-          //@ts-ignore
           name={iconName ? iconName : 'arrow-back'}
           size={26}
           color={TYPOGRAPHY.COLOR.White}

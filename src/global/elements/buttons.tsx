@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { TouchableOpacity, ViewStyle } from 'react-native';
 
-// Nog even kijken of we deze gaan gebruiken of gewoon aparte componenten voor knoppen?
-// Ik heb dit ook gewoon overgenomen van een ander project maar het kan misschien wel
-// handig zijn om dit allemaal in een file te hebben.
-
 import { CustomText } from './customText';
 import { GLOBAL } from '../styles/global';
 

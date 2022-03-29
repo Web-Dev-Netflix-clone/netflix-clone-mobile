@@ -1,12 +1,12 @@
-import { View, Text, ViewStyle } from 'react-native';
 import React from 'react';
+import { View, Text, ViewStyle } from 'react-native';
 import { GLOBAL } from '../global/styles/global';
 import { IconButton } from 'react-native-paper';
 import { TYPOGRAPHY } from '../global/styles/typography';
 
 interface IDiscoverNav {
   style: ViewStyle;
-  setModalActive: any;
+  setModalActive: (bool: boolean) => void;
 }
 
 const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {

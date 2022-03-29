@@ -5,7 +5,11 @@ import { GLOBAL } from '../../global/styles/global';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export const StandardLaneCard = ({ goTo }: { goTo: any }) => {
+interface IStandardLaneCard {
+  goTo: { key: string; params?: any };
+}
+
+export const StandardLaneCard = ({ goTo }: IStandardLaneCard) => {
   const navigation = useNavigation();
 
   return (

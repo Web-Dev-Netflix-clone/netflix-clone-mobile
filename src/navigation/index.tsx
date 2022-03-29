@@ -18,7 +18,7 @@ export const Navigation = () => {
 
   return (
     <NavigationContainer theme={navTheme}>
-      {isSignedIn ? <LoginStack /> : <DrawerTabNavigator />}
+      {!isSignedIn ? <LoginStack /> : <DrawerTabNavigator />}
       {/* <RootNavigator /> */}
       <BottomSheet />
     </NavigationContainer>
@@ -34,7 +34,7 @@ export const RootNavigator = () => {
       <Stack.Screen
         name='MovieDetail'
         component={MovieDetailsScreen}
-        options={({ navigation }) => ({
+        options={({}) => ({
           headerStyle: { backgroundColor: '#000' },
           headerShown: true,
           title: '',

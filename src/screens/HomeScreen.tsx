@@ -1,4 +1,3 @@
-//@ts-nocheck
 import React, { useState } from 'react';
 import {
   View,
@@ -6,6 +5,8 @@ import {
   ScrollView,
   Text,
   StyleSheet,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from 'react-native';
 import { Button } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -23,7 +24,6 @@ import { GLOBAL } from '../global/styles/global';
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import Constants from 'expo-constants';
 import { useActions } from '../hooks/useActions';
 
 const HomeScreen = () => {
@@ -35,17 +35,15 @@ const HomeScreen = () => {
     scrollYZeroTrue,
   } = useActions();
 
-  const navigation = useNavigation();
-
-  const [offset, setOffSet] = useState();
+  const [offset, setOffSet] = useState(0);
   const windowHeight = Dimensions.get('window').height;
 
-  const handleScroll = (event) => {
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const currentOffset = event.nativeEvent.contentOffset.y;
     const direction = currentOffset > offset ? 'down' : 'up';
     setOffSet(currentOffset);
 
-    if (currentOffset < 400) scrollYZeroTrue();
+    if (currentOffset < 600) scrollYZeroTrue();
     if (currentOffset !== 0) scrollYZeroFalse();
     if (direction === 'up') showMainNav();
     if (direction === 'down' && currentOffset > 75) hideMainNav();

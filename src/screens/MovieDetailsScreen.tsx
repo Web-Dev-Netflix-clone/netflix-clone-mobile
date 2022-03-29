@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Image, View, ScrollView, StyleSheet, Text } from 'react-native';
 
-import { Ionicons } from '@expo/vector-icons';
-
 import { PressableCard } from '../components/PressableCard';
 
 import { TYPOGRAPHY } from '../global/styles/typography';
@@ -141,7 +139,7 @@ const MovieDetailsScreen = () => {
         <View>
           <Text style={TYPOGRAPHY.FONT.body}>MORE LIKE THIS</Text>
           <View style={GLOBAL.LAYOUT.imageGrid}>
-            {movieGridData.map((item, i) => {
+            {movieGridData.map((item) => {
               return (
                 <PressableCard
                   key={item.id}

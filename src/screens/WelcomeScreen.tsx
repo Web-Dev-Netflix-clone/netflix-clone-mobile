@@ -1,24 +1,19 @@
-import { View, Text, StyleSheet, SafeAreaView, Modal } from 'react-native';
 import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParams } from '../navigation/navigation';
+import { View, Text, StyleSheet, SafeAreaView, Modal } from 'react-native';
+
 import { TYPOGRAPHY } from '../global/styles/typography';
 import WelcomeCarousel from '../components/Welcome/WelcomeCarousel';
 import { Button, IconButton, TextInput } from 'react-native-paper';
 import { GLOBAL } from '../global/styles/global';
 
 const WelcomeScreen = () => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
-
   const [isModalVisible, setModalVisible] = useState(false);
 
   return (
     <SafeAreaView
       style={[GLOBAL.LAYOUT.SafeArea, { justifyContent: 'space-around' }]}>
       <WelcomeCarousel />
-      <View style={{ padding: GLOBAL.SPACING.sm }}>
+      <View style={{ backgroundColor: '#000', padding: GLOBAL.SPACING.sm }}>
         <Button
           style={[styles.button, { marginTop: GLOBAL.SPACING.sm }]}
           color='red'
@@ -63,6 +58,7 @@ const WelcomeScreen = () => {
               selectionColor='#fff'
             />
           </View>
+
           <Button
             style={styles.button}
             color='red'

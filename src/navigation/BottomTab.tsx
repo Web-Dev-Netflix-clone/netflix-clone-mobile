@@ -21,7 +21,6 @@ export const BottomTabNavigator = () => {
         useEffect(() => {
           // enforces showing the main nav when the screen changes
           const unsubscribe = navigation.addListener('focus', () => {
-            // console.log('ROUTE => inside bottom', route);
             showMainNav();
 
             if (route.name !== 'Home2') hideDiscoverNav();
@@ -50,7 +49,7 @@ export const BottomTabNavigator = () => {
       <BottomTab.Screen
         name='Home2'
         component={HomeScreen}
-        options={({ route }) => ({
+        options={({}) => ({
           tabBarLabel: 'Home',
           tabBarIcon: () => (
             <Ionicons

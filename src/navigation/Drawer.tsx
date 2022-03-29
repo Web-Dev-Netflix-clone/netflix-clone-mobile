@@ -27,7 +27,7 @@ import { Dimensions } from 'react-native';
 import CategoriesModal from '../components/CategoriesModal';
 import { useSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
-import MovieDetailsScreen from '../screens/MovieDetailsScreen';
+
 import { MovieDetailsStack } from './MovieDetailStack';
 import { RootState } from '../state';
 const windowHeight = Dimensions.get('window').height;
@@ -72,7 +72,7 @@ export const DrawerTabNavigator = () => {
 
     if (!scrollZero) {
       progress.value = withTiming(1, {
-        duration: 150,
+        duration: 0,
         // easing: Easing.exp,
       });
     }
@@ -82,15 +82,11 @@ export const DrawerTabNavigator = () => {
     <Drawer.Navigator
       drawerContent={(props) => <CustomDrawer {...props} />}
       initialRouteName='Home'
-      //@ts-ignore
-      screenOptions={({ navigation, route }: { navigation: any }) => {
+      screenOptions={({ navigation }) => {
         return {
           headerShown: true,
-          // headerLeft: false,
 
-          header: ({ route }) => {
-            const routeName = route.name;
-
+          header: ({}) => {
             return (
               <View>
                 {!mainNavHiddenToggle && (
@@ -100,18 +96,14 @@ export const DrawerTabNavigator = () => {
                     exiting={FadeOutUp.delay(0)}
                     style={[
                       {
-                        backgroundColor: showDiscoverNav
-                          ? 'transparent'
-                          : 'rgba(0,0,0,0.65)',
+                        backgroundColor: 'rgba(0,0,0,0.65)',
                         flexDirection: 'row',
                         paddingTop: 56,
                         justifyContent: 'space-between',
                       },
                       animatedBgColor,
                       {
-                        backgroundColor: showDiscoverNav
-                          ? 'transparent'
-                          : 'transparent',
+                        backgroundColor: 'transparent',
                       },
                     ]}>
                     <Pressable
