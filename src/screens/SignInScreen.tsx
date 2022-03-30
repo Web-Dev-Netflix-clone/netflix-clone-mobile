@@ -37,6 +37,7 @@ const SignInScreen = () => {
           label='Email or phone number'
           mode='outlined'
           value={email}
+          onChangeText={(text) => setEmail(text)}
           autoComplete=''
           style={
             inputActive
@@ -57,6 +58,7 @@ const SignInScreen = () => {
           label='Password'
           mode='outlined'
           value={password}
+          onChangeText={(text) => setPassword(text)}
           autoComplete=''
           style={
             inputActive

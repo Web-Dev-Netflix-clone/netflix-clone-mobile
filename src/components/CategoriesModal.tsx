@@ -1,24 +1,17 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Modal,
-  ViewStyle,
-  Pressable,
-  ScrollView,
-} from 'react-native';
+import React, { useEffect } from 'react';
+import { View, StyleSheet, Modal, ViewStyle, ScrollView } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { LinearGradient } from 'expo-linear-gradient';
 import { categoriesData } from '../../assets/MockData/categoriesData';
+
 import { PressableText } from '../global/elements/PressableText';
 
 interface ICategoriesModal {
   style?: ViewStyle;
-  modalActive?: Boolean;
-  setModalActive?: any;
+  modalActive: boolean;
+  setModalActive: (bool: boolean) => void;
 }
 
 const CategoriesModal = ({
@@ -28,7 +21,6 @@ const CategoriesModal = ({
 }: ICategoriesModal) => {
   return (
     <Modal
-      //@ts-ignore
       visible={modalActive}
       transparent={true}
       animationType='fade'

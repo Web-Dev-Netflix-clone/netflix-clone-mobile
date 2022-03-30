@@ -15,9 +15,6 @@ const initialState = {
   isLoggedIn: false,
 };
 
-// We moeten nog even kijken in hoeverre we deze kunnen hergebruiken maar het typen van
-// Redux enzo is best wel complex dus ik heb even dit is voorbeeld in de repo gehouden.
-
 export const reducer = (
   state: UserState = initialState,
   action: TLoginUserAction

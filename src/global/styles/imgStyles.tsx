@@ -1,15 +1,10 @@
 import { StyleSheet } from 'react-native';
 import { GLOBAL } from './global';
 
-// Dit bestand moet nog aangepast worden naar de wensen van ons project
-// Laten we al deze GLOBALE styles de komende dagen overleggen en
-// helemaal naar het project inrichten. We kunnen hier ook altijd dingen
-// toevoegen wanneer je iets vaak hergebruikt.
-
 export const IMGSTYLES = StyleSheet.create({
   tinyLogo: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     resizeMode: 'contain',
   },
   smallLogo: {

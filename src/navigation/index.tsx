@@ -12,7 +12,7 @@ import BottomSheet from '../components/BottomSheet';
 import MovieDetailsScreen from '../screens/MovieDetailsScreen';
 
 const navTheme = DefaultTheme;
-navTheme.colors.background = 'transparent';
+navTheme.colors.background = '#000';
 export const Navigation = () => {
   const isSignedIn = useSelector((state) => state.userData.isLoggedIn);
 
@@ -34,7 +34,7 @@ export const RootNavigator = () => {
       <Stack.Screen
         name='MovieDetail'
         component={MovieDetailsScreen}
-        options={({ navigation }) => ({
+        options={({}) => ({
           headerStyle: { backgroundColor: '#000' },
           headerShown: true,
           title: '',

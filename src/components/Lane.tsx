@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
 
 interface ILane {
-  data: any;
-  LaneRenderItem: any;
+  data: { id: string; title: string }[];
+  LaneRenderItem: FunctionComponent<any>;
   title: string;
 }
 
@@ -22,8 +22,8 @@ const Lane = ({ data, LaneRenderItem, title }: ILane) => {
       <FlatList
         horizontal
         data={data}
-        renderItem={(item) => <LaneRenderItem goTo={'MovieDetail'} />}
-        keyExtractor={(item) => (item.id ? item.id : Math.random())}
+        renderItem={() => <LaneRenderItem goTo={'MovieDetail'} />}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );

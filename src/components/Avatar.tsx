@@ -1,5 +1,5 @@
-import { Image, ImageSourcePropType, Text, View } from 'react-native';
 import React from 'react';
+import { Image, ImageSourcePropType, Text, View } from 'react-native';
 import { TYPOGRAPHY } from '../global/styles/typography';
 
 import IonIcons from 'react-native-vector-icons/Ionicons';

@@ -22,6 +22,6 @@ export type AuthStackParams = {
   Welcome: undefined;
 };
 
-export type MovieDetailStack = {
+export type MovieDetailParams = {
   MovieDetail2: undefined;
 };

@@ -6,10 +6,10 @@ import { IMGSTYLES } from '../global/styles/imgStyles';
 import Octicons from '@expo/vector-icons/Octicons';
 
 interface ICustomYoutubePlayer {
-  isMute?: Boolean;
+  isMute?: boolean;
   setIsMute: (bool: any) => void;
   setPlaying: (bool: any) => void;
-  playing?: Boolean;
+  playing?: boolean;
   showVideo: number;
   videoHeight: number;
 }
@@ -22,7 +22,7 @@ const CustomYoutubePlayer = ({
   showVideo,
   videoHeight,
 }: ICustomYoutubePlayer) => {
-  const controlRef = useRef<YoutubeIframeRef>();
+  const controlRef = useRef<YoutubeIframeRef>(null);
 
   const onStateChange = useCallback((state: any) => {
     if (state === 'ended') {
@@ -73,11 +73,8 @@ const CustomYoutubePlayer = ({
           }}
           height={videoHeight}
           contentScale={1}
-          //@ts-ignore
           ref={controlRef}
-          //@ts-ignore
           play={playing}
-          //@ts-ignore
           mute={isMute}
           videoId={'JfVOs4VSpmA'}
           onChangeState={onStateChange}

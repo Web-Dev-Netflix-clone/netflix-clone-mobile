@@ -5,7 +5,11 @@ import { Image, View } from 'react-native';
 import { GLOBAL } from '../../global/styles/global';
 import { useNavigation } from '@react-navigation/native';
 
-export const OnlyOnNetflix = ({ goTo }: { goTo: any }) => {
+interface IOnlyOnNetflix {
+  goTo: { key: string; params?: any };
+}
+
+export const OnlyOnNetflix = ({ goTo }: IOnlyOnNetflix) => {
   const navigation = useNavigation();
 
   return (

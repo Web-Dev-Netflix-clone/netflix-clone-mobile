@@ -1,12 +1,14 @@
-import { View, Text, ViewStyle } from 'react-native';
 import React from 'react';
+import { View, Text, ViewStyle } from 'react-native';
 import { GLOBAL } from '../global/styles/global';
 import { IconButton } from 'react-native-paper';
 import { TYPOGRAPHY } from '../global/styles/typography';
 
+// import { hideNavigationBar } from 'react-native-navigation-bar-color';
+
 interface IDiscoverNav {
   style: ViewStyle;
-  setModalActive: any;
+  setModalActive: (bool: boolean) => void;
 }
 
 const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {
@@ -19,6 +21,7 @@ const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {
         <Text
           onPress={() => {
             setModalActive(true);
+            // hideNavigationBar();
           }}
           style={TYPOGRAPHY.FONT.body}>
           Categories
@@ -30,6 +33,7 @@ const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {
             size={20}
             onPress={() => {
               setModalActive(true);
+              // hideNavigationBar();
             }}
           />
         </View>

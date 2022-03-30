@@ -1,5 +1,5 @@
-import { View, Text, Image, ImageSourcePropType } from 'react-native';
 import React from 'react';
+import { View, Text, Image, ImageSourcePropType } from 'react-native';
 import { GLOBAL } from '../../global/styles/global';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 
@@ -9,7 +9,7 @@ interface CustomDrawerSocialBox {
   imageSource?: ImageSourcePropType;
   height: number;
   width: number;
-  iconName?: string;
+  iconName: any;
   title?: string;
   borderWidth?: number;
 }
@@ -37,10 +37,7 @@ const CustomDrawerSocialBox = ({
         <Image source={imageSource} style={{ height: height, width: width }} />
       )}
 
-      {
-        //@ts-ignore
-        iconName && <Feather name={iconName} size={width} />
-      }
+      {iconName && <Feather name={iconName} size={width} />}
       <Text
         style={[
           TYPOGRAPHY.FONT.body,

@@ -5,10 +5,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TYPOGRAPHY } from '../global/styles/typography';
 
-import { MovieDetailStack } from './navigation';
+import { MovieDetailParams } from './navigation';
 import MovieDetailsScreen from '../screens/MovieDetailsScreen';
 
-const MovieDetail = createStackNavigator<MovieDetailStack>();
+const MovieDetail = createStackNavigator<MovieDetailParams>();
 
 export const MovieDetailsStack = () => {
   return (

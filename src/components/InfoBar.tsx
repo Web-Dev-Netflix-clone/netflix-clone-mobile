@@ -1,6 +1,6 @@
-import { View, Text } from 'react-native';
 import React from 'react';
-import { Button, IconButton } from 'react-native-paper';
+import { View, Text } from 'react-native';
+import { Button } from 'react-native-paper';
 import { GLOBAL } from '../global/styles/global';
 import { Ionicons } from '@expo/vector-icons';
 import { TYPOGRAPHY } from '../global/styles/typography';
