@@ -6,7 +6,7 @@ import { DrawerStackParams } from './navigation';
 import { Ionicons, Feather } from '@expo/vector-icons';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
-import { Image, Pressable, View } from 'react-native';
+import { Image, Pressable, View, Text } from 'react-native';
 import CustomDrawer from './CustomDrawer';
 import Avatar from '../components/Avatar';
 
@@ -61,6 +61,8 @@ export const DrawerTabNavigator = () => {
     (state) => state.appState.hideMainNav
   );
 
+  const currentRoute = useSelector((state) => state.appState.currentRoute);
+
   useEffect(() => {
     if (scrollZero) {
       progress.value = withTiming(0, {
@@ -102,17 +104,28 @@ export const DrawerTabNavigator = () => {
                       },
                       animatedBgColor,
                     ]}>
-                    <Pressable
-                      style={{
-                        marginLeft: GLOBAL.SPACING.sm,
-                        marginTop: -GLOBAL.SPACING.sm,
-                      }}
-                      onPress={() => {}}>
-                      <Image
-                        source={require('../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png')}
-                        style={{ height: 30, width: 30 }}
-                      />
-                    </Pressable>
+                    {currentRoute === 'Home2' ? (
+                      <Pressable
+                        style={{
+                          marginLeft: GLOBAL.SPACING.sm,
+                          marginTop: -GLOBAL.SPACING.sm,
+                        }}
+                        onPress={() => {}}>
+                        <Image
+                          source={require('../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png')}
+                          style={{ height: 30, width: 30 }}
+                        />
+                      </Pressable>
+                    ) : (
+                      <Text
+                        style={{
+                          ...TYPOGRAPHY.FONT.body,
+                          fontSize: 17,
+                          marginLeft: 15,
+                        }}>
+                        {currentRoute.split(/(?=[A-Z])/).join(' ')}
+                      </Text>
+                    )}
                     <View
                       style={[
                         GLOBAL.LAYOUT.rowCenter,
@@ -126,11 +139,13 @@ export const DrawerTabNavigator = () => {
                         onPress={() =>
                           navigation.dispatch(DrawerActions.openDrawer())
                         }>
-                        <Feather
-                          name='cast'
-                          size={26}
-                          color={TYPOGRAPHY.COLOR.White}
-                        />
+                        {currentRoute === 'Home2' && (
+                          <Feather
+                            name='cast'
+                            size={26}
+                            color={TYPOGRAPHY.COLOR.White}
+                          />
+                        )}
                       </Pressable>
                       <Pressable
                         style={{

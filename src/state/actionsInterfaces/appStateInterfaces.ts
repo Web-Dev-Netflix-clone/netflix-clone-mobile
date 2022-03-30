@@ -44,6 +44,11 @@ export interface hideDiscoverNav {
   type: ActionType.HIDE_DISCOVERNAV;
 }
 
+export interface changeCurrentRoute {
+  type: ActionType.CHANGE_CURRENTROUTE;
+  payload: string;
+}
+
 export type TAppStateAction =
   | SearchActive
   | SearchInActive
@@ -54,4 +59,5 @@ export type TAppStateAction =
   | showBottomSheet
   | hideBottomSheet
   | showDiscoverNav
-  | hideDiscoverNav;
+  | hideDiscoverNav
+  | changeCurrentRoute;
