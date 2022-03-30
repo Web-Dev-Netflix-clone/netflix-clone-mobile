@@ -208,7 +208,6 @@ const CustomDrawer = (props: any) => {
             {
               marginLeft: GLOBAL.SPACING.md,
               marginBottom: 0,
-              color: TYPOGRAPHY.COLOR.White,
             },
           ]}>
           My List

@@ -36,7 +36,7 @@ const CategoriesModal = ({
             zIndex: 12,
           }}>
           <PressableText
-            textStyle={{ ...TYPOGRAPHY.FONT.h2, color: '#fff' }}
+            textStyle={TYPOGRAPHY.FONT.h2}
             text='Home'
             onClick={() => setModalActive(false)}
           />
