@@ -78,3 +78,11 @@ export const showDiscoverNav = () => {
     });
   };
 };
+export const changeCurrentRoute = (routeName: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.SHOW_DISCOVERNAV,
+      payload: routeName,
+    });
+  };
+};

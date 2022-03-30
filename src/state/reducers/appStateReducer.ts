@@ -10,6 +10,7 @@ export interface AppState {
   scrollYZero: boolean;
   showBottomSheet: boolean;
   showDiscoverNav: boolean;
+  currentRoute: string;
 }
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   scrollYZero: true,
   showBottomSheet: false,
   showDiscoverNav: true,
+  currentRoute: '',
 };
 
 export const reducer = (
@@ -87,6 +89,12 @@ export const reducer = (
       return {
         ...state,
         showDiscoverNav: false,
+      };
+
+    case ActionType.CHANGE_CURRENTROUTE:
+      return {
+        ...state,
+        currentRoute: action.payload,
       };
 
     default:

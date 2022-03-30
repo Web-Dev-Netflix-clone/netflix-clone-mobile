@@ -14,7 +14,7 @@ const DownloadsScreen = () => {
         {
           flex: 1,
           backgroundColor: '#000',
-          paddingTop: 100,
+          paddingTop: 110,
           padding: GLOBAL.SPACING.md,
           // justifyContent: 'space-between',
         },
@@ -47,7 +47,7 @@ const DownloadsScreen = () => {
         style={{
           height: 300,
 
-          marginBottom: GLOBAL.SPACING.xxl,
+          marginBottom: GLOBAL.SPACING.xxxl,
         }}
       />
       <View style={{ alignItems: 'center' }}>
@@ -55,7 +55,7 @@ const DownloadsScreen = () => {
           style={{
             backgroundColor: TYPOGRAPHY.COLOR.Blue,
             width: '100%',
-            marginBottom: GLOBAL.SPACING.xxxxl,
+            marginBottom: GLOBAL.SPACING.xxxl,
           }}
           uppercase={false}
           color='#fff'

@@ -13,7 +13,8 @@ import { useActions } from '../hooks/useActions';
 const BottomTab = createBottomTabNavigator<BottomTabParams>();
 
 export const BottomTabNavigator = () => {
-  const { showMainNav, hideDiscoverNav, showDiscoverNav } = useActions();
+  const { showMainNav, hideDiscoverNav, showDiscoverNav, changeCurrentRoute } =
+    useActions();
 
   return (
     <BottomTab.Navigator
@@ -22,6 +23,8 @@ export const BottomTabNavigator = () => {
           // enforces showing the main nav when the screen changes
           const unsubscribe = navigation.addListener('focus', () => {
             showMainNav();
+
+            changeCurrentRoute(route.name);
 
             if (route.name !== 'Home2') hideDiscoverNav();
 
