@@ -3,4 +3,5 @@
 // don't ask me why ;-p ahha
 
 declare module '*.jpg';
+declare module '*.jpeg';
 declare module '*.png';
