@@ -16,10 +16,7 @@ export const GameCard = ({ goTo }: GameCard) => {
 
   return (
     <View style={{ marginRight: GLOBAL.SPACING.sm }}>
-      <PressableCard
-        onClick={() => navigation.navigate(goTo)}
-        height={180}
-        width={100}>
+      <PressableCard onClick={() => {}} height={180} width={100}>
         <View
           style={{
             borderRadius: 20,

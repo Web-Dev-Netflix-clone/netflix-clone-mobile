@@ -73,7 +73,7 @@ export const DrawerTabNavigator = () => {
 
     if (!scrollZero) {
       progress.value = withTiming(1, {
-        duration: 0,
+        duration: 100,
         // easing: Easing.exp,
       });
     }
