@@ -13,7 +13,7 @@ import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
 
 interface IPressableCard {
-  background: ImageSourcePropType;
+  background?: ImageSourcePropType;
   onClick?: () => void;
   title?: string;
   height?: number;
@@ -45,7 +45,9 @@ export const PressableCard = ({
           ,
           style,
         ]}>
-        <ImageBackground style={styles().image} source={background} />
+        {background && (
+          <ImageBackground style={styles().image} source={background} />
+        )}
         <View style={[{ padding: GLOBAL.SPACING.sm }]}>
           {title && (
             <Text
