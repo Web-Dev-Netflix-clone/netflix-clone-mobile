@@ -1,9 +1,20 @@
-import { Button, StyleSheet, Text, View, Image, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  Dimensions,
+} from "react-native";
 import React from "react";
 import { useActions } from "../hooks/useActions";
 import { TYPOGRAPHY } from "../global/styles/typography";
 import { GLOBAL } from "../global/styles/global";
-import { Ionicons, MaterialIcons, AntDesign } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
+const modalHeight = height * 0.35;
 
 const BottomSheet = () => {
   const { hideBottomSheet } = useActions();
@@ -47,19 +58,19 @@ const BottomSheet = () => {
       </View>
       <View style={styles.buttonContainer}>
         <View style={{ alignItems: "center" }}>
-          <Ionicons name="play-circle" size={30} color="white" />
+          <Ionicons name="play-circle" size={28} color="white" />
           <Text style={GLOBAL.CTA.Style.secondaryText}>Play</Text>
         </View>
         <View style={{ alignItems: "center" }}>
-          <Ionicons name="download" size={30} color="white" />
+          <Ionicons name="download" size={28} color="white" />
           <Text style={GLOBAL.CTA.Style.secondaryText}>Download</Text>
         </View>
         <View style={{ alignItems: "center" }}>
-          <Ionicons name="add" size={30} color="white" />
+          <Ionicons name="add" size={28} color="white" />
           <Text style={GLOBAL.CTA.Style.secondaryText}>My List</Text>
         </View>
         <View style={{ alignItems: "center" }}>
-          <Ionicons name="share-social-outline" size={30} color="white" />
+          <Ionicons name="share-social-outline" size={28} color="white" />
           <Text style={GLOBAL.CTA.Style.secondaryText}>Share</Text>
         </View>
       </View>
@@ -90,25 +101,26 @@ export default BottomSheet;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: TYPOGRAPHY.COLOR.Dark,
-    height: "35%",
+    height: modalHeight,
     borderRadius: 15,
   },
   closeButton: {
     position: "absolute",
     top: GLOBAL.SPACING.sm,
+
     right: GLOBAL.SPACING.xxsm,
     zIndex: 10,
   },
   movieInfoContainer: {
     flexDirection: "row",
     justifyContent: "space-evenly",
-    height: "50%",
-    marginTop: 10,
+    height: "60%",
+    marginTop: GLOBAL.SPACING.sm,
   },
   imageContainer: {
     alignSelf: "flex-start",
     width: "30%",
-    height: "90%",
+    height: "100%",
   },
   image: {
     height: "100%",
@@ -116,7 +128,6 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     justifyContent: "flex-start",
-    height: "50%",
     width: "70%",
     paddingHorizontal: GLOBAL.SPACING.sm,
   },
