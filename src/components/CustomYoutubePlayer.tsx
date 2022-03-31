@@ -1,9 +1,9 @@
-import { ImageBackground } from 'react-native';
-import React, { useCallback, useRef } from 'react';
-import Animated, { BounceIn, Easing, Layout } from 'react-native-reanimated';
-import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe';
-import { IMGSTYLES } from '../global/styles/imgStyles';
-import Octicons from '@expo/vector-icons/Octicons';
+import { ImageBackground } from "react-native";
+import React, { useCallback, useRef } from "react";
+import Animated, { BounceIn, Easing, Layout } from "react-native-reanimated";
+import YoutubePlayer, { YoutubeIframeRef } from "react-native-youtube-iframe";
+import { IMGSTYLES } from "../global/styles/imgStyles";
+import Octicons from "@expo/vector-icons/Octicons";
 
 interface ICustomYoutubePlayer {
   isMute?: boolean;
@@ -25,7 +25,7 @@ const CustomYoutubePlayer = ({
   const controlRef = useRef<YoutubeIframeRef>(null);
 
   const onStateChange = useCallback((state: any) => {
-    if (state === 'ended') {
+    if (state === "ended") {
       controlRef.current?.seekTo(6.5, true);
       setPlaying(true);
       setIsMute(false);
@@ -37,9 +37,9 @@ const CustomYoutubePlayer = ({
   }, []);
 
   const seekBackAndForth = (control: string) => {
-    console.log('currentTime');
+    console.log("currentTime");
     controlRef.current?.getCurrentTime().then((currentTime) => {
-      control === 'forward'
+      control === "forward"
         ? controlRef.current?.seekTo(currentTime + 15, true)
         : controlRef.current?.seekTo(currentTime - 15, true);
     });
@@ -56,13 +56,14 @@ const CustomYoutubePlayer = ({
         layout={Layout.easing(Easing.ease).delay(3000)}
         style={{
           height: 350,
-          backgroundColor: '#000',
+          backgroundColor: "#000",
           zIndex: -1,
         }}
-        pointerEvents='none'>
+        pointerEvents="none"
+      >
         {showVideo < 0 && (
           <ImageBackground
-            source={require('../../assets/background-images/netflix-screen.png')}
+            source={require("../../assets/background-images/netflix-screen.png")}
             style={IMGSTYLES.responsive}
           />
         )}
@@ -76,7 +77,7 @@ const CustomYoutubePlayer = ({
           ref={controlRef}
           play={playing}
           mute={isMute}
-          videoId={'JfVOs4VSpmA'}
+          videoId={"JfVOs4VSpmA"}
           onChangeState={onStateChange}
           initialPlayerParams={{
             loop: true,
@@ -91,10 +92,10 @@ const CustomYoutubePlayer = ({
       </Animated.View>
       {showVideo > 0 && (
         <Octicons
-          style={{ position: 'absolute', top: 265, right: 10 }}
-          name={isMute ? 'unmute' : 'mute'}
+          style={{ position: "absolute", top: 265, right: 10 }}
+          name={isMute ? "unmute" : "mute"}
           size={15}
-          color='white'
+          color="white"
           onPress={muteVideo}
         />
       )}
