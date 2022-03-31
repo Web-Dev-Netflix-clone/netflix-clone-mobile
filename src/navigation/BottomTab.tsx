@@ -31,7 +31,7 @@ export const BottomTabNavigator = () => {
             if (route.name === 'Home2') showDiscoverNav();
           });
 
-          return unsubscribe;
+          return navigation;
         }, [navigation]);
 
         return {
@@ -40,6 +40,7 @@ export const BottomTabNavigator = () => {
             display: 'flex',
             backgroundColor: TYPOGRAPHY.COLOR.BlackSecondary,
             borderTopColor: 'transparent',
+            height: 52,
           },
           title: '',
           tabBarActiveTintColor: TYPOGRAPHY.COLOR.RedPrimary,

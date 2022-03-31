@@ -15,7 +15,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Lane from '../components/Lane';
 import { DATA } from '../../assets/MockData/DummyData';
 import { StandardLaneCard } from '../components/LaneRenderItems/StandardLaneCard';
-import { GameCard } from '../components/LaneRenderItems/GameCard';
+import { GameLaneCard } from '../components/LaneRenderItems/GameLaneCard';
+import { IMGSTYLES } from '../global/styles/imgStyles';
 
 const GamesScreen = () => {
   return (
@@ -50,7 +51,7 @@ const GamesScreen = () => {
           />
           <LinearGradient
             colors={['rgba(0,0,0, .2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.2)']}
-            style={[styles.background, { zIndex: 0 }]}
+            style={[IMGSTYLES.background, { zIndex: 0 }]}
           />
           <View
             style={{
@@ -94,7 +95,11 @@ const GamesScreen = () => {
           </View>
         </View>
       </View>
-      <Lane title='All Mobile Games' data={DATA} LaneRenderItem={GameCard} />
+      <Lane
+        title='All Mobile Games'
+        data={DATA}
+        LaneRenderItem={GameLaneCard}
+      />
     </ScrollView>
   );
 };
@@ -109,13 +114,6 @@ const styles = StyleSheet.create({
     width: 20,
     borderRadius: 50,
     marginHorizontal: GLOBAL.SPACING.sm,
-  },
-  background: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: '120%',
   },
 });
 

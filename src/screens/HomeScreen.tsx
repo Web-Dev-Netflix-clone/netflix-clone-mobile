@@ -4,7 +4,6 @@ import {
   ImageBackground,
   ScrollView,
   Text,
-  StyleSheet,
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native';
@@ -24,6 +23,7 @@ import { GLOBAL } from '../global/styles/global';
 import { Dimensions } from 'react-native';
 
 import { useActions } from '../hooks/useActions';
+import { IMGSTYLES } from '../global/styles/imgStyles';
 
 const HomeScreen = () => {
   const {
@@ -57,7 +57,7 @@ const HomeScreen = () => {
         <ImageBackground source={image} resizeMode='cover' style={{ flex: 1 }}>
           <LinearGradient
             colors={['rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.3)']}
-            style={[styles.background, { zIndex: 100 }]}
+            style={[IMGSTYLES.background, { zIndex: 100 }]}
           />
         </ImageBackground>
         <View
@@ -121,13 +121,3 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({
-  background: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: '120%',
-  },
-});

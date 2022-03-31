@@ -7,11 +7,11 @@ import { GLOBAL } from '../../global/styles/global';
 import { useNavigation } from '@react-navigation/native';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 
-interface GameCard {
+interface GameLaneCard {
   goTo: { key: string; params?: any };
 }
 
-export const GameCard = ({ goTo }: GameCard) => {
+export const GameLaneCard = ({ goTo }: GameLaneCard) => {
   const navigation = useNavigation();
 
   return (
