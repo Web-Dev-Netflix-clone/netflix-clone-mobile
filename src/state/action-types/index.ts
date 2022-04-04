@@ -19,4 +19,5 @@ export enum ActionType {
   SCROLLY_ZERO_FALSE = 'scrolly_zero_false',
   HIDE_DISCOVERNAV = 'hide_discovernav',
   SHOW_DISCOVERNAV = 'show_discovernav',
+  CHANGE_CURRENTROUTE = 'change_currentroute',
 }

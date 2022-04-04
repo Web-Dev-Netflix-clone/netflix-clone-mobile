@@ -18,7 +18,7 @@ const Lane = ({ data, LaneRenderItem, title }: ILane) => {
           paddingVertical: GLOBAL.SPACING.md,
         },
       ]}>
-      <Text style={[TYPOGRAPHY.FONT.h2, { color: '#FFF' }]}>{title}</Text>
+      <Text style={TYPOGRAPHY.FONT.h2}>{title}</Text>
       <FlatList
         horizontal
         data={data}

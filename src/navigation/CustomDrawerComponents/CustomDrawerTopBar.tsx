@@ -4,8 +4,7 @@ import { GLOBAL } from '../../global/styles/global';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { useDispatch } from 'react-redux';
-import { searchInActive } from '../../state/action-creators/appStateActions';
+import { useActions } from '../../hooks/useActions';
 
 interface ICustomDrawerTopBar {
   title: string;
@@ -14,7 +13,7 @@ interface ICustomDrawerTopBar {
 
 const CustomDrawerTopBar = ({ title, iconName }: ICustomDrawerTopBar) => {
   const navigation = useNavigation();
-  const dispatch = useDispatch();
+  const { searchInActive } = useActions();
 
   return (
     <View
@@ -27,8 +26,7 @@ const CustomDrawerTopBar = ({ title, iconName }: ICustomDrawerTopBar) => {
       ]}>
       <Pressable
         onPress={() => {
-          dispatch(searchInActive());
-          // searchInActive();
+          searchInActive();
           navigation.dispatch(DrawerActions.closeDrawer());
         }}>
         <Ionicons

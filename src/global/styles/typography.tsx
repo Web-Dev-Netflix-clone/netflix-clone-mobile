@@ -65,21 +65,25 @@ const FONT = {
     fontFamily: 'netflix-sans-bold',
     fontSize: 26,
     marginBottom: 10,
+    color: COLOR.White,
   },
   h2: {
     fontFamily: 'netflix-sans-bold',
     fontSize: 20,
     marginBottom: 10,
+    color: COLOR.White,
   },
   h3: {
     fontFamily: 'netflix-sans-bold',
     fontSize: 14,
     marginBottom: 10,
+    color: COLOR.White,
   },
   h4: {
     fontFamily: 'netflix-sans-bold',
     fontSize: 10,
     marginBottom: 10,
+    color: COLOR.White,
   },
 
   subtitle: {

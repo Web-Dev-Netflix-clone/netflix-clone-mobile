@@ -97,9 +97,7 @@ const HomeScreen = () => {
           size={36}
           color={TYPOGRAPHY.COLOR.RedPrimary}
         />
-        <Text style={[TYPOGRAPHY.FONT.h2, { color: TYPOGRAPHY.COLOR.White }]}>
-          Not sure what to watch?
-        </Text>
+        <Text style={TYPOGRAPHY.FONT.h2}>Not sure what to watch?</Text>
 
         <Text style={TYPOGRAPHY.FONT.subtitle}>
           We'll shuffle everything based on Netflix and find things for you to

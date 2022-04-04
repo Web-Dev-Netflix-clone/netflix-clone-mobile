@@ -39,9 +39,7 @@ const MovieDetailsScreen = () => {
         videoHeight={videoHeight}
       />
       <ScrollView>
-        <Text style={[TYPOGRAPHY.FONT.h1, { color: '#fff' }]}>
-          The Amazing Spider-Man
-        </Text>
+        <Text style={TYPOGRAPHY.FONT.h1}>The Amazing Spider-Man</Text>
         <View
           style={[
             GLOBAL.LAYOUT.rowCenter,

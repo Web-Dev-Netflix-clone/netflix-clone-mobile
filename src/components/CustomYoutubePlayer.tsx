@@ -7,7 +7,7 @@ import Octicons from "@expo/vector-icons/Octicons";
 
 interface ICustomYoutubePlayer {
   isMute?: boolean;
-  setIsMute: (bool: any) => void;
+  setIsMute: (bool: boolean) => void;
   setPlaying: (bool: any) => void;
   playing?: boolean;
   showVideo: number;
