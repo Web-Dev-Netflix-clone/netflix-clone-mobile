@@ -1,13 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  Modal,
-  KeyboardAvoidingView,
-  Pressable,
-  Keyboard,
-} from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, Modal } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -16,8 +7,6 @@ import { TYPOGRAPHY } from "../global/styles/typography";
 import WelcomeCarousel from "../components/Welcome/WelcomeCarousel";
 import { Button, IconButton, TextInput } from "react-native-paper";
 import { GLOBAL } from "../global/styles/global";
-import { StatusBar } from "expo-status-bar";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const WelcomeScreen = () => {
   const navigation =
@@ -82,7 +71,10 @@ const WelcomeScreen = () => {
             style={styles.button}
             color="red"
             mode="contained"
-            onPress={() => {}}
+            onPress={() => {
+              setModalVisible(false);
+              navigation.navigate("Signup");
+            }}
           >
             Get Started
           </Button>
