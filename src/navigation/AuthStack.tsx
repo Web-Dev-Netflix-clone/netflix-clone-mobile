@@ -62,7 +62,7 @@ export const LoginStack = () => {
         component={SignUpScreen}
         options={({ navigation }) => ({
           headerShown: true,
-          headerTransparent: true,
+          headerTransparent: false,
           title: "",
           headerLeft: () => (
             <Pressable
@@ -112,7 +112,6 @@ export const LoginStack = () => {
         component={HelpScreen}
         options={({ navigation }) => ({
           headerShown: true,
-          headerTransparent: true,
           headerTitle: () => (
             <Image style={IMGSTYLES.headerLogo} source={netflixLogo} />
           ),
