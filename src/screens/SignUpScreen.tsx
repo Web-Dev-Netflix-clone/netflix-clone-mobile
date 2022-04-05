@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: GLOBAL.SPACING.md,
     justifyContent: "flex-start",
-    marginTop: 100,
+    backgroundColor: "white",
   },
   header: {
     color: "black",
