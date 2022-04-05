@@ -1,6 +1,6 @@
-import { StyleSheet, Platform, TextStyle } from 'react-native';
+import { StyleSheet, Platform, TextStyle } from "react-native";
 
-import { TYPOGRAPHY } from './typography';
+import { TYPOGRAPHY } from "./typography";
 
 const SPACING = {
   xxxsm: 2,
@@ -24,13 +24,13 @@ const LAYOUT = StyleSheet.create({
     flex: 1,
   },
   defaultContainer: {
-    color: '#fff',
+    color: "#fff",
     flex: 1,
     paddingTop: SPACING.xxxl,
   },
   rowCenter: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   imageGrid: {
     display: 'flex',
@@ -47,7 +47,7 @@ const ELEMENTS = StyleSheet.create({
     marginBottom: TYPOGRAPHY.ELEMENTS.Card.marginBottom,
   },
   CategoryIcons: {
-    alignItems: 'center',
+    alignItems: "center",
     marginRight: TYPOGRAPHY.ELEMENTS.CategoryIcons.marginRight,
   },
 });
@@ -55,8 +55,8 @@ const ELEMENTS = StyleSheet.create({
 const CTA = {
   Style: StyleSheet.create({
     primary: {
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems: "center",
+      justifyContent: "center",
       backgroundColor: TYPOGRAPHY.COLOR.GreyLight,
       height: TYPOGRAPHY.BUTTON.primary.height,
       borderWidth: TYPOGRAPHY.BUTTON.primary.borderWidth,
@@ -69,9 +69,9 @@ const CTA = {
       fontSize: (TYPOGRAPHY.BUTTON.primary.text as TextStyle).fontSize,
     },
     secondary: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
       borderColor: TYPOGRAPHY.COLOR.GreyLight,
       backgroundColor: TYPOGRAPHY.COLOR.Dark,
       height: TYPOGRAPHY.BUTTON.secondary.height,
@@ -79,7 +79,7 @@ const CTA = {
       borderRadius: TYPOGRAPHY.BUTTON.secondary.borderRadius,
     },
     secondaryText: {
-      textAlign: 'center',
+      textAlign: "center",
       color: TYPOGRAPHY.COLOR.Grey,
       fontSize: (TYPOGRAPHY.BUTTON.secondary.text as TextStyle).fontSize,
     },
@@ -91,19 +91,25 @@ const CTA = {
 
 const TEXT = StyleSheet.create({
   Default: {
-    textAlign: 'left',
+    textAlign: "left",
     fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
     fontSize: 14,
     color: TYPOGRAPHY.COLOR.White,
   },
+  DefaultBlack: {
+    textAlign: "left",
+    fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
+    fontSize: 14,
+    color: TYPOGRAPHY.COLOR.Black,
+  },
   Secondary: {
-    textAlign: 'left',
+    textAlign: "left",
     fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
     fontSize: 12,
     color: TYPOGRAPHY.COLOR.White,
   },
   Bold: {
-    textAlign: 'left',
+    textAlign: "left",
     fontSize: 14,
     fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
     color: TYPOGRAPHY.COLOR.White,
@@ -125,7 +131,7 @@ const TEXT_INPUT = {
     },
     Bold: {
       fontSize: 12,
-      textAlign: 'left',
+      textAlign: "left",
       borderWidth: 1,
       fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
       borderColor: TYPOGRAPHY.COLOR.Border,
@@ -138,12 +144,12 @@ export const BRAND_HEADER = StyleSheet.create({
   header: {
     color: TYPOGRAPHY.COLOR.Dark,
     fontSize: 42,
-    fontWeight: 'bold',
-    fontFamily: 'impact',
+    fontWeight: "bold",
+    fontFamily: "impact",
     letterSpacing: 2,
   },
   textWithShadow: {
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowColor: "rgba(0, 0, 0, 0.3)",
     textShadowOffset: { width: -0.5, height: 0.5 },
     textShadowRadius: 5,
   },
@@ -151,7 +157,7 @@ export const BRAND_HEADER = StyleSheet.create({
 
 const SHADOWS = StyleSheet.create({
   shadowLight: {
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -159,10 +165,10 @@ const SHADOWS = StyleSheet.create({
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
 
-    elevation: Platform.OS === 'ios' ? 0 : 4,
+    elevation: Platform.OS === "ios" ? 0 : 4,
   },
   shadowMedium: {
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 2,
       height: 2,
@@ -170,10 +176,10 @@ const SHADOWS = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
 
-    elevation: Platform.OS === 'ios' ? 0 : 8,
+    elevation: Platform.OS === "ios" ? 0 : 8,
   },
   shadowLarge: {
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 8,
@@ -181,17 +187,17 @@ const SHADOWS = StyleSheet.create({
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
 
-    elevation: Platform.OS === 'ios' ? 0 : 8,
+    elevation: Platform.OS === "ios" ? 0 : 8,
   },
   shadowInput: {
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 4,
     },
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
-    elevation: Platform.OS === 'ios' ? 0 : 8,
+    elevation: Platform.OS === "ios" ? 0 : 8,
   },
 });
 

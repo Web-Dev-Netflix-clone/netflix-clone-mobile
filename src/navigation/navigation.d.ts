@@ -9,6 +9,7 @@ export type RootStackParams = {
   Home: undefined;
   Signin: undefined;
   Welcome: undefined;
+  Signup: undefined;
   MovieDetail: undefined;
 };
 
@@ -20,6 +21,8 @@ export type DrawerStackParams = {
 export type AuthStackParams = {
   Signin: undefined;
   Welcome: undefined;
+  Signup: undefined;
+  Help: undefined;
 };
 
 export type MovieDetailParams = {

@@ -1,5 +1,17 @@
+<<<<<<< HEAD
+import { View, Text, StyleSheet, SafeAreaView, Modal } from "react-native";
+import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParams } from "../navigation/navigation";
+import { TYPOGRAPHY } from "../global/styles/typography";
+import WelcomeCarousel from "../components/Welcome/WelcomeCarousel";
+import { Button, IconButton, TextInput } from "react-native-paper";
+import { GLOBAL } from "../global/styles/global";
+=======
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Modal } from 'react-native';
+>>>>>>> d5a50c7b34306719a821f28c2c11ea33dd014b8b
 
 import { TYPOGRAPHY } from '../global/styles/typography';
 import WelcomeCarousel from '../components/Welcome/WelcomeCarousel';
@@ -61,9 +73,19 @@ const WelcomeScreen = () => {
 
           <Button
             style={styles.button}
+<<<<<<< HEAD
+            color="red"
+            mode="contained"
+            onPress={() => {
+              setModalVisible(false);
+              navigation.navigate("Signup");
+            }}
+          >
+=======
             color='red'
             mode='contained'
             onPress={() => {}}>
+>>>>>>> d5a50c7b34306719a821f28c2c11ea33dd014b8b
             Get Started
           </Button>
         </View>
