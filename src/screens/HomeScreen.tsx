@@ -1,12 +1,12 @@
-//@ts-nocheck
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   ImageBackground,
   ScrollView,
   Text,
-  Animated,
   StyleSheet,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from 'react-native';
 import { Button } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -21,31 +21,37 @@ import { StandardLaneCard } from '../components/LaneRenderItems/StandardLaneCard
 import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
-import Constants from 'expo-constants';
-import DiscoverNav from '../components/DiscoverNav';
+import { Dimensions } from 'react-native';
+
+import { useActions } from '../hooks/useActions';
 
 const HomeScreen = () => {
-  // DIMENONSIONS API GEBRUIKEN => voor height?!
-  // https://github.com/gorhom/react-native-portal
-  // https://github.com/gorhom/react-native-bottom-sheet/issues/249
-  // https://dev.to/jeff_codes/react-native-custom-bottombar-navigation-with-bottomsheet-1ep9
+  const {
+    hideMainNav,
+    showMainNav,
+    showBottomSheet,
+    scrollYZeroFalse,
+    scrollYZeroTrue,
+  } = useActions();
 
-  const scrollY = new Animated.Value(0);
-  const translateY = scrollY.interpolate({
-    inputRange: [0, 45],
-    outputRange: [0, -45],
-  });
+  const [offset, setOffSet] = useState(0);
+  const windowHeight = Dimensions.get('window').height;
 
-  // console.log(Constants.statusBarHeight);
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const currentOffset = event.nativeEvent.contentOffset.y;
+    const direction = currentOffset > offset ? 'down' : 'up';
+    setOffSet(currentOffset);
+
+    if (currentOffset < 600) scrollYZeroTrue();
+    if (currentOffset !== 0) scrollYZeroFalse();
+    if (direction === 'up') showMainNav();
+    if (direction === 'down' && currentOffset > 75) hideMainNav();
+  };
 
   return (
     <ScrollView
       style={{ position: 'relative' }}
-      onScroll={(event) => {
-        const offSetY = event.nativeEvent.contentOffset.y;
-        scrollY.setValue(offSetY);
-        // console.log(offSetY);
-      }}
+      onScroll={handleScroll}
       contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600, position: 'relative' }}>
         <ImageBackground source={image} resizeMode='cover' style={{ flex: 1 }}>
@@ -73,9 +79,13 @@ const HomeScreen = () => {
       <Lane
         title='Top 10 in the Netherlands Today'
         data={DATA}
-        renderItem={StandardLaneCard}
+        LaneRenderItem={StandardLaneCard}
       />
-      <Lane title='Only On Netflix' data={DATA} renderItem={OnlyOnNetflix} />
+      <Lane
+        title='Only On Netflix'
+        data={DATA}
+        LaneRenderItem={OnlyOnNetflix}
+      />
 
       <View
         style={{
@@ -87,9 +97,7 @@ const HomeScreen = () => {
           size={36}
           color={TYPOGRAPHY.COLOR.RedPrimary}
         />
-        <Text style={[TYPOGRAPHY.FONT.h2, { color: TYPOGRAPHY.COLOR.White }]}>
-          Not sure what to watch?
-        </Text>
+        <Text style={TYPOGRAPHY.FONT.h2}>Not sure what to watch?</Text>
 
         <Text style={TYPOGRAPHY.FONT.subtitle}>
           We'll shuffle everything based on Netflix and find things for you to
@@ -103,7 +111,7 @@ const HomeScreen = () => {
           icon='shuffle'
           color='#000'
           onPress={() => {
-            console.log('Press');
+            showBottomSheet();
           }}>
           Play Something
         </Button>

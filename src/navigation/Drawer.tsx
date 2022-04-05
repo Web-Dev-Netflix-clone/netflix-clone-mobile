@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerActions } from '@react-navigation/native';
 import { BottomTabNavigator } from './BottomTab';
@@ -7,149 +6,230 @@ import { DrawerStackParams } from './navigation';
 import { Ionicons, Feather } from '@expo/vector-icons';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
-import { Image, Pressable, View } from 'react-native';
+import { Image, Pressable, View, Text } from 'react-native';
 import CustomDrawer from './CustomDrawer';
 import Avatar from '../components/Avatar';
-import { searchActive } from '../state/action-creators/appStateActions';
-import { useDispatch } from 'react-redux';
+
+import Animated, {
+  Easing,
+  FadeInDown,
+  FadeInUp,
+  FadeOutUp,
+  interpolateColor,
+  Layout,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+
 import DiscoverNav from '../components/DiscoverNav';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
+import CategoriesModal from '../components/CategoriesModal';
+import { useSelector } from '../hooks/useTypedSelector';
+import { useActions } from '../hooks/useActions';
+
+import { MovieDetailsStack } from './MovieDetailStack';
+import { RootState } from '../state';
 const windowHeight = Dimensions.get('window').height;
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 
 export const DrawerTabNavigator = () => {
   const [modalActive, setModalActive] = useState(false);
+  const scrollZero = useSelector((state) => state.appState.scrollYZero);
+  const showDiscoverNav = useSelector(
+    (state: RootState) => state.appState.showDiscoverNav
+  );
 
-  const dispatch = useDispatch();
+  const { searchActive } = useActions();
+
+  const progress = useSharedValue(0);
+
+  const animatedBgColor = useAnimatedStyle(() => {
+    const backgroundColor = interpolateColor(
+      progress.value,
+      [0, 1],
+      ['rgba(0,0,0,0)', 'rgba(0,0,0,0.65)']
+    );
+
+    return {
+      backgroundColor,
+    };
+  });
+
+  const mainNavHiddenToggle = useSelector(
+    (state) => state.appState.hideMainNav
+  );
+
+  const currentRoute = useSelector((state) => state.appState.currentRoute);
+
+  useEffect(() => {
+    if (scrollZero) {
+      progress.value = withTiming(0, {
+        duration: 100,
+        // easing: Easing.exp,
+      });
+    }
+
+    if (!scrollZero) {
+      progress.value = withTiming(1, {
+        duration: 0,
+        // easing: Easing.exp,
+      });
+    }
+  }, [scrollZero]);
+
   return (
     <Drawer.Navigator
       drawerContent={(props) => <CustomDrawer {...props} />}
       initialRouteName='Home'
-      //@ts-ignore
-      screenOptions={({ navigation }: { navigation: any }) => ({
-        headerShown: true,
-        // headerLeft: false,
+      screenOptions={({ navigation }) => {
+        return {
+          headerShown: true,
 
-        header: () => (
-          <View>
-            <View
-              style={{
-                flexDirection: 'row',
-                paddingTop: GLOBAL.SPACING.xxxl,
-                justifyContent: 'space-between',
-              }}>
-              <Pressable
-                style={{
-                  marginLeft: GLOBAL.SPACING.sm,
-                  marginTop: -GLOBAL.SPACING.sm,
-                }}
-                onPress={() => {}}>
-                <Image
-                  source={require('../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png')}
-                  style={{ height: 30, width: 30 }}
-                />
-              </Pressable>
-              <View
-                style={[
-                  GLOBAL.LAYOUT.rowCenter,
-                  { width: '50%', justifyContent: 'space-around' },
-                ]}>
-                <Pressable
-                  style={{
-                    marginRight: GLOBAL.SPACING.sm,
-                    marginTop: -GLOBAL.SPACING.sm,
-                  }}
-                  onPress={() =>
-                    navigation.dispatch(DrawerActions.openDrawer())
-                  }>
-                  <Feather
-                    name='cast'
-                    size={26}
-                    color={TYPOGRAPHY.COLOR.White}
-                  />
-                </Pressable>
-                <Pressable
-                  style={{
-                    marginRight: GLOBAL.SPACING.sm,
-                    marginTop: -GLOBAL.SPACING.sm,
-                  }}
-                  onPress={() => {
-                    // searchActive();
-                    dispatch(searchActive());
+          header: ({}) => {
+            return (
+              <View>
+                {!mainNavHiddenToggle && (
+                  <Animated.View
+                    entering={FadeInDown.delay(250)}
+                    layout={Layout.easing(Easing.ease).delay(200)}
+                    exiting={FadeOutUp.delay(200)}
+                    style={[
+                      {
+                        backgroundColor: 'rgba(0,0,0,0.65)',
+                        flexDirection: 'row',
+                        paddingTop: 56,
+                        justifyContent: 'space-between',
+                      },
+                      animatedBgColor,
+                    ]}>
+                    {currentRoute === 'Home2' ? (
+                      <Pressable
+                        style={{
+                          marginLeft: GLOBAL.SPACING.sm,
+                          marginTop: -GLOBAL.SPACING.sm,
+                        }}
+                        onPress={() => {}}>
+                        <Image
+                          source={require('../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png')}
+                          style={{ height: 30, width: 30 }}
+                        />
+                      </Pressable>
+                    ) : (
+                      <Text
+                        style={{
+                          ...TYPOGRAPHY.FONT.body,
+                          fontSize: 17,
+                          marginLeft: 15,
+                        }}>
+                        {currentRoute.split(/(?=[A-Z])/).join(' ')}
+                      </Text>
+                    )}
+                    <View
+                      style={[
+                        GLOBAL.LAYOUT.rowCenter,
+                        { width: '50%', justifyContent: 'space-around' },
+                      ]}>
+                      <Pressable
+                        style={{
+                          marginRight: GLOBAL.SPACING.sm,
+                          marginTop: -GLOBAL.SPACING.sm,
+                        }}
+                        onPress={() =>
+                          navigation.dispatch(DrawerActions.openDrawer())
+                        }>
+                        {currentRoute === 'Home2' && (
+                          <Feather
+                            name='cast'
+                            size={26}
+                            color={TYPOGRAPHY.COLOR.White}
+                          />
+                        )}
+                      </Pressable>
+                      <Pressable
+                        style={{
+                          marginRight: GLOBAL.SPACING.sm,
+                          marginTop: -GLOBAL.SPACING.sm,
+                        }}
+                        onPress={() => {
+                          searchActive();
 
-                    navigation.dispatch(DrawerActions.openDrawer());
-                  }}>
-                  <Ionicons
-                    name='search'
-                    size={26}
-                    color={TYPOGRAPHY.COLOR.White}
+                          navigation.dispatch(DrawerActions.openDrawer());
+                        }}>
+                        <Ionicons
+                          name='search'
+                          size={26}
+                          color={TYPOGRAPHY.COLOR.White}
+                        />
+                      </Pressable>
+                      <Pressable
+                        style={{
+                          marginRight: GLOBAL.SPACING.sm,
+                          marginTop: -GLOBAL.SPACING.sm,
+                        }}
+                        onPress={() => {
+                          navigation.dispatch(DrawerActions.openDrawer());
+                        }}>
+                        <Avatar
+                          imageSource={require('../../assets/netflix-avatars/avatar-yellow.png')}
+                          height={20}
+                          width={20}
+                        />
+                      </Pressable>
+                    </View>
+                  </Animated.View>
+                )}
+
+                {showDiscoverNav && (
+                  <Animated.View
+                    entering={FadeInUp.delay(200)}
+                    layout={Layout.easing(Easing.ease).delay(200)}
+                    exiting={FadeOutUp.delay(200)}
+                    style={[animatedBgColor]}>
+                    <DiscoverNav
+                      setModalActive={setModalActive}
+                      style={{
+                        width: '100%',
+                        height: mainNavHiddenToggle ? 90 : 50,
+                        paddingTop: mainNavHiddenToggle ? 40 : 0,
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-evenly',
+                      }}
+                    />
+                  </Animated.View>
+                )}
+
+                {modalActive && (
+                  <CategoriesModal
+                    modalActive={modalActive}
+                    setModalActive={setModalActive}
                   />
-                </Pressable>
-                <Pressable
-                  style={{
-                    marginRight: GLOBAL.SPACING.sm,
-                    marginTop: -GLOBAL.SPACING.sm,
-                  }}
-                  onPress={() => {
-                    navigation.dispatch(DrawerActions.openDrawer());
-                  }}>
-                  <Avatar
-                    imageSource={require('../../assets/netflix-avatars/avatar-yellow.png')}
-                    height={20}
-                    width={20}
-                  />
-                </Pressable>
+                )}
               </View>
-            </View>
+            );
+          },
 
-            <DiscoverNav
-              setModalActive={setModalActive}
-              style={{
-                backgroundColor: 'transparent',
-                width: '100%',
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-evenly',
-              }}
+          title: '',
+          headerTransparent: true,
+          drawerPosition: 'right',
+          drawerStyle: { right: 0, width: '100%' },
+          drawerIcon: () => (
+            <Ionicons
+              name='md-home-outline'
+              size={26}
+              color={TYPOGRAPHY.COLOR.Black}
             />
-            {modalActive && (
-              <LinearGradient
-                colors={[
-                  'rgba(0,0,0, 0.2)',
-                  'rgba(0,0,0, 0.2)',
-                  'rgba(0,0,0,0.3)',
-                ]}
-                style={[styles.background, { zIndex: 100 }]}
-              />
-            )}
-          </View>
-        ),
-
-        title: '',
-        headerTransparent: true,
-        drawerPosition: 'right',
-        drawerStyle: { right: 0, width: '100%' },
-        drawerIcon: () => (
-          <Ionicons
-            name='md-home-outline'
-            size={26}
-            color={TYPOGRAPHY.COLOR.Black}
-          />
-        ),
-      })}>
+          ),
+        };
+      }}>
       <Drawer.Screen name='Home' component={BottomTabNavigator} />
+      <Drawer.Screen
+        name='MovieDetail'
+        component={MovieDetailsStack}
+        options={{ headerShown: false }}
+      />
     </Drawer.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  background: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: windowHeight,
-  },
-});

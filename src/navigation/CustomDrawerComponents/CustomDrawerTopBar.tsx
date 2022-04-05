@@ -1,20 +1,19 @@
-import { View, Text, Pressable } from 'react-native';
 import React from 'react';
+import { View, Text, Pressable } from 'react-native';
 import { GLOBAL } from '../../global/styles/global';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { useDispatch } from 'react-redux';
-import { searchInActive } from '../../state/action-creators/appStateActions';
+import { useActions } from '../../hooks/useActions';
 
 interface ICustomDrawerTopBar {
   title: string;
-  iconName?: string;
+  iconName?: any;
 }
 
 const CustomDrawerTopBar = ({ title, iconName }: ICustomDrawerTopBar) => {
   const navigation = useNavigation();
-  const dispatch = useDispatch();
+  const { searchInActive } = useActions();
 
   return (
     <View
@@ -27,13 +26,10 @@ const CustomDrawerTopBar = ({ title, iconName }: ICustomDrawerTopBar) => {
       ]}>
       <Pressable
         onPress={() => {
-          dispatch(searchInActive());
-          // searchInActive();
+          searchInActive();
           navigation.dispatch(DrawerActions.closeDrawer());
         }}>
         <Ionicons
-          // how to type this?
-          //@ts-ignore
           name={iconName ? iconName : 'arrow-back'}
           size={26}
           color={TYPOGRAPHY.COLOR.White}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text } from 'react-native';
 
 import { Button } from 'react-native-paper';
 
@@ -13,7 +13,6 @@ import {
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
 import { TYPOGRAPHY } from '../global/styles/typography';
-import { useNavigation } from '@react-navigation/native';
 import { GLOBAL } from '../global/styles/global';
 
 import { avatarData } from '../../assets/MockData/avatarData';
@@ -27,11 +26,13 @@ import CustomDrawerTouchableLink from './CustomDrawerComponents/CustomDrawerTouc
 import { useSelector } from 'react-redux';
 import { RootState } from '../state';
 import SearchBar from '../components/SearchBar';
+import { useActions } from '../hooks/useActions';
 const CustomDrawer = (props: any) => {
-  const navigation = useNavigation();
+  const { fakeLogout } = useActions();
   const searchActive = useSelector(
     (state: RootState) => state.appState.searchActive
   );
+
   // console.log('PROPS is an object describing the Drawer', props);
 
   return searchActive ? (
@@ -207,7 +208,6 @@ const CustomDrawer = (props: any) => {
             {
               marginLeft: GLOBAL.SPACING.md,
               marginBottom: 0,
-              color: TYPOGRAPHY.COLOR.White,
             },
           ]}>
           My List
@@ -225,7 +225,9 @@ const CustomDrawer = (props: any) => {
           <CustomDrawerTouchableLink
             key={link.id}
             title={link.title}
-            onClick={() => {}}
+            onClick={
+              link.title === 'Sign Out' ? () => fakeLogout() : link.onClick
+            }
           />
         ))}
       </View>

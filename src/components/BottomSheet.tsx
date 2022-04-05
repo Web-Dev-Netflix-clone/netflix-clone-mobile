@@ -1,17 +1,26 @@
-import { View, Text } from 'react-native';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import Modal from 'react-native-modal';
+import BottomSheetContent from './BottomSheetContent';
+import { RootState } from '../state';
 
-const BottomSheetRenderContent = () => {
+const BottomSheet = () => {
+  const bottomSheetVisible = useSelector(
+    (state: RootState) => state.appState.showBottomSheet
+  );
+
   return (
-    <View
+    <Modal
+      coverScreen={false}
+      hasBackdrop={false}
       style={{
-        backgroundColor: 'white',
-        padding: 16,
-        height: 450,
-      }}>
-      <Text>Swipe down to close</Text>
-    </View>
+        justifyContent: 'flex-end',
+        margin: 0,
+      }}
+      isVisible={bottomSheetVisible}>
+      <BottomSheetContent />
+    </Modal>
   );
 };
 
-export default BottomSheetRenderContent;
+export default BottomSheet;

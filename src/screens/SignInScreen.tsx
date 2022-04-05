@@ -7,13 +7,12 @@ import {
   View,
 } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
-import { fakeLogin } from '../state/action-creators/_userActions';
+import { useActions } from '../hooks/useActions';
 
 const SignInScreen = () => {
-  const dispatch = useDispatch();
+  const { fakeLogin } = useActions();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,6 +37,7 @@ const SignInScreen = () => {
           label='Email or phone number'
           mode='outlined'
           value={email}
+          onChangeText={(text) => setEmail(text)}
           autoComplete=''
           style={
             inputActive
@@ -58,6 +58,7 @@ const SignInScreen = () => {
           label='Password'
           mode='outlined'
           value={password}
+          onChangeText={(text) => setPassword(text)}
           autoComplete=''
           style={
             inputActive
@@ -85,7 +86,7 @@ const SignInScreen = () => {
           paddingVertical: GLOBAL.SPACING.sm,
         }}
         onPress={() => {
-          dispatch(fakeLogin());
+          fakeLogin();
         }}>
         Sign In
       </Button>

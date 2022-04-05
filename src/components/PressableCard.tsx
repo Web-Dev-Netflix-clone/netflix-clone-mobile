@@ -1,4 +1,4 @@
-import { Children, ReactChildren, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import {
   Text,
   StyleSheet,
@@ -6,18 +6,22 @@ import {
   ImageBackground,
   Pressable,
   ImageSourcePropType,
+  ViewStyle,
 } from 'react-native';
 
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
 
 interface IPressableCard {
-  background: ImageSourcePropType;
-  onClick: () => void;
+  background?: ImageSourcePropType;
+  onClick?: () => void;
   title?: string;
   height?: number;
-  width?: number;
+  width?: number | string;
+  wrapperWidth?: number | string;
   children?: ReactNode;
+  cardRadius?: number;
+  style?: ViewStyle;
 }
 
 export const PressableCard = ({
@@ -26,14 +30,24 @@ export const PressableCard = ({
   title,
   height = 170,
   width = 100,
+  wrapperWidth,
   children,
+  cardRadius = 4,
+  style,
 }: IPressableCard) => {
   return (
-    <View style={{ position: 'relative' }}>
+    <View style={[{ position: 'relative', width: wrapperWidth }, style]}>
       <Pressable
         onPress={onClick}
-        style={[styles(height, width).card, GLOBAL.SHADOWS.shadowMedium]}>
-        <ImageBackground style={styles().image} source={background} />
+        style={[
+          styles(height, width, cardRadius).card,
+          GLOBAL.SHADOWS.shadowMedium,
+          ,
+          style,
+        ]}>
+        {background && (
+          <ImageBackground style={styles().image} source={background} />
+        )}
         <View style={[{ padding: GLOBAL.SPACING.sm }]}>
           {title && (
             <Text
@@ -51,19 +65,25 @@ export const PressableCard = ({
   );
 };
 
-const styles = (height?: number, width?: number) =>
+const styles = (
+  height?: number | string,
+  width?: number | string,
+  cardRadius?: number
+) =>
   StyleSheet.create({
     card: {
       flexBasis: width,
       backgroundColor: TYPOGRAPHY.COLOR.Black,
-      margin: GLOBAL.SPACING.sm,
+      // margin: GLOBAL.SPACING.sm,
+      marginBottom: GLOBAL.SPACING.sm,
       height: height,
       width: width,
-      borderRadius: 4,
+      borderRadius: cardRadius,
     },
     image: {
       position: 'absolute',
       top: 0,
+      left: 0,
       width: '100%',
       height: '100%',
     },

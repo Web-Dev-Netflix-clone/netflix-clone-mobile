@@ -1,10 +1,20 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Image, View } from 'react-native';
+import { IMGSTYLES } from '../global/styles/imgStyles';
 
 const StartupScreen = () => {
   return (
-    <View>
-      <Text>Startup Screen</Text>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: '#000',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <Image
+        style={IMGSTYLES.mainImage}
+        source={require('../../assets/netflix-logos/netflix-logo-2560x1440.png')}
+      />
     </View>
   );
 };

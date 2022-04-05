@@ -21,10 +21,11 @@
     "android": {
       "softwareKeyboardLayoutMode": "pan",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/netflix-logos/netflix-icon-logo-small.png",
+        "backgroundColor": "#000"
       }
     },
+
     "web": {
       "favicon": "./assets/favicon.png"
     }

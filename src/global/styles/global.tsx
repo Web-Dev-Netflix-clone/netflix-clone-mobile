@@ -2,11 +2,6 @@ import { StyleSheet, Platform, TextStyle } from "react-native";
 
 import { TYPOGRAPHY } from "./typography";
 
-// Dit bestand moet nog aangepast worden naar de wensen van ons project
-// Laten we al deze GLOBALE styles de komende dagen overleggen en
-// helemaal naar het project inrichten. We kunnen hier ook altijd dingen
-// toevoegen wanneer je iets vaak hergebruikt.
-
 const SPACING = {
   xxxsm: 2,
   xxsm: 4,
@@ -23,7 +18,7 @@ const SPACING = {
 const LAYOUT = StyleSheet.create({
   SafeArea: {
     flex: 1,
-    backgroundColor: TYPOGRAPHY.COLOR.Dark,
+    backgroundColor: TYPOGRAPHY.COLOR.Black,
   },
   container: {
     flex: 1,
@@ -36,6 +31,14 @@ const LAYOUT = StyleSheet.create({
   rowCenter: {
     flexDirection: "row",
     alignItems: "center",
+  },
+  imageGrid: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    justifyContent: 'space-evenly',
+    paddingVertical: SPACING.md,
   },
 });
 
