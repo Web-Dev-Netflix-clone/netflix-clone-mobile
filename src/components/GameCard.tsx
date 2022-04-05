@@ -5,13 +5,13 @@ import {
   ViewStyle,
   ImageSourcePropType,
 } from 'react-native';
-import card from '../../../assets/netflix-games/dungeon-dwarves-card.jpg';
+import card from '../../assets/netflix-games/dungeon-dwarves-card.jpg';
 
 interface IGameCard {
   style?: ViewStyle;
   height?: number | string;
   width?: number | string;
-  imageSource: ImageSourcePropType;
+  imageSource?: ImageSourcePropType;
 }
 
 const GameCard = ({ style, height, width, imageSource }: IGameCard) => {

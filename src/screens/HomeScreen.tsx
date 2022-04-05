@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   ImageBackground,
@@ -24,6 +24,7 @@ import { Dimensions } from 'react-native';
 
 import { useActions } from '../hooks/useActions';
 import { IMGSTYLES } from '../global/styles/imgStyles';
+import axios from 'axios';
 
 const HomeScreen = () => {
   const {
@@ -47,6 +48,31 @@ const HomeScreen = () => {
     if (direction === 'up') showMainNav();
     if (direction === 'down' && currentOffset > 75) hideMainNav();
   };
+
+  useEffect(() => {
+    console.log('inside the effect');
+    const requestMovies = async () => {
+      try {
+        const response = await axios.get(
+          'https://afternoon-oasis-79606.herokuapp.com/discover'
+        );
+
+        const data = response.data;
+
+        const allMovies = data.reduce((acc: any, curr: any, index: number) => {
+          if (index) return acc.concat(curr.results);
+
+          return acc;
+        }, []);
+
+        // console.log('ALL', allMovies);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    requestMovies();
+  }, []);
 
   return (
     <ScrollView

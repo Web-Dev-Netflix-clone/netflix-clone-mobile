@@ -44,6 +44,7 @@ export const DrawerTabNavigator = () => {
   const { searchActive } = useActions();
 
   const progress = useSharedValue(0);
+  const progress2 = useSharedValue(0);
 
   const animatedBgColor = useAnimatedStyle(() => {
     const backgroundColor = interpolateColor(
