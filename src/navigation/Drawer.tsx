@@ -44,6 +44,7 @@ export const DrawerTabNavigator = () => {
   const { searchActive } = useActions();
 
   const progress = useSharedValue(0);
+  const progress2 = useSharedValue(0);
 
   const animatedBgColor = useAnimatedStyle(() => {
     const backgroundColor = interpolateColor(
@@ -73,7 +74,7 @@ export const DrawerTabNavigator = () => {
 
     if (!scrollZero) {
       progress.value = withTiming(1, {
-        duration: 0,
+        duration: 100,
         // easing: Easing.exp,
       });
     }

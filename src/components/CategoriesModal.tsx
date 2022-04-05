@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { categoriesData } from '../../assets/MockData/categoriesData';
 
 import { PressableText } from '../global/elements/PressableText';
+import { IMGSTYLES } from '../global/styles/imgStyles';
 
 interface ICategoriesModal {
   style?: ViewStyle;
@@ -28,7 +29,7 @@ const CategoriesModal = ({
       <View style={[styles.modalContainer, style]}>
         <LinearGradient
           colors={['rgba(0,0,0, 0.9)', 'rgba(0,0,0, 0.9)', 'rgba(0,0,0,0.9)']}
-          style={[styles.background, { zIndex: 11 }]}
+          style={[IMGSTYLES.background, { zIndex: 11 }]}
         />
         <ScrollView
           style={{
@@ -86,12 +87,5 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     bottom: '3%',
     zIndex: 12,
-  },
-  background: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: '120%',
   },
 });

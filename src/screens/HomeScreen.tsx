@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   ImageBackground,
   ScrollView,
   Text,
-  StyleSheet,
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native';
@@ -24,6 +23,8 @@ import { GLOBAL } from '../global/styles/global';
 import { Dimensions } from 'react-native';
 
 import { useActions } from '../hooks/useActions';
+import { IMGSTYLES } from '../global/styles/imgStyles';
+import axios from 'axios';
 
 const HomeScreen = () => {
   const {
@@ -48,6 +49,31 @@ const HomeScreen = () => {
     if (direction === 'down' && currentOffset > 75) hideMainNav();
   };
 
+  useEffect(() => {
+    console.log('inside the effect');
+    const requestMovies = async () => {
+      try {
+        const response = await axios.get(
+          'https://afternoon-oasis-79606.herokuapp.com/discover'
+        );
+
+        const data = response.data;
+
+        const allMovies = data.reduce((acc: any, curr: any, index: number) => {
+          if (index) return acc.concat(curr.results);
+
+          return acc;
+        }, []);
+
+        // console.log('ALL', allMovies);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    requestMovies();
+  }, []);
+
   return (
     <ScrollView
       style={{ position: 'relative' }}
@@ -57,7 +83,7 @@ const HomeScreen = () => {
         <ImageBackground source={image} resizeMode='cover' style={{ flex: 1 }}>
           <LinearGradient
             colors={['rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.3)']}
-            style={[styles.background, { zIndex: 100 }]}
+            style={[IMGSTYLES.background, { zIndex: 100 }]}
           />
         </ImageBackground>
         <View
@@ -121,13 +147,3 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({
-  background: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: '120%',
-  },
-});

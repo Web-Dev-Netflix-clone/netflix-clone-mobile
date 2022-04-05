@@ -9,13 +9,15 @@ import {
 } from 'react-native';
 import { GLOBAL } from '../global/styles/global';
 import banner from '../../assets/netflix-games/stranger-things-game-bg2.png';
-import card from '../../assets/netflix-games/dungeon-dwarves-card.jpg';
+
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { LinearGradient } from 'expo-linear-gradient';
 import Lane from '../components/Lane';
 import { DATA } from '../../assets/MockData/DummyData';
-import { StandardLaneCard } from '../components/LaneRenderItems/StandardLaneCard';
-import { GameCard } from '../components/LaneRenderItems/GameCard';
+
+import { GameLaneCard } from '../components/LaneRenderItems/GameLaneCard';
+import { IMGSTYLES } from '../global/styles/imgStyles';
+import GameCard from '../components/GameCard';
 
 const GamesScreen = () => {
   return (
@@ -50,26 +52,9 @@ const GamesScreen = () => {
           />
           <LinearGradient
             colors={['rgba(0,0,0, .2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.2)']}
-            style={[styles.background, { zIndex: 0 }]}
+            style={[IMGSTYLES.background, { zIndex: 0 }]}
           />
-          <View
-            style={{
-              borderRadius: 20,
-              height: 150,
-              width: 150,
-              backgroundColor: '#000',
-              zIndex: 10,
-              overflow: 'hidden',
-            }}>
-            <ImageBackground
-              source={card}
-              resizeMode='stretch'
-              style={{
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </View>
+          <GameCard height={150} width={150} />
 
           <View
             style={{
@@ -94,7 +79,11 @@ const GamesScreen = () => {
           </View>
         </View>
       </View>
-      <Lane title='All Mobile Games' data={DATA} LaneRenderItem={GameCard} />
+      <Lane
+        title='All Mobile Games'
+        data={DATA}
+        LaneRenderItem={GameLaneCard}
+      />
     </ScrollView>
   );
 };
@@ -109,13 +98,6 @@ const styles = StyleSheet.create({
     width: 20,
     borderRadius: 50,
     marginHorizontal: GLOBAL.SPACING.sm,
-  },
-  background: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: '120%',
   },
 });
 
