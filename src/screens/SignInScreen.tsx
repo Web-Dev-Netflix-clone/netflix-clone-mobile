@@ -10,8 +10,13 @@ import { TextInput, Button } from 'react-native-paper';
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { useActions } from '../hooks/useActions';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParams } from '../navigation/navigation';
 
 const SignInScreen = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const { fakeLogin } = useActions();
 
   const [email, setEmail] = useState('');
@@ -97,7 +102,7 @@ const SignInScreen = () => {
           justifyContent: 'space-between',
           height: 150,
         }}>
-        <Pressable onPress={() => console.log('click')}>
+        <Pressable onPress={() => navigation.navigate('Help')}>
           <Text
             style={[
               GLOBAL.TEXT.Secondary,
@@ -107,7 +112,7 @@ const SignInScreen = () => {
           </Text>
         </Pressable>
 
-        <Pressable onPress={() => console.log('click')}>
+        <Pressable onPress={() => navigation.navigate('Signup')}>
           <Text style={GLOBAL.TEXT.Secondary}>
             New to netflix? Sign up now.
           </Text>

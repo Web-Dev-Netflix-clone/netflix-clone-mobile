@@ -50,7 +50,7 @@ const HomeScreen = () => {
   };
 
   useEffect(() => {
-    console.log('inside the effect');
+    // console.log('inside the effect');
     const requestMovies = async () => {
       try {
         const response = await axios.get(
