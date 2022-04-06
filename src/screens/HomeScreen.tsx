@@ -10,21 +10,24 @@ import {
 import { Button } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import image from '../../assets/images/posters/stranger-things.jpg';
+// import image from '../../assets/images/posters/stranger-things.jpg';
+import uuid from 'react-native-uuid';
 import InfoBar from '../components/InfoBar';
 import { TagMapper } from '../components/TagMapper';
-import { DATA } from '../../assets/MockData/DummyData';
+// import { DATA } from '../../assets/MockData/DummyData';
 import { Ionicons } from '@expo/vector-icons';
 import Lane from '../components/Lane';
 import { StandardLaneCard } from '../components/LaneRenderItems/StandardLaneCard';
-import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
+// import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
 import { Dimensions } from 'react-native';
 
 import { useActions } from '../hooks/useActions';
 import { IMGSTYLES } from '../global/styles/imgStyles';
-import axios from 'axios';
+
+import { useSelector } from 'react-redux';
+import { RootState } from '../state';
 
 const HomeScreen = () => {
   const {
@@ -33,7 +36,12 @@ const HomeScreen = () => {
     showBottomSheet,
     scrollYZeroFalse,
     scrollYZeroTrue,
+    fetchMovies,
   } = useActions();
+  const movies = useSelector((state: RootState) => state.movies.allMovies);
+  const movie = useSelector((state: RootState) => state.movies.singleMovie);
+
+  // console.log('SINGGLE MOVIE!', movie);
 
   const [offset, setOffSet] = useState(0);
   const windowHeight = Dimensions.get('window').height;
@@ -50,28 +58,7 @@ const HomeScreen = () => {
   };
 
   useEffect(() => {
-    // console.log('inside the effect');
-    const requestMovies = async () => {
-      try {
-        const response = await axios.get(
-          'https://afternoon-oasis-79606.herokuapp.com/discover'
-        );
-
-        const data = response.data;
-
-        const allMovies = data.reduce((acc: any, curr: any, index: number) => {
-          if (index) return acc.concat(curr.results);
-
-          return acc;
-        }, []);
-
-        // console.log('ALL', allMovies);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    requestMovies();
+    fetchMovies();
   }, []);
 
   return (
@@ -80,7 +67,12 @@ const HomeScreen = () => {
       onScroll={handleScroll}
       contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600, position: 'relative' }}>
-        <ImageBackground source={image} resizeMode='cover' style={{ flex: 1 }}>
+        <ImageBackground
+          source={{
+            uri: movie?.poster,
+          }}
+          resizeMode='cover'
+          style={{ flex: 1 }}>
           <LinearGradient
             colors={['rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.3)']}
             style={[IMGSTYLES.background, { zIndex: 100 }]}
@@ -88,7 +80,7 @@ const HomeScreen = () => {
         </ImageBackground>
         <View
           style={{
-            marginTop: -28,
+            marginTop: -40,
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: 'transparent',
@@ -102,16 +94,18 @@ const HomeScreen = () => {
         </View>
         <InfoBar />
       </View>
-      <Lane
-        title='Top 10 in the Netherlands Today'
-        data={DATA}
-        LaneRenderItem={StandardLaneCard}
-      />
-      <Lane
-        title='Only On Netflix'
-        data={DATA}
-        LaneRenderItem={OnlyOnNetflix}
-      />
+
+      {movies.map((movieSet, i) => {
+        if (i < 2)
+          return (
+            <Lane
+              key={uuid.v4().toString()}
+              title='Lane'
+              data={movieSet}
+              LaneRenderItem={StandardLaneCard}
+            />
+          );
+      })}
 
       <View
         style={{
