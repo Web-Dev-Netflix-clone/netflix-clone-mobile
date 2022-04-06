@@ -20,4 +20,7 @@ export enum ActionType {
   HIDE_DISCOVERNAV = 'hide_discovernav',
   SHOW_DISCOVERNAV = 'show_discovernav',
   CHANGE_CURRENTROUTE = 'change_currentroute',
+  REQUEST_MOVIES_SUCCESS = 'request_movies_success',
+  REQUEST_MOVIES_FAILURE = 'request_movies_failure',
+  SINGLE_MOVIE = 'single_movie',
 }

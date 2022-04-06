@@ -46,7 +46,11 @@ export const PressableCard = ({
           style,
         ]}>
         {background && (
-          <ImageBackground style={styles().image} source={background} />
+          <ImageBackground
+            style={styles().image}
+            //@ts-ignore
+            source={{ uri: background }}
+          />
         )}
         <View style={[{ padding: GLOBAL.SPACING.sm }]}>
           {title && (

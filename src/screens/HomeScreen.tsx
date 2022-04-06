@@ -25,6 +25,8 @@ import { Dimensions } from 'react-native';
 import { useActions } from '../hooks/useActions';
 import { IMGSTYLES } from '../global/styles/imgStyles';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { RootState } from '../state';
 
 const HomeScreen = () => {
   const {
@@ -33,7 +35,12 @@ const HomeScreen = () => {
     showBottomSheet,
     scrollYZeroFalse,
     scrollYZeroTrue,
+    fetchMovies,
   } = useActions();
+  const movies = useSelector((state: RootState) => state.movies.allMovies);
+  const movie = useSelector((state: RootState) => state.movies.singleMovie);
+
+  // console.log('SINGGLE MOVIE!', movie);
 
   const [offset, setOffSet] = useState(0);
   const windowHeight = Dimensions.get('window').height;
@@ -51,27 +58,27 @@ const HomeScreen = () => {
 
   useEffect(() => {
     // console.log('inside the effect');
-    const requestMovies = async () => {
-      try {
-        const response = await axios.get(
-          'https://afternoon-oasis-79606.herokuapp.com/discover'
-        );
+    // const requestMovies = async () => {
+    //   try {
+    //     const response = await axios.get(
+    //       'https://afternoon-oasis-79606.herokuapp.com/discover'
+    //     );
 
-        const data = response.data;
+    //     const data = response.data;
 
-        const allMovies = data.reduce((acc: any, curr: any, index: number) => {
-          if (index) return acc.concat(curr.results);
+    //     const allMovies = data.reduce((acc: any, curr: any, index: number) => {
+    //       if (index) return acc.concat(curr.results);
 
-          return acc;
-        }, []);
+    //       return acc;
+    //     }, []);
 
-        // console.log('ALL', allMovies);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    requestMovies();
+    //     // console.log('ALL', allMovies);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // requestMovies();
+    fetchMovies();
   }, []);
 
   return (
@@ -80,7 +87,12 @@ const HomeScreen = () => {
       onScroll={handleScroll}
       contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600, position: 'relative' }}>
-        <ImageBackground source={image} resizeMode='cover' style={{ flex: 1 }}>
+        <ImageBackground
+          source={{
+            uri: movie?.poster,
+          }}
+          resizeMode='cover'
+          style={{ flex: 1 }}>
           <LinearGradient
             colors={['rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.3)']}
             style={[IMGSTYLES.background, { zIndex: 100 }]}
@@ -88,7 +100,7 @@ const HomeScreen = () => {
         </ImageBackground>
         <View
           style={{
-            marginTop: -28,
+            marginTop: -40,
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: 'transparent',
@@ -102,16 +114,17 @@ const HomeScreen = () => {
         </View>
         <InfoBar />
       </View>
-      <Lane
-        title='Top 10 in the Netherlands Today'
-        data={DATA}
-        LaneRenderItem={StandardLaneCard}
-      />
-      <Lane
-        title='Only On Netflix'
-        data={DATA}
-        LaneRenderItem={OnlyOnNetflix}
-      />
+
+      {movies.map((movieSet) => {
+        return (
+          <Lane
+            title='Lane'
+            //@ts-ignore
+            data={movieSet}
+            LaneRenderItem={StandardLaneCard}
+          />
+        );
+      })}
 
       <View
         style={{

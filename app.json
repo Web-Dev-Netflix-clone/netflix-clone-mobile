@@ -13,7 +13,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.test.test"
@@ -23,9 +25,9 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/netflix-logos/netflix-icon-logo-small.png",
         "backgroundColor": "#000"
-      }
+      },
+      "package": "com.test.test"
     },
-
     "web": {
       "favicon": "./assets/favicon.png"
     }
