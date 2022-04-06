@@ -10,7 +10,7 @@ import {
 import { Button } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 
-// import image from '../../assets/images/posters/stranger-things.jpg';
+import image from '../../assets/images/posters/stranger-things.jpg';
 import uuid from 'react-native-uuid';
 import InfoBar from '../components/InfoBar';
 import { TagMapper } from '../components/TagMapper';
@@ -41,8 +41,6 @@ const HomeScreen = () => {
   const movies = useSelector((state: RootState) => state.movies.allMovies);
   const movie = useSelector((state: RootState) => state.movies.singleMovie);
 
-  // console.log('SINGGLE MOVIE!', movie);
-
   const [offset, setOffSet] = useState(0);
   const windowHeight = Dimensions.get('window').height;
 
@@ -61,23 +59,30 @@ const HomeScreen = () => {
     fetchMovies();
   }, []);
 
+  // console.log(movie);
+
   return (
     <ScrollView
       style={{ position: 'relative' }}
       onScroll={handleScroll}
       contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600, position: 'relative' }}>
-        <ImageBackground
-          source={{
-            uri: movie?.poster,
-          }}
-          resizeMode='cover'
-          style={{ flex: 1 }}>
-          <LinearGradient
-            colors={['rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.3)']}
-            style={[IMGSTYLES.background, { zIndex: 100 }]}
-          />
-        </ImageBackground>
+        {movie.poster || movie.backdrop ? (
+          <ImageBackground
+            source={{ uri: movie.poster || movie.backdrop }}
+            resizeMode='cover'
+            style={{ flex: 1 }}>
+            <LinearGradient
+              colors={[
+                'rgba(0,0,0, 0.2)',
+                'rgba(0,0,0, 0.2)',
+                'rgba(0,0,0,0.3)',
+              ]}
+              style={[IMGSTYLES.background, { zIndex: 100 }]}
+            />
+          </ImageBackground>
+        ) : null}
+
         <View
           style={{
             marginTop: -40,
@@ -95,7 +100,7 @@ const HomeScreen = () => {
         <InfoBar />
       </View>
 
-      {movies.map((movieSet, i) => {
+      {movies?.map((movieSet, i) => {
         if (i < 2)
           return (
             <Lane
