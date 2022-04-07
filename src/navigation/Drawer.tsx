@@ -44,7 +44,6 @@ export const DrawerTabNavigator = () => {
   const { searchActive } = useActions();
 
   const progress = useSharedValue(0);
-  const progress2 = useSharedValue(0);
 
   const animatedBgColor = useAnimatedStyle(() => {
     const backgroundColor = interpolateColor(
@@ -68,14 +67,14 @@ export const DrawerTabNavigator = () => {
     if (scrollZero) {
       progress.value = withTiming(0, {
         duration: 100,
-        // easing: Easing.exp,
+        easing: Easing.exp,
       });
     }
 
     if (!scrollZero) {
       progress.value = withTiming(1, {
         duration: 100,
-        // easing: Easing.exp,
+        easing: Easing.exp,
       });
     }
   }, [scrollZero]);
@@ -93,9 +92,9 @@ export const DrawerTabNavigator = () => {
               <View>
                 {!mainNavHiddenToggle && (
                   <Animated.View
-                    entering={FadeInDown.delay(250)}
-                    layout={Layout.easing(Easing.ease).delay(200)}
-                    exiting={FadeOutUp.delay(200)}
+                    entering={FadeInDown.delay(200)}
+                    layout={Layout.easing(Easing.ease).delay(0)}
+                    exiting={FadeOutUp.delay(100)}
                     style={[
                       {
                         backgroundColor: 'rgba(0,0,0,0.65)',
@@ -103,7 +102,7 @@ export const DrawerTabNavigator = () => {
                         paddingTop: 56,
                         justifyContent: 'space-between',
                       },
-                      animatedBgColor,
+                      scrollZero && animatedBgColor,
                     ]}>
                     {currentRoute === 'Home2' ? (
                       <Pressable

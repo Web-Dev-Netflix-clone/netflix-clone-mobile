@@ -49,7 +49,7 @@ const HomeScreen = () => {
     const direction = currentOffset > offset ? 'down' : 'up';
     setOffSet(currentOffset);
 
-    if (currentOffset < 600) scrollYZeroTrue();
+    if (currentOffset < 300) scrollYZeroTrue();
     if (currentOffset !== 0) scrollYZeroFalse();
     if (direction === 'up') showMainNav();
     if (direction === 'down' && currentOffset > 75) hideMainNav();
@@ -58,8 +58,6 @@ const HomeScreen = () => {
   useEffect(() => {
     fetchMovies();
   }, []);
-
-  // console.log(movie);
 
   return (
     <ScrollView
