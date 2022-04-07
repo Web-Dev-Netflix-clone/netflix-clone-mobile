@@ -50,7 +50,9 @@ const PressableCard = ({
           <ImageBackground
             style={IMGSTYLES.background}
             source={
-              typeof background === 'string' ? { uri: background } : background
+              typeof background === 'string'
+                ? { uri: background, cache: 'force-cache' }
+                : background
             }
           />
         )}

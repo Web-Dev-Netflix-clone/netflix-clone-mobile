@@ -4,7 +4,7 @@ import uuid from 'react-native-uuid';
 
 import axios from 'axios';
 const API_URL = 'https://afternoon-oasis-79606.herokuapp.com/discover';
-const MOVIE_DB_URL = 'https://image.tmdb.org/t/p/w185';
+const MOVIE_DB_URL = 'https://image.tmdb.org/t/p/w500';
 const MOVIE_DB_URL_ORIGINAL = 'https://image.tmdb.org/t/p/original';
 const random = '/cTZ45PUZeuyToutVtkXIyQaDU6D.jpg';
 
