@@ -10,7 +10,7 @@ import {
 import { Button } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import image from '../../assets/images/posters/stranger-things.jpg';
+import defaultImage from '../../assets/images/posters/stranger-things.jpg';
 import uuid from 'react-native-uuid';
 import InfoBar from '../components/InfoBar';
 import { TagMapper } from '../components/TagMapper';
@@ -74,7 +74,22 @@ const HomeScreen = () => {
       onScroll={handleScroll}
       contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600, position: 'relative' }}>
-        {movie.poster || movie.backdrop ? (
+        {!movie.poster || !movie.backdrop ? (
+          <ImageBackground
+            //@ts-ignore
+            source={undefined}
+            resizeMode='cover'
+            style={{ flex: 1 }}>
+            <LinearGradient
+              colors={[
+                'rgba(0,0,0, 0.2)',
+                'rgba(0,0,0, 0.2)',
+                'rgba(0,0,0,0.3)',
+              ]}
+              style={[IMGSTYLES.background, { zIndex: 100 }]}
+            />
+          </ImageBackground>
+        ) : (
           <ImageBackground
             source={{ uri: movie.poster || movie.backdrop }}
             resizeMode='cover'
@@ -88,7 +103,7 @@ const HomeScreen = () => {
               style={[IMGSTYLES.background, { zIndex: 100 }]}
             />
           </ImageBackground>
-        ) : null}
+        )}
 
         <View
           style={{
@@ -108,15 +123,15 @@ const HomeScreen = () => {
       </View>
 
       {movies?.map((movieSet, i) => {
-        if (i < 2)
-          return (
-            <Lane
-              key={uuid.v4().toString()}
-              title='Lane'
-              data={movieSet}
-              LaneRenderItem={StandardLaneCard}
-            />
-          );
+        //if (i < 2)
+        return (
+          <Lane
+            key={uuid.v4().toString()}
+            title='Lane'
+            data={movieSet}
+            LaneRenderItem={StandardLaneCard}
+          />
+        );
       })}
 
       <View

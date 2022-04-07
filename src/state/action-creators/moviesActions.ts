@@ -4,7 +4,8 @@ import uuid from 'react-native-uuid';
 
 import axios from 'axios';
 const API_URL = 'https://afternoon-oasis-79606.herokuapp.com/discover';
-const MOVIE_DB_URL = 'https://image.tmdb.org/t/p/original';
+const MOVIE_DB_URL = 'https://image.tmdb.org/t/p/w185';
+const MOVIE_DB_URL_ORIGINAL = 'https://image.tmdb.org/t/p/original';
 const random = '/cTZ45PUZeuyToutVtkXIyQaDU6D.jpg';
 
 export const fetchMovies = () => {
@@ -12,7 +13,7 @@ export const fetchMovies = () => {
     try {
       const request = await axios.get(`${API_URL}`);
 
-      const allMoviesExcluding = request.data
+      const allMoviesExcludingLowRes = request.data
         .filter((x: any, i: number) => (i ? true : false))
         .map((movieSet: any) => {
           return movieSet.results
@@ -31,15 +32,36 @@ export const fetchMovies = () => {
             .filter((x: any) => x);
         });
 
+      const allMoviesExcludingHighRes = request.data
+        .filter((x: any, i: number) => (i ? true : false))
+        .map((movieSet: any) => {
+          return movieSet.results
+            .map((movie: any) => {
+              return {
+                id: uuid.v4().toString(),
+                title: movie.title,
+                backdrop: movie.backdrop_path
+                  ? `${MOVIE_DB_URL_ORIGINAL}${movie.backdrop_path}`
+                  : `${MOVIE_DB_URL_ORIGINAL}${random}`,
+                poster: movie.poster_path
+                  ? `${MOVIE_DB_URL_ORIGINAL}${movie.poster_path}`
+                  : `${MOVIE_DB_URL_ORIGINAL}${random}`,
+              };
+            })
+            .filter((x: any) => x);
+        });
+
+      console.log(allMoviesExcludingLowRes);
+
       dispatch({
         type: ActionType.REQUEST_MOVIES_SUCCESS,
-        payload: allMoviesExcluding,
+        payload: allMoviesExcludingLowRes,
       });
 
       const randomMovieSet =
-        Math.floor(Math.random() * (allMoviesExcluding.length - 1)) + 1;
+        Math.floor(Math.random() * (allMoviesExcludingHighRes.length - 1)) + 1;
 
-      const movies = allMoviesExcluding[randomMovieSet];
+      const movies = allMoviesExcludingHighRes[randomMovieSet];
 
       const selectRandomMovie = Math.floor(Math.random() * movies.length - 1);
 
