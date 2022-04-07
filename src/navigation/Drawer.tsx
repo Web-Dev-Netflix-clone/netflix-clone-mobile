@@ -30,7 +30,7 @@ import { useActions } from '../hooks/useActions';
 
 import { MovieDetailsStack } from './MovieDetailStack';
 import { RootState } from '../state';
-const windowHeight = Dimensions.get('window').height;
+//const windowHeight = Dimensions.get('window').height;
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 

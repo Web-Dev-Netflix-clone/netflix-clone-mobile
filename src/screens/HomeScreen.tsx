@@ -14,11 +14,11 @@ import image from '../../assets/images/posters/stranger-things.jpg';
 import uuid from 'react-native-uuid';
 import InfoBar from '../components/InfoBar';
 import { TagMapper } from '../components/TagMapper';
-// import { DATA } from '../../assets/MockData/DummyData';
+
 import { Ionicons } from '@expo/vector-icons';
 import Lane from '../components/Lane';
-import { StandardLaneCard } from '../components/LaneRenderItems/StandardLaneCard';
-// import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
+import StandardLaneCard from '../components/LaneRenderItems/StandardLaneCard';
+
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
 import { Dimensions } from 'react-native';
@@ -42,7 +42,7 @@ const HomeScreen = () => {
   const movie = useSelector((state: RootState) => state.movies.singleMovie);
 
   const [offset, setOffSet] = useState(0);
-  const windowHeight = Dimensions.get('window').height;
+  // const windowHeight = Dimensions.get('window').height;
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const currentOffset = event.nativeEvent.contentOffset.y;

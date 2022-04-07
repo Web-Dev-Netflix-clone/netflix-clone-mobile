@@ -1,5 +1,5 @@
 import React from 'react';
-import { PressableCard } from '../PressableCard';
+import PressableCard from '../PressableCard';
 import image from '../../../assets/images/posters/stranger-things.jpg';
 import { GLOBAL } from '../../global/styles/global';
 import { ImageSourcePropType, View } from 'react-native';
@@ -10,7 +10,7 @@ interface IStandardLaneCard {
   image: ImageSourcePropType;
 }
 
-export const StandardLaneCard = ({ goTo, image }: IStandardLaneCard) => {
+const StandardLaneCard = ({ goTo, image }: IStandardLaneCard) => {
   const navigation = useNavigation();
 
   return (
@@ -24,3 +24,5 @@ export const StandardLaneCard = ({ goTo, image }: IStandardLaneCard) => {
     </View>
   );
 };
+
+export default React.memo(StandardLaneCard);

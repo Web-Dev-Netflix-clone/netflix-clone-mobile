@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Image, View, ScrollView, StyleSheet, Text } from 'react-native';
 
-import { PressableCard } from '../components/PressableCard';
+import PressableCard from '../components/PressableCard';
 
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';

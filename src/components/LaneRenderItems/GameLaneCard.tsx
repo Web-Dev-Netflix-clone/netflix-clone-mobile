@@ -1,5 +1,5 @@
 import React from 'react';
-import { PressableCard } from '../PressableCard';
+import PressableCard from '../PressableCard';
 
 import { View, Text } from 'react-native';
 

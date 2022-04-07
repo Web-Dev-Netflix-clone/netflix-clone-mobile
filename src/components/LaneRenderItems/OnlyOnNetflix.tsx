@@ -1,5 +1,5 @@
 import React from 'react';
-import { PressableCard } from '../PressableCard';
+import PressableCard from '../PressableCard';
 import image from '../../../assets/images/posters/stranger-things.jpg';
 import { Image, View } from 'react-native';
 import { GLOBAL } from '../../global/styles/global';
