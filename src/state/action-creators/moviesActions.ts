@@ -31,24 +31,30 @@ export const fetchMovies = () => {
             .filter((x: any) => x);
         });
 
-      dispatch({
-        type: ActionType.REQUEST_MOVIES_SUCCESS,
-        payload: allMoviesExcluding,
-      });
+      if (allMoviesExcluding) {
+        dispatch({
+          type: ActionType.REQUEST_MOVIES_SUCCESS,
+          payload: allMoviesExcluding,
+        });
+      }
 
-      const randomMovieSet =
+      const randomMovieSetIndex =
         Math.floor(Math.random() * (allMoviesExcluding.length - 1)) + 1;
 
-      const movies = allMoviesExcluding[randomMovieSet];
+      const randomMovieSet = allMoviesExcluding[randomMovieSetIndex];
 
-      const selectRandomMovie = Math.floor(Math.random() * movies.length - 1);
+      const selectRandomMovieIndex = Math.floor(
+        Math.random() * randomMovieSet.length - 1
+      );
 
-      const singleMovie = movies[selectRandomMovie];
+      const singleMovie = randomMovieSet[selectRandomMovieIndex];
 
-      dispatch({
-        type: ActionType.SINGLE_MOVIE,
-        payload: singleMovie,
-      });
+      if (singleMovie) {
+        dispatch({
+          type: ActionType.SINGLE_MOVIE,
+          payload: singleMovie,
+        });
+      }
     } catch (err) {
       console.log(err);
     }

@@ -10,14 +10,14 @@ import {
 import { Button } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import image from '../../assets/images/posters/stranger-things.jpg';
+import defaultImage from '../../assets/images/posters/stranger-things.jpg';
 import uuid from 'react-native-uuid';
 import InfoBar from '../components/InfoBar';
 import { TagMapper } from '../components/TagMapper';
 // import { DATA } from '../../assets/MockData/DummyData';
 import { Ionicons } from '@expo/vector-icons';
 import Lane from '../components/Lane';
-import { StandardLaneCard } from '../components/LaneRenderItems/StandardLaneCard';
+import StandardLaneCard from '../components/LaneRenderItems/StandardLaneCard';
 // import { OnlyOnNetflix } from '../components/LaneRenderItems/OnlyOnNetflix';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
@@ -28,6 +28,7 @@ import { IMGSTYLES } from '../global/styles/imgStyles';
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../state';
+import { FlatList } from 'react-native-gesture-handler';
 
 const HomeScreen = () => {
   const {
@@ -62,14 +63,18 @@ const HomeScreen = () => {
   // console.log(movie);
 
   return (
-    <ScrollView
-      style={{ position: 'relative' }}
+    <FlatList
       onScroll={handleScroll}
-      contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={{ height: 600, position: 'relative' }}>
-        {movie.poster || movie.backdrop ? (
+      keyExtractor={() => uuid.v4().toString()}
+      data={movies}
+      ListHeaderComponent={() => (
+        <View style={{ height: 600, position: 'relative' }}>
           <ImageBackground
-            source={{ uri: movie.poster || movie.backdrop }}
+            source={
+              movie.poster || movie.backdrop
+                ? { uri: movie.poster || movie.backdrop }
+                : defaultImage
+            }
             resizeMode='cover'
             style={{ flex: 1 }}>
             <LinearGradient
@@ -81,68 +86,67 @@ const HomeScreen = () => {
               style={[IMGSTYLES.background, { zIndex: 100 }]}
             />
           </ImageBackground>
-        ) : null}
 
+          <View
+            style={{
+              marginTop: -40,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'transparent',
+            }}>
+            <TagMapper
+              tags={['Explosive', 'Exciting', 'Action', 'Drama', 'Horror']}
+              symbol={'•'}
+              tagColor='#fff'
+              symbolColor='gold'
+            />
+          </View>
+          <InfoBar />
+        </View>
+      )}
+      renderItem={({ item }) => {
+        return (
+          <Lane
+            key={uuid.v4().toString()}
+            title='Lane'
+            data={item}
+            LaneRenderItem={StandardLaneCard}
+          />
+        );
+      }}
+      ListFooterComponent={() => (
         <View
           style={{
-            marginTop: -40,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'transparent',
+            backgroundColor: TYPOGRAPHY.COLOR.Black,
+            paddingBottom: GLOBAL.SPACING.lg,
           }}>
-          <TagMapper
-            tags={['Explosive', 'Exciting', 'Action', 'Drama', 'Horror']}
-            symbol={'•'}
-            tagColor='#fff'
-            symbolColor='gold'
+          <Ionicons
+            name='shuffle'
+            size={36}
+            color={TYPOGRAPHY.COLOR.RedPrimary}
           />
+          <Text style={TYPOGRAPHY.FONT.h2}>Not sure what to watch?</Text>
+
+          <Text style={TYPOGRAPHY.FONT.subtitle}>
+            We'll shuffle everything based on Netflix and find things for you to
+            watch based on your tastes
+          </Text>
+          <Button
+            style={{
+              backgroundColor: '#fff',
+              width: '50%',
+            }}
+            icon='shuffle'
+            color='#000'
+            onPress={() => {
+              showBottomSheet();
+            }}>
+            Play Something
+          </Button>
         </View>
-        <InfoBar />
-      </View>
-
-      {movies?.map((movieSet, i) => {
-        if (i < 2)
-          return (
-            <Lane
-              key={uuid.v4().toString()}
-              title='Lane'
-              data={movieSet}
-              LaneRenderItem={StandardLaneCard}
-            />
-          );
-      })}
-
-      <View
-        style={{
-          backgroundColor: TYPOGRAPHY.COLOR.Black,
-          paddingBottom: GLOBAL.SPACING.lg,
-        }}>
-        <Ionicons
-          name='shuffle'
-          size={36}
-          color={TYPOGRAPHY.COLOR.RedPrimary}
-        />
-        <Text style={TYPOGRAPHY.FONT.h2}>Not sure what to watch?</Text>
-
-        <Text style={TYPOGRAPHY.FONT.subtitle}>
-          We'll shuffle everything based on Netflix and find things for you to
-          watch based on your tastes
-        </Text>
-        <Button
-          style={{
-            backgroundColor: '#fff',
-            width: '50%',
-          }}
-          icon='shuffle'
-          color='#000'
-          onPress={() => {
-            showBottomSheet();
-          }}>
-          Play Something
-        </Button>
-      </View>
-    </ScrollView>
+      )}
+    />
   );
 };
 
-export default HomeScreen;
+export default React.memo(HomeScreen);

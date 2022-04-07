@@ -9,7 +9,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import image from '../../assets/images/posters/stranger-things.jpg';
+import defaultImage from '../../assets/images/posters/stranger-things.jpg';
 
 import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
@@ -26,7 +26,7 @@ interface IPressableCard {
   style?: ViewStyle;
 }
 
-export const PressableCard = ({
+const PressableCard = ({
   background,
   onClick,
   title,
@@ -37,8 +37,6 @@ export const PressableCard = ({
   cardRadius = 4,
   style,
 }: IPressableCard) => {
-  // console.log(background);
-
   return (
     <View style={[{ position: 'relative', width: wrapperWidth }, style]}>
       <Pressable
@@ -53,7 +51,11 @@ export const PressableCard = ({
           <ImageBackground
             style={styles().image}
             source={
-              typeof background === 'string' ? { uri: background } : background
+              !background
+                ? defaultImage
+                : typeof background === 'string'
+                ? { uri: background }
+                : background
             }
           />
         )}
@@ -83,7 +85,6 @@ const styles = (
     card: {
       flexBasis: width,
       backgroundColor: TYPOGRAPHY.COLOR.Black,
-      // margin: GLOBAL.SPACING.sm,
       marginBottom: GLOBAL.SPACING.sm,
       height: height,
       width: width,
@@ -97,3 +98,5 @@ const styles = (
       height: '100%',
     },
   });
+
+export default React.memo(PressableCard);
