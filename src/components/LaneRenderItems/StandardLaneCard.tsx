@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PressableCard from '../PressableCard';
 import image from '../../../assets/images/posters/stranger-things.jpg';
 import { GLOBAL } from '../../global/styles/global';
@@ -12,6 +12,13 @@ interface IStandardLaneCard {
 
 const StandardLaneCard = ({ goTo, image }: IStandardLaneCard) => {
   const navigation = useNavigation();
+
+  const componentRendered = useRef(0);
+
+  useEffect(() => {
+    console.log('LaneCard COMPONENT RENDERED', componentRendered);
+    componentRendered.current++;
+  });
 
   return (
     <View style={{ marginRight: GLOBAL.SPACING.sm }}>

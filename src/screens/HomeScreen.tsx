@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   ImageBackground,
@@ -31,6 +31,8 @@ import { RootState } from '../state';
 import { movieTags } from '../../assets/MockData/movieTags';
 
 const HomeScreen = () => {
+  const componentRendered = useRef(0);
+
   const {
     hideMainNav,
     showMainNav,
@@ -57,8 +59,14 @@ const HomeScreen = () => {
   };
 
   useEffect(() => {
+    console.log('EFFECT FIRED');
     fetchMovies();
   }, []);
+
+  useEffect(() => {
+    console.log('HOMESCREEN COMPONENT RENDERED', componentRendered);
+    componentRendered.current++;
+  });
 
   return (
     <ScrollView
@@ -144,4 +152,5 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+// check rendering here later
+export default React.memo(HomeScreen);

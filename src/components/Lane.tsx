@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useRef } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
@@ -12,6 +12,13 @@ interface ILane {
 }
 
 const Lane = ({ data, LaneRenderItem, title }: ILane) => {
+  const componentRendered = useRef(0);
+
+  useEffect(() => {
+    console.log('Lane COMPONENT RENDERED', componentRendered);
+    componentRendered.current++;
+  });
+
   return (
     <View
       style={[
