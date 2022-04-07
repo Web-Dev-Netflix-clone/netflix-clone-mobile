@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
 import { TYPOGRAPHY } from '../global/styles/typography';
+import { randomIntFromRange } from '../utils/utils';
 
 interface ITagMapper {
   tags: string[];
@@ -14,10 +16,22 @@ export const TagMapper = ({
   tagColor,
   symbolColor,
 }: ITagMapper) => {
+  const [displayTags, setDisplayTags] = useState<string[]>([]);
+
+  useEffect(() => {
+    const randomTagArray = [];
+
+    for (let i = 0; i < 4; i++) {
+      randomTagArray.push(tags[randomIntFromRange(0, tags.length - 1)]);
+    }
+
+    setDisplayTags(randomTagArray);
+  }, []);
+
   return (
     <View style={{ flexDirection: 'row' }}>
-      {tags.map((tag, i) => {
-        if (i === tags.length - 1) {
+      {displayTags.map((tag, i) => {
+        if (i === displayTags.length - 1) {
           return (
             <Text
               style={[TYPOGRAPHY.FONT.subtitle, { color: tagColor }]}

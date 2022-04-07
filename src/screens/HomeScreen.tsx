@@ -28,6 +28,7 @@ import { IMGSTYLES } from '../global/styles/imgStyles';
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../state';
+import { movieTags } from '../../assets/MockData/movieTags';
 
 const HomeScreen = () => {
   const {
@@ -89,7 +90,7 @@ const HomeScreen = () => {
             backgroundColor: 'transparent',
           }}>
           <TagMapper
-            tags={['Explosive', 'Exciting', 'Action', 'Drama', 'Horror']}
+            tags={movieTags}
             symbol={'•'}
             tagColor='#fff'
             symbolColor='gold'
