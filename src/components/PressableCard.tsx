@@ -87,4 +87,4 @@ const styles = (
     },
   });
 
-export default PressableCard;
+export default React.memo(PressableCard);

@@ -15,7 +15,7 @@ const Lane = ({ data, LaneRenderItem, title }: ILane) => {
   const componentRendered = useRef(0);
 
   useEffect(() => {
-    console.log('Lane COMPONENT RENDERED', componentRendered);
+    console.log('Lane COMPONENT RENDERED', componentRendered.current);
     componentRendered.current++;
   });
 
@@ -34,6 +34,7 @@ const Lane = ({ data, LaneRenderItem, title }: ILane) => {
         renderItem={({ item }) => {
           return (
             <LaneRenderItem
+              key={Math.random()}
               image={item.poster || item.backdrop}
               goTo={'MovieDetail'}
             />

@@ -16,7 +16,10 @@ const StandardLaneCard = ({ goTo, image }: IStandardLaneCard) => {
   const componentRendered = useRef(0);
 
   useEffect(() => {
-    console.log('LaneCard COMPONENT RENDERED', componentRendered);
+    // console.log(
+    //   'StandardLaneCard COMPONENT RENDERED',
+    //   componentRendered.current
+    // );
     componentRendered.current++;
   });
 
