@@ -35,7 +35,7 @@ export const TagMapper = ({
           return (
             <Text
               style={[TYPOGRAPHY.FONT.subtitle, { color: tagColor }]}
-              key={tag}>
+              key={Math.random()}>
               {tag}
             </Text>
           );
@@ -43,7 +43,7 @@ export const TagMapper = ({
         return (
           <Text
             style={[TYPOGRAPHY.FONT.subtitle, { color: tagColor }]}
-            key={tag}>
+            key={Math.random()}>
             {` ${tag}`}
             <Text style={{ color: symbolColor }}>{` ${symbol} `}</Text>
           </Text>
