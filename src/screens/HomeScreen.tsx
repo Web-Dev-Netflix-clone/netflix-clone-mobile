@@ -31,7 +31,7 @@ import { RootState } from '../state';
 import { movieTags } from '../../assets/MockData/movieTags';
 import { IMovie } from '../state/actionsInterfaces/moviesInterfaces';
 
-interface IMovieSet {
+export interface IMovieSet {
   genre: string;
   movies: IMovie[];
 }
