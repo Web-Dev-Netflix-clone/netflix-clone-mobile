@@ -1,3 +1,4 @@
+import { categoriesData } from './../../../assets/MockData/categoriesData';
 import { ActionType } from '../action-types';
 import { Action, Dispatch } from 'redux';
 import uuid from 'react-native-uuid';
@@ -13,55 +14,37 @@ export const fetchMovies = () => {
     try {
       const request = await axios.get(`${API_URL}`);
 
-      const allMoviesExcludingLowRes = request.data
-        .filter((x: any, i: number) => (i ? true : false))
-        .map((movieSet: any) => {
-          return movieSet.results
-            .map((movie: any) => {
-              return {
-                id: uuid.v4().toString(),
-                title: movie.title,
-                backdrop: movie.backdrop_path
-                  ? `${MOVIE_DB_URL}${movie.backdrop_path}`
-                  : `${MOVIE_DB_URL}${random}`,
-                poster: movie.poster_path
-                  ? `${MOVIE_DB_URL}${movie.poster_path}`
-                  : `${MOVIE_DB_URL}${random}`,
-              };
-            })
-            .filter((x: any) => x);
+      const movieData = request.data;
+
+      const allMovies = [];
+
+      for (const [key, value] of Object.entries(movieData)) {
+        //@ts-ignore
+        let filteredMovies = value.categoryDetails.map((movie) => {
+          return {
+            id: uuid.v4(),
+            title: 'temp title',
+            description: movie.overview,
+            backdrop: movie.backdropUrls[0],
+            backdropHighRes: movie.backdropUrls[1],
+            poster: movie.posterUrls[0],
+            posterHighRes: movie.posterUrls[1],
+            trailer: movie.trailerUrl,
+          };
         });
 
-      const allMoviesExcludingHighRes = request.data
-        .filter((x: any, i: number) => (i ? true : false))
-        .map((movieSet: any) => {
-          return movieSet.results
-            .map((movie: any) => {
-              return {
-                id: uuid.v4().toString(),
-                title: movie.title,
-                backdrop: movie.backdrop_path
-                  ? `${MOVIE_DB_URL_ORIGINAL}${movie.backdrop_path}`
-                  : `${MOVIE_DB_URL_ORIGINAL}${random}`,
-                poster: movie.poster_path
-                  ? `${MOVIE_DB_URL_ORIGINAL}${movie.poster_path}`
-                  : `${MOVIE_DB_URL_ORIGINAL}${random}`,
-              };
-            })
-            .filter((x: any) => x);
-        });
-
-      console.log(allMoviesExcludingLowRes);
+        allMovies.push({ genre: key, movies: filteredMovies });
+      }
 
       dispatch({
         type: ActionType.REQUEST_MOVIES_SUCCESS,
-        payload: allMoviesExcludingLowRes,
+        payload: allMovies,
       });
 
       const randomMovieSet =
-        Math.floor(Math.random() * (allMoviesExcludingHighRes.length - 1)) + 1;
+        Math.floor(Math.random() * (allMovies.length - 1)) + 1;
 
-      const movies = allMoviesExcludingHighRes[randomMovieSet];
+      const movies = allMovies[randomMovieSet].movies;
 
       const selectRandomMovie = Math.floor(Math.random() * movies.length - 1);
 

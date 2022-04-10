@@ -6,7 +6,7 @@ import { IMovie } from '../state/actionsInterfaces/moviesInterfaces';
 import uuid from 'react-native-uuid';
 
 interface ILane {
-  data: IMovie[] | any;
+  data: any;
   LaneRenderItem: FunctionComponent<any>;
   title: string;
 }
@@ -15,7 +15,7 @@ const Lane = ({ data, LaneRenderItem, title }: ILane) => {
   const componentRendered = useRef(0);
 
   useEffect(() => {
-    console.log('Lane COMPONENT RENDERED', componentRendered.current);
+    //console.log('Lane COMPONENT RENDERED', componentRendered.current);
     componentRendered.current++;
   });
 

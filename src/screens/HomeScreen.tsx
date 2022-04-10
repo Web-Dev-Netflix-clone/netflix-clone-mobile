@@ -29,6 +29,12 @@ import { IMGSTYLES } from '../global/styles/imgStyles';
 import { useSelector } from 'react-redux';
 import { RootState } from '../state';
 import { movieTags } from '../../assets/MockData/movieTags';
+import { IMovie } from '../state/actionsInterfaces/moviesInterfaces';
+
+interface IMovieSet {
+  genre: string;
+  movies: IMovie[];
+}
 
 const HomeScreen = () => {
   const componentRendered = useRef(0);
@@ -59,12 +65,10 @@ const HomeScreen = () => {
   };
 
   useEffect(() => {
-    console.log('EFFECT FIRED');
     fetchMovies();
   }, []);
 
   useEffect(() => {
-    console.log('HOMESCREEN COMPONENT RENDERED', componentRendered);
     componentRendered.current++;
   });
 
@@ -74,7 +78,7 @@ const HomeScreen = () => {
       onScroll={handleScroll}
       contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600, position: 'relative' }}>
-        {!movie.poster || !movie.backdrop ? (
+        {!movie.posterHighRes || !movie.backdropHighRes ? (
           <ImageBackground
             //@ts-ignore
             source={undefined}
@@ -122,13 +126,12 @@ const HomeScreen = () => {
         <InfoBar />
       </View>
 
-      {movies?.map((movieSet, i) => {
-        //if (i < 2)
+      {movies?.map((movieSet: any) => {
         return (
           <Lane
             key={uuid.v4().toString()}
-            title='Lane'
-            data={movieSet}
+            title={movieSet.genre}
+            data={movieSet.movies}
             LaneRenderItem={StandardLaneCard}
           />
         );

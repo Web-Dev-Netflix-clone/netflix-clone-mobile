@@ -3,8 +3,12 @@ import { ActionType } from './../action-types/index';
 export interface IMovie {
   id: string;
   title: string;
+  description: string;
   backdrop: string;
+  backdropHighRes: string;
   poster: string;
+  posterHighRes: string;
+  trailer: string;
 }
 
 export interface RequestMoviesSuccess {
