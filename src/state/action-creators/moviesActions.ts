@@ -5,6 +5,7 @@ import uuid from 'react-native-uuid';
 // import { categoriesData } from './../../../assets/MockData/categoriesData';
 
 import axios from 'axios';
+import { IMovie } from '../actionsInterfaces/moviesInterfaces';
 const API_URL = 'https://afternoon-oasis-79606.herokuapp.com/discover';
 
 export const fetchMovies = () => {
@@ -51,30 +52,17 @@ export const fetchMovies = () => {
         type: ActionType.SINGLE_MOVIE,
         payload: singleMovie,
       });
+
+      const allMoviesSearchable = allMovies.reduce((acc, curr) => {
+        return acc.concat(curr.movies);
+      }, [] as IMovie[]);
+
+      dispatch({
+        type: ActionType.ALL_MOVIES,
+        payload: allMoviesSearchable,
+      });
     } catch (err) {
       console.log(err);
     }
   };
 };
-
-// console.log('inside the effect');
-// const requestMovies = async () => {
-//   try {
-//     const response = await axios.get(
-//       'https://afternoon-oasis-79606.herokuapp.com/discover'
-//     );
-
-//     const data = response.data;
-
-//     const allMovies = data.reduce((acc: any, curr: any, index: number) => {
-//       if (index) return acc.concat(curr.results);
-
-//       return acc;
-//     }, []);
-
-//     // console.log('ALL', allMovies);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// requestMovies();

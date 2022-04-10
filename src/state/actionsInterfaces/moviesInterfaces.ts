@@ -1,3 +1,4 @@
+import { Action } from 'redux';
 import { ActionType } from './../action-types/index';
 
 export interface IMovie {
@@ -26,7 +27,13 @@ export interface SingleMovie {
   payload: IMovie;
 }
 
+export interface AllMovies {
+  type: ActionType.ALL_MOVIES;
+  payload: IMovie[];
+}
+
 export type TMoviesAction =
   | RequestMoviesSuccess
   | RequestMoviesFailure
-  | SingleMovie;
+  | SingleMovie
+  | AllMovies;

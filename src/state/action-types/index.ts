@@ -23,4 +23,5 @@ export enum ActionType {
   REQUEST_MOVIES_SUCCESS = 'request_movies_success',
   REQUEST_MOVIES_FAILURE = 'request_movies_failure',
   SINGLE_MOVIE = 'single_movie',
+  ALL_MOVIES = 'all_movies',
 }

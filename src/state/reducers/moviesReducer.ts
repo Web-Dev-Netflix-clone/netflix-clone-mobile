@@ -6,13 +6,25 @@ export interface MoviesState {
   error: string | null;
   allMovies: IMovie[] | [];
   singleMovie: IMovie;
+  allMoviesSearchable: IMovie[] | [];
 }
 
 const initialState = {
   loading: false,
   error: null,
   allMovies: [],
-  singleMovie: { title: '', key: '', poster: '', backdrop: '' },
+  singleMovie: {
+    id: '',
+    description: '',
+    trailer: '',
+    title: '',
+    key: '',
+    poster: '',
+    backdrop: '',
+    backdropHighRes: '',
+    posterHighRes: '',
+  },
+  allMoviesSearchable: [],
 };
 
 export const reducer = (
@@ -36,6 +48,12 @@ export const reducer = (
       return {
         ...state,
         singleMovie: action.payload,
+      };
+
+    case ActionType.ALL_MOVIES:
+      return {
+        ...state,
+        allMoviesSearchable: action.payload,
       };
 
     default:
