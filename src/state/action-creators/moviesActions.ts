@@ -21,8 +21,7 @@ export const fetchMovies = () => {
         let filteredMovies = value.categoryDetails.map((movie: any) => {
           return {
             id: uuid.v4(),
-            title: 'temp title',
-            description: movie.overview,
+            title: movie.title,
             backdrop: movie.backdropUrls[0],
             backdropHighRes: movie.backdropUrls[1],
             poster: movie.posterUrls[0],
