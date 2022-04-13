@@ -15,7 +15,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Lane from '../components/Lane';
 import { DATA } from '../../assets/MockData/DummyData';
 
-import { GameLaneCard } from '../components/LaneRenderItems/GameLaneCard';
+import  GameLaneCard  from '../components/LaneRenderItems/GameLaneCard';
 import { IMGSTYLES } from '../global/styles/imgStyles';
 import GameCard from '../components/GameCard';
 

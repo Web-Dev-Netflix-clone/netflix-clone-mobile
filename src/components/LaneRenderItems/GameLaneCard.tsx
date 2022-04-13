@@ -11,8 +11,7 @@ import GameCard from '../GameCard';
 interface GameLaneCard {
   goTo: { key: string; params?: any };
 }
-
-export const GameLaneCard = ({ goTo }: GameLaneCard) => {
+const GameLaneCard = ({ goTo }: GameLaneCard) => {
   const navigation = useNavigation();
 
   return (
@@ -32,3 +31,5 @@ export const GameLaneCard = ({ goTo }: GameLaneCard) => {
     </View>
   );
 };
+
+export default React.memo(GameLaneCard);

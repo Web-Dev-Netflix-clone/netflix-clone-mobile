@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import PressableCard from '../PressableCard';
-import image from '../../../assets/images/posters/stranger-things.jpg';
 import { GLOBAL } from '../../global/styles/global';
 import { ImageSourcePropType, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -12,7 +11,6 @@ interface IStandardLaneCard {
 
 const StandardLaneCard = ({ goTo, image }: IStandardLaneCard) => {
   const navigation = useNavigation();
-
   const componentRendered = useRef(0);
 
   useEffect(() => {

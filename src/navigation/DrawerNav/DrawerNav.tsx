@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerActions } from '@react-navigation/native';
-import { BottomTabNavigator } from './BottomTab';
-import { DrawerStackParams } from './navigation';
+import { BottomNav } from '../BottomNav/BottomTab';
+import { DrawerStackParams } from '../navigation';
 import { Ionicons, Feather } from '@expo/vector-icons';
-import { TYPOGRAPHY } from '../global/styles/typography';
-import { GLOBAL } from '../global/styles/global';
+import { TYPOGRAPHY } from '../../global/styles/typography';
+import { GLOBAL } from '../../global/styles/global';
 import { Image, Pressable, View, Text } from 'react-native';
 import CustomDrawer from './CustomDrawer';
-import Avatar from '../components/Avatar';
+import Avatar from '../../components/Avatar';
 
 import Animated, {
   Easing,
@@ -22,19 +22,18 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import DiscoverNav from '../components/DiscoverNav';
-import { Dimensions } from 'react-native';
-import CategoriesModal from '../components/CategoriesModal';
-import { useSelector } from '../hooks/useTypedSelector';
-import { useActions } from '../hooks/useActions';
+import DiscoverNav from '../../components/DiscoverNav';
 
-import { MovieDetailsStack } from './MovieDetailStack';
-import { RootState } from '../state';
-//const windowHeight = Dimensions.get('window').height;
+import CategoriesModal from '../../components/CategoriesModal';
+import { useSelector } from '../../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useActions';
+
+import { MovieDetailsStack } from '../MovieDetailStack/MovieDetailStack';
+import { RootState } from '../../state';
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 
-export const DrawerTabNavigator = () => {
+export const DrawerNav = () => {
   const [modalActive, setModalActive] = useState(false);
   const scrollZero = useSelector((state) => state.appState.scrollYZero);
   const showDiscoverNav = useSelector(
@@ -81,7 +80,7 @@ export const DrawerTabNavigator = () => {
 
   return (
     <Drawer.Navigator
-      drawerContent={(props) => <CustomDrawer {...props} />}
+      drawerContent={() => <CustomDrawer />}
       initialRouteName='Home'
       screenOptions={({ navigation }) => {
         return {
@@ -186,7 +185,7 @@ export const DrawerTabNavigator = () => {
                     entering={FadeInUp.delay(200)}
                     layout={Layout.easing(Easing.ease).delay(200)}
                     exiting={FadeOutUp.delay(200)}
-                    style={[animatedBgColor]}>
+                    style={animatedBgColor}>
                     <DiscoverNav
                       setModalActive={setModalActive}
                       style={{
@@ -224,7 +223,7 @@ export const DrawerTabNavigator = () => {
           ),
         };
       }}>
-      <Drawer.Screen name='Home' component={BottomTabNavigator} />
+      <Drawer.Screen name='Home' component={BottomNav} />
       <Drawer.Screen
         name='MovieDetail'
         component={MovieDetailsStack}

@@ -9,7 +9,7 @@ interface IOnlyOnNetflix {
   goTo: { key: string; params?: any };
 }
 
-export const OnlyOnNetflix = ({ goTo }: IOnlyOnNetflix) => {
+const OnlyOnNetflix = ({ goTo }: IOnlyOnNetflix) => {
   const navigation = useNavigation();
 
   return (
@@ -33,3 +33,5 @@ export const OnlyOnNetflix = ({ goTo }: IOnlyOnNetflix) => {
     </View>
   );
 };
+
+export default React.memo(OnlyOnNetflix);

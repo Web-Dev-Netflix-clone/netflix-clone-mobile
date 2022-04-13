@@ -8,10 +8,6 @@ import useCachedResources from './src/hooks/useCachedResources';
 import StartupScreen from './src/screens/StartupScreen';
 
 export default function App() {
-  return <MainScreen />;
-}
-
-const MainScreen = () => {
   const isLoaded = useCachedResources();
 
   if (isLoaded) {
@@ -25,4 +21,4 @@ const MainScreen = () => {
   } else {
     return <StartupScreen />;
   }
-};
+}

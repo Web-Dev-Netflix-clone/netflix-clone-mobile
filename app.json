@@ -23,7 +23,9 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/netflix-logos/netflix-icon-logo-small.png",
         "backgroundColor": "#000"
-      }
+      },
+      "package": "com.yourcompany.yourappname",
+      "versionCode": 1
     },
 
     "web": {

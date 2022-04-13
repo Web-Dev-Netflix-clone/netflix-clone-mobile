@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, ImageSourcePropType } from 'react-native';
-import { GLOBAL } from '../../global/styles/global';
-import { TYPOGRAPHY } from '../../global/styles/typography';
+import { GLOBAL } from '../../../global/styles/global';
+import { TYPOGRAPHY } from '../../../global/styles/typography';
 
 import { Feather } from '@expo/vector-icons';
 

@@ -1,8 +1,3 @@
-// Dit bestand moet nog aangepast worden naar de wensen van ons project
-// Laten we al deze GLOBALE styles de komende dagen overleggen en
-// helemaal naar het project inrichten. We kunnen hier ook altijd dingen
-// toevoegen wanneer je iets vaak hergebruikt.
-
 const COLOR = {
   // CTA
   White: '#FFFFFF',

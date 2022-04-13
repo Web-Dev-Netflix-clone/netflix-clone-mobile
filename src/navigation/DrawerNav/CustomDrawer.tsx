@@ -12,28 +12,26 @@ import {
 
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
-import { TYPOGRAPHY } from '../global/styles/typography';
-import { GLOBAL } from '../global/styles/global';
+import { TYPOGRAPHY } from '../../global/styles/typography';
+import { GLOBAL } from '../../global/styles/global';
 
-import { avatarData } from '../../assets/MockData/avatarData';
-import Avatar from '../components/Avatar';
+import { avatarData } from '../../../assets/MockData/avatarData';
+import Avatar from '../../components/Avatar';
 import CustomDrawerTopBar from './CustomDrawerComponents/CustomDrawerTopBar';
-import { socialIconsData } from '../../assets/MockData/socialIconsData';
+import { socialIconsData } from '../../../assets/MockData/socialIconsData';
 import CustomDrawerSocialBox from './CustomDrawerComponents/CustomDrawerSocialBox';
-import { drawerLinks } from '../../assets/MockData/drawerLinks';
+import { drawerLinks } from '../../../assets/MockData/drawerLinks';
 import CustomDrawerTouchableLink from './CustomDrawerComponents/CustomDrawerTouchableLink';
 
 import { useSelector } from 'react-redux';
-import { RootState } from '../state';
-import SearchBar from '../components/SearchBar';
-import { useActions } from '../hooks/useActions';
+import { RootState } from '../../state';
+import SearchBar from '../../components/SearchBar';
+import { useActions } from '../../hooks/useActions';
 const CustomDrawer = (props: any) => {
   const { fakeLogout } = useActions();
   const searchActive = useSelector(
     (state: RootState) => state.appState.searchActive
   );
-
-  // console.log('PROPS is an object describing the Drawer', props);
 
   return searchActive ? (
     <View
@@ -42,7 +40,6 @@ const CustomDrawer = (props: any) => {
         backgroundColor: TYPOGRAPHY.COLOR.Black,
       }}>
       <DrawerContentScrollView
-        {...props}
         contentContainerStyle={{
           backgroundColor: TYPOGRAPHY.COLOR.Black,
         }}>
@@ -181,19 +178,6 @@ const CustomDrawer = (props: any) => {
             ))}
           </View>
         </View>
-
-        {/* DrawerItemList => uncomment for auto react navigation links */}
-        {/* <View
-        style={{
-          flex: 1,
-          backgroundColor: TYPOGRAPHY.COLOR.Black,
-          paddingTop: 10,
-        }}>
-        <DrawerItemList
-          style={{ backgroundColor: TYPOGRAPHY.COLOR.Black }}
-          {...props}
-        />
-      </View> */}
       </DrawerContentScrollView>
 
       <View

@@ -1,9 +1,12 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
-import { IMovie } from '../state/actionsInterfaces/moviesInterfaces';
-import uuid from 'react-native-uuid';
 
 interface ILane {
   data: any;
@@ -13,6 +16,16 @@ interface ILane {
 
 const Lane = ({ data, LaneRenderItem, title }: ILane) => {
   const componentRendered = useRef(0);
+
+  const keyExtractor = useCallback((item) => item.id, []);
+  const renderItem = useCallback(({ item }) => {
+    return (
+      <LaneRenderItem
+        image={item.poster || item.backdrop}
+        goTo={'MovieDetail'}
+      />
+    );
+  }, []);
 
   useEffect(() => {
     //console.log('Lane COMPONENT RENDERED', componentRendered.current);
@@ -31,19 +44,11 @@ const Lane = ({ data, LaneRenderItem, title }: ILane) => {
       <FlatList
         horizontal
         data={data}
-        renderItem={({ item }) => {
-          return (
-            <LaneRenderItem
-              key={Math.random()}
-              image={item.poster || item.backdrop}
-              goTo={'MovieDetail'}
-            />
-          );
-        }}
-        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
       />
     </View>
   );
 };
 
-export default React.memo(Lane);
+export default Lane;

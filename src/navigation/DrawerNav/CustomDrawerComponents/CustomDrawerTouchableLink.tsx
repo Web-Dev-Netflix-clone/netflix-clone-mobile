@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { TYPOGRAPHY } from '../../global/styles/typography';
+import { TYPOGRAPHY } from '../../../global/styles/typography';
 
 interface ICustomDrawerTouchableLink {
   title: string;

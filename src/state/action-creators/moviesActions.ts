@@ -2,11 +2,39 @@ import { IMovieSet } from './../../screens/HomeScreen';
 import { ActionType } from '../action-types';
 import { Action, Dispatch } from 'redux';
 import uuid from 'react-native-uuid';
-// import { categoriesData } from './../../../assets/MockData/categoriesData';
 
 import axios from 'axios';
 import { IMovie } from '../actionsInterfaces/moviesInterfaces';
 const API_URL = 'https://afternoon-oasis-79606.herokuapp.com/discover';
+const API_GENRES =
+  'https://afternoon-oasis-79606.herokuapp.com/discover/movies';
+
+const transformMoviesObject = (moviesObject: any) => {
+  const movies: any[] = [];
+
+  Object.entries(moviesObject).forEach(([key, value]: any) => {
+    let filteredMovies = value.categoryDetails.map((movie: any) => {
+      return {
+        id: uuid.v4(),
+        title: movie.title,
+        description: movie.overview,
+        backdrop: movie.backdropUrls[0],
+        backdropHighRes: movie.backdropUrls[1],
+        poster: movie.posterUrls[0],
+        posterHighRes: movie.posterUrls[1],
+        trailer: movie.trailerUrl,
+      };
+    });
+
+    const laneTitleSplit = key.split('Movies')[0];
+    const genre =
+      laneTitleSplit.charAt(0).toUpperCase() + laneTitleSplit.slice(1);
+
+    movies.push({ genre: genre, movies: filteredMovies });
+  });
+
+  return movies;
+};
 
 export const fetchMovies = () => {
   return async (dispatch: Dispatch<Action>) => {
@@ -15,23 +43,7 @@ export const fetchMovies = () => {
 
       const movieData = request.data;
 
-      const allMovies: IMovieSet[] = [];
-
-      Object.entries(movieData).forEach(([key, value]: any) => {
-        let filteredMovies = value.categoryDetails.map((movie: any) => {
-          return {
-            id: uuid.v4(),
-            title: movie.title,
-            backdrop: movie.backdropUrls[0],
-            backdropHighRes: movie.backdropUrls[1],
-            poster: movie.posterUrls[0],
-            posterHighRes: movie.posterUrls[1],
-            trailer: movie.trailerUrl,
-          };
-        });
-
-        allMovies.push({ genre: key, movies: filteredMovies });
-      });
+      const allMovies = transformMoviesObject(movieData);
 
       dispatch({
         type: ActionType.REQUEST_MOVIES_SUCCESS,

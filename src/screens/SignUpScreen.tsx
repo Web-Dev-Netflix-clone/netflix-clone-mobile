@@ -1,15 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "../navigation/navigation";
-import { TYPOGRAPHY } from "../global/styles/typography";
-import { GLOBAL } from "../global/styles/global";
-import { Button, TextInput, Checkbox } from "react-native-paper";
+import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { AuthStackParams } from '../navigation/navigation';
+import { TYPOGRAPHY } from '../global/styles/typography';
+import { GLOBAL } from '../global/styles/global';
+import { Button, TextInput, Checkbox } from 'react-native-paper';
 
 const SignUpScreen = () => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+    useNavigation<NativeStackNavigationProp<AuthStackParams>>();
   const [checked, setChecked] = useState(false);
 
   return (
@@ -27,33 +27,32 @@ const SignUpScreen = () => {
         style={{
           marginBottom: GLOBAL.SPACING.md,
           paddingTop: GLOBAL.SPACING.xxl,
-        }}
-      >
+        }}>
         <TextInput
-          label="Email"
-          mode="outlined"
-          autoComplete=""
-          style={{ backgroundColor: "white" }}
-          placeholderTextColor="#fff"
-          outlineColor="gray"
-          activeOutlineColor="green"
-          selectionColor="#fff"
+          label='Email'
+          mode='outlined'
+          autoComplete=''
+          style={{ backgroundColor: 'white' }}
+          placeholderTextColor='#fff'
+          outlineColor='gray'
+          activeOutlineColor='green'
+          selectionColor='#fff'
         />
         <TextInput
-          label="Password"
-          mode="outlined"
-          autoComplete=""
-          style={{ backgroundColor: "white" }}
-          outlineColor="gray"
-          activeOutlineColor="red"
-          selectionColor="#fff"
+          label='Password'
+          mode='outlined'
+          autoComplete=''
+          style={{ backgroundColor: 'white' }}
+          outlineColor='gray'
+          activeOutlineColor='red'
+          selectionColor='#fff'
         />
       </View>
       <View style={styles.checkboxContainer}>
         <Checkbox
-          status={!checked ? "checked" : "unchecked"}
-          uncheckedColor="gray"
-          color="blue"
+          status={!checked ? 'checked' : 'unchecked'}
+          uncheckedColor='gray'
+          color='blue'
           onPress={() => {
             setChecked(!checked);
           }}
@@ -64,10 +63,9 @@ const SignUpScreen = () => {
       </View>
       <Button
         style={styles.button}
-        color="red"
-        mode="contained"
-        onPress={() => navigation.navigate("Signin")}
-      >
+        color='red'
+        mode='contained'
+        onPress={() => navigation.navigate('Signin')}>
         Continue
       </Button>
     </View>
@@ -80,11 +78,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: GLOBAL.SPACING.md,
-    justifyContent: "flex-start",
-    backgroundColor: "white",
+    justifyContent: 'flex-start',
+    backgroundColor: 'white',
   },
   header: {
-    color: "black",
+    color: 'black',
     marginBottom: 10,
     fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
     fontSize: TYPOGRAPHY.FONT_SIZES.lg,
@@ -95,15 +93,15 @@ const styles = StyleSheet.create({
     fontSize: TYPOGRAPHY.FONT_SIZES.md,
   },
   checkboxContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   button: {
     height: 50,
-    width: "100%",
+    width: '100%',
     borderRadius: 2,
-    justifyContent: "center",
-    alignSelf: "center",
+    justifyContent: 'center',
+    alignSelf: 'center',
     marginTop: 25,
   },
 });

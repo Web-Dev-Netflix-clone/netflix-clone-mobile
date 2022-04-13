@@ -16,7 +16,6 @@ const DownloadsScreen = () => {
           backgroundColor: '#000',
           paddingTop: 110,
           padding: GLOBAL.SPACING.md,
-          // justifyContent: 'space-between',
         },
       ]}>
       <View

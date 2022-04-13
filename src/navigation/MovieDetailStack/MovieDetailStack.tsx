@@ -3,10 +3,10 @@ import { Pressable } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
-import { TYPOGRAPHY } from '../global/styles/typography';
+import { TYPOGRAPHY } from '../../global/styles/typography';
 
-import { MovieDetailParams } from './navigation';
-import MovieDetailsScreen from '../screens/MovieDetailsScreen';
+import { MovieDetailParams } from '../navigation';
+import MovieDetailsScreen from '../../screens/MovieDetailsScreen';
 
 const MovieDetail = createStackNavigator<MovieDetailParams>();
 

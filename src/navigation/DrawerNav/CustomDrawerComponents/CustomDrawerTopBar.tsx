@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
-import { GLOBAL } from '../../global/styles/global';
-import { TYPOGRAPHY } from '../../global/styles/typography';
+import { GLOBAL } from '../../../global/styles/global';
+import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { useActions } from '../../hooks/useActions';
+import { useActions } from '../../../hooks/useActions';
 
 interface ICustomDrawerTopBar {
   title: string;

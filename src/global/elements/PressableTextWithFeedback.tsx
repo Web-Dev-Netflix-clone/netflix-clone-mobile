@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-export const PressableText = (
+export const PressableTextWithFeedback = (
   props: TouchableOpacityProps & {
     text: string;
     textStyle?: TextStyle;

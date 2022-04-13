@@ -10,7 +10,6 @@ import {
 import { Button } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import defaultImage from '../../assets/images/posters/stranger-things.jpg';
 import uuid from 'react-native-uuid';
 import InfoBar from '../components/InfoBar';
 import { TagMapper } from '../components/TagMapper';
@@ -21,7 +20,6 @@ import StandardLaneCard from '../components/LaneRenderItems/StandardLaneCard';
 
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { GLOBAL } from '../global/styles/global';
-import { Dimensions } from 'react-native';
 
 import { useActions } from '../hooks/useActions';
 import { IMGSTYLES } from '../global/styles/imgStyles';
@@ -51,7 +49,6 @@ const HomeScreen = () => {
   const movie = useSelector((state: RootState) => state.movies.singleMovie);
 
   const [offset, setOffSet] = useState(0);
-  // const windowHeight = Dimensions.get('window').height;
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const currentOffset = event.nativeEvent.contentOffset.y;
@@ -170,5 +167,4 @@ const HomeScreen = () => {
   );
 };
 
-// check rendering here later
 export default React.memo(HomeScreen);
