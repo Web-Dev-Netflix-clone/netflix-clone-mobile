@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
 
 import { Button } from 'react-native-paper';
@@ -32,6 +32,19 @@ const CustomDrawer = (props: any) => {
   const searchActive = useSelector(
     (state: RootState) => state.appState.searchActive
   );
+  const searchMovies = useSelector(
+    (state: RootState) => state.movies.allMoviesSearchable
+  );
+
+  const searchInput = useSelector(
+    (state: RootState) => state.movies.searchInput
+  );
+
+  const filteredArray = searchMovies
+    ?.map((result) => {
+      return { ...result, title: result.title.toLowerCase() };
+    })
+    .filter((result) => result.title.includes(searchInput.toLowerCase()));
 
   return searchActive ? (
     <View
@@ -44,7 +57,15 @@ const CustomDrawer = (props: any) => {
           backgroundColor: TYPOGRAPHY.COLOR.Black,
         }}>
         <CustomDrawerTopBar title={'Search'} />
+
         <SearchBar />
+        {filteredArray?.map((x) => {
+          return (
+            <Text key={x.id} style={{ color: 'white' }}>
+              {x.title}
+            </Text>
+          );
+        })}
       </DrawerContentScrollView>
     </View>
   ) : (

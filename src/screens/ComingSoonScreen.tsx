@@ -1,11 +1,9 @@
 import React, { useCallback } from 'react';
 import { View, FlatList } from 'react-native';
 import ComingSoonItem from '../components/ComingSoonItem';
-import { useActions } from '../hooks/useActions';
 import { useSelector } from 'react-redux';
 import { RootState } from '../state';
 import { IMovie } from '../state/actionsInterfaces/moviesInterfaces';
-import uuid from 'react-native-uuid';
 
 export interface IMovieSet {
   genre: string;

@@ -10,7 +10,6 @@ import {
 import { Button } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import uuid from 'react-native-uuid';
 import InfoBar from '../components/InfoBar';
 import { TagMapper } from '../components/TagMapper';
 

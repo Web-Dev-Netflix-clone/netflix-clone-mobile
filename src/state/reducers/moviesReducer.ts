@@ -7,6 +7,7 @@ export interface MoviesState {
   allMovies: IMovie[] | [];
   singleMovie: IMovie;
   allMoviesSearchable: IMovie[] | [];
+  searchInput: string;
 }
 
 const initialState = {
@@ -25,6 +26,7 @@ const initialState = {
     posterHighRes: '',
   },
   allMoviesSearchable: [],
+  searchInput: '',
 };
 
 export const reducer = (
@@ -54,6 +56,12 @@ export const reducer = (
       return {
         ...state,
         allMoviesSearchable: action.payload,
+      };
+
+    case ActionType.UPDATE_SEARCH_INPUT:
+      return {
+        ...state,
+        searchInput: action.payload,
       };
 
     default:

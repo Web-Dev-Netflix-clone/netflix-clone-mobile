@@ -1,3 +1,4 @@
+import { UpdateSearchInput } from './../actionsInterfaces/moviesInterfaces';
 import { IMovieSet } from './../../screens/HomeScreen';
 import { ActionType } from '../action-types';
 import { Action, Dispatch } from 'redux';
@@ -75,5 +76,14 @@ export const fetchMovies = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+};
+
+export const updateSearchInput = (searchText: any) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.UPDATE_SEARCH_INPUT,
+      payload: searchText,
+    });
   };
 };

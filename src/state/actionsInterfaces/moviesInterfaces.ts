@@ -1,4 +1,3 @@
-import { Action } from 'redux';
 import { ActionType } from './../action-types/index';
 
 export interface IMovie {
@@ -32,8 +31,14 @@ export interface AllMovies {
   payload: IMovie[];
 }
 
+export interface UpdateSearchInput {
+  type: ActionType.UPDATE_SEARCH_INPUT;
+  payload: string;
+}
+
 export type TMoviesAction =
   | RequestMoviesSuccess
   | RequestMoviesFailure
   | SingleMovie
-  | AllMovies;
+  | AllMovies
+  | UpdateSearchInput;
