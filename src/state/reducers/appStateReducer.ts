@@ -1,4 +1,3 @@
-import { hideDiscoverNav } from './../action-creators/appStateActions';
 import { TAppStateAction } from './../actionsInterfaces/appStateInterfaces';
 import { ActionType } from '../action-types';
 

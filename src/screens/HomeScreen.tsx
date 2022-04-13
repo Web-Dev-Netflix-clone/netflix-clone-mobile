@@ -67,7 +67,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     componentRendered.current++;
-  });
+  }, [movie]);
 
   return (
     <ScrollView
@@ -75,36 +75,21 @@ const HomeScreen = () => {
       onScroll={handleScroll}
       contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ height: 600, position: 'relative' }}>
-        {!movie.posterHighRes || !movie.backdropHighRes ? (
-          <ImageBackground
-            //@ts-ignore
-            source={undefined}
-            resizeMode='cover'
-            style={{ flex: 1 }}>
-            <LinearGradient
-              colors={[
-                'rgba(0,0,0, 0.2)',
-                'rgba(0,0,0, 0.2)',
-                'rgba(0,0,0,0.3)',
-              ]}
-              style={[IMGSTYLES.background, { zIndex: 100 }]}
-            />
-          </ImageBackground>
-        ) : (
-          <ImageBackground
-            source={{ uri: movie.poster || movie.backdrop }}
-            resizeMode='cover'
-            style={{ flex: 1 }}>
-            <LinearGradient
-              colors={[
-                'rgba(0,0,0, 0.2)',
-                'rgba(0,0,0, 0.2)',
-                'rgba(0,0,0,0.3)',
-              ]}
-              style={[IMGSTYLES.background, { zIndex: 100 }]}
-            />
-          </ImageBackground>
-        )}
+        <ImageBackground
+          source={
+            movie.posterHighRes || movie.backdropHighRes
+              ? { uri: movie.poster || movie.backdrop }
+              : {
+                  uri: 'https://image.tmdb.org/t/p/original/8i1xFqcItT6GKEbY6VDbFnxe7sJ.jpg',
+                }
+          }
+          resizeMode='cover'
+          style={{ flex: 1 }}>
+          <LinearGradient
+            colors={['rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.3)']}
+            style={[IMGSTYLES.background, { zIndex: 100 }]}
+          />
+        </ImageBackground>
 
         <View
           style={{
@@ -126,7 +111,7 @@ const HomeScreen = () => {
       {movies?.map((movieSet: any) => {
         return (
           <Lane
-            key={uuid.v4().toString()}
+            key={movieSet.genre}
             title={movieSet.genre}
             data={movieSet.movies}
             LaneRenderItem={StandardLaneCard}

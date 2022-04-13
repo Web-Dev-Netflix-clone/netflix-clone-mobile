@@ -4,7 +4,7 @@ import { Pressable, Image, Text, View } from 'react-native';
 import SignInScreen from '../../screens/SignInScreen';
 import WelcomeScreen from '../../screens/WelcomeScreen';
 
-import netflixLogo from '../../assets/netflix-logos/netflix-logo-2560x1440.png';
+import netflixLogo from '../../../assets/netflix-logos/netflix-logo-2560x1440.png';
 import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TYPOGRAPHY } from '../../global/styles/typography';

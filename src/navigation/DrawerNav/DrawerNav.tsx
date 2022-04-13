@@ -111,7 +111,7 @@ export const DrawerNav = () => {
                         }}
                         onPress={() => {}}>
                         <Image
-                          source={require('../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png')}
+                          source={require('../../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png')}
                           style={{ height: 30, width: 30 }}
                         />
                       </Pressable>
@@ -171,7 +171,7 @@ export const DrawerNav = () => {
                           navigation.dispatch(DrawerActions.openDrawer());
                         }}>
                         <Avatar
-                          imageSource={require('../../assets/netflix-avatars/avatar-yellow.png')}
+                          imageSource={require('../../../assets/netflix-avatars/avatar-yellow.png')}
                           height={20}
                           width={20}
                         />

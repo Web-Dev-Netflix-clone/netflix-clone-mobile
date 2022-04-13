@@ -47,7 +47,9 @@ const ComingSoonScreen = () => {
   const movies = useSelector((state: RootState) => state.movies.allMovies);
   const movie = useSelector((state: RootState) => state.movies.singleMovie);
 
-  const keyExtractor = useCallback((item) => item.id, []);
+  const keyExtractor = useCallback((item) => {
+    return item.id;
+  }, []);
   const renderItem = useCallback(({ item }) => {
     return <ComingSoonItem item={item} />;
   }, []);
