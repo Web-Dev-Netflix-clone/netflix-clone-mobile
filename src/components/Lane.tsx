@@ -15,8 +15,6 @@ interface ILane {
 }
 
 const Lane = ({ data, LaneRenderItem, title }: ILane) => {
-  const componentRendered = useRef(0);
-
   const keyExtractor = useCallback((item) => item.id, []);
   const renderItem = useCallback(({ item }) => {
     return (
@@ -26,11 +24,6 @@ const Lane = ({ data, LaneRenderItem, title }: ILane) => {
       />
     );
   }, []);
-
-  useEffect(() => {
-    //console.log('Lane COMPONENT RENDERED', componentRendered.current);
-    componentRendered.current++;
-  });
 
   return (
     <View

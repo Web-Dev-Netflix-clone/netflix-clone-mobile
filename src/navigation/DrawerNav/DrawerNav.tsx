@@ -100,7 +100,7 @@ export const DrawerNav = () => {
                         flexDirection: 'row',
                         paddingTop: 70,
                         paddingHorizontal: 20,
-                        paddingBottom: 20,
+                        paddingBottom: 15,
                         justifyContent: 'space-between',
                       },
                       scrollZero && animatedBgColor,

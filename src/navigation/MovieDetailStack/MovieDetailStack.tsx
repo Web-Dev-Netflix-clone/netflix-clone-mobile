@@ -25,12 +25,17 @@ export const MovieDetailsStack = () => {
           },
           headerLeft: () => (
             <Pressable
-              style={{ flexDirection: 'row', alignItems: 'center' }}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingTop: 10,
+              }}
               onPress={() => navigation.goBack()}>
               <Ionicons
                 name='arrow-back'
-                size={24}
+                size={28}
                 color={TYPOGRAPHY.COLOR.White}
+                style={{ marginLeft: 10 }}
               />
             </Pressable>
           ),

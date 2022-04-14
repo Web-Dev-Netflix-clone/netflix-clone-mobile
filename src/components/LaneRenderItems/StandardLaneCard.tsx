@@ -11,21 +11,13 @@ interface IStandardLaneCard {
 
 const StandardLaneCard = ({ goTo, image }: IStandardLaneCard) => {
   const navigation = useNavigation();
-  const componentRendered = useRef(0);
-
-  useEffect(() => {
-    // console.log(
-    //   'StandardLaneCard COMPONENT RENDERED',
-    //   componentRendered.current
-    // );
-    componentRendered.current++;
-  });
-
   return (
     <View style={{ marginRight: GLOBAL.SPACING.sm }}>
       <PressableCard
         background={image}
-        onClick={() => navigation.navigate(goTo)}
+        onClick={() => {
+          navigation.navigate(goTo);
+        }}
         height={200}
         width={150}
       />
