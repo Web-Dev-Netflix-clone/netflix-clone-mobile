@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 
-import { Button } from 'react-native-paper';
+import { Button, IconButton } from 'react-native-paper';
 
 import { Ionicons } from '@expo/vector-icons';
 import {
@@ -17,16 +17,18 @@ import { GLOBAL } from '../../global/styles/global';
 
 import { avatarData } from '../../../assets/MockData/avatarData';
 import Avatar from '../../components/Avatar';
-import CustomDrawerTopBar from './CustomDrawerComponents/CustomDrawerTopBar';
+import TopBar from './CustomDrawerComponents/TopBar';
 import { socialIconsData } from '../../../assets/MockData/socialIconsData';
-import CustomDrawerSocialBox from './CustomDrawerComponents/CustomDrawerSocialBox';
+import SocialBox from './CustomDrawerComponents/SocialBox';
 import { drawerLinks } from '../../../assets/MockData/drawerLinks';
-import CustomDrawerTouchableLink from './CustomDrawerComponents/CustomDrawerTouchableLink';
+import TouchableLink from './CustomDrawerComponents/TouchableLink';
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state';
 import SearchBar from '../../components/SearchBar';
 import { useActions } from '../../hooks/useActions';
+import { IMGSTYLES } from '../../global/styles/imgStyles';
+import SearchMovieBox from './CustomDrawerComponents/SearchMovieBox';
 const CustomDrawer = (props: any) => {
   const { fakeLogout } = useActions();
   const searchActive = useSelector(
@@ -51,21 +53,35 @@ const CustomDrawer = (props: any) => {
       style={{
         flex: 1,
         backgroundColor: TYPOGRAPHY.COLOR.Black,
+        paddingTop: GLOBAL.SPACING.xxxxl,
       }}>
+      <TopBar title={'Search'} />
+
+      <SearchBar />
+
       <DrawerContentScrollView
         contentContainerStyle={{
+          paddingTop: GLOBAL.SPACING.md,
           backgroundColor: TYPOGRAPHY.COLOR.Black,
         }}>
-        <CustomDrawerTopBar title={'Search'} />
-
-        <SearchBar />
-        {filteredArray?.map((x) => {
-          return (
-            <Text key={x.id} style={{ color: 'white' }}>
-              {x.title}
-            </Text>
-          );
-        })}
+        <Text
+          style={{
+            ...TYPOGRAPHY.FONT.h2,
+            marginBottom: GLOBAL.SPACING.md,
+            marginLeft: GLOBAL.SPACING.sm,
+          }}>
+          Top Searches
+        </Text>
+        {searchInput.length > 0 &&
+          filteredArray?.map((movie) => {
+            return (
+              <SearchMovieBox
+                key={movie.id}
+                title={movie.title}
+                image={movie.backdrop}
+              />
+            );
+          })}
       </DrawerContentScrollView>
     </View>
   ) : (
@@ -80,7 +96,7 @@ const CustomDrawer = (props: any) => {
           backgroundColor: TYPOGRAPHY.COLOR.Black,
         }}>
         {/* Custom Drawer Component with back button */}
-        <CustomDrawerTopBar title={'Profiles & More'} />
+        <TopBar title={'Profiles & More'} />
 
         <View
           style={[
@@ -187,7 +203,7 @@ const CustomDrawer = (props: any) => {
             }}>
             {/* Maps over icon data and creates social icons */}
             {socialIconsData.map((icon, i) => (
-              <CustomDrawerSocialBox
+              <SocialBox
                 key={icon.id}
                 imageSource={icon.source}
                 height={40}
@@ -227,7 +243,7 @@ const CustomDrawer = (props: any) => {
         }}>
         {/* Maps the links */}
         {drawerLinks.map((link) => (
-          <CustomDrawerTouchableLink
+          <TouchableLink
             key={link.id}
             title={link.title}
             onClick={

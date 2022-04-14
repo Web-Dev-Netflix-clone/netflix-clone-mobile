@@ -5,7 +5,7 @@ import { TYPOGRAPHY } from '../../../global/styles/typography';
 
 import { Feather } from '@expo/vector-icons';
 
-interface CustomDrawerSocialBox {
+interface ISocialBox {
   imageSource?: ImageSourcePropType;
   height: number;
   width: number;
@@ -14,14 +14,14 @@ interface CustomDrawerSocialBox {
   borderWidth?: number;
 }
 
-const CustomDrawerSocialBox = ({
+const SocialBox = ({
   imageSource,
   height,
   width,
   iconName,
   title,
   borderWidth,
-}: CustomDrawerSocialBox) => {
+}: ISocialBox) => {
   return (
     <View
       style={{
@@ -50,4 +50,4 @@ const CustomDrawerSocialBox = ({
   );
 };
 
-export default CustomDrawerSocialBox;
+export default SocialBox;

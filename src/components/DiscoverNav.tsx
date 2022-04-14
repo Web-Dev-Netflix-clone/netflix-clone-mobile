@@ -14,8 +14,22 @@ interface IDiscoverNav {
 const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {
   return (
     <View style={[{ paddingTop: GLOBAL.SPACING.md }, style]}>
-      <Text style={TYPOGRAPHY.FONT.body}>Series</Text>
-      <Text style={TYPOGRAPHY.FONT.body}>Films</Text>
+      <Text
+        style={{
+          ...TYPOGRAPHY.FONT.body,
+          fontFamily: TYPOGRAPHY.FONT.PrimaryLight,
+          fontSize: 16,
+        }}>
+        Series
+      </Text>
+      <Text
+        style={{
+          ...TYPOGRAPHY.FONT.body,
+          fontFamily: TYPOGRAPHY.FONT.PrimaryLight,
+          fontSize: 16,
+        }}>
+        Films
+      </Text>
 
       <View style={GLOBAL.LAYOUT.rowCenter}>
         <Text
@@ -23,7 +37,11 @@ const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {
             setModalActive(true);
             // hideNavigationBar();
           }}
-          style={TYPOGRAPHY.FONT.body}>
+          style={{
+            ...TYPOGRAPHY.FONT.body,
+            fontFamily: TYPOGRAPHY.FONT.PrimaryLight,
+            fontSize: 16,
+          }}>
           Categories
         </Text>
         <View style={{ marginTop: -5 }}>

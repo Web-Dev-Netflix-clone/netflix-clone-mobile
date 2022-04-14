@@ -5,7 +5,7 @@ import { DrawerContentScrollView } from '@react-navigation/drawer';
 
 import { TYPOGRAPHY } from '../../global/styles/typography';
 
-import CustomDrawerTopBar from './CustomDrawerComponents/CustomDrawerTopBar';
+import CustomDrawerTopBar from './CustomDrawerComponents/TopBar';
 
 import SearchBar from '../../components/SearchBar';
 import { useActions } from '../../hooks/useActions';

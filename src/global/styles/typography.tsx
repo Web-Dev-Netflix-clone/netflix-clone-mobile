@@ -2,12 +2,11 @@ const COLOR = {
   // CTA
   White: '#FFFFFF',
   Black: '#000000',
-  BlackSecondary: '#060606',
+  BlackSecondary: '#060600',
 
   Dark: '#141414',
   DarkSecondary: '#181818',
-  DarkTertiary: '#333333',
-
+  DarkTertiary: '#242424',
   Grey: '#808080',
   GreySecondary: '#4f5054',
   GreyLight: '#c1c1c1',

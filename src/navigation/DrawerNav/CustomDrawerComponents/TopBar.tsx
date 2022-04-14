@@ -6,12 +6,12 @@ import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { useActions } from '../../../hooks/useActions';
 
-interface ICustomDrawerTopBar {
+interface ITopBar {
   title: string;
   iconName?: any;
 }
 
-const CustomDrawerTopBar = ({ title, iconName }: ICustomDrawerTopBar) => {
+const TopBar = ({ title, iconName }: ITopBar) => {
   const navigation = useNavigation();
   const { searchInActive } = useActions();
 
@@ -49,4 +49,4 @@ const CustomDrawerTopBar = ({ title, iconName }: ICustomDrawerTopBar) => {
   );
 };
 
-export default CustomDrawerTopBar;
+export default TopBar;

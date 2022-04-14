@@ -2,15 +2,12 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 
-interface ICustomDrawerTouchableLink {
+interface ITouchableLink {
   title: string;
   onClick?: () => void;
 }
 
-const CustomDrawerTouchableLink = ({
-  title,
-  onClick,
-}: ICustomDrawerTouchableLink) => {
+const TouchableLink = ({ title, onClick }: ITouchableLink) => {
   return (
     <TouchableOpacity onPress={onClick} style={{ paddingVertical: 15 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -28,4 +25,4 @@ const CustomDrawerTouchableLink = ({
   );
 };
 
-export default CustomDrawerTouchableLink;
+export default TouchableLink;

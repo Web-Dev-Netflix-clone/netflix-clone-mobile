@@ -19,11 +19,12 @@ const SearchBar = () => {
           paddingVertical: GLOBAL.SPACING.sm,
           paddingHorizontal: GLOBAL.SPACING.lg,
           justifyContent: 'space-between',
+          marginBottom: GLOBAL.SPACING.sm,
         },
       ]}>
       <IonIcons name='search' size={20} color={TYPOGRAPHY.COLOR.GreyLight} />
       <TextInput
-        style={{ marginLeft: -60 }}
+        style={{ marginLeft: -60, color: '#fff' }}
         placeholder='Search for a show, movie, genre etc.'
         placeholderTextColor={TYPOGRAPHY.COLOR.GreyLight}
         value={searchInput}

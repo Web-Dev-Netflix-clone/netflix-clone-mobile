@@ -98,7 +98,9 @@ export const DrawerNav = () => {
                       {
                         backgroundColor: 'rgba(0,0,0,0.65)',
                         flexDirection: 'row',
-                        paddingTop: 56,
+                        paddingTop: 70,
+                        paddingHorizontal: 20,
+                        paddingBottom: 20,
                         justifyContent: 'space-between',
                       },
                       scrollZero && animatedBgColor,
@@ -112,7 +114,7 @@ export const DrawerNav = () => {
                         onPress={() => {}}>
                         <Image
                           source={require('../../../assets/netflix-logos/netflix-logo-png-symbol-512x512.png')}
-                          style={{ height: 30, width: 30 }}
+                          style={{ height: 35, width: 35 }}
                         />
                       </Pressable>
                     ) : (
@@ -172,8 +174,8 @@ export const DrawerNav = () => {
                         }}>
                         <Avatar
                           imageSource={require('../../../assets/netflix-avatars/avatar-yellow.png')}
-                          height={20}
-                          width={20}
+                          height={26}
+                          width={26}
                         />
                       </Pressable>
                     </View>
@@ -190,8 +192,8 @@ export const DrawerNav = () => {
                       setModalActive={setModalActive}
                       style={{
                         width: '100%',
-                        height: mainNavHiddenToggle ? 90 : 50,
-                        paddingTop: mainNavHiddenToggle ? 40 : 0,
+                        height: mainNavHiddenToggle ? 140 : 50,
+                        paddingTop: mainNavHiddenToggle ? 70 : 0,
                         flexDirection: 'row',
                         alignItems: 'center',
                         justifyContent: 'space-evenly',
