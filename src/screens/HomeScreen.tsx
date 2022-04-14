@@ -61,10 +61,6 @@ const HomeScreen = () => {
   };
 
   useEffect(() => {
-    fetchMovies();
-  }, []);
-
-  useEffect(() => {
     componentRendered.current++;
   }, [movie]);
 
