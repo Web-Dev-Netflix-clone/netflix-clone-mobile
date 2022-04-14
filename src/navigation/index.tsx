@@ -23,7 +23,7 @@ export const Navigation = () => {
 
   return (
     <NavigationContainer theme={navTheme}>
-      {isSignedIn ? (
+      {!isSignedIn ? (
         <LoginStack />
       ) : movieDataLoaded ? (
         <DrawerNav />

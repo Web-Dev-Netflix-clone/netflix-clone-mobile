@@ -40,16 +40,28 @@ export const LoginStack = () => {
                 alignItems: 'center',
               }}>
               <Pressable onPress={() => {}}>
-                <Text style={GLOBAL.TEXT.Default}>PRIVACY</Text>
+                <Text
+                  style={{
+                    ...GLOBAL.TEXT.Default,
+                    fontSize: TYPOGRAPHY.FONT_SIZES.md,
+                  }}>
+                  PRIVACY
+                </Text>
               </Pressable>
               <Pressable
                 onPress={() => {
                   navigation.navigate('Signin');
                 }}>
-                <Text style={GLOBAL.TEXT.Default}>SIGN IN</Text>
+                <Text
+                  style={{
+                    ...GLOBAL.TEXT.Default,
+                    fontSize: TYPOGRAPHY.FONT_SIZES.md,
+                  }}>
+                  SIGN IN
+                </Text>
               </Pressable>
               <Pressable onPress={() => {}}>
-                <Ionicons name='ellipsis-vertical' size={20} color='gray' />
+                <Ionicons name='ellipsis-vertical' size={26} color='gray' />
               </Pressable>
             </View>
           ),
@@ -70,7 +82,7 @@ export const LoginStack = () => {
                 marginLeft: 10,
               }}
               onPress={() => navigation.goBack()}>
-              <Ionicons name='arrow-back' size={24} color='black' />
+              <Ionicons name='arrow-back' size={28} color='black' />
               <Image
                 style={[IMGSTYLES.headerLogo, { marginLeft: -15 }]}
                 source={netflixLogo}
@@ -113,7 +125,7 @@ export const LoginStack = () => {
             <Pressable
               style={{ marginLeft: 10 }}
               onPress={() => navigation.goBack()}>
-              <Ionicons name='arrow-back' size={24} color='black' />
+              <Ionicons name='arrow-back' size={28} color='black' />
             </Pressable>
           ),
         })}
@@ -130,12 +142,17 @@ export const LoginStack = () => {
           },
           headerLeft: () => (
             <Pressable
-              style={{ flexDirection: 'row', alignItems: 'center' }}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingTop: 20,
+              }}
               onPress={() => navigation.goBack()}>
               <Ionicons
                 name='arrow-back'
-                size={24}
+                size={28}
                 color={TYPOGRAPHY.COLOR.White}
+                style={{ marginLeft: 15 }}
               />
               <Image
                 style={[IMGSTYLES.headerLogo, { marginLeft: -15 }]}
