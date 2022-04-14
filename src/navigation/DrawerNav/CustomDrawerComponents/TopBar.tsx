@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, StyleProp, ViewStyle } from 'react-native';
 import { GLOBAL } from '../../../global/styles/global';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
@@ -9,9 +9,10 @@ import { useActions } from '../../../hooks/useActions';
 interface ITopBar {
   title: string;
   iconName?: any;
+  style?: ViewStyle;
 }
 
-const TopBar = ({ title, iconName }: ITopBar) => {
+const TopBar = ({ title, iconName, style }: ITopBar) => {
   const navigation = useNavigation();
   const { searchInActive } = useActions();
 
@@ -23,6 +24,7 @@ const TopBar = ({ title, iconName }: ITopBar) => {
           backgroundColor: TYPOGRAPHY.COLOR.Black,
           paddingVertical: GLOBAL.SPACING.sm,
         },
+        style,
       ]}>
       <Pressable
         onPress={() => {

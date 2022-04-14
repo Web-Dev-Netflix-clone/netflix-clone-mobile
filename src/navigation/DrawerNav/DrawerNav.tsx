@@ -30,6 +30,7 @@ import { useActions } from '../../hooks/useActions';
 
 import { MovieDetailsStack } from '../MovieDetailStack/MovieDetailStack';
 import { RootState } from '../../state';
+import MovieDetailsScreen from '../../screens/MovieDetailsScreen';
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 
@@ -228,7 +229,7 @@ export const DrawerNav = () => {
       <Drawer.Screen name='Home' component={BottomNav} />
       <Drawer.Screen
         name='MovieDetail'
-        component={MovieDetailsStack}
+        component={MovieDetailsScreen}
         options={{ headerShown: false }}
       />
     </Drawer.Navigator>

@@ -11,12 +11,20 @@ import CustomYoutubePlayer from '../components/CustomYoutubePlayer';
 import PillTag from '../components/PillTag';
 import PressableIconBox from '../components/PressableIconBox';
 import { movieGridData } from '../../assets/MockData/movieGridData';
+import { useRoute } from '@react-navigation/native';
+import TopBar from '../navigation/DrawerNav/CustomDrawerComponents/TopBar';
 
-const MovieDetailsScreen = () => {
+const MovieDetailsScreen = (props: any) => {
   const [playing, setPlaying] = useState(true);
   const [isMute, setIsMute] = useState(true);
   const [showVideo, setShowVideo] = useState(-150);
   const [videoHeight, setVideoHeight] = useState(0);
+
+  const { params } = useRoute();
+  // @ts-ignore
+  const { title, trailer, description } = params;
+
+  console.log('ROUTE', params);
 
   useEffect(() => {
     const unsubscribe = setTimeout(() => {
@@ -37,9 +45,10 @@ const MovieDetailsScreen = () => {
         setIsMute={setIsMute}
         showVideo={showVideo}
         videoHeight={videoHeight}
+        trailerSrc={trailer}
       />
       <ScrollView>
-        <Text style={TYPOGRAPHY.FONT.h1}>The Amazing Spider-Man</Text>
+        <Text style={TYPOGRAPHY.FONT.h1}>{title}</Text>
         <View
           style={[
             GLOBAL.LAYOUT.rowCenter,
@@ -95,9 +104,7 @@ const MovieDetailsScreen = () => {
 
         <View>
           <Text style={[TYPOGRAPHY.FONT.subtitle, { color: '#fff' }]}>
-            In this reboot of the superhero franchise, high schooler Peter
-            Parker learns to wield his newfound powers while facing down
-            arch-villain The Lizard.
+            {description}
           </Text>
         </View>
 

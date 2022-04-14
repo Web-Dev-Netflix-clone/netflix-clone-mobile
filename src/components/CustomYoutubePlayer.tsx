@@ -12,6 +12,7 @@ interface ICustomYoutubePlayer {
   playing?: boolean;
   showVideo: number;
   videoHeight: number;
+  trailerSrc: string;
 }
 
 const CustomYoutubePlayer = ({
@@ -21,6 +22,7 @@ const CustomYoutubePlayer = ({
   playing,
   showVideo,
   videoHeight,
+  trailerSrc,
 }: ICustomYoutubePlayer) => {
   const controlRef = useRef<YoutubeIframeRef>(null);
 
@@ -31,6 +33,9 @@ const CustomYoutubePlayer = ({
       setIsMute(false);
     }
   }, []);
+
+  const videoId = trailerSrc.split('=_')[1];
+  console.log(videoId);
 
   // TODO => Customize controls
   // const togglePlaying = useCallback(() => {
@@ -75,9 +80,9 @@ const CustomYoutubePlayer = ({
           height={videoHeight}
           contentScale={1}
           ref={controlRef}
-          play={playing}
+          play={false}
           mute={isMute}
-          videoId={'JfVOs4VSpmA'}
+          videoId={videoId ? videoId : 'JfVOs4VSpmA'}
           onChangeState={onStateChange}
           initialPlayerParams={{
             loop: true,

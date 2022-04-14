@@ -20,7 +20,7 @@ const Lane = ({ data, LaneRenderItem, title }: ILane) => {
     return (
       <LaneRenderItem
         image={item.poster || item.backdrop}
-        goTo={'MovieDetail'}
+        goTo={{ key: 'MovieDetail', params: item }}
       />
     );
   }, []);
@@ -31,6 +31,7 @@ const Lane = ({ data, LaneRenderItem, title }: ILane) => {
         {
           backgroundColor: TYPOGRAPHY.COLOR.Black,
           paddingVertical: GLOBAL.SPACING.md,
+          zIndex: 100,
         },
       ]}>
       <Text style={TYPOGRAPHY.FONT.h2}>{title}</Text>
