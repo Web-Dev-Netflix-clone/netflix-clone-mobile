@@ -192,7 +192,7 @@ export const DrawerNav = () => {
                       setModalActive={setModalActive}
                       style={{
                         width: '100%',
-                        height: mainNavHiddenToggle ? 140 : 50,
+                        height: mainNavHiddenToggle ? 110 : 50,
                         paddingTop: mainNavHiddenToggle ? 70 : 0,
                         flexDirection: 'row',
                         alignItems: 'center',
