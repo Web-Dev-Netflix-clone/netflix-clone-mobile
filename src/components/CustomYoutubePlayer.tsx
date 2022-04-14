@@ -34,8 +34,11 @@ const CustomYoutubePlayer = ({
     }
   }, []);
 
-  const videoId = trailerSrc.split('=_')[1];
-  console.log(videoId);
+  console.log('TRAILER=> SRC', trailerSrc);
+  console.log('trailersplt', trailerSrc.split('?v='));
+
+  const videoId = trailerSrc ? trailerSrc.split('?v=')[1] : 'JfVOs4VSpmA';
+  // console.log('VIDEOID', videoId);
 
   // TODO => Customize controls
   // const togglePlaying = useCallback(() => {
@@ -55,7 +58,7 @@ const CustomYoutubePlayer = ({
     setIsMute(!isMute);
   };
 
-  return (
+  return videoId ? (
     <>
       <Animated.View
         entering={BounceIn}
@@ -80,9 +83,9 @@ const CustomYoutubePlayer = ({
           height={videoHeight}
           contentScale={1}
           ref={controlRef}
-          play={false}
+          play={playing}
           mute={isMute}
-          videoId={videoId ? videoId : 'JfVOs4VSpmA'}
+          videoId={videoId}
           onChangeState={onStateChange}
           initialPlayerParams={{
             loop: true,
@@ -105,7 +108,7 @@ const CustomYoutubePlayer = ({
         />
       )}
     </>
-  );
+  ) : null;
 };
 
 export default CustomYoutubePlayer;

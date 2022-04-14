@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Image, View, ScrollView, StyleSheet, Text } from 'react-native';
+import {
+  Image,
+  View,
+  ScrollView,
+  StyleSheet,
+  Text,
+  Pressable,
+} from 'react-native';
 
 import PressableCard from '../components/PressableCard';
 
@@ -11,8 +18,8 @@ import CustomYoutubePlayer from '../components/CustomYoutubePlayer';
 import PillTag from '../components/PillTag';
 import PressableIconBox from '../components/PressableIconBox';
 import { movieGridData } from '../../assets/MockData/movieGridData';
-import { useRoute } from '@react-navigation/native';
-import TopBar from '../navigation/DrawerNav/CustomDrawerComponents/TopBar';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const MovieDetailsScreen = (props: any) => {
   const [playing, setPlaying] = useState(true);
@@ -20,11 +27,14 @@ const MovieDetailsScreen = (props: any) => {
   const [showVideo, setShowVideo] = useState(-150);
   const [videoHeight, setVideoHeight] = useState(0);
 
+  // console.log('PROPS', props);
+
   const { params } = useRoute();
+  const navigation = useNavigation();
   // @ts-ignore
   const { title, trailer, description } = params;
 
-  console.log('ROUTE', params);
+  // console.log('ROUTE', params);
 
   useEffect(() => {
     const unsubscribe = setTimeout(() => {
@@ -38,6 +48,16 @@ const MovieDetailsScreen = (props: any) => {
 
   return (
     <View style={styles.container}>
+      <Pressable
+        onPress={() => navigation.goBack()}
+        style={{ position: 'absolute', top: 60, left: 15 }}>
+        <Ionicons
+          name={'arrow-back'}
+          size={26}
+          color={TYPOGRAPHY.COLOR.White}
+          style={{ marginLeft: 10 }}
+        />
+      </Pressable>
       <CustomYoutubePlayer
         playing={playing}
         setPlaying={setPlaying}

@@ -14,16 +14,12 @@ const StandardLaneCard = ({ goTo, image }: IStandardLaneCard) => {
 
   const { key, params } = goTo;
 
-  console.log('GOTO OBJ', goTo);
-
   return (
-    <View style={{ marginRight: GLOBAL.SPACING.sm }}>
+    <View style={{ marginRight: GLOBAL.SPACING.sm, zIndex: 1000 }}>
       <PressableCard
         background={image}
         onClick={() => {
-          console.log('CLICK');
-          console.log(key, params);
-
+          console.log('CLICK ON LANE ITEM');
           // @ts-ignore
           navigation.navigate(key, params);
         }}
