@@ -33,6 +33,7 @@ const TopBar = ({ title, iconName }: ITopBar) => {
           name={iconName ? iconName : 'arrow-back'}
           size={26}
           color={TYPOGRAPHY.COLOR.White}
+          style={{ marginLeft: 10 }}
         />
       </Pressable>
 

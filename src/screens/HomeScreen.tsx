@@ -76,8 +76,8 @@ const HomeScreen = () => {
       <View style={{ height: 600, position: 'relative' }}>
         <ImageBackground
           source={
-            movie.posterHighRes || movie.backdropHighRes
-              ? { uri: movie.poster || movie.backdrop }
+            movie?.posterHighRes || movie?.backdropHighRes
+              ? { uri: movie.posterHighRes || movie.backdropHighRes }
               : {
                   uri: 'https://image.tmdb.org/t/p/original/8i1xFqcItT6GKEbY6VDbFnxe7sJ.jpg',
                 }
