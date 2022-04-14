@@ -1,38 +1,67 @@
-import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import React from 'react';
+import { View, Text } from 'react-native';
 
 import { DrawerContentScrollView } from '@react-navigation/drawer';
 
 import { TYPOGRAPHY } from '../../global/styles/typography';
 
-import CustomDrawerTopBar from './CustomDrawerComponents/TopBar';
-
 import SearchBar from './CustomDrawerComponents/SearchBar';
-import { useActions } from '../../hooks/useActions';
+
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state';
+import { GLOBAL } from '../../global/styles/global';
+import TopBar from './CustomDrawerComponents/DrawerTopBar';
+import SearchMovieBox from './CustomDrawerComponents/SearchMovieBox';
 
 const SearchDrawer = () => {
   const searchMovies = useSelector(
     (state: RootState) => state.movies.allMoviesSearchable
   );
 
-  useEffect(() => {
-    console.log('SEARCHDRAWER', searchMovies);
-  }, []);
+  const searchInput = useSelector(
+    (state: RootState) => state.movies.searchInput
+  );
+
+  const filteredArray = searchMovies
+    ?.map((result) => {
+      return { ...result, title: result.title.toLowerCase() };
+    })
+    .filter((result) => result.title.includes(searchInput.toLowerCase()));
 
   return (
     <View
       style={{
         flex: 1,
         backgroundColor: TYPOGRAPHY.COLOR.Black,
+        paddingTop: GLOBAL.SPACING.xxxxl,
       }}>
+      <TopBar title={'Search'} />
+
+      <SearchBar />
+
       <DrawerContentScrollView
         contentContainerStyle={{
+          paddingTop: GLOBAL.SPACING.md,
           backgroundColor: TYPOGRAPHY.COLOR.Black,
         }}>
-        <CustomDrawerTopBar title={'Search'} />
-        <SearchBar />
+        <Text
+          style={{
+            ...TYPOGRAPHY.FONT.h2,
+            marginBottom: GLOBAL.SPACING.md,
+            marginLeft: GLOBAL.SPACING.sm,
+          }}>
+          Top Searches
+        </Text>
+        {searchInput.length > 0 &&
+          filteredArray?.map((movie) => {
+            return (
+              <SearchMovieBox
+                key={movie.id}
+                title={movie.title}
+                image={movie.backdrop}
+              />
+            );
+          })}
       </DrawerContentScrollView>
     </View>
   );

@@ -17,7 +17,7 @@ import { GLOBAL } from '../../global/styles/global';
 
 import { avatarData } from '../../../assets/mock-data/avatarData';
 import Avatar from './CustomDrawerComponents/Avatar';
-import TopBar from './CustomDrawerComponents/TopBar';
+import DrawerTopBar from './CustomDrawerComponents/DrawerTopBar';
 import { socialIconsData } from '../../../assets/mock-data/socialIconsData';
 import SocialBox from './CustomDrawerComponents/SocialBox';
 import { drawerLinks } from '../../../assets/mock-data/drawerLinks';
@@ -42,7 +42,7 @@ const CustomDrawer = (props: any) => {
     (state: RootState) => state.movies.searchInput
   );
 
-  const filteredArray = searchMovies
+  const filteredMovieArray = searchMovies
     ?.map((result) => {
       return { ...result, title: result.title.toLowerCase() };
     })
@@ -55,7 +55,7 @@ const CustomDrawer = (props: any) => {
         backgroundColor: TYPOGRAPHY.COLOR.Black,
         paddingTop: GLOBAL.SPACING.xxxxl,
       }}>
-      <TopBar title={'Search'} />
+      <DrawerTopBar title={'Search'} />
 
       <SearchBar />
 
@@ -73,14 +73,8 @@ const CustomDrawer = (props: any) => {
           Top Searches
         </Text>
         {searchInput.length > 0 &&
-          filteredArray?.map((movie) => {
-            return (
-              <SearchMovieBox
-                key={movie.id}
-                title={movie.title}
-                image={movie.backdrop}
-              />
-            );
+          filteredMovieArray?.map(({ id, title, backdrop }) => {
+            return <SearchMovieBox key={id} title={title} image={backdrop} />;
           })}
       </DrawerContentScrollView>
     </View>
@@ -91,7 +85,7 @@ const CustomDrawer = (props: any) => {
         backgroundColor: TYPOGRAPHY.COLOR.Black,
         paddingTop: GLOBAL.SPACING.xxxxl,
       }}>
-      <TopBar title={'Profiles & More'} />
+      <DrawerTopBar title={'Profiles & More'} />
 
       <View
         style={[

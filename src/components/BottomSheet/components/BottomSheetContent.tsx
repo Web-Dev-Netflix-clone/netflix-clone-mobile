@@ -5,15 +5,15 @@ import {
   Image,
   Pressable,
   Dimensions,
-} from "react-native";
-import React from "react";
-import { useActions } from "../hooks/useActions";
-import { TYPOGRAPHY } from "../global/styles/typography";
-import { GLOBAL } from "../global/styles/global";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+} from 'react-native';
+import React from 'react';
+import { useActions } from '../../../hooks/useActions';
+import { TYPOGRAPHY } from '../../../global/styles/typography';
+import { GLOBAL } from '../../../global/styles/global';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-const width = Dimensions.get("window").width;
-const height = Dimensions.get("window").height;
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 const modalHeight = height * 0.35;
 
 const BottomSheet = () => {
@@ -23,7 +23,7 @@ const BottomSheet = () => {
     <View style={styles.container}>
       <View style={styles.closeButton}>
         <Pressable onPress={hideBottomSheet}>
-          <Ionicons name="close-outline" size={35} color="white" />
+          <Ionicons name='close-outline' size={35} color='white' />
         </Pressable>
       </View>
       <View style={styles.movieInfoContainer}>
@@ -31,7 +31,7 @@ const BottomSheet = () => {
           <Image
             style={styles.image}
             source={{
-              uri: "https://sm.ign.com/t/ign_za/cover/t/the-adam-p/the-adam-project_cnr4.256.jpg",
+              uri: 'https://sm.ign.com/t/ign_za/cover/t/the-adam-p/the-adam-project_cnr4.256.jpg',
             }}
           />
         </View>
@@ -43,7 +43,7 @@ const BottomSheet = () => {
             <Text style={GLOBAL.CTA.Style.secondaryText}>2022</Text>
             <Image
               style={styles.icon}
-              source={require("../../assets/kijkwijzer-icons/12.jpg")}
+              source={require('../../../../assets/kijkwijzer-icons/12.jpg')}
             />
             <Text style={GLOBAL.CTA.Style.secondaryText}>1h 46m</Text>
           </View>
@@ -57,39 +57,38 @@ const BottomSheet = () => {
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <View style={{ alignItems: "center" }}>
-          <Ionicons name="play-circle" size={28} color="white" />
+        <View style={{ alignItems: 'center' }}>
+          <Ionicons name='play-circle' size={28} color='white' />
           <Text style={GLOBAL.CTA.Style.secondaryText}>Play</Text>
         </View>
-        <View style={{ alignItems: "center" }}>
-          <Ionicons name="download" size={28} color="white" />
+        <View style={{ alignItems: 'center' }}>
+          <Ionicons name='download' size={28} color='white' />
           <Text style={GLOBAL.CTA.Style.secondaryText}>Download</Text>
         </View>
-        <View style={{ alignItems: "center" }}>
-          <Ionicons name="add" size={28} color="white" />
+        <View style={{ alignItems: 'center' }}>
+          <Ionicons name='add' size={28} color='white' />
           <Text style={GLOBAL.CTA.Style.secondaryText}>My List</Text>
         </View>
-        <View style={{ alignItems: "center" }}>
-          <Ionicons name="share-social-outline" size={28} color="white" />
+        <View style={{ alignItems: 'center' }}>
+          <Ionicons name='share-social-outline' size={28} color='white' />
           <Text style={GLOBAL.CTA.Style.secondaryText}>Share</Text>
         </View>
       </View>
 
       <Pressable
         style={styles.infoButton}
-        onPress={() => console.log("more info")}
-      >
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+        onPress={() => console.log('more info')}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Ionicons
             style={{ marginHorizontal: GLOBAL.SPACING.sm }}
-            name="information-circle-outline"
+            name='information-circle-outline'
             size={24}
-            color="white"
+            color='white'
           />
           <Text style={GLOBAL.CTA.Style.primaryText}>Details & More</Text>
         </View>
         <View>
-          <MaterialIcons name="keyboard-arrow-right" size={26} color="white" />
+          <MaterialIcons name='keyboard-arrow-right' size={26} color='white' />
         </View>
       </Pressable>
     </View>
@@ -105,35 +104,35 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   closeButton: {
-    position: "absolute",
+    position: 'absolute',
     top: GLOBAL.SPACING.sm,
 
     right: GLOBAL.SPACING.xxsm,
     zIndex: 10,
   },
   movieInfoContainer: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    height: "60%",
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    height: '60%',
     marginTop: GLOBAL.SPACING.sm,
   },
   imageContainer: {
-    alignSelf: "flex-start",
-    width: "30%",
-    height: "100%",
+    alignSelf: 'flex-start',
+    width: '30%',
+    height: '100%',
   },
   image: {
-    height: "100%",
-    width: "100%",
+    height: '100%',
+    width: '100%',
   },
   textContainer: {
-    justifyContent: "flex-start",
-    width: "70%",
+    justifyContent: 'flex-start',
+    width: '70%',
     paddingHorizontal: GLOBAL.SPACING.sm,
   },
   movieDetails: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   icon: {
     height: 20,
@@ -149,21 +148,21 @@ const styles = StyleSheet.create({
     marginTop: GLOBAL.SPACING.xxsm,
   },
   buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    height: "20%",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: '20%',
   },
   buttonDescription: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
   infoButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: "15%",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: '15%',
     borderWidth: 1,
     borderTopColor: TYPOGRAPHY.COLOR.Grey,
     paddingTop: GLOBAL.SPACING.xxsm,

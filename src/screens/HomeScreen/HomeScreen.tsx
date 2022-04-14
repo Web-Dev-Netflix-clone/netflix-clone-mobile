@@ -34,8 +34,6 @@ export interface IMovieSet {
 }
 
 const HomeScreen = () => {
-  const componentRendered = useRef(0);
-
   const {
     hideMainNav,
     showMainNav,
@@ -60,10 +58,6 @@ const HomeScreen = () => {
     if (direction === 'down' && currentOffset > 75) hideMainNav();
   };
 
-  useEffect(() => {
-    componentRendered.current++;
-  }, [movie]);
-
   return (
     <ScrollView
       style={{ position: 'relative' }}
@@ -82,7 +76,7 @@ const HomeScreen = () => {
           style={{ flex: 1 }}>
           <LinearGradient
             colors={['rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.3)']}
-            style={[IMGSTYLES.background, { zIndex: 100 }]}
+            style={{ ...IMGSTYLES.background, zIndex: 100 }}
           />
         </ImageBackground>
 
