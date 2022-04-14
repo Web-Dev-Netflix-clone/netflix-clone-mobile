@@ -4,7 +4,6 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  Pressable,
   TouchableOpacity,
   ImageSourcePropType,
   ViewStyle,
@@ -57,7 +56,7 @@ const PressableCard = ({
             }
           />
         )}
-        <View style={[{ padding: GLOBAL.SPACING.sm }]}>
+        <View style={{ padding: GLOBAL.SPACING.sm }}>
           {title && (
             <Text
               style={{

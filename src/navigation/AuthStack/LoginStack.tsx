@@ -1,8 +1,8 @@
 import React from 'react';
 import { Pressable, Image, Text, View } from 'react-native';
 
-import SignInScreen from '../../screens/SignInScreen';
-import WelcomeScreen from '../../screens/WelcomeScreen';
+import SignInScreen from '../../screens/SignInScreen/SignInScreen';
+import WelcomeScreen from '../../screens/WelcomeScreen/WelcomeScreen';
 
 import netflixLogo from '../../../assets/netflix-logos/netflix-logo-2560x1440.png';
 import { Ionicons } from '@expo/vector-icons';
@@ -11,8 +11,8 @@ import { TYPOGRAPHY } from '../../global/styles/typography';
 import { IMGSTYLES } from '../../global/styles/imgStyles';
 import { AuthStackParams } from './../navigation';
 import { GLOBAL } from '../../global/styles/global';
-import SignUpScreen from '../../screens/SignUpScreen';
-import HelpScreen from '../../screens/HelpScreen';
+import SignUpScreen from '../../screens/SignUpScreen/SignUpScreen';
+import HelpScreen from '../../screens/HelpScreen/HelpScreen';
 const AuthStack = createStackNavigator<AuthStackParams>();
 
 export const LoginStack = () => {
@@ -155,7 +155,7 @@ export const LoginStack = () => {
                 style={{ marginLeft: 15 }}
               />
               <Image
-                style={[IMGSTYLES.headerLogo, { marginLeft: -15 }]}
+                style={{ ...IMGSTYLES.headerLogo, marginLeft: -15 }}
                 source={netflixLogo}
               />
             </Pressable>

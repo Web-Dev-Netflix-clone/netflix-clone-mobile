@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TYPOGRAPHY } from '../../global/styles/typography';
-import ComingSoonScreen from '../../screens/ComingSoonScreen';
-import DownloadsScreen from '../../screens/DownloadsScreen';
-import GamesScreen from '../../screens/GamesScreen';
-import HomeScreen from '../../screens/HomeScreen';
+import ComingSoonScreen from '../../screens/ComingSoonScreen/ComingSoonScreen';
+import DownloadsScreen from '../../screens/DownloadsScreen/DownloadsScreen';
+import GamesScreen from '../../screens/GamesScreen/GamesScreen';
+import HomeScreen from '../../screens/HomeScreen/HomeScreen';
 import { BottomTabParams } from '../navigation';
 import { Ionicons } from '@expo/vector-icons';
 import { useActions } from '../../hooks/useActions';

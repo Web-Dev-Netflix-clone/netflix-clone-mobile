@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import React from 'react';
+import { View, Text } from 'react-native';
 
-import { Button, IconButton } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 import { Ionicons } from '@expo/vector-icons';
 import {
@@ -15,19 +15,19 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
 
-import { avatarData } from '../../../assets/MockData/avatarData';
-import Avatar from '../../components/Avatar';
+import { avatarData } from '../../../assets/mock-data/avatarData';
+import Avatar from './CustomDrawerComponents/Avatar';
 import TopBar from './CustomDrawerComponents/TopBar';
-import { socialIconsData } from '../../../assets/MockData/socialIconsData';
+import { socialIconsData } from '../../../assets/mock-data/socialIconsData';
 import SocialBox from './CustomDrawerComponents/SocialBox';
-import { drawerLinks } from '../../../assets/MockData/drawerLinks';
+import { drawerLinks } from '../../../assets/mock-data/drawerLinks';
 import TouchableLink from './CustomDrawerComponents/TouchableLink';
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state';
-import SearchBar from '../../components/SearchBar';
+import SearchBar from './CustomDrawerComponents/SearchBar';
 import { useActions } from '../../hooks/useActions';
-import { IMGSTYLES } from '../../global/styles/imgStyles';
+
 import SearchMovieBox from './CustomDrawerComponents/SearchMovieBox';
 const CustomDrawer = (props: any) => {
   const { fakeLogout } = useActions();
@@ -166,20 +166,19 @@ const CustomDrawer = (props: any) => {
           Terms & Conditions
         </Text>
         <View
-          style={[
-            GLOBAL.LAYOUT.rowCenter,
-            {
-              padding: GLOBAL.SPACING.sm,
-              marginHorizontal: GLOBAL.SPACING.sm,
-              backgroundColor: TYPOGRAPHY.COLOR.Black,
-            },
-          ]}>
+          style={{
+            ...GLOBAL.LAYOUT.rowCenter,
+            padding: GLOBAL.SPACING.sm,
+            marginHorizontal: GLOBAL.SPACING.sm,
+            backgroundColor: TYPOGRAPHY.COLOR.Black,
+          }}>
           <Text
-            style={[
-              TYPOGRAPHY.FONT.body,
-              { fontSize: TYPOGRAPHY.FONT_SIZES.sm },
-              { paddingRight: GLOBAL.SPACING.sm, marginBottom: 0 },
-            ]}>
+            style={{
+              ...TYPOGRAPHY.FONT.body,
+              fontSize: TYPOGRAPHY.FONT_SIZES.sm,
+              paddingRight: GLOBAL.SPACING.sm,
+              marginBottom: 0,
+            }}>
             http://www.netflix.com/nl/n79e23....
           </Text>
           <Button

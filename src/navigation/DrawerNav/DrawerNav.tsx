@@ -8,7 +8,7 @@ import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
 import { Image, Pressable, View, Text } from 'react-native';
 import CustomDrawer from './CustomDrawer';
-import Avatar from '../../components/Avatar';
+import Avatar from './CustomDrawerComponents/Avatar';
 
 import Animated, {
   Easing,
@@ -22,15 +22,14 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import DiscoverNav from '../../components/DiscoverNav';
+import DiscoverNav from '../../screens/HomeScreen/components/DiscoverNav';
 
-import CategoriesModal from '../../components/CategoriesModal';
+import CategoriesModal from '../../screens/HomeScreen/components/CategoriesModal';
 import { useSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 
-import { MovieDetailsStack } from '../MovieDetailStack/MovieDetailStack';
 import { RootState } from '../../state';
-import MovieDetailsScreen from '../../screens/MovieDetailsScreen';
+import MovieDetailsScreen from '../../screens/MovieDetailsScreen/MovieDetailsScreen';
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 

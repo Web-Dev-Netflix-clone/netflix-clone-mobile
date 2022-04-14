@@ -2,7 +2,7 @@ import {
   showBottomSheet,
   hideBottomSheet,
 } from './../action-creators/appStateActions';
-// import { Action } from 'redux';
+
 import { ActionType } from '../action-types/index';
 
 export interface SearchActive {

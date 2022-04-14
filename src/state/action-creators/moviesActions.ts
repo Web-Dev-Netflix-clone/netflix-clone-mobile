@@ -1,5 +1,3 @@
-import { UpdateSearchInput } from './../actionsInterfaces/moviesInterfaces';
-import { IMovieSet } from './../../screens/HomeScreen';
 import { ActionType } from '../action-types';
 import { Action, Dispatch } from 'redux';
 import uuid from 'react-native-uuid';

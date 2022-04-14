@@ -1,8 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Deze file is voor ASYNC STORAGE daarin kan je gebruikers gegevens opslaan
-// vergelijkbaar met local storage in de browser.
-
 export const storeData = async (key: string, value: any) => {
   try {
     const stringValue = JSON.stringify(value);

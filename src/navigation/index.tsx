@@ -6,7 +6,7 @@ import { LoginStack } from './AuthStack/LoginStack';
 import { useSelector } from '../hooks/useTypedSelector';
 import BottomSheet from '../components/BottomSheet';
 
-import StartupScreen from '../screens/StartupScreen';
+import StartupScreen from '../screens/StartUpScreen/StartupScreen';
 import { useActions } from '../hooks/useActions';
 
 const navTheme = DefaultTheme;

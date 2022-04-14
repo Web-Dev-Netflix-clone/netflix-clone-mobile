@@ -7,7 +7,7 @@ import { TYPOGRAPHY } from '../../global/styles/typography';
 
 import CustomDrawerTopBar from './CustomDrawerComponents/TopBar';
 
-import SearchBar from '../../components/SearchBar';
+import SearchBar from './CustomDrawerComponents/SearchBar';
 import { useActions } from '../../hooks/useActions';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state';

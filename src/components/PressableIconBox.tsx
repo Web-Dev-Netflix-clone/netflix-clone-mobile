@@ -14,15 +14,12 @@ const PressableIconBox = ({ iconName, text, onClick }: IPressableIconBox) => {
   return (
     <Pressable onPress={onClick}>
       <View
-        style={[
-          {
-            paddingVertical: GLOBAL.SPACING.md,
-            marginLeft: GLOBAL.SPACING.md,
-
-            justifyContent: 'center',
-            alignItems: 'center',
-          },
-        ]}>
+        style={{
+          paddingVertical: GLOBAL.SPACING.md,
+          marginLeft: GLOBAL.SPACING.md,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
         <Ionicons
           style={{ marginBottom: 5 }}
           name={iconName}
