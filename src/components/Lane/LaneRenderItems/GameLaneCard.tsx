@@ -20,10 +20,15 @@ const GameLaneCard = ({ goTo }: GameLaneCard) => {
         <GameCard />
 
         <View>
-          <Text style={{ ...TYPOGRAPHY.FONT.body, color: 'white' }}>
+          <Text
+            style={{ ...TYPOGRAPHY.FONT.body, color: TYPOGRAPHY.COLOR.White }}>
             Dungeon Dwarves
           </Text>
-          <Text style={{ ...TYPOGRAPHY.FONT.subtitle, color: 'white' }}>
+          <Text
+            style={{
+              ...TYPOGRAPHY.FONT.subtitle,
+              color: TYPOGRAPHY.COLOR.White,
+            }}>
             Role-Playing
           </Text>
         </View>

@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: GLOBAL.SPACING.md,
-    backgroundColor: 'white',
+    backgroundColor: TYPOGRAPHY.COLOR.White,
   },
   header: {
     color: 'black',

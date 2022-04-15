@@ -10,7 +10,7 @@ interface ILane {
 }
 
 const Lane = ({ data, LaneRenderItem, title }: ILane) => {
-  const keyExtractor = useCallback((item) => item.id, []);
+  const keyExtractor = useCallback(({ id }) => id, []);
   const renderItem = useCallback(({ item }) => {
     return (
       <LaneRenderItem
@@ -22,13 +22,11 @@ const Lane = ({ data, LaneRenderItem, title }: ILane) => {
 
   return (
     <View
-      style={[
-        {
-          backgroundColor: TYPOGRAPHY.COLOR.Black,
-          paddingVertical: GLOBAL.SPACING.md,
-          zIndex: 100,
-        },
-      ]}>
+      style={{
+        backgroundColor: TYPOGRAPHY.COLOR.Black,
+        paddingVertical: GLOBAL.SPACING.md,
+        zIndex: 100,
+      }}>
       <Text style={TYPOGRAPHY.FONT.h2}>{title}</Text>
       <FlatList
         horizontal

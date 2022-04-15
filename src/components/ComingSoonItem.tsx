@@ -2,6 +2,7 @@ import React, { useState, useCallback, useRef } from 'react';
 import { StyleSheet, Text, View, Dimensions, Pressable } from 'react-native';
 import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe';
 import { Ionicons } from '@expo/vector-icons';
+import { TYPOGRAPHY } from '../global/styles/typography';
 
 const ComingSoonItem = ({ item }: any) => {
   const controlRef = useRef<YoutubeIframeRef>(null);
@@ -43,24 +44,34 @@ const ComingSoonItem = ({ item }: any) => {
         onPress={() => console.log('more info')}
         style={styles.infoContainer}>
         <View style={styles.header}>
-          <Text style={{ fontSize: 18, color: 'white' }}>{item.title}</Text>
+          <Text style={{ fontSize: 18, color: TYPOGRAPHY.COLOR.White }}>
+            {item.title}
+          </Text>
           <View style={styles.iconContainer}>
             <View style={{ alignItems: 'center' }}>
-              <Ionicons name='share-social-outline' size={28} color='white' />
+              <Ionicons
+                name='share-social-outline'
+                size={28}
+                color={TYPOGRAPHY.COLOR.White}
+              />
               <Text>Share</Text>
             </View>
             <View style={{ alignItems: 'center' }}>
-              <Ionicons name='add' size={28} color='white' />
+              <Ionicons name='add' size={28} color={TYPOGRAPHY.COLOR.White} />
               <Text>My List</Text>
             </View>
             <View style={{ alignItems: 'center' }}>
-              <Ionicons name='play-circle' size={28} color='white' />
+              <Ionicons
+                name='play-circle'
+                size={28}
+                color={TYPOGRAPHY.COLOR.White}
+              />
               <Text>Play</Text>
             </View>
           </View>
         </View>
         <View>
-          <Text style={{ color: 'white', marginVertical: 5 }}>
+          <Text style={{ color: TYPOGRAPHY.COLOR.White, marginVertical: 5 }}>
             {item.description}
           </Text>
         </View>

@@ -82,7 +82,7 @@ const SignInScreen = () => {
       </View>
 
       <Button
-        color='white'
+        color=TYPOGRAPHY.COLOR.White
         mode='outlined'
         style={{
           borderColor: '#fff',

@@ -23,7 +23,9 @@ const Avatar = ({ imageSource, height, width, title, iconName }: IAvatar) => {
         />
       )}
 
-      {iconName && <IonIcons name={iconName} size={width} color='#fff' />}
+      {iconName && (
+        <IonIcons name={iconName} size={width} color={TYPOGRAPHY.COLOR.White} />
+      )}
 
       {title && (
         <Text

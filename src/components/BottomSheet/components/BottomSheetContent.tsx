@@ -12,7 +12,6 @@ import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { GLOBAL } from '../../../global/styles/global';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 const modalHeight = height * 0.35;
 
@@ -23,7 +22,11 @@ const BottomSheet = () => {
     <View style={styles.container}>
       <View style={styles.closeButton}>
         <Pressable onPress={hideBottomSheet}>
-          <Ionicons name='close-outline' size={35} color='white' />
+          <Ionicons
+            name='close-outline'
+            size={35}
+            color={TYPOGRAPHY.COLOR.White}
+          />
         </Pressable>
       </View>
       <View style={styles.movieInfoContainer}>
@@ -62,19 +65,27 @@ const BottomSheet = () => {
       </View>
       <View style={styles.buttonContainer}>
         <View style={{ alignItems: 'center' }}>
-          <Ionicons name='play-circle' size={28} color='white' />
+          <Ionicons
+            name='play-circle'
+            size={28}
+            color={TYPOGRAPHY.COLOR.White}
+          />
           <Text style={TYPOGRAPHY.FONT.defaultGrey}>Play</Text>
         </View>
         <View style={{ alignItems: 'center' }}>
-          <Ionicons name='download' size={28} color='white' />
+          <Ionicons name='download' size={28} color={TYPOGRAPHY.COLOR.White} />
           <Text style={TYPOGRAPHY.FONT.defaultGrey}>Download</Text>
         </View>
         <View style={{ alignItems: 'center' }}>
-          <Ionicons name='add' size={28} color='white' />
+          <Ionicons name='add' size={28} color={TYPOGRAPHY.COLOR.White} />
           <Text style={TYPOGRAPHY.FONT.defaultGrey}>My List</Text>
         </View>
         <View style={{ alignItems: 'center' }}>
-          <Ionicons name='share-social-outline' size={28} color='white' />
+          <Ionicons
+            name='share-social-outline'
+            size={28}
+            color={TYPOGRAPHY.COLOR.White}
+          />
           <Text style={TYPOGRAPHY.FONT.defaultGrey}>Share</Text>
         </View>
       </View>
@@ -87,12 +98,16 @@ const BottomSheet = () => {
             style={{ marginHorizontal: GLOBAL.SPACING.sm }}
             name='information-circle-outline'
             size={24}
-            color='white'
+            color={TYPOGRAPHY.COLOR.White}
           />
           <Text style={TYPOGRAPHY.FONT.default}>Details & More</Text>
         </View>
         <View>
-          <MaterialIcons name='keyboard-arrow-right' size={26} color='white' />
+          <MaterialIcons
+            name='keyboard-arrow-right'
+            size={26}
+            color={TYPOGRAPHY.COLOR.White}
+          />
         </View>
       </Pressable>
     </View>

@@ -85,7 +85,7 @@ const CustomYoutubePlayer = ({
           style={{ position: 'absolute', top: 265, right: 10 }}
           name={isMute ? 'unmute' : 'mute'}
           size={15}
-          color='white'
+          color=TYPOGRAPHY.COLOR.White
           onPress={muteVideo}
         />
       )}
