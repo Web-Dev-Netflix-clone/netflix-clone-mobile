@@ -34,25 +34,7 @@ const CustomYoutubePlayer = ({
     }
   }, []);
 
-  // console.log('TRAILER=> SRC', trailerSrc);
-  // console.log('trailersplt', trailerSrc.split('?v='));
-
   const videoId = trailerSrc ? trailerSrc.split('?v=')[1] : 'JfVOs4VSpmA';
-  // console.log('VIDEOID', videoId);
-
-  // TODO => Customize controls
-  // const togglePlaying = useCallback(() => {
-  //   setPlaying((prev: any) => !prev);
-  // }, []);
-
-  // const seekBackAndForth = (control: string) => {
-  //   console.log("currentTime");
-  //   controlRef.current?.getCurrentTime().then((currentTime) => {
-  //     control === "forward"
-  //       ? controlRef.current?.seekTo(currentTime + 15, true)
-  //       : controlRef.current?.seekTo(currentTime - 15, true);
-  //   });
-  // };
 
   const muteVideo = () => {
     setIsMute(!isMute);
@@ -112,3 +94,22 @@ const CustomYoutubePlayer = ({
 };
 
 export default CustomYoutubePlayer;
+
+// console.log('VIDEOID', videoId);
+
+// console.log('TRAILER=> SRC', trailerSrc);
+// console.log('trailersplt', trailerSrc.split('?v='));
+
+// TODO => Customize controls
+// const togglePlaying = useCallback(() => {
+//   setPlaying((prev: any) => !prev);
+// }, []);
+
+// const seekBackAndForth = (control: string) => {
+//   console.log("currentTime");
+//   controlRef.current?.getCurrentTime().then((currentTime) => {
+//     control === "forward"
+//       ? controlRef.current?.seekTo(currentTime + 15, true)
+//       : controlRef.current?.seekTo(currentTime - 15, true);
+//   });
+// };

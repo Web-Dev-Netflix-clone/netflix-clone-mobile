@@ -4,51 +4,26 @@ import ComingSoonItem from '../../components/ComingSoonItem';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state';
 import { IMovie } from '../../state/actionsInterfaces/moviesInterfaces';
+import { randomIntFromRange } from '../../utils/utils';
 
 export interface IMovieSet {
   genre: string;
   movies: IMovie[];
 }
 
-const mockData = [
-  {
-    id: 1,
-    title: 'The Adam Project',
-    videoId: 'IE8HIsIrq4o',
-    description:
-      'After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.',
-  },
-  {
-    id: 2,
-    title: 'The Adam Project',
-    videoId: 'IE8HIsIrq4o',
-    description:
-      'After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.',
-  },
-  {
-    id: 3,
-    title: 'The Adam Project',
-    videoId: 'IE8HIsIrq4o',
-    description:
-      'After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.',
-  },
-  {
-    id: 4,
-    title: 'The Adam Project',
-    videoId: 'IE8HIsIrq4o',
-    description:
-      'After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.',
-  },
-];
-
 const ComingSoonScreen = () => {
-  const movies = useSelector((state: RootState) => state.movies.allMovies);
-  const movie = useSelector((state: RootState) => state.movies.singleMovie);
+  const movies = useSelector((state: RootState) => state.movies.searchMovies);
+
+  const comingSoon = new Array(10)
+    .fill('x')
+    .map((x) => movies[randomIntFromRange(1, movies.length)]);
 
   const keyExtractor = useCallback((item) => {
-    return item.id;
+    return item.id + Math.random().toString();
   }, []);
   const renderItem = useCallback(({ item }) => {
+    // console.log('ITEM =>', item);
+
     return <ComingSoonItem item={item} />;
   }, []);
 
@@ -62,7 +37,7 @@ const ComingSoonScreen = () => {
         backgroundColor: '#000',
       }}>
       <FlatList
-        data={mockData}
+        data={comingSoon}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
       />

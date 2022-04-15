@@ -6,25 +6,28 @@ import { Ionicons } from '@expo/vector-icons';
 const ComingSoonItem = ({ item }: any) => {
   const controlRef = useRef<YoutubeIframeRef>(null);
   const [playing, setPlaying] = useState(false);
-  const onStateChange = useCallback((state) => {
+
+  const onStateChange = useCallback((state: any) => {
     if (state === 'ended') {
       controlRef.current?.seekTo(6.5, true);
       setPlaying(true);
     }
   }, []);
 
+  const videoId = item.trailer ? item.trailer.split('?v=')[1] : 'JfVOs4VSpmA';
+
   return (
     <View style={styles.container}>
       <View pointerEvents='none' style={styles.videoContainer}>
         <YoutubePlayer
-          ref={controlRef}
           contentScale={1}
           height={300}
           width={380}
-          play={playing}
-          videoId={item.videoId}
-          onChangeState={onStateChange}
+          ref={controlRef}
           mute={true}
+          play={playing}
+          videoId={videoId}
+          onChangeState={onStateChange}
           initialPlayerParams={{
             loop: true,
             controls: false,
