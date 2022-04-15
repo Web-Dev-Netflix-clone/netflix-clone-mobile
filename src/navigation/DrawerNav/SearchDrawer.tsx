@@ -53,3 +53,20 @@ const SearchDrawer = () => {
 };
 
 export default SearchDrawer;
+
+// const keyExtractor = useCallback((item) => item.id, []);
+// const renderItem = useCallback(({ item }) => {
+//   return <SearchMovieBox title={item.title} image={item.backdrop} />;
+// }, []);
+
+{
+  /* {!!searchInput.length && (
+          <View>
+            <FlatList
+              data={filteredArray}
+              renderItem={renderItem}
+              keyExtractor={keyExtractor}
+            />
+          </View>
+        )} */
+}

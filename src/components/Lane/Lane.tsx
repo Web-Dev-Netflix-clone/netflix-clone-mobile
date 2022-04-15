@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useRef,
-} from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
