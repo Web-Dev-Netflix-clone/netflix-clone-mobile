@@ -19,7 +19,6 @@ const StandardLaneCard = ({ goTo, image }: IStandardLaneCard) => {
       <PressableCard
         background={image}
         onClick={() => {
-          console.log('CLICK ON LANE ITEM');
           // @ts-ignore
           navigation.navigate(key, params);
         }}

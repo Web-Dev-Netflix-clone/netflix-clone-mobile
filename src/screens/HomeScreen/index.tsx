@@ -14,7 +14,7 @@ import InfoBar from './components/InfoBar';
 import { TagMapper } from './components/TagMapper';
 
 import { Ionicons } from '@expo/vector-icons';
-import Lane from '../../components/Lane/Lane';
+import Lane from '../../components/Lane';
 import StandardLaneCard from '../../components/Lane/LaneRenderItems/StandardLaneCard';
 
 import { TYPOGRAPHY } from '../../global/styles/typography';
@@ -126,7 +126,7 @@ const HomeScreen = () => {
         </Text>
         <Button
           style={{
-            backgroundColor: '#fff',
+            backgroundColor: TYPOGRAPHY.COLOR.White,
             width: '50%',
           }}
           icon='shuffle'

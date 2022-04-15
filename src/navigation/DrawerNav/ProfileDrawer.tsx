@@ -57,7 +57,7 @@ const ProfileDrawer = () => {
           mode='contained'
           style={{ width: '50%', backgroundColor: TYPOGRAPHY.COLOR.Black }}
           uppercase={false}
-          onPress={() => console.log('Pressed')}>
+          onPress={() => {}}>
           Manage Profiles
         </Button>
       </View>

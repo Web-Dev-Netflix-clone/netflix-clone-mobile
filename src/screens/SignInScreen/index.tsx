@@ -82,7 +82,7 @@ const SignInScreen = () => {
       </View>
 
       <Button
-        color=TYPOGRAPHY.COLOR.White
+        color={TYPOGRAPHY.COLOR.White}
         mode='outlined'
         style={{
           borderColor: '#fff',
@@ -123,7 +123,7 @@ const SignInScreen = () => {
             alignItems: 'center',
             paddingHorizontal: GLOBAL.SPACING.md,
           }}>
-          <Pressable onPress={() => console.log('click')}>
+          <Pressable onPress={() => {}}>
             <Text style={TYPOGRAPHY.FONT.subtitle}>
               Sign in is protected by Google reCAPTCHA to ensure you're not a
               bot. Learn more.

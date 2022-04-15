@@ -12,7 +12,7 @@ import banner from '../../../assets/netflix-games/stranger-things-game-bg2.png';
 
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { LinearGradient } from 'expo-linear-gradient';
-import Lane from '../../components/Lane/Lane';
+import Lane from '../../components/Lane';
 import { DATA } from '../../../assets/mock-data/dummyData';
 
 import GameLaneCard from '../../components/Lane/LaneRenderItems/GameLaneCard';
@@ -89,7 +89,7 @@ const GamesScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: TYPOGRAPHY.COLOR.Black,
   },
   icon: {
     height: 20,

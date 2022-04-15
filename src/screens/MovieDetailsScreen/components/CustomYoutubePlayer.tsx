@@ -4,6 +4,7 @@ import Animated, { BounceIn, Easing, Layout } from 'react-native-reanimated';
 import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe';
 import { IMGSTYLES } from '../../../global/styles/imgStyles';
 import Octicons from '@expo/vector-icons/Octicons';
+import { TYPOGRAPHY } from '../../../global/styles/typography';
 
 interface ICustomYoutubePlayer {
   isMute?: boolean;
@@ -85,7 +86,7 @@ const CustomYoutubePlayer = ({
           style={{ position: 'absolute', top: 265, right: 10 }}
           name={isMute ? 'unmute' : 'mute'}
           size={15}
-          color=TYPOGRAPHY.COLOR.White
+          color={TYPOGRAPHY.COLOR.White}
           onPress={muteVideo}
         />
       )}

@@ -4,7 +4,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { DrawerNav } from './DrawerNav';
 import { LoginStackNav } from './LoginStack/LoginStack';
 import { useSelector } from '../hooks/useTypedSelector';
-import BottomSheet from '../components/BottomSheet/BottomSheet';
+import BottomSheet from '../components/BottomSheet/index';
 
 import StartupScreen from '../screens/StartUpScreen';
 import { useActions } from '../hooks/useActions';

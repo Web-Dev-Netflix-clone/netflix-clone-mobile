@@ -47,7 +47,7 @@ const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {
         <View style={{ marginTop: -5 }}>
           <IconButton
             icon='chevron-down'
-            color=TYPOGRAPHY.COLOR.White
+            color={TYPOGRAPHY.COLOR.White}
             size={26}
             onPress={() => {
               setModalActive(true);

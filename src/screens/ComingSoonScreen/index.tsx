@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { View, FlatList } from 'react-native';
-import ComingSoonItem from '../../components/ComingSoonItem';
+import ComingSoonItem from './components/ComingSoonItem';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state';
 import { IMovie } from '../../state/actionsInterfaces/moviesInterfaces';
@@ -23,8 +23,6 @@ const ComingSoonScreen = () => {
   }, []);
 
   const renderItem = useCallback(({ item }) => {
-    // console.log('ITEM =>', item);
-
     return <ComingSoonItem item={item} />;
   }, []);
 

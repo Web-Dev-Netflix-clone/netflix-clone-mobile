@@ -2,7 +2,7 @@ import React, { useState, useCallback, useRef } from 'react';
 import { StyleSheet, Text, View, Dimensions, Pressable } from 'react-native';
 import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe';
 import { Ionicons } from '@expo/vector-icons';
-import { TYPOGRAPHY } from '../global/styles/typography';
+import { TYPOGRAPHY } from '../../../global/styles/typography';
 
 const ComingSoonItem = ({ item }: any) => {
   const controlRef = useRef<YoutubeIframeRef>(null);
@@ -40,9 +40,7 @@ const ComingSoonItem = ({ item }: any) => {
           forceAndroidAutoplay={false}
         />
       </View>
-      <Pressable
-        onPress={() => console.log('more info')}
-        style={styles.infoContainer}>
+      <Pressable onPress={() => {}} style={styles.infoContainer}>
         <View style={styles.header}>
           <Text style={{ fontSize: 18, color: TYPOGRAPHY.COLOR.White }}>
             {item.title}

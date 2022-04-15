@@ -90,9 +90,7 @@ const BottomSheet = () => {
         </View>
       </View>
 
-      <Pressable
-        style={styles.infoButton}
-        onPress={() => console.log('more info')}>
+      <Pressable style={styles.infoButton} onPress={() => {}}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Ionicons
             style={{ marginHorizontal: GLOBAL.SPACING.sm }}
