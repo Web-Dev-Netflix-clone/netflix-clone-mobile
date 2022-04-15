@@ -19,8 +19,8 @@ const TopBar = ({ title, iconName, style }: ITopBar) => {
   return (
     <View
       style={[
-        GLOBAL.LAYOUT.rowCenter,
         {
+          ...GLOBAL.LAYOUT.rowCenter,
           backgroundColor: TYPOGRAPHY.COLOR.Black,
           paddingVertical: GLOBAL.SPACING.sm,
         },
@@ -33,7 +33,7 @@ const TopBar = ({ title, iconName, style }: ITopBar) => {
         }}>
         <Ionicons
           name={iconName ? iconName : 'arrow-back'}
-          size={26}
+          size={28}
           color={TYPOGRAPHY.COLOR.White}
           style={{ marginLeft: 10 }}
         />

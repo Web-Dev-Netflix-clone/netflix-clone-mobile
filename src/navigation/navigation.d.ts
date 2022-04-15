@@ -16,7 +16,3 @@ export type LoginStackParams = {
   Signup: undefined;
   Help: undefined;
 };
-
-export type MovieDetailParams = {
-  MovieDetail2: undefined;
-};

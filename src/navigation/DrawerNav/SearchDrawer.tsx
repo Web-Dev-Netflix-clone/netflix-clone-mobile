@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 
 import { DrawerContentScrollView } from '@react-navigation/drawer';
 
@@ -10,16 +10,12 @@ import SearchBar from './CustomDrawerComponents/SearchBar';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state';
 import { GLOBAL } from '../../global/styles/global';
-import TopBar from './CustomDrawerComponents/DrawerTopBar';
+import DrawerTopBar from './CustomDrawerComponents/DrawerTopBar';
 import SearchMovieBox from './CustomDrawerComponents/SearchMovieBox';
 
 const SearchDrawer = () => {
-  const searchMovies = useSelector(
-    (state: RootState) => state.movies.allMoviesSearchable
-  );
-
-  const searchInput = useSelector(
-    (state: RootState) => state.movies.searchInput
+  const { searchMovies, searchInput } = useSelector(
+    (state: RootState) => state.movies
   );
 
   const filteredArray = searchMovies
@@ -29,13 +25,8 @@ const SearchDrawer = () => {
     .filter((result) => result.title.includes(searchInput.toLowerCase()));
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: TYPOGRAPHY.COLOR.Black,
-        paddingTop: GLOBAL.SPACING.xxxxl,
-      }}>
-      <TopBar title={'Search'} />
+    <>
+      <DrawerTopBar title={'Search'} />
 
       <SearchBar />
 
@@ -52,18 +43,12 @@ const SearchDrawer = () => {
           }}>
           Top Searches
         </Text>
-        {searchInput.length > 0 &&
-          filteredArray?.map((movie) => {
-            return (
-              <SearchMovieBox
-                key={movie.id}
-                title={movie.title}
-                image={movie.backdrop}
-              />
-            );
+        {!!searchInput.length &&
+          filteredArray?.map(({ id, title, backdrop }) => {
+            return <SearchMovieBox key={id} title={title} image={backdrop} />;
           })}
       </DrawerContentScrollView>
-    </View>
+    </>
   );
 };
 

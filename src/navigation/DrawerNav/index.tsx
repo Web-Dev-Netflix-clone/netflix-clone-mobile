@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerActions } from '@react-navigation/native';
-import { BottomNav } from '../BottomNav/BottomTab';
+import { BottomNav } from '../BottomTabNav/BottomTab';
 import { DrawerStackParams } from '../navigation';
 import { Ionicons, Feather } from '@expo/vector-icons';
 import { TYPOGRAPHY } from '../../global/styles/typography';

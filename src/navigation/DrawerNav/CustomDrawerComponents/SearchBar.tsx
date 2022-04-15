@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, TextInput } from 'react-native';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { GLOBAL } from '../../../global/styles/global';
@@ -8,7 +8,6 @@ import { useActions } from '../../../hooks/useActions';
 
 const SearchBar = () => {
   const { updateSearchInput } = useActions();
-  const [searchInput, setSearchInput] = useState('');
 
   return (
     <View
@@ -25,10 +24,8 @@ const SearchBar = () => {
         style={{ marginLeft: -60, color: '#fff' }}
         placeholder='Search for a show, movie, genre etc.'
         placeholderTextColor={TYPOGRAPHY.COLOR.GreyLight}
-        value={searchInput}
         onChangeText={(text) => {
-          setSearchInput(text);
-          updateSearchInput(searchInput);
+          updateSearchInput(text);
         }}
       />
       <IonIcons

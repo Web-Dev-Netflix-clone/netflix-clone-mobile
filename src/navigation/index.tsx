@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
-import { DrawerNav } from './DrawerNav/DrawerNav';
+import { DrawerNav } from './DrawerNav';
 import { LoginStackNav } from './LoginStack/LoginStack';
 import { useSelector } from '../hooks/useTypedSelector';
 import BottomSheet from '../components/BottomSheet/BottomSheet';
@@ -23,7 +23,7 @@ export const Navigation = () => {
 
   return (
     <NavigationContainer theme={navTheme}>
-      {!isSignedIn ? (
+      {isSignedIn ? (
         <LoginStackNav />
       ) : movieDataLoaded ? (
         <DrawerNav />

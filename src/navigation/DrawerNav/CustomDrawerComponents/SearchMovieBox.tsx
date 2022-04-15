@@ -12,25 +12,20 @@ interface ISearchMovieBox {
 const SearchMovieBox = ({ image, title }: ISearchMovieBox) => {
   return (
     <View
-      style={[
-        GLOBAL.LAYOUT.rowCenter,
-        {
-          justifyContent: 'space-between',
-          backgroundColor: TYPOGRAPHY.COLOR.DarkTertiary,
-          marginBottom: 2,
-        },
-      ]}>
+      style={{
+        ...GLOBAL.LAYOUT.rowCenter,
+        justifyContent: 'space-between',
+        backgroundColor: TYPOGRAPHY.COLOR.DarkTertiary,
+        marginBottom: 2,
+      }}>
       <Image
-        style={[
-          {
-            width: 150,
-            height: 80,
-            resizeMode: 'stretch',
-            borderRadius: 4,
-
-            marginRight: GLOBAL.SPACING.md,
-          },
-        ]}
+        style={{
+          width: 150,
+          height: 80,
+          resizeMode: 'stretch',
+          borderRadius: 4,
+          marginRight: GLOBAL.SPACING.md,
+        }}
         source={typeof image === 'string' ? { uri: image } : image}
       />
 
