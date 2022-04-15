@@ -21,6 +21,7 @@ const ComingSoonScreen = () => {
   const keyExtractor = useCallback((item) => {
     return item.id + Math.random().toString();
   }, []);
+
   const renderItem = useCallback(({ item }) => {
     // console.log('ITEM =>', item);
 

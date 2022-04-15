@@ -144,6 +144,6 @@ const styles = StyleSheet.create({
     paddingTop: GLOBAL.SPACING.md,
     backgroundColor: TYPOGRAPHY.COLOR.DarkTertiary,
     color: TYPOGRAPHY.COLOR.White,
-    borderColor: 'transparent',
+    borderColor: TYPOGRAPHY.COLOR.Transparent,
   },
 });

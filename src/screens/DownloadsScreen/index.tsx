@@ -11,7 +11,7 @@ const DownloadsScreen = () => {
     <View
       style={{
         ...GLOBAL.LAYOUT.SafeArea,
-        backgroundColor: '#000',
+        backgroundColor: TYPOGRAPHY.COLOR.Black,
         paddingTop: 110,
         padding: GLOBAL.SPACING.md,
       }}>
@@ -55,7 +55,7 @@ const DownloadsScreen = () => {
           }}
           uppercase={false}
           color='#fff'
-          onPress={() => console.log('Pressed')}>
+          onPress={() => {}}>
           Set Up
         </Button>
         <Button
@@ -64,8 +64,8 @@ const DownloadsScreen = () => {
             width: '60%',
           }}
           uppercase={false}
-          color='#fff'
-          onPress={() => console.log('Pressed')}>
+          color={TYPOGRAPHY.COLOR.White}
+          onPress={() => {}}>
           <Text
             style={{
               fontSize: TYPOGRAPHY.FONT_SIZES.sm,

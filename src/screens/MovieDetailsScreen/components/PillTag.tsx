@@ -26,7 +26,7 @@ const PillTag = ({ backgroundColor, iconName, text, style }: IPillTag) => {
         style,
       ]}>
       <Ionicons color={'#fff'} name={iconName} size={12} />
-      <Text style={[TYPOGRAPHY.FONT.body, { marginBottom: 0, fontSize: 12 }]}>
+      <Text style={{ ...TYPOGRAPHY.FONT.body, marginBottom: 0, fontSize: 12 }}>
         {text}
       </Text>
     </View>

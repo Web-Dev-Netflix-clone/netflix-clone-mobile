@@ -68,7 +68,7 @@ const HelpScreen = () => {
             mode='contained'
             color='black'
             style={{ width: '30%' }}
-            onPress={() => console.log('Chat')}>
+            onPress={() => {}}>
             chat
           </Button>
           <Button
@@ -76,7 +76,7 @@ const HelpScreen = () => {
             mode='contained'
             color='black'
             style={{ width: '30%' }}
-            onPress={() => console.log('Call')}>
+            onPress={() => {}}>
             call
           </Button>
         </View>

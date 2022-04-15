@@ -17,7 +17,11 @@ const WelcomeScreen = () => {
     <SafeAreaView
       style={{ ...GLOBAL.LAYOUT.SafeArea, justifyContent: 'space-evenly' }}>
       <WelcomeCarousel />
-      <View style={{ backgroundColor: '#000', padding: GLOBAL.SPACING.sm }}>
+      <View
+        style={{
+          backgroundColor: TYPOGRAPHY.COLOR.Black,
+          padding: GLOBAL.SPACING.sm,
+        }}>
         <Button
           style={{ ...styles.button, marginTop: GLOBAL.SPACING.sm }}
           color='red'
@@ -55,11 +59,11 @@ const WelcomeScreen = () => {
               label='Email'
               mode='outlined'
               autoComplete=''
-              style={{ backgroundColor: 'white' }}
-              placeholderTextColor='#fff'
+              style={{ backgroundColor: TYPOGRAPHY.COLOR.White }}
+              placeholderTextColor={TYPOGRAPHY.COLOR.White}
               outlineColor='gray'
               activeOutlineColor='blue'
-              selectionColor='#fff'
+              selectionColor={TYPOGRAPHY.COLOR.White}
             />
           </View>
 
@@ -100,7 +104,7 @@ const styles = StyleSheet.create({
     margin: GLOBAL.SPACING.md,
   },
   header: {
-    color: 'black',
+    color: TYPOGRAPHY.COLOR.Black,
     textAlign: 'center',
     marginHorizontal: 20,
     marginBottom: 10,

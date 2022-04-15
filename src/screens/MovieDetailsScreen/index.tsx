@@ -99,27 +99,31 @@ const MovieDetailsScreen = () => {
           }}>
           <Button
             style={{
-              backgroundColor: '#fff',
+              backgroundColor: TYPOGRAPHY.COLOR.White,
               marginBottom: GLOBAL.SPACING.xsm,
             }}
             uppercase={false}
             icon='play'
-            color='#000'
-            onPress={() => console.log('Pressed')}>
+            color={TYPOGRAPHY.COLOR.Black}
+            onPress={() => {}}>
             Play
           </Button>
           <Button
             style={{ backgroundColor: TYPOGRAPHY.COLOR.DarkSecondary }}
             uppercase={false}
             icon='download'
-            color='#fff'
-            onPress={() => console.log('Pressed')}>
+            color={TYPOGRAPHY.COLOR.White}
+            onPress={() => {}}>
             Download
           </Button>
         </View>
 
         <View>
-          <Text style={{ ...TYPOGRAPHY.FONT.subtitle, color: '#fff' }}>
+          <Text
+            style={{
+              ...TYPOGRAPHY.FONT.subtitle,
+              color: TYPOGRAPHY.COLOR.White,
+            }}>
             {description}
           </Text>
         </View>
@@ -158,16 +162,16 @@ const MovieDetailsScreen = () => {
         <View>
           <Text style={TYPOGRAPHY.FONT.body}>MORE LIKE THIS</Text>
           <View style={GLOBAL.LAYOUT.imageGrid}>
-            {movieGridData.map((item) => {
+            {movieGridData.map(({ id, source }) => {
               return (
                 <PressableCard
-                  key={item.id}
-                  background={item.source}
+                  key={id}
+                  background={source}
                   wrapperWidth='30%'
                   width='100%'
                   height={200}
                   cardRadius={0}
-                  style={{ backgroundColor: 'transparent' }}
+                  style={{ backgroundColor: TYPOGRAPHY.COLOR.Transparent }}
                 />
               );
             })}

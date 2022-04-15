@@ -97,12 +97,12 @@ const HomeScreen = () => {
         <InfoBar />
       </View>
 
-      {movies?.map((movieSet: any) => {
+      {movies?.map(({ genre, movies }: any) => {
         return (
           <Lane
-            key={movieSet.genre}
-            title={movieSet.genre}
-            data={movieSet.movies}
+            key={genre}
+            title={genre}
+            data={movies}
             LaneRenderItem={StandardLaneCard}
           />
         );

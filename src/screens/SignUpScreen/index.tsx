@@ -32,20 +32,20 @@ const SignUpScreen = () => {
           label='Email'
           mode='outlined'
           autoComplete=''
-          style={{ backgroundColor: 'white' }}
-          placeholderTextColor='#fff'
+          style={{ backgroundColor: TYPOGRAPHY.COLOR.White }}
+          placeholderTextColor={TYPOGRAPHY.COLOR.White}
           outlineColor='gray'
           activeOutlineColor='green'
-          selectionColor='#fff'
+          selectionColor={TYPOGRAPHY.COLOR.White}
         />
         <TextInput
           label='Password'
           mode='outlined'
           autoComplete=''
-          style={{ backgroundColor: 'white' }}
+          style={{ backgroundColor: TYPOGRAPHY.COLOR.White }}
           outlineColor='gray'
           activeOutlineColor='red'
-          selectionColor='#fff'
+          selectionColor={TYPOGRAPHY.COLOR.White}
         />
       </View>
       <View style={styles.checkboxContainer}>
@@ -79,10 +79,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: GLOBAL.SPACING.md,
     justifyContent: 'flex-start',
-    backgroundColor: 'white',
+    backgroundColor: TYPOGRAPHY.COLOR.White,
   },
   header: {
-    color: 'black',
+    color: TYPOGRAPHY.COLOR.Black,
     marginBottom: 10,
     fontFamily: TYPOGRAPHY.FONT.PrimaryBold,
     fontSize: TYPOGRAPHY.FONT_SIZES.lg,

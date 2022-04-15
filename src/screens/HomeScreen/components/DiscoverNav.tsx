@@ -48,7 +48,7 @@ const DiscoverNav = ({ style, setModalActive }: IDiscoverNav) => {
           <IconButton
             icon='chevron-down'
             color='white'
-            size={20}
+            size={26}
             onPress={() => {
               setModalActive(true);
               // hideNavigationBar();

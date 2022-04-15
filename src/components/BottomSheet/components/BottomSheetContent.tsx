@@ -40,15 +40,19 @@ const BottomSheet = () => {
             The Adam Project
           </Text>
           <View style={styles.movieDetails}>
-            <Text style={GLOBAL.CTA.Style.secondaryText}>2022</Text>
+            <Text style={TYPOGRAPHY.FONT.defaultGrey}>2022</Text>
             <Image
               style={styles.icon}
               source={require('../../../../assets/kijkwijzer-icons/12.jpg')}
             />
-            <Text style={GLOBAL.CTA.Style.secondaryText}>1h 46m</Text>
+            <Text style={TYPOGRAPHY.FONT.defaultGrey}>1h 46m</Text>
           </View>
           <View style={styles.description}>
-            <Text style={GLOBAL.CTA.Style.primaryText}>
+            <Text
+              style={{
+                ...TYPOGRAPHY.FONT.body,
+                fontSize: TYPOGRAPHY.FONT_SIZES.sm,
+              }}>
               After accidentally crash-landing in 2022, time-traveling fighter
               pilot Adam Reed teams up with his 12-year-old self on a mission to
               save the future.
@@ -59,19 +63,19 @@ const BottomSheet = () => {
       <View style={styles.buttonContainer}>
         <View style={{ alignItems: 'center' }}>
           <Ionicons name='play-circle' size={28} color='white' />
-          <Text style={GLOBAL.CTA.Style.secondaryText}>Play</Text>
+          <Text style={TYPOGRAPHY.FONT.defaultGrey}>Play</Text>
         </View>
         <View style={{ alignItems: 'center' }}>
           <Ionicons name='download' size={28} color='white' />
-          <Text style={GLOBAL.CTA.Style.secondaryText}>Download</Text>
+          <Text style={TYPOGRAPHY.FONT.defaultGrey}>Download</Text>
         </View>
         <View style={{ alignItems: 'center' }}>
           <Ionicons name='add' size={28} color='white' />
-          <Text style={GLOBAL.CTA.Style.secondaryText}>My List</Text>
+          <Text style={TYPOGRAPHY.FONT.defaultGrey}>My List</Text>
         </View>
         <View style={{ alignItems: 'center' }}>
           <Ionicons name='share-social-outline' size={28} color='white' />
-          <Text style={GLOBAL.CTA.Style.secondaryText}>Share</Text>
+          <Text style={TYPOGRAPHY.FONT.defaultGrey}>Share</Text>
         </View>
       </View>
 
@@ -85,7 +89,7 @@ const BottomSheet = () => {
             size={24}
             color='white'
           />
-          <Text style={GLOBAL.CTA.Style.primaryText}>Details & More</Text>
+          <Text style={TYPOGRAPHY.FONT.default}>Details & More</Text>
         </View>
         <View>
           <MaterialIcons name='keyboard-arrow-right' size={26} color='white' />

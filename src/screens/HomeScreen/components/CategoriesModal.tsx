@@ -42,15 +42,15 @@ const CategoriesModal = ({
             onClick={() => setModalActive(false)}
           />
           <View style={{ paddingBottom: 150 }}>
-            {categoriesData?.map((category) => {
+            {categoriesData?.map(({ id, title }) => {
               return (
                 <PressableText
-                  key={category.id}
-                  text={category.title}
+                  key={id}
+                  text={title}
                   textStyle={{
                     ...TYPOGRAPHY.FONT.h3,
                     color: TYPOGRAPHY.COLOR.GreyLight,
-                    fontFamily: 'netflix-sans-light',
+                    fontFamily: TYPOGRAPHY.FONT.PrimaryLight,
                     fontSize: TYPOGRAPHY.FONT_SIZES.md,
                     marginBottom: GLOBAL.SPACING.md,
                   }}

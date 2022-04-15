@@ -20,15 +20,19 @@ const InfoBar = () => {
           alignItems: 'center',
         }}>
         <Ionicons name='add' size={30} color={TYPOGRAPHY.COLOR.White} />
-        <Text style={{ fontSize: TYPOGRAPHY.FONT_SIZES.sm, color: '#fff' }}>
+        <Text
+          style={{
+            fontSize: TYPOGRAPHY.FONT_SIZES.sm,
+            color: TYPOGRAPHY.COLOR.White,
+          }}>
           My List
         </Text>
       </View>
       <Button
-        style={{ backgroundColor: '#fff' }}
+        style={{ backgroundColor: TYPOGRAPHY.COLOR.White }}
         icon='play'
         color='#000'
-        onPress={() => console.log('Pressed')}>
+        onPress={() => {}}>
         Play
       </Button>
       <View
@@ -40,7 +44,11 @@ const InfoBar = () => {
           size={30}
           color={TYPOGRAPHY.COLOR.White}
         />
-        <Text style={{ fontSize: TYPOGRAPHY.FONT_SIZES.sm, color: '#fff' }}>
+        <Text
+          style={{
+            fontSize: TYPOGRAPHY.FONT_SIZES.sm,
+            color: TYPOGRAPHY.COLOR.White,
+          }}>
           Info
         </Text>
       </View>

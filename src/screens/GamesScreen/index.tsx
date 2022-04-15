@@ -25,7 +25,7 @@ const GamesScreen = () => {
       <View
         style={{
           flex: 1,
-          backgroundColor: '#000',
+          backgroundColor: TYPOGRAPHY.COLOR.Black,
           paddingTop: 110,
         }}>
         <View

@@ -1,5 +1,4 @@
 const COLOR = {
-  // CTA
   White: '#FFFFFF',
   Black: '#000000',
   BlackSecondary: '#060600',
@@ -47,6 +46,17 @@ const FONT = {
   default: {
     fontFamily: 'netflix-sans-medium',
     fontSize: 14,
+    color: COLOR.White,
+  },
+  defaultBlack: {
+    fontFamily: 'netflix-sans-medium',
+    fontSize: 14,
+    color: COLOR.Black,
+  },
+  defaultGrey: {
+    fontFamily: 'netflix-sans-medium',
+    fontSize: 14,
+    color: COLOR.Grey,
   },
   body: {
     fontFamily: 'netflix-sans-medium',
@@ -97,39 +107,9 @@ const FONT = {
   },
 };
 
-const BUTTON = {
-  radius: 5,
-  primary: {
-    height: 48,
-    borderWidth: 0,
-    borderRadius: 0,
-    paddingVertical: 6,
-    justifyContent: 'center',
-    paddingHorizontal: 15,
-    text: {
-      fontSize: 14,
-    },
-  },
-  secondary: {
-    height: 48,
-    borderWidth: 1,
-    borderRadius: 5,
-    text: {
-      fontSize: 14,
-    },
-  },
-};
-
-const ELEMENTS = {
-  CategoryIcons: { marginRight: 20 },
-  Card: { marginBottom: 30 },
-};
-
 const TYPOGRAPHY = {
   COLOR,
   FONT,
-  BUTTON,
-  ELEMENTS,
   FONT_SIZES,
 };
 

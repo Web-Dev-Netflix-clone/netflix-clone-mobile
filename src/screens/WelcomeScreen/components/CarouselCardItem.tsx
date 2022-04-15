@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     paddingBottom: GLOBAL.SPACING.lg,
   },
   header: {
-    color: 'white',
+    color: TYPOGRAPHY.COLOR.White,
     textAlign: 'center',
     marginHorizontal: 20,
     marginBottom: 10,

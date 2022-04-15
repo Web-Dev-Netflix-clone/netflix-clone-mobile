@@ -5,6 +5,7 @@ import CAROUSELDATA from '../../../../assets/mock-data/dummyCarouselData';
 import CarouselCardItem, { SLIDER_WIDTH } from './CarouselCardItem';
 import { CarouselData } from '../../../types/data.types';
 import { GLOBAL } from '../../../global/styles/global';
+import { TYPOGRAPHY } from '../../../global/styles/typography';
 
 const WelcomeCarousel = () => {
   const isCarousel = useRef<Carousel<CarouselData>>(null);
@@ -12,7 +13,7 @@ const WelcomeCarousel = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   return (
-    <View style={{ backgroundColor: '#000', zIndex: 1 }}>
+    <View style={{ backgroundColor: TYPOGRAPHY.COLOR.Black, zIndex: 1 }}>
       <Carousel
         layout='stack'
         layoutCardOffset={18}
