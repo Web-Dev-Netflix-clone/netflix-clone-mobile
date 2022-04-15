@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, SafeAreaView, Modal } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { AuthStackParams } from '../../navigation/navigation';
+import { LoginStackParams } from '../../navigation/navigation';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import WelcomeCarousel from './components/WelcomeCarousel';
 import { Button, IconButton, TextInput } from 'react-native-paper';
@@ -10,7 +10,7 @@ import { GLOBAL } from '../../global/styles/global';
 
 const WelcomeScreen = () => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<AuthStackParams>>();
+    useNavigation<NativeStackNavigationProp<LoginStackParams>>();
   const [isModalVisible, setModalVisible] = useState(false);
 
   return (

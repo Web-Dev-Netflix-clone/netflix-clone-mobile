@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { AuthStackParams } from '../../navigation/navigation';
+import { LoginStackParams } from '../../navigation/navigation';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
 import { Button, TextInput, Checkbox } from 'react-native-paper';
 
 const SignUpScreen = () => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<AuthStackParams>>();
+    useNavigation<NativeStackNavigationProp<LoginStackParams>>();
   const [checked, setChecked] = useState(false);
 
   return (

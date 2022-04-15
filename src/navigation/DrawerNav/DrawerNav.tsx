@@ -29,7 +29,7 @@ import { useSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 
 import { RootState } from '../../state';
-import MovieDetailsScreen from '../../screens/MovieDetailsScreen/MovieDetailsScreen';
+import MovieDetailsScreen from '../../screens/MovieDetailsScreen';
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 

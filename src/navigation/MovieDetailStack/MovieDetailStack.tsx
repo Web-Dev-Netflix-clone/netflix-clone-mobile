@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 
 import { MovieDetailParams } from '../navigation';
-import MovieDetailsScreen from '../../screens/MovieDetailsScreen/MovieDetailsScreen';
+import MovieDetailsScreen from '../../screens/MovieDetailsScreen';
 
 const MovieDetail = createStackNavigator<MovieDetailParams>();
 

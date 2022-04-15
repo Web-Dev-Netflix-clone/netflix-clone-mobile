@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
 import { DrawerNav } from './DrawerNav/DrawerNav';
-import { LoginStack } from './AuthStack/LoginStack';
+import { LoginStackNav } from './LoginStack/LoginStack';
 import { useSelector } from '../hooks/useTypedSelector';
 import BottomSheet from '../components/BottomSheet/BottomSheet';
 
-import StartupScreen from '../screens/StartUpScreen/StartupScreen';
+import StartupScreen from '../screens/StartUpScreen';
 import { useActions } from '../hooks/useActions';
 
 const navTheme = DefaultTheme;
@@ -23,8 +23,8 @@ export const Navigation = () => {
 
   return (
     <NavigationContainer theme={navTheme}>
-      {isSignedIn ? (
-        <LoginStack />
+      {!isSignedIn ? (
+        <LoginStackNav />
       ) : movieDataLoaded ? (
         <DrawerNav />
       ) : (

@@ -12,10 +12,11 @@ import { TYPOGRAPHY } from '../../global/styles/typography';
 import { useActions } from '../../hooks/useActions';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { LoginStackParams } from '../../navigation/navigation';
 
 const SignInScreen = () => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<AuthStackParams>>();
+    useNavigation<NativeStackNavigationProp<LoginStackParams>>();
   const { fakeLogin } = useActions();
 
   const [email, setEmail] = useState('');
@@ -133,7 +134,6 @@ const SignInScreen = () => {
     </KeyboardAvoidingView>
   );
 };
-import { AuthStackParams } from '../../navigation/navigation';
 
 export default SignInScreen;
 

@@ -1,24 +1,24 @@
 import React from 'react';
 import { Pressable, Image, Text, View } from 'react-native';
 
-import SignInScreen from '../../screens/SignInScreen/SignInScreen';
-import WelcomeScreen from '../../screens/WelcomeScreen/WelcomeScreen';
+import SignInScreen from '../../screens/SignInScreen';
+import WelcomeScreen from '../../screens/WelcomeScreen';
 
 import netflixLogo from '../../../assets/netflix-logos/netflix-logo-2560x1440.png';
 import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { IMGSTYLES } from '../../global/styles/imgStyles';
-import { AuthStackParams } from './../navigation';
+import { LoginStackParams } from '../navigation';
 import { GLOBAL } from '../../global/styles/global';
-import SignUpScreen from '../../screens/SignUpScreen/SignUpScreen';
-import HelpScreen from '../../screens/HelpScreen/HelpScreen';
-const AuthStack = createStackNavigator<AuthStackParams>();
+import SignUpScreen from '../../screens/SignUpScreen';
+import HelpScreen from '../../screens/HelpScreen';
+const LoginStack = createStackNavigator<LoginStackParams>();
 
-export const LoginStack = () => {
+export const LoginStackNav = () => {
   return (
-    <AuthStack.Navigator initialRouteName='Welcome'>
-      <AuthStack.Screen
+    <LoginStack.Navigator initialRouteName='Welcome'>
+      <LoginStack.Screen
         name='Welcome'
         component={WelcomeScreen}
         options={({ navigation }) => ({
@@ -27,7 +27,7 @@ export const LoginStack = () => {
           title: '',
           headerLeft: () => (
             <Image
-              style={[IMGSTYLES.headerLogo, { marginLeft: -15 }]}
+              style={{ ...IMGSTYLES.headerLogo, marginLeft: -15 }}
               source={netflixLogo}
             />
           ),
@@ -67,7 +67,7 @@ export const LoginStack = () => {
           ),
         })}
       />
-      <AuthStack.Screen
+      <LoginStack.Screen
         name='Signup'
         component={SignUpScreen}
         options={({ navigation }) => ({
@@ -84,7 +84,7 @@ export const LoginStack = () => {
               onPress={() => navigation.goBack()}>
               <Ionicons name='arrow-back' size={28} color='black' />
               <Image
-                style={[IMGSTYLES.headerLogo, { marginLeft: -15 }]}
+                style={{ ...IMGSTYLES.headerLogo, marginLeft: -15 }}
                 source={netflixLogo}
               />
             </Pressable>
@@ -113,7 +113,7 @@ export const LoginStack = () => {
           ),
         })}
       />
-      <AuthStack.Screen
+      <LoginStack.Screen
         name='Help'
         component={HelpScreen}
         options={({ navigation }) => ({
@@ -130,7 +130,7 @@ export const LoginStack = () => {
           ),
         })}
       />
-      <AuthStack.Screen
+      <LoginStack.Screen
         name='Signin'
         component={SignInScreen}
         options={({ navigation }) => ({
@@ -162,6 +162,6 @@ export const LoginStack = () => {
           ),
         })}
       />
-    </AuthStack.Navigator>
+    </LoginStack.Navigator>
   );
 };

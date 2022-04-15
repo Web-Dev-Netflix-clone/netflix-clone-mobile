@@ -10,7 +10,7 @@ export type DrawerStackParams = {
   MovieDetail: undefined;
 };
 
-export type AuthStackParams = {
+export type LoginStackParams = {
   Signin: undefined;
   Welcome: undefined;
   Signup: undefined;

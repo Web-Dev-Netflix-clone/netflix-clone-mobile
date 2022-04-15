@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import 'react-native-gesture-handler';
 
 import useCachedResources from './src/hooks/useCachedResources';
-import StartupScreen from './src/screens/StartUpScreen/StartupScreen';
+import StartupScreen from './src/screens/StartUpScreen';
 
 export default function App() {
   const isLoaded = useCachedResources();
