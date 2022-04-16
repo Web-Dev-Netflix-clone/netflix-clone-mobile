@@ -21,7 +21,7 @@ const SearchBar = () => {
       }}>
       <IonIcons name='search' size={20} color={TYPOGRAPHY.COLOR.GreyLight} />
       <TextInput
-        style={{ marginLeft: -60, color: '#fff' }}
+        style={{ marginLeft: -60, color: TYPOGRAPHY.COLOR.White }}
         placeholder='Search for a show, movie, genre etc.'
         placeholderTextColor={TYPOGRAPHY.COLOR.GreyLight}
         onChangeText={(text) => {

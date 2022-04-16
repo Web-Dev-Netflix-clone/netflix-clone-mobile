@@ -6,6 +6,7 @@ import {
   ImageSourcePropType,
 } from 'react-native';
 import card from '../../assets/netflix-games/dungeon-dwarves-card.jpg';
+import { TYPOGRAPHY } from '../global/styles/typography';
 
 interface IGameCard {
   style?: ViewStyle;
@@ -22,7 +23,7 @@ const GameCard = ({ style, height, width, imageSource }: IGameCard) => {
           borderRadius: 20,
           height: height ? height : 100,
           width: width ? width : 100,
-          backgroundColor: '#000',
+          backgroundColor: TYPOGRAPHY.COLOR.Black,
           zIndex: 10,
           overflow: 'hidden',
         },

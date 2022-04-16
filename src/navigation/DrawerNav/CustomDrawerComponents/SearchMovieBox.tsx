@@ -42,7 +42,7 @@ const SearchMovieBox = ({ image, title }: ISearchMovieBox) => {
       </View>
       <IconButton
         icon='play-circle'
-        color='#fff'
+        color={TYPOGRAPHY.COLOR.White}
         size={40}
         onPress={() => ({})}
       />

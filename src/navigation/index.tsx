@@ -8,9 +8,10 @@ import BottomSheet from '../components/BottomSheet/index';
 
 import StartupScreen from '../screens/StartUpScreen';
 import { useActions } from '../hooks/useActions';
+import { TYPOGRAPHY } from '../global/styles/typography';
 
 const navTheme = DefaultTheme;
-navTheme.colors.background = '#000';
+navTheme.colors.background = TYPOGRAPHY.COLOR.Black;
 export const Navigation = () => {
   const { fetchMovies } = useActions();
 

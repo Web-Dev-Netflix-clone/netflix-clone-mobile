@@ -28,7 +28,7 @@ const CarouselCardItem = ({ item, index }: ICarouselCardItem) => {
 const styles = StyleSheet.create({
   container: {
     width: SLIDER_WIDTH,
-    backgroundColor: '#000',
+    backgroundColor: TYPOGRAPHY.COLOR.Black,
   },
   image: {
     width: SLIDER_WIDTH,

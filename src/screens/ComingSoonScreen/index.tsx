@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../state';
 import { IMovie } from '../../state/actionsInterfaces/moviesInterfaces';
 import { randomIntFromRange } from '../../utils/utils';
+import { TYPOGRAPHY } from '../../global/styles/typography';
 
 export interface IMovieSet {
   genre: string;
@@ -33,7 +34,7 @@ const ComingSoonScreen = () => {
         marginTop: 100,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#000',
+        backgroundColor: TYPOGRAPHY.COLOR.Black,
       }}>
       <FlatList
         data={comingSoon}

@@ -90,7 +90,7 @@ const HomeScreen = () => {
           <TagMapper
             tags={movieTags}
             symbol={'•'}
-            tagColor='#fff'
+            tagColor={TYPOGRAPHY.COLOR.White}
             symbolColor='gold'
           />
         </View>
@@ -130,7 +130,7 @@ const HomeScreen = () => {
             width: '50%',
           }}
           icon='shuffle'
-          color='#000'
+          color={TYPOGRAPHY.COLOR.Black}
           onPress={() => {
             showBottomSheet();
           }}>

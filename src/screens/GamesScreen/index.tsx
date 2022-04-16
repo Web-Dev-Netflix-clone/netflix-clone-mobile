@@ -65,7 +65,7 @@ const GamesScreen = () => {
                 style={{
                   ...TYPOGRAPHY.FONT.subtitle,
                   marginBottom: 0,
-                  color: '#fff',
+                  color: TYPOGRAPHY.COLOR.White,
                 }}>
                 Role-Playing
               </Text>

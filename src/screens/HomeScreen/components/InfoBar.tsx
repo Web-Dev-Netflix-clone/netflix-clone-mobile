@@ -31,7 +31,7 @@ const InfoBar = () => {
       <Button
         style={{ backgroundColor: TYPOGRAPHY.COLOR.White }}
         icon='play'
-        color='#000'
+        color={TYPOGRAPHY.COLOR.Black}
         onPress={() => {}}>
         Play
       </Button>

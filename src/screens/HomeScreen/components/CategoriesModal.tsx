@@ -63,7 +63,7 @@ const CategoriesModal = ({
       <View style={styles.closeButtonContainer}>
         <IconButton
           icon='close-circle'
-          color='#fff'
+          color={TYPOGRAPHY.COLOR.White}
           size={40}
           onPress={() => setModalActive(false)}
         />

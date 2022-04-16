@@ -54,7 +54,7 @@ const DownloadsScreen = () => {
             marginBottom: GLOBAL.SPACING.xxxl,
           }}
           uppercase={false}
-          color='#fff'
+          color={TYPOGRAPHY.COLOR.White}
           onPress={() => {}}>
           Set Up
         </Button>

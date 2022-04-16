@@ -24,7 +24,7 @@ const LAYOUT = StyleSheet.create({
     flex: 1,
   },
   defaultContainer: {
-    color: '#fff',
+    color: TYPOGRAPHY.COLOR.White,
     flex: 1,
     paddingTop: SPACING.xxxl,
   },
@@ -86,7 +86,7 @@ export const BRAND_HEADER = StyleSheet.create({
 
 const SHADOWS = StyleSheet.create({
   shadowLight: {
-    shadowColor: '#000',
+    shadowColor: TYPOGRAPHY.COLOR.Black,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -97,7 +97,7 @@ const SHADOWS = StyleSheet.create({
     elevation: Platform.OS === 'ios' ? 0 : 4,
   },
   shadowMedium: {
-    shadowColor: '#000',
+    shadowColor: TYPOGRAPHY.COLOR.Black,
     shadowOffset: {
       width: 2,
       height: 2,
@@ -108,7 +108,7 @@ const SHADOWS = StyleSheet.create({
     elevation: Platform.OS === 'ios' ? 0 : 8,
   },
   shadowLarge: {
-    shadowColor: '#000',
+    shadowColor: TYPOGRAPHY.COLOR.Black,
     shadowOffset: {
       width: 0,
       height: 8,
@@ -119,7 +119,7 @@ const SHADOWS = StyleSheet.create({
     elevation: Platform.OS === 'ios' ? 0 : 8,
   },
   shadowInput: {
-    shadowColor: '#000',
+    shadowColor: TYPOGRAPHY.COLOR.Black,
     shadowOffset: {
       width: 0,
       height: 4,

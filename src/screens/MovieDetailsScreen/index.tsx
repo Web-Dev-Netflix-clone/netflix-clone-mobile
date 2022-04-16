@@ -18,7 +18,7 @@ import CustomYoutubePlayer from './components/CustomYoutubePlayer';
 import PillTag from './components/PillTag';
 import PressableIconBox from '../../components/PressableIconBox';
 import { movieGridData } from '../../../assets/mock-data/movieGridData';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const MovieDetailsScreen = () => {
@@ -26,11 +26,13 @@ const MovieDetailsScreen = () => {
   const [isMute, setIsMute] = useState(true);
   const [showVideo, setShowVideo] = useState(-150);
   const [videoHeight, setVideoHeight] = useState(0);
-
-  const { params } = useRoute();
   const navigation = useNavigation();
-  // @ts-ignore
-  const { title, trailer, description } = params;
+
+  const { params }: any = useRoute();
+
+  const title = params.title;
+  const trailer = params.trailer;
+  const description = params.description;
 
   useEffect(() => {
     const unsubscribe = setTimeout(() => {
@@ -39,7 +41,9 @@ const MovieDetailsScreen = () => {
       setIsMute(!isMute);
     }, 5400);
 
-    () => clearTimeout(unsubscribe);
+    () => {
+      clearTimeout(unsubscribe);
+    };
   }, []);
 
   return (
@@ -185,7 +189,7 @@ const MovieDetailsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: TYPOGRAPHY.COLOR.Black,
   },
   icon: {
     height: 20,
