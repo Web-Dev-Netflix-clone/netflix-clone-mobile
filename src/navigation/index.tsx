@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
 import { DrawerNav } from './DrawerNav';
-import { LoginStackNav } from './LoginStack/LoginStack';
+import { LoginStackNav } from './LoginStack';
 import { useSelector } from '../hooks/useTypedSelector';
 import BottomSheet from '../components/BottomSheet/index';
 

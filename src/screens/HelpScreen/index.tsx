@@ -17,43 +17,51 @@ const HelpScreen = () => {
         <List.Item
           title='Help center'
           titleStyle={styles.listItem}
-          left={() => <List.Icon color='blue' icon='open-in-new' />}
+          left={() => (
+            <List.Icon color={TYPOGRAPHY.COLOR.Blue} icon='open-in-new' />
+          )}
         />
         <HorizontalRule />
         <List.Item
           title='Request TV shows or movies'
           titleStyle={styles.listItem}
-          left={() => <List.Icon color='blue' icon='filmstrip' />}
+          left={() => (
+            <List.Icon color={TYPOGRAPHY.COLOR.Blue} icon='filmstrip' />
+          )}
         />
         <HorizontalRule />
         <List.Item
           title='Update password'
           titleStyle={styles.listItem}
-          left={() => <List.Icon color='blue' icon='lock' />}
+          left={() => <List.Icon color={TYPOGRAPHY.COLOR.Blue} icon='lock' />}
         />
         <HorizontalRule />
         <List.Item
           title='Cancel account'
           titleStyle={styles.listItem}
-          left={() => <List.Icon color='blue' icon='cancel' />}
+          left={() => <List.Icon color={TYPOGRAPHY.COLOR.Blue} icon='cancel' />}
         />
         <HorizontalRule />
         <List.Item
           title='Troubleshooting streaming issues'
           titleStyle={styles.listItem}
-          left={() => <List.Icon color='blue' icon='wrench' />}
+          left={() => <List.Icon color={TYPOGRAPHY.COLOR.Blue} icon='wrench' />}
         />
         <HorizontalRule />
         <List.Item
           title='Privacy'
           titleStyle={styles.listItem}
-          left={() => <List.Icon color='blue' icon='security' />}
+          left={() => (
+            <List.Icon color={TYPOGRAPHY.COLOR.Blue} icon='security' />
+          )}
         />
         <HorizontalRule />
         <List.Item
           title='Terms of use'
           titleStyle={styles.listItem}
-          left={() => <List.Icon color='blue' icon='text-box-outline' />}
+          left={() => (
+            <List.Icon color={TYPOGRAPHY.COLOR.Blue} icon='text-box-outline' />
+          )}
         />
         <HorizontalRule />
       </View>
@@ -66,7 +74,7 @@ const HelpScreen = () => {
           <Button
             icon='chat'
             mode='contained'
-            color='black'
+            color={TYPOGRAPHY.COLOR.Black}
             style={{ width: '30%' }}
             onPress={() => {}}>
             chat
@@ -74,7 +82,7 @@ const HelpScreen = () => {
           <Button
             icon='phone'
             mode='contained'
-            color='black'
+            color={TYPOGRAPHY.COLOR.Black}
             style={{ width: '30%' }}
             onPress={() => {}}>
             call

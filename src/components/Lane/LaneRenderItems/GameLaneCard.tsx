@@ -6,7 +6,7 @@ import { View, Text } from 'react-native';
 import { GLOBAL } from '../../../global/styles/global';
 import { useNavigation } from '@react-navigation/native';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
-import GameCard from '../../GameCard';
+import GameCard from '../../../screens/GamesScreen/components/GameCard';
 
 interface GameLaneCard {
   goTo: { key: string; params?: any };

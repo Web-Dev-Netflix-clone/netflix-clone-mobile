@@ -11,12 +11,12 @@ import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
 
 import { avatarData } from '../../../assets/mock-data/avatarData';
-import Avatar from './CustomDrawerComponents/Avatar';
-import DrawerTopBar from './CustomDrawerComponents/DrawerTopBar';
+import Avatar from './components/Avatar';
+import DrawerTopBar from './components/DrawerTopBar';
 import { socialIconsData } from '../../../assets/mock-data/socialIconsData';
-import SocialBox from './CustomDrawerComponents/SocialBox';
+import SocialBox from './components/SocialBox';
 import { drawerLinks } from '../../../assets/mock-data/drawerLinks';
-import TouchableLink from './CustomDrawerComponents/TouchableLink';
+import TouchableLink from './components/TouchableLink';
 import { useActions } from '../../hooks/useActions';
 
 const ProfileDrawer = () => {

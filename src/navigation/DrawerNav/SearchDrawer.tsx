@@ -5,13 +5,13 @@ import { DrawerContentScrollView } from '@react-navigation/drawer';
 
 import { TYPOGRAPHY } from '../../global/styles/typography';
 
-import SearchBar from './CustomDrawerComponents/SearchBar';
+import SearchBar from './components/SearchBar';
 
 import { useSelector } from 'react-redux';
 
 import { GLOBAL } from '../../global/styles/global';
-import DrawerTopBar from './CustomDrawerComponents/DrawerTopBar';
-import SearchMovieBox from './CustomDrawerComponents/SearchMovieBox';
+import DrawerTopBar from './components/DrawerTopBar';
+import SearchMovieBox from './components/SearchMovieBox';
 import {
   selectFilteredSearchMovies,
   selectSearchInput,

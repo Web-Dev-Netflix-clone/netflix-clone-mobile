@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerActions } from '@react-navigation/native';
-import { BottomNav } from '../BottomTabNav/BottomTab';
+import { BottomNav } from '../BottomTabNav';
 import { DrawerStackParams } from '../navigation';
 import { Ionicons, Feather } from '@expo/vector-icons';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
 import { Image, Pressable, View, Text } from 'react-native';
 import CustomDrawer from './CustomDrawer';
-import Avatar from './CustomDrawerComponents/Avatar';
+import Avatar from './components/Avatar';
 
 import Animated, {
   Easing,

@@ -69,21 +69,6 @@ const TEXT = StyleSheet.create({
   },
 });
 
-export const BRAND_HEADER = StyleSheet.create({
-  header: {
-    color: TYPOGRAPHY.COLOR.Dark,
-    fontSize: 42,
-    fontWeight: 'bold',
-    fontFamily: 'impact',
-    letterSpacing: 2,
-  },
-  textWithShadow: {
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: -0.5, height: 0.5 },
-    textShadowRadius: 5,
-  },
-});
-
 const SHADOWS = StyleSheet.create({
   shadowLight: {
     shadowColor: TYPOGRAPHY.COLOR.Black,
@@ -132,7 +117,6 @@ const SHADOWS = StyleSheet.create({
 
 const GLOBAL = {
   LAYOUT,
-
   TEXT,
   SPACING,
   SHADOWS,

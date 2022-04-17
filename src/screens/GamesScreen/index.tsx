@@ -17,7 +17,7 @@ import { DATA } from '../../../assets/mock-data/dummyData';
 
 import GameLaneCard from '../../components/Lane/LaneRenderItems/GameLaneCard';
 import { IMGSTYLES } from '../../global/styles/imgStyles';
-import GameCard from '../../components/GameCard';
+import GameCard from './components/GameCard';
 
 const GamesScreen = () => {
   return (

@@ -5,8 +5,8 @@ import {
   ViewStyle,
   ImageSourcePropType,
 } from 'react-native';
-import card from '../../assets/netflix-games/dungeon-dwarves-card.jpg';
-import { TYPOGRAPHY } from '../global/styles/typography';
+import gameCardImage from '../../../../assets/netflix-games/dungeon-dwarves-card.jpg';
+import { TYPOGRAPHY } from '../../../global/styles/typography';
 
 interface IGameCard {
   style?: ViewStyle;
@@ -30,7 +30,7 @@ const GameCard = ({ style, height, width, imageSource }: IGameCard) => {
         style,
       ]}>
       <ImageBackground
-        source={imageSource ? imageSource : card}
+        source={imageSource ? imageSource : gameCardImage}
         resizeMode='stretch'
         style={{
           height: '100%',
