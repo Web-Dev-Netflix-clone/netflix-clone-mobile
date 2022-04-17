@@ -9,14 +9,18 @@ import BottomSheet from '../components/BottomSheet/index';
 import StartupScreen from '../screens/StartUpScreen';
 import { useActions } from '../hooks/useActions';
 import { TYPOGRAPHY } from '../global/styles/typography';
+import {
+  selectMoviesLength,
+  selectSignedInStatus,
+} from '../state/selectors/selectors';
 
 const navTheme = DefaultTheme;
 navTheme.colors.background = TYPOGRAPHY.COLOR.Black;
 export const Navigation = () => {
   const { fetchMovies } = useActions();
 
-  const isSignedIn = useSelector((state) => state.userData.isLoggedIn);
-  const movieDataLoaded = useSelector((state) => state.movies.allMovies.length);
+  const isSignedIn = useSelector(selectSignedInStatus);
+  const movieDataLoaded = useSelector(selectMoviesLength);
 
   useEffect(() => {
     fetchMovies();
@@ -24,7 +28,7 @@ export const Navigation = () => {
 
   return (
     <NavigationContainer theme={navTheme}>
-      {!isSignedIn ? (
+      {isSignedIn ? (
         <LoginStackNav />
       ) : movieDataLoaded ? (
         <DrawerNav />

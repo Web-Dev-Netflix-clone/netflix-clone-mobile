@@ -28,17 +28,22 @@ import CategoriesModal from '../../screens/HomeScreen/components/CategoriesModal
 import { useSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 
-import { RootState } from '../../state';
 import MovieDetailsScreen from '../../screens/MovieDetailsScreen';
+import {
+  selectCurrentRoute,
+  selectDiscoverNavVisibility,
+  selectMainNavVisibility,
+  selectScrollYZero,
+} from '../../state/selectors/selectors';
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
 
 export const DrawerNav = () => {
   const [modalActive, setModalActive] = useState(false);
-  const scrollZero = useSelector((state) => state.appState.scrollYZero);
-  const showDiscoverNav = useSelector(
-    (state: RootState) => state.appState.showDiscoverNav
-  );
+  const scrollZero = useSelector(selectScrollYZero);
+  const showDiscoverNav = useSelector(selectDiscoverNavVisibility);
+  const currentRoute = useSelector(selectCurrentRoute);
+  const mainNavHiddenToggle = useSelector(selectMainNavVisibility);
 
   const { searchActive } = useActions();
 
@@ -55,12 +60,6 @@ export const DrawerNav = () => {
       backgroundColor,
     };
   });
-
-  const mainNavHiddenToggle = useSelector(
-    (state) => state.appState.hideMainNav
-  );
-
-  const currentRoute = useSelector((state) => state.appState.currentRoute);
 
   useEffect(() => {
     if (scrollZero) {
@@ -93,7 +92,7 @@ export const DrawerNav = () => {
                   <Animated.View
                     entering={FadeInDown.delay(200)}
                     layout={Layout.easing(Easing.ease).delay(0)}
-                    exiting={FadeOutUp.delay(100)}
+                    exiting={FadeOutUp.delay(200)}
                     style={[
                       {
                         backgroundColor: 'rgba(0,0,0,0.65)',

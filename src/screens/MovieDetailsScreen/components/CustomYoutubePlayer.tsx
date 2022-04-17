@@ -48,7 +48,7 @@ const CustomYoutubePlayer = ({
         layout={Layout.easing(Easing.ease).delay(3000)}
         style={{
           height: 350,
-          backgroundColor: '#000',
+          backgroundColor: TYPOGRAPHY.COLOR.Black,
           zIndex: -1,
         }}
         pointerEvents='none'>

@@ -160,7 +160,7 @@ const ProfileDrawer = () => {
         style={{
           padding: GLOBAL.SPACING.lg,
           borderTopWidth: 1,
-          borderTopColor: '#ccc',
+          borderTopColor: TYPOGRAPHY.COLOR.GreyLight,
         }}>
         {/* Maps the links */}
         {drawerLinks.map(({ id, title, onClick }) => (

@@ -2,12 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Modal from 'react-native-modal';
 import BottomSheetContent from './components/BottomSheetContent';
-import { RootState } from '../../state';
+
+import { selectBottomSheetVisibility } from '../../state/selectors/selectors';
 
 const BottomSheet = () => {
-  const bottomSheetVisible = useSelector(
-    (state: RootState) => state.appState.showBottomSheet
-  );
+  const bottomSheetVisible = useSelector(selectBottomSheetVisibility);
 
   return (
     <Modal
