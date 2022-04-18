@@ -19,14 +19,18 @@ export const TagMapper = ({
   const [displayTags, setDisplayTags] = useState<string[]>([]);
 
   useEffect(() => {
-    const randomTagArray = [];
+    let randomTagArray: Array<any> | Set<any> = [];
 
-    for (let i = 0; i < 4; i++) {
+    while (randomTagArray.length !== 4) {
       randomTagArray.push(tags[randomIntFromRange(0, tags.length - 1)]);
+      randomTagArray = new Set([...randomTagArray]);
+      randomTagArray = [...randomTagArray];
     }
 
-    setDisplayTags(randomTagArray);
+    setDisplayTags([...randomTagArray]);
   }, []);
+
+  console.log('TAGS', displayTags);
 
   return (
     <View style={{ flexDirection: 'row' }}>

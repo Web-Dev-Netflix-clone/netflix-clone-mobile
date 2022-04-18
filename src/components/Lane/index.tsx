@@ -25,6 +25,7 @@ const Lane = ({ data, LaneRenderItem, title }: ILane) => {
       style={{
         backgroundColor: TYPOGRAPHY.COLOR.Black,
         paddingVertical: GLOBAL.SPACING.md,
+        paddingHorizontal: GLOBAL.SPACING.sm,
         zIndex: 100,
       }}>
       <Text style={TYPOGRAPHY.FONT.h2}>{title}</Text>

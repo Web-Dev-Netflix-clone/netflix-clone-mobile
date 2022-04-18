@@ -20,7 +20,7 @@ export const movieTags = [
   'True Crime',
   'True Story',
   'Survival',
-  ' Epic',
+  'Epic',
   'Tv Program',
   'Investigative',
   'Docuseries',
