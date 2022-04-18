@@ -1,11 +1,23 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import { Button } from 'react-native-paper';
 import { GLOBAL } from '../../../global/styles/global';
 import { Ionicons } from '@expo/vector-icons';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
+import { useActions } from '../../../hooks/useActions';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { DrawerStackParams } from '../../../navigation/navigation';
+import { selectBottomSheetMovie } from '../../../state/selectors/selectors';
+import { useSelector } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const InfoBar = () => {
+  const bottomSheetMovie = useSelector(selectBottomSheetMovie);
+  const { showBottomSheet } = useActions();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<DrawerStackParams>>();
+
   return (
     <View
       style={{
@@ -29,13 +41,20 @@ const InfoBar = () => {
         </Text>
       </View>
       <Button
-        style={{ backgroundColor: TYPOGRAPHY.COLOR.White }}
-        icon='play'
+        style={{ backgroundColor: TYPOGRAPHY.COLOR.White, width: '30%' }}
+        icon={() => (
+          <Icon name='play' size={16} color={TYPOGRAPHY.COLOR.Black} />
+        )}
         color={TYPOGRAPHY.COLOR.Black}
-        onPress={() => {}}>
+        onPress={() => {
+          navigation.navigate('MovieDetail', bottomSheetMovie);
+        }}>
         Play
       </Button>
-      <View
+      <Pressable
+        onPress={() => {
+          showBottomSheet();
+        }}
         style={{
           alignItems: 'center',
         }}>
@@ -51,7 +70,7 @@ const InfoBar = () => {
           }}>
           Info
         </Text>
-      </View>
+      </Pressable>
     </View>
   );
 };
