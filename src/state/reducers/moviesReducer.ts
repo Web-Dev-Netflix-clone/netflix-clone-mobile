@@ -52,6 +52,7 @@ export const reducer = (
       return {
         ...state,
         singleMovie: action.payload,
+        bottomSheetMovie: action.payload,
       };
 
     case ActionType.ALL_MOVIES:
