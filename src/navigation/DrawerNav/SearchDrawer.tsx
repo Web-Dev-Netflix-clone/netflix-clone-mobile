@@ -41,8 +41,15 @@ const SearchDrawer = () => {
           Top Searches
         </Text>
         {!!searchInput.length &&
-          searchMovies?.map(({ id, title, backdrop }) => {
-            return <SearchMovieBox key={id} title={title} image={backdrop} />;
+          searchMovies?.map((movie) => {
+            return (
+              <SearchMovieBox
+                key={movie.id}
+                title={movie.title}
+                image={movie.backdrop}
+                movie={movie}
+              />
+            );
           })}
       </DrawerContentScrollView>
     </>

@@ -53,7 +53,7 @@ export const DrawerNav = () => {
     const backgroundColor = interpolateColor(
       progress.value,
       [0, 1],
-      ['rgba(0,0,0,0)', 'rgba(0,0,0,0.65)']
+      ['rgba(0,0,0,0)', 'rgba(0,0,0,0.7)']
     );
 
     return {
@@ -95,7 +95,7 @@ export const DrawerNav = () => {
                     exiting={FadeOutUp.delay(200)}
                     style={[
                       {
-                        backgroundColor: 'rgba(0,0,0,0.65)',
+                        backgroundColor: 'rgba(0,0,0,0.7)',
                         flexDirection: 'row',
                         paddingTop: 70,
                         paddingHorizontal: 20,

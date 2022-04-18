@@ -13,6 +13,9 @@ export const selectFilteredSearchMovies = (state: RootState) =>
       result.title.includes(state.movies.searchInput.toLowerCase())
     );
 
+export const selectBottomSheetMovie = (state: RootState) =>
+  state.movies.bottomSheetMovie;
+
 export const selectSearchInput = (state: RootState) => state.movies.searchInput;
 
 export const selectSignedInStatus = (state: RootState) =>

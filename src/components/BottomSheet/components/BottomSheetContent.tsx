@@ -12,25 +12,15 @@ import { useActions } from '../../../hooks/useActions';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { GLOBAL } from '../../../global/styles/global';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { RootState } from '../../../state';
 import { useSelector } from 'react-redux';
+import { selectBottomSheetMovie } from '../../../state/selectors/selectors';
 
 const height = Dimensions.get('window').height;
 const modalHeight = height * 0.4;
 
-interface IBottomSheetContent {
-  title: string;
-  year: string;
-  runtime: string;
-  description: string;
-  image: ImageSourcePropType | string;
-}
-
 const BottomSheetContent = () => {
   const { hideBottomSheet } = useActions();
-  const { title, description, poster } = useSelector(
-    (state: RootState) => state.movies.bottomSheetMovie
-  );
+  const { title, description, poster } = useSelector(selectBottomSheetMovie);
 
   const runtime = '1h 76m';
   const year = '1982';
@@ -135,14 +125,13 @@ export default BottomSheetContent;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: TYPOGRAPHY.COLOR.Dark,
+    backgroundColor: TYPOGRAPHY.COLOR.DarkTertiary,
     height: modalHeight,
     borderRadius: 15,
   },
   closeButton: {
     position: 'absolute',
     top: GLOBAL.SPACING.sm,
-
     right: GLOBAL.SPACING.xxsm,
     zIndex: 10,
   },
@@ -151,6 +140,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     height: '60%',
     marginTop: GLOBAL.SPACING.sm,
+    marginBottom: GLOBAL.SPACING.md,
   },
   imageContainer: {
     alignSelf: 'flex-start',
@@ -158,13 +148,14 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   image: {
+    marginLeft: 8,
     height: '100%',
     width: '100%',
   },
   textContainer: {
     justifyContent: 'flex-start',
     width: '70%',
-    paddingHorizontal: GLOBAL.SPACING.sm,
+    paddingHorizontal: GLOBAL.SPACING.lg,
   },
   movieDetails: {
     flexDirection: 'row',
@@ -187,7 +178,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    height: '20%',
+    paddingBottom: GLOBAL.SPACING.sm,
   },
   buttonDescription: {
     flexDirection: 'row',

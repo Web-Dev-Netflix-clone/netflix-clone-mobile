@@ -128,7 +128,9 @@ const MovieDetailsScreen = () => {
               ...TYPOGRAPHY.FONT.subtitle,
               color: TYPOGRAPHY.COLOR.White,
             }}>
-            {description}
+            {description.length > 200
+              ? description.slice(0, 200) + '...'
+              : description}
           </Text>
         </View>
 

@@ -3,19 +3,22 @@ import { useSelector } from 'react-redux';
 import Modal from 'react-native-modal';
 import BottomSheetContent from './components/BottomSheetContent';
 
-import { selectBottomSheetVisibility } from '../../state/selectors/selectors';
+import {
+  selectBottomSheetMovie,
+  selectBottomSheetVisibility,
+} from '../../state/selectors/selectors';
 import { Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { RootState } from '../../state';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useActions } from '../../hooks/useActions';
+import { DrawerStackParams } from '../../navigation/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const BottomSheet = () => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<DrawerStackParams>>();
   const { hideBottomSheet } = useActions();
   const bottomSheetVisible = useSelector(selectBottomSheetVisibility);
-  const bottomSheetMovie = useSelector(
-    (state: RootState) => state.movies.bottomSheetMovie
-  );
+  const bottomSheetMovie = useSelector(selectBottomSheetMovie);
 
   return (
     <Modal
@@ -29,7 +32,6 @@ const BottomSheet = () => {
       <Pressable
         style={{ zIndex: 0 }}
         onPress={() => {
-          //@ts-ignore
           navigation.navigate('MovieDetail', bottomSheetMovie);
           hideBottomSheet();
         }}>
