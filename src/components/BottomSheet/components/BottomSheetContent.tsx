@@ -5,18 +5,35 @@ import {
   Image,
   Pressable,
   Dimensions,
+  ImageSourcePropType,
 } from 'react-native';
 import React from 'react';
 import { useActions } from '../../../hooks/useActions';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { GLOBAL } from '../../../global/styles/global';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { RootState } from '../../../state';
+import { useSelector } from 'react-redux';
 
 const height = Dimensions.get('window').height;
-const modalHeight = height * 0.35;
+const modalHeight = height * 0.4;
 
-const BottomSheet = () => {
+interface IBottomSheetContent {
+  title: string;
+  year: string;
+  runtime: string;
+  description: string;
+  image: ImageSourcePropType | string;
+}
+
+const BottomSheetContent = () => {
   const { hideBottomSheet } = useActions();
+  const { title, description, poster } = useSelector(
+    (state: RootState) => state.movies.bottomSheetMovie
+  );
+
+  const runtime = '1h 76m';
+  const year = '1982';
 
   return (
     <View style={styles.container}>
@@ -33,22 +50,24 @@ const BottomSheet = () => {
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
-            source={{
-              uri: 'https://sm.ign.com/t/ign_za/cover/t/the-adam-p/the-adam-project_cnr4.256.jpg',
-            }}
+            source={
+              typeof poster === 'string'
+                ? {
+                    uri: poster,
+                  }
+                : poster
+            }
           />
         </View>
         <View style={styles.textContainer}>
-          <Text style={[GLOBAL.TEXT.Bold, styles.headerText]}>
-            The Adam Project
-          </Text>
+          <Text style={[GLOBAL.TEXT.Bold, styles.headerText]}>{title}</Text>
           <View style={styles.movieDetails}>
-            <Text style={TYPOGRAPHY.FONT.defaultGrey}>2022</Text>
+            <Text style={TYPOGRAPHY.FONT.defaultGrey}>{year}</Text>
             <Image
               style={styles.icon}
               source={require('../../../../assets/kijkwijzer-icons/12.jpg')}
             />
-            <Text style={TYPOGRAPHY.FONT.defaultGrey}>1h 46m</Text>
+            <Text style={TYPOGRAPHY.FONT.defaultGrey}>{runtime}</Text>
           </View>
           <View style={styles.description}>
             <Text
@@ -56,9 +75,9 @@ const BottomSheet = () => {
                 ...TYPOGRAPHY.FONT.body,
                 fontSize: TYPOGRAPHY.FONT_SIZES.sm,
               }}>
-              After accidentally crash-landing in 2022, time-traveling fighter
-              pilot Adam Reed teams up with his 12-year-old self on a mission to
-              save the future.
+              {description.length > 200
+                ? description.slice(0, 200) + '...'
+                : description}
             </Text>
           </View>
         </View>
@@ -112,7 +131,7 @@ const BottomSheet = () => {
   );
 };
 
-export default BottomSheet;
+export default BottomSheetContent;
 
 const styles = StyleSheet.create({
   container: {

@@ -85,3 +85,12 @@ export const updateSearchInput = (searchText: any) => {
     });
   };
 };
+
+export const setBottomSheetMovie = (movieData: any) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.SET_BOTTOMSHEET_MOVIE,
+      payload: movieData,
+    });
+  };
+};

@@ -33,8 +33,8 @@ const FONT_SIZES = {
   xsm: 10,
   sm: 12,
   md: 16,
-  lg: 24,
-  xl: 32,
+  lg: 20,
+  xl: 26,
   xxl: 40,
   xxxl: 80,
 };

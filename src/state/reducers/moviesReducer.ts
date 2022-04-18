@@ -7,6 +7,7 @@ export interface MoviesState {
   allMovies: IMovie[] | [];
   singleMovie: IMovie;
   searchMovies: IMovie[] | [];
+  bottomSheetMovie: any;
   searchInput: string;
 }
 
@@ -25,6 +26,7 @@ const initialState = {
     backdropHighRes: '',
     posterHighRes: '',
   },
+  bottomSheetMovie: {},
   searchMovies: [],
   searchInput: '',
 };
@@ -62,6 +64,12 @@ export const reducer = (
       return {
         ...state,
         searchInput: action.payload,
+      };
+
+    case ActionType.SET_BOTTOMSHEET_MOVIE:
+      return {
+        ...state,
+        bottomSheetMovie: action.payload,
       };
 
     default:

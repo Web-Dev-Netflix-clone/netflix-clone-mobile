@@ -3,6 +3,7 @@ import PressableCard from '../../PressableCard';
 import { GLOBAL } from '../../../global/styles/global';
 import { ImageSourcePropType, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useActions } from '../../../hooks/useActions';
 
 interface IStandardLaneCard {
   goTo: { key: string; params?: any };
@@ -10,17 +11,17 @@ interface IStandardLaneCard {
 }
 
 const StandardLaneCard = ({ goTo, image }: IStandardLaneCard) => {
-  const navigation = useNavigation();
+  const { setBottomSheetMovie, showBottomSheet } = useActions();
 
-  const { key, params } = goTo;
+  const { params } = goTo;
 
   return (
     <View style={{ marginRight: GLOBAL.SPACING.sm }}>
       <PressableCard
         background={image}
         onClick={() => {
-          // @ts-ignore
-          navigation.navigate(key, params);
+          setBottomSheetMovie(params);
+          showBottomSheet();
         }}
         height={200}
         width={150}
