@@ -16,6 +16,9 @@ export const selectFilteredSearchMovies = (state: RootState) =>
 export const selectBottomSheetMovie = (state: RootState) =>
   state.movies.bottomSheetMovie;
 
+export const selectMovieDetails = (state: RootState) =>
+  state.movies.movieDetails.movieDetailsResults;
+
 export const selectSearchInput = (state: RootState) => state.movies.searchInput;
 
 export const selectSignedInStatus = (state: RootState) =>

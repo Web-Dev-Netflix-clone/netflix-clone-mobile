@@ -3,15 +3,16 @@ import { StyleSheet, Text, View, Dimensions, Pressable } from "react-native";
 import YoutubePlayer, { YoutubeIframeRef } from "react-native-youtube-iframe";
 import { Ionicons } from "@expo/vector-icons";
 import { TYPOGRAPHY } from "../../../global/styles/typography";
+import { IMovieDetailsTransform } from "../../../types/data.types";
 
 const { height, width } = Dimensions.get("window");
 
-const ComingSoonItem = ({ item }: any) => {
+const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
   const controlRef = useRef<YoutubeIframeRef>(null);
   const [playing, setPlaying] = useState(false);
 
   const onStateChange = useCallback(
-    (state: any) => {
+    (state: string) => {
       if (state === "ended") {
         controlRef.current?.seekTo(6.5, true);
         setPlaying(true);

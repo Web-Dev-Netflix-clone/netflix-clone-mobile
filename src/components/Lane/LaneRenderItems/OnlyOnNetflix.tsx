@@ -4,6 +4,7 @@ import image from '../../../assets/images/posters/stranger-things.jpg';
 import { Image, View } from 'react-native';
 import { GLOBAL } from '../../../global/styles/global';
 import { useNavigation } from '@react-navigation/native';
+import { IMovieDetailsTransform } from '../../../types/data.types';
 
 interface IOnlyOnNetflix {
   goTo: { key: string; params?: any };

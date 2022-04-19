@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   ImageBackground,
@@ -26,12 +26,6 @@ import { IMGSTYLES } from '../../global/styles/imgStyles';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state';
 import { movieTags } from '../../../assets/mock-data/movieTags';
-import { IMovie } from '../../state/actionsInterfaces/moviesInterfaces';
-
-export interface IMovieSet {
-  genre: string;
-  movies: IMovie[];
-}
 
 const HomeScreen = () => {
   const {
@@ -40,7 +34,6 @@ const HomeScreen = () => {
     showBottomSheet,
     scrollYZeroFalse,
     scrollYZeroTrue,
-    fetchMovies,
   } = useActions();
   const movies = useSelector((state: RootState) => state.movies.allMovies);
   const movie = useSelector((state: RootState) => state.movies.singleMovie);
@@ -123,6 +116,7 @@ const HomeScreen = () => {
         style={{
           backgroundColor: TYPOGRAPHY.COLOR.Black,
           paddingBottom: GLOBAL.SPACING.lg,
+          paddingHorizontal: GLOBAL.SPACING.xsm,
         }}>
         <Ionicons
           name='shuffle'

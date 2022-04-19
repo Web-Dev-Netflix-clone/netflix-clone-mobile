@@ -44,9 +44,7 @@ const SearchDrawer = () => {
           searchMovies?.map((movie) => {
             return (
               <SearchMovieBox
-                key={movie.id}
-                title={movie.title}
-                image={movie.backdrop}
+                key={movie.id.toString() + Math.random().toString()}
                 movie={movie}
               />
             );

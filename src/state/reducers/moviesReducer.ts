@@ -1,13 +1,15 @@
+import { IMovieDetailsTransform } from '../../types/data.types';
 import { ActionType } from '../action-types';
-import { IMovie, TMoviesAction } from '../actionsInterfaces/moviesInterfaces';
+import { TMoviesAction } from '../actionsInterfaces/moviesInterfaces';
 
 export interface MoviesState {
   loading: boolean;
   error: string | null;
-  allMovies: IMovie[] | [];
-  singleMovie: IMovie;
-  searchMovies: IMovie[] | [];
-  bottomSheetMovie: any;
+  allMovies: IMovieDetailsTransform[] | [];
+  singleMovie: IMovieDetailsTransform;
+  searchMovies: IMovieDetailsTransform[] | [];
+  bottomSheetMovie: IMovieDetailsTransform;
+  movieDetails: any;
   searchInput: string;
 }
 
@@ -25,8 +27,23 @@ const initialState = {
     backdrop: '',
     backdropHighRes: '',
     posterHighRes: '',
+    runtime: '',
   },
-  bottomSheetMovie: {},
+  bottomSheetMovie: {
+    id: '',
+    description: '',
+    trailer: '',
+    title: '',
+    key: '',
+    poster: '',
+    backdrop: '',
+    backdropHighRes: '',
+    posterHighRes: '',
+    runtime: '',
+  },
+  movieDetails: {
+    movieDetailsResults: { releaseDate: '' },
+  },
   searchMovies: [],
   searchInput: '',
 };
@@ -71,6 +88,12 @@ export const reducer = (
       return {
         ...state,
         bottomSheetMovie: action.payload,
+      };
+
+    case ActionType.SAVE_MOVIE_DETAILS:
+      return {
+        ...state,
+        movieDetails: action.payload,
       };
 
     default:

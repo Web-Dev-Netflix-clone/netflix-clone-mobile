@@ -21,18 +21,31 @@ import { movieGridData } from '../../../assets/mock-data/movieGridData';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { useSelector } from 'react-redux';
+import { useActions } from '../../hooks/useActions';
+import { selectMovieDetails } from '../../state/selectors/selectors';
+
 const MovieDetailsScreen = () => {
   const [playing, setPlaying] = useState(true);
   const [isMute, setIsMute] = useState(true);
   const [showVideo, setShowVideo] = useState(-150);
   const [videoHeight, setVideoHeight] = useState(0);
   const navigation = useNavigation();
+  const { fetchMovieDetails } = useActions();
 
   const { params }: any = useRoute();
 
+  const id = params.id;
   const title = params.title;
   const trailer = params.trailer;
   const description = params.description;
+  const runtime = params.runtime;
+
+  const movieDetails = useSelector(selectMovieDetails);
+
+  useEffect(() => {
+    fetchMovieDetails(id);
+  }, [id]);
 
   useEffect(() => {
     const unsubscribe = setTimeout(() => {
@@ -67,7 +80,7 @@ const MovieDetailsScreen = () => {
         videoHeight={videoHeight}
         trailerSrc={trailer}
       />
-      <ScrollView>
+      <ScrollView style={{ padding: GLOBAL.SPACING.xsm }}>
         <Text style={TYPOGRAPHY.FONT.h1}>{title}</Text>
         <View
           style={{
@@ -81,7 +94,7 @@ const MovieDetailsScreen = () => {
               marginBottom: 0,
               color: TYPOGRAPHY.COLOR.GreyLight,
             }}>
-            2012
+            {movieDetails.releaseDate}
           </Text>
           <Image
             style={styles.icon}
@@ -93,7 +106,7 @@ const MovieDetailsScreen = () => {
               marginBottom: 0,
               color: TYPOGRAPHY.COLOR.GreyLight,
             }}>
-            2h 16m
+            {runtime}
           </Text>
         </View>
         <View

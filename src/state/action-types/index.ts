@@ -26,4 +26,5 @@ export enum ActionType {
   ALL_MOVIES = 'all_movies',
   UPDATE_SEARCH_INPUT = 'update_search_input',
   SET_BOTTOMSHEET_MOVIE = 'set_bottomsheet_movie',
+  SAVE_MOVIE_DETAILS = 'save_movie_details',
 }

@@ -6,23 +6,31 @@ import {
   Pressable,
   Dimensions,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useActions } from '../../../hooks/useActions';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { GLOBAL } from '../../../global/styles/global';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
-import { selectBottomSheetMovie } from '../../../state/selectors/selectors';
+import {
+  selectBottomSheetMovie,
+  selectMovieDetails,
+} from '../../../state/selectors/selectors';
 
 const height = Dimensions.get('window').height;
 const modalHeight = height * 0.4;
 
 const BottomSheetContent = () => {
-  const { hideBottomSheet } = useActions();
-  const { title, description, poster } = useSelector(selectBottomSheetMovie);
+  const { hideBottomSheet, fetchMovieDetails } = useActions();
+  const { title, description, poster, runtime, id } = useSelector(
+    selectBottomSheetMovie
+  );
 
-  const runtime = '1h 46m';
-  const year = '1982';
+  const movieDetails = useSelector(selectMovieDetails);
+
+  useEffect(() => {
+    fetchMovieDetails(id);
+  }, [id]);
 
   return (
     <View style={styles.container}>
@@ -51,7 +59,9 @@ const BottomSheetContent = () => {
         <View style={styles.textContainer}>
           <Text style={[GLOBAL.TEXT.Bold, styles.headerText]}>{title}</Text>
           <View style={styles.movieDetails}>
-            <Text style={TYPOGRAPHY.FONT.defaultGrey}>{year}</Text>
+            <Text style={TYPOGRAPHY.FONT.defaultGrey}>
+              {movieDetails.releaseDate}
+            </Text>
             <Image
               style={styles.icon}
               source={require('../../../../assets/kijkwijzer-icons/12.jpg')}
