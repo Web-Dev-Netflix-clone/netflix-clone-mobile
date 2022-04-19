@@ -78,19 +78,15 @@ export const fetchMovies = () => {
 };
 
 export const updateSearchInput = (searchText: any) => {
-  return async (dispatch: Dispatch<Action>) => {
-    dispatch({
-      type: ActionType.UPDATE_SEARCH_INPUT,
-      payload: searchText,
-    });
+  return {
+    type: ActionType.UPDATE_SEARCH_INPUT,
+    payload: searchText,
   };
 };
 
 export const setBottomSheetMovie = (movieData: any) => {
-  return async (dispatch: Dispatch<Action>) => {
-    dispatch({
-      type: ActionType.SET_BOTTOMSHEET_MOVIE,
-      payload: movieData,
-    });
+  return {
+    type: ActionType.SET_BOTTOMSHEET_MOVIE,
+    payload: movieData,
   };
 };

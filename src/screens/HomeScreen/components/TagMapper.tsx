@@ -30,8 +30,6 @@ export const TagMapper = ({
     setDisplayTags([...randomTagArray]);
   }, []);
 
-  console.log('TAGS', displayTags);
-
   return (
     <View style={{ flexDirection: 'row' }}>
       {displayTags.map((tag, i) => {
@@ -39,7 +37,7 @@ export const TagMapper = ({
           return (
             <Text
               style={{ ...TYPOGRAPHY.FONT.subtitle, color: tagColor }}
-              key={Math.random()}>
+              key={Math.random().toString()}>
               {tag}
             </Text>
           );

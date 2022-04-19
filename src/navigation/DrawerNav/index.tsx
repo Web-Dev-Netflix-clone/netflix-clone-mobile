@@ -22,7 +22,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import DiscoverNav from '../../screens/HomeScreen/components/DiscoverNav';
+import DiscoverNav from './components/DiscoverNav';
 
 import CategoriesModal from '../../screens/HomeScreen/components/CategoriesModal';
 import { useSelector } from '../../hooks/useTypedSelector';
