@@ -1,25 +1,25 @@
-import React, { useState, useCallback, useRef } from 'react';
-import { StyleSheet, Text, View, Dimensions, Pressable } from 'react-native';
-import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe';
-import { Ionicons } from '@expo/vector-icons';
-import { TYPOGRAPHY } from '../../../global/styles/typography';
+import React, { useState, useCallback, useRef } from "react";
+import { StyleSheet, Text, View, Dimensions, Pressable } from "react-native";
+import YoutubePlayer, { YoutubeIframeRef } from "react-native-youtube-iframe";
+import { Ionicons } from "@expo/vector-icons";
+import { TYPOGRAPHY } from "../../../global/styles/typography";
 
 const ComingSoonItem = ({ item }: any) => {
   const controlRef = useRef<YoutubeIframeRef>(null);
   const [playing, setPlaying] = useState(false);
 
   const onStateChange = useCallback((state: any) => {
-    if (state === 'ended') {
+    if (state === "ended") {
       controlRef.current?.seekTo(6.5, true);
       setPlaying(true);
     }
   }, []);
 
-  const videoId = item.trailer ? item.trailer.split('?v=')[1] : 'JfVOs4VSpmA';
+  const videoId = item.trailer ? item.trailer.split("?v=")[1] : "JfVOs4VSpmA";
 
   return (
     <View style={styles.container}>
-      <View pointerEvents='none' style={styles.videoContainer}>
+      <View pointerEvents="none" style={styles.videoContainer}>
         <YoutubePlayer
           contentScale={1}
           height={300}
@@ -46,21 +46,21 @@ const ComingSoonItem = ({ item }: any) => {
             {item.title}
           </Text>
           <View style={styles.iconContainer}>
-            <View style={{ alignItems: 'center' }}>
+            <View style={{ alignItems: "center" }}>
               <Ionicons
-                name='share-social-outline'
+                name="share-social-outline"
                 size={28}
                 color={TYPOGRAPHY.COLOR.White}
               />
               <Text>Share</Text>
             </View>
-            <View style={{ alignItems: 'center' }}>
-              <Ionicons name='add' size={28} color={TYPOGRAPHY.COLOR.White} />
+            <View style={{ alignItems: "center" }}>
+              <Ionicons name="add" size={28} color={TYPOGRAPHY.COLOR.White} />
               <Text>My List</Text>
             </View>
-            <View style={{ alignItems: 'center' }}>
+            <View style={{ alignItems: "center" }}>
               <Ionicons
-                name='play-circle'
+                name="play-circle"
                 size={28}
                 color={TYPOGRAPHY.COLOR.White}
               />
@@ -81,32 +81,32 @@ const ComingSoonItem = ({ item }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
-    height: Dimensions.get('window').height * 0.4,
+    width: "100%",
+    height: Dimensions.get("window").height * 0.4,
     padding: 5,
     marginBottom: 10,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   videoContainer: {
-    height: '65%',
+    height: "65%",
     borderRadius: 10,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   infoContainer: {
-    width: '100%',
-    height: '35%',
-    justifyContent: 'space-evenly',
+    width: "100%",
+    height: "35%",
+    justifyContent: "space-evenly",
     paddingTop: 5,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   iconContainer: {
-    flexDirection: 'row',
-    width: '40%',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    width: "40%",
+    justifyContent: "space-between",
   },
 });
 
