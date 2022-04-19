@@ -90,9 +90,9 @@ export const DrawerNav = () => {
               <View>
                 {!mainNavHiddenToggle && (
                   <Animated.View
-                    entering={FadeInDown.delay(200)}
-                    layout={Layout.easing(Easing.ease).delay(0)}
-                    exiting={FadeOutUp.delay(200)}
+                    entering={FadeInDown.delay(100)}
+                    layout={Layout.easing(Easing.ease).delay(100)}
+                    exiting={FadeOutUp.delay(100)}
                     style={[
                       {
                         backgroundColor: 'rgba(0,0,0,0.7)',
@@ -183,9 +183,9 @@ export const DrawerNav = () => {
 
                 {showDiscoverNav && (
                   <Animated.View
-                    entering={FadeInUp.delay(200)}
-                    layout={Layout.easing(Easing.ease).delay(200)}
-                    exiting={FadeOutUp.delay(200)}
+                    entering={FadeInUp.delay(100)}
+                    layout={Layout.easing(Easing.ease).delay(100)}
+                    exiting={FadeOutUp.delay(100)}
                     style={animatedBgColor}>
                     <DiscoverNav
                       setModalActive={setModalActive}
