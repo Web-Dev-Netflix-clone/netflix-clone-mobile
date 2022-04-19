@@ -38,11 +38,16 @@ const transformMoviesObject = (moviesObject: any) => {
 export const fetchMovies = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const request = await axios.get(`${API_URL}`);
+      const requestDiscover = await axios.get(`${API_URL}`);
+      const requestGenre = await axios.get(`${API_GENRES}`);
 
-      const movieData = request.data;
+      const discoverMovieData = requestDiscover.data;
+      const genreMovieData = requestGenre.data;
 
-      const allMovies = transformMoviesObject(movieData);
+      const discoverMovies = transformMoviesObject(discoverMovieData);
+      const genreMovies = transformMoviesObject(genreMovieData);
+
+      const allMovies = [...discoverMovies, ...genreMovies];
 
       dispatch({
         type: ActionType.REQUEST_MOVIES_SUCCESS,

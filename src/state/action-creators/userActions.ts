@@ -1,4 +1,3 @@
-import { Action, Dispatch } from 'redux';
 import { ActionType } from '../action-types';
 
 export const fakeLogin = () => {
