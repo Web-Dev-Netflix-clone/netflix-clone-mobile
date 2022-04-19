@@ -74,9 +74,9 @@ const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
         </View>
         <View>
           <Text style={{ color: TYPOGRAPHY.COLOR.White, marginVertical: 5 }}>
-            {item.description.length > 200
-              ? item.description.slice(0, 200) + '...'
-              : item.description}
+            {item?.description?.length > 200
+              ? item?.description?.slice(0, 200) + '...'
+              : item?.description}
           </Text>
         </View>
       </Pressable>

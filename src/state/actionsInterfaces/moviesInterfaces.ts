@@ -11,8 +11,8 @@ export interface RequestMoviesFailure {
   payload: string;
 }
 
-export interface SingleMovie {
-  type: ActionType.SINGLE_MOVIE;
+export interface SaveHeroMovie {
+  type: ActionType.SAVE_HERO_MOVIE;
   payload: IMovieDetailsTransform;
 }
 
@@ -39,7 +39,7 @@ export interface SaveMovieDetails {
 export type TMoviesAction =
   | RequestMoviesSuccess
   | RequestMoviesFailure
-  | SingleMovie
+  | SaveHeroMovie
   | AllMovies
   | UpdateSearchInput
   | SetBottomSheetMovie

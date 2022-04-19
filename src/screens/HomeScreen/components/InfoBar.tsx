@@ -8,13 +8,13 @@ import { useActions } from '../../../hooks/useActions';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { DrawerTabParams } from '../../../navigation/navigation';
-import { selectBottomSheetMovie } from '../../../state/selectors/selectors';
+import { selectHeroMovie } from '../../../state/selectors/selectors';
 import { useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const InfoBar = () => {
-  const bottomSheetMovie = useSelector(selectBottomSheetMovie);
-  const { showBottomSheet } = useActions();
+  const heroMovie = useSelector(selectHeroMovie);
+  const { showBottomSheet, setBottomSheetMovie } = useActions();
   const navigation =
     useNavigation<NativeStackNavigationProp<DrawerTabParams>>();
 
@@ -47,7 +47,8 @@ const InfoBar = () => {
         )}
         color={TYPOGRAPHY.COLOR.Black}
         onPress={() => {
-          navigation.navigate('MovieDetail', bottomSheetMovie);
+          setBottomSheetMovie(heroMovie);
+          navigation.navigate('MovieDetail', heroMovie);
         }}>
         Play
       </Button>

@@ -6,6 +6,7 @@ import { RootState } from '../../state';
 import { randomIntFromRange } from '../../utils/utils';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { IMovieDetailsTransform } from '../../types/data.types';
+import { selectComingSoonMovies } from '../../state/selectors/selectors';
 
 export interface IMovieSet {
   genre: string;
@@ -13,11 +14,7 @@ export interface IMovieSet {
 }
 
 const ComingSoonScreen = () => {
-  const movies = useSelector((state: RootState) => state.movies.searchMovies);
-
-  const comingSoon = new Array(10)
-    .fill('x')
-    .map(() => movies[randomIntFromRange(1, movies.length)]);
+  const comingSoon = useSelector(selectComingSoonMovies);
 
   const keyExtractor = useCallback(() => {
     return Math.random().toString();
@@ -36,11 +33,13 @@ const ComingSoonScreen = () => {
         alignItems: 'center',
         backgroundColor: TYPOGRAPHY.COLOR.Black,
       }}>
-      <FlatList
-        data={comingSoon}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-      />
+      {comingSoon && (
+        <FlatList
+          data={comingSoon}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+        />
+      )}
     </View>
   );
 };

@@ -5,9 +5,9 @@ import { TMoviesAction } from '../actionsInterfaces/moviesInterfaces';
 export interface MoviesState {
   loading: boolean;
   error: string | null;
-  allMovies: IMovieDetailsTransform[] | [];
-  singleMovie: IMovieDetailsTransform;
-  searchMovies: IMovieDetailsTransform[] | [];
+  allMovies: IMovieDetailsTransform[];
+  heroMovie: IMovieDetailsTransform;
+  searchMovies: IMovieDetailsTransform[];
   bottomSheetMovie: IMovieDetailsTransform;
   movieDetails: any;
   searchInput: string;
@@ -17,7 +17,7 @@ const initialState = {
   loading: false,
   error: null,
   allMovies: [],
-  singleMovie: {
+  heroMovie: {
     id: '',
     description: '',
     trailer: '',
@@ -42,7 +42,7 @@ const initialState = {
     runtime: '',
   },
   movieDetails: {
-    movieDetailsResults: { releaseDate: '' },
+    movieDetailsResults: { releaseDate: '2017' },
   },
   searchMovies: [],
   searchInput: '',
@@ -65,10 +65,10 @@ export const reducer = (
         error: action.payload,
       };
 
-    case ActionType.SINGLE_MOVIE:
+    case ActionType.SAVE_HERO_MOVIE:
       return {
         ...state,
-        singleMovie: action.payload,
+        heroMovie: action.payload,
         bottomSheetMovie: action.payload,
       };
 

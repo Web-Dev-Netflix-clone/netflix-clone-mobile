@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   ImageBackground,
@@ -24,8 +24,12 @@ import { useActions } from '../../hooks/useActions';
 import { IMGSTYLES } from '../../global/styles/imgStyles';
 
 import { useSelector } from 'react-redux';
-import { RootState } from '../../state';
+
 import { movieTags } from '../../../assets/mock-data/movieTags';
+import {
+  selectAllMovies,
+  selectHeroMovie,
+} from '../../state/selectors/selectors';
 
 const HomeScreen = () => {
   const {
@@ -34,9 +38,14 @@ const HomeScreen = () => {
     showBottomSheet,
     scrollYZeroFalse,
     scrollYZeroTrue,
+    fetchMovieDetails,
   } = useActions();
-  const movies = useSelector((state: RootState) => state.movies.allMovies);
-  const movie = useSelector((state: RootState) => state.movies.singleMovie);
+  const movies = useSelector(selectAllMovies);
+  const movie = useSelector(selectHeroMovie);
+
+  useEffect(() => {
+    fetchMovieDetails(movie.id);
+  }, [movie.id]);
 
   const [offset, setOffSet] = useState(0);
 

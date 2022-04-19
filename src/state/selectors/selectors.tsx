@@ -1,3 +1,4 @@
+import { randomIntFromRange } from '../../utils/utils';
 import { RootState } from '../reducers';
 
 export const selectCurrentUser = (state: RootState) => {
@@ -13,8 +14,25 @@ export const selectFilteredSearchMovies = (state: RootState) =>
       result.title.includes(state.movies.searchInput.toLowerCase())
     );
 
+export const selectComingSoonMovies = (state: RootState) => {
+  const comingSoon = new Array(10)
+    .fill('x')
+    .map(
+      () =>
+        state.movies.searchMovies[
+          randomIntFromRange(1, state.movies.searchMovies.length - 1)
+        ]
+    );
+
+  return comingSoon;
+};
+
 export const selectBottomSheetMovie = (state: RootState) =>
   state.movies.bottomSheetMovie;
+
+export const selectAllMovies = (state: RootState) => state.movies.allMovies;
+
+export const selectHeroMovie = (state: RootState) => state.movies.heroMovie;
 
 export const selectMovieDetails = (state: RootState) =>
   state.movies.movieDetails.movieDetailsResults;
