@@ -80,7 +80,7 @@ const MovieDetailsScreen = () => {
         videoHeight={videoHeight}
         trailerSrc={trailer}
       />
-      <ScrollView>
+      <ScrollView style={{ padding: GLOBAL.SPACING.xsm }}>
         <Text style={TYPOGRAPHY.FONT.h1}>{title}</Text>
         <View
           style={{

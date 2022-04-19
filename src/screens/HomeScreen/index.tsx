@@ -116,6 +116,7 @@ const HomeScreen = () => {
         style={{
           backgroundColor: TYPOGRAPHY.COLOR.Black,
           paddingBottom: GLOBAL.SPACING.lg,
+          paddingHorizontal: GLOBAL.SPACING.xsm,
         }}>
         <Ionicons
           name='shuffle'
