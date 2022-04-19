@@ -8,12 +8,10 @@ import { useActions } from '../../../hooks/useActions';
 import { IMovie } from '../../../state/actionsInterfaces/moviesInterfaces';
 
 interface ISearchMovieBox {
-  image: string | ImageSourcePropType;
-  title: string;
   movie: IMovie;
 }
 
-const SearchMovieBox = ({ image, title, movie }: ISearchMovieBox) => {
+const SearchMovieBox = ({ movie }: ISearchMovieBox) => {
   const { showBottomSheet, setBottomSheetMovie } = useActions();
 
   return (
@@ -37,7 +35,11 @@ const SearchMovieBox = ({ image, title, movie }: ISearchMovieBox) => {
             borderRadius: 4,
             marginRight: GLOBAL.SPACING.md,
           }}
-          source={typeof image === 'string' ? { uri: image } : image}
+          source={
+            typeof movie.backdrop === 'string'
+              ? { uri: movie.backdrop }
+              : movie.backdrop
+          }
         />
 
         <View style={{ flex: 1 }}>
@@ -48,7 +50,7 @@ const SearchMovieBox = ({ image, title, movie }: ISearchMovieBox) => {
               fontSize: TYPOGRAPHY.FONT_SIZES.md,
               marginBottom: 0,
             }}>
-            {title.charAt(0).toUpperCase() + title.substring(1)}
+            {movie.title.charAt(0).toUpperCase() + movie.title.substring(1)}
           </Text>
         </View>
         <IconButton

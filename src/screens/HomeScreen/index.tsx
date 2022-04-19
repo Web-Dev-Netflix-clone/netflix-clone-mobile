@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   ImageBackground,
@@ -40,7 +40,6 @@ const HomeScreen = () => {
     showBottomSheet,
     scrollYZeroFalse,
     scrollYZeroTrue,
-    fetchMovies,
   } = useActions();
   const movies = useSelector((state: RootState) => state.movies.allMovies);
   const movie = useSelector((state: RootState) => state.movies.singleMovie);

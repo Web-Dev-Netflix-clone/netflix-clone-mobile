@@ -42,14 +42,7 @@ const SearchDrawer = () => {
         </Text>
         {!!searchInput.length &&
           searchMovies?.map((movie) => {
-            return (
-              <SearchMovieBox
-                key={movie.id}
-                title={movie.title}
-                image={movie.backdrop}
-                movie={movie}
-              />
-            );
+            return <SearchMovieBox key={movie.id} movie={movie} />;
           })}
       </DrawerContentScrollView>
     </>

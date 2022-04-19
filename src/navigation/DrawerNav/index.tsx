@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerActions } from '@react-navigation/native';
 import { BottomNav } from '../BottomTabNav';
-import { DrawerStackParams } from '../navigation';
+import { DrawerTabParams } from '../navigation';
 import { Ionicons, Feather } from '@expo/vector-icons';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
@@ -36,7 +36,7 @@ import {
   selectScrollYZero,
 } from '../../state/selectors/selectors';
 
-const Drawer = createDrawerNavigator<DrawerStackParams>();
+const Drawer = createDrawerNavigator<DrawerTabParams>();
 
 export const DrawerNav = () => {
   const [modalActive, setModalActive] = useState(false);
