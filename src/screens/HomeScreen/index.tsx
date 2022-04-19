@@ -98,6 +98,17 @@ const HomeScreen = () => {
       </View>
 
       {movies?.map(({ genre, movies }: any) => {
+        if (genre === 'Actor') {
+          return (
+            <Lane
+              key={genre}
+              title={'Will Smith'}
+              data={movies}
+              LaneRenderItem={StandardLaneCard}
+            />
+          );
+        }
+
         return (
           <Lane
             key={genre}

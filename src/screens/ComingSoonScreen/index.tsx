@@ -19,8 +19,8 @@ const ComingSoonScreen = () => {
     .fill('x')
     .map(() => movies[randomIntFromRange(1, movies.length)]);
 
-  const keyExtractor = useCallback((item) => {
-    return item.id.toString() + Math.random().toString();
+  const keyExtractor = useCallback(() => {
+    return Math.random().toString();
   }, []);
 
   const renderItem = useCallback(({ item }) => {
