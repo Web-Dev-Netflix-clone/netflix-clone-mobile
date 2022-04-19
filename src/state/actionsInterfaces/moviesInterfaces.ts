@@ -36,9 +36,15 @@ export interface UpdateSearchInput {
   payload: string;
 }
 
+export interface SetBottomSheetMovie {
+  type: ActionType.SET_BOTTOMSHEET_MOVIE;
+  payload: IMovie;
+}
+
 export type TMoviesAction =
   | RequestMoviesSuccess
   | RequestMoviesFailure
   | SingleMovie
   | AllMovies
-  | UpdateSearchInput;
+  | UpdateSearchInput
+  | SetBottomSheetMovie;

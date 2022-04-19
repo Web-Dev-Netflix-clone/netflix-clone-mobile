@@ -1,19 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
-import { DrawerNav } from './DrawerNav/DrawerNav';
-import { LoginStack } from './AuthStack/LoginStack';
+import { DrawerNav } from './DrawerNav';
+import { LoginStackNav } from './LoginStack';
 import { useSelector } from '../hooks/useTypedSelector';
-import BottomSheet from '../components/BottomSheet';
+import BottomSheet from '../components/BottomSheet/index';
+
+import StartupScreen from '../screens/StartUpScreen';
+import { useActions } from '../hooks/useActions';
+import { TYPOGRAPHY } from '../global/styles/typography';
+import {
+  selectMoviesLength,
+  selectSignedInStatus,
+} from '../state/selectors/selectors';
 
 const navTheme = DefaultTheme;
-navTheme.colors.background = '#000';
+navTheme.colors.background = TYPOGRAPHY.COLOR.Black;
 export const Navigation = () => {
-  const isSignedIn = useSelector((state) => state.userData.isLoggedIn);
+  const { fetchMovies } = useActions();
+
+  const isSignedIn = useSelector(selectSignedInStatus);
+  const movieDataLoaded = useSelector(selectMoviesLength);
+
+  useEffect(() => {
+    fetchMovies();
+  }, [movieDataLoaded]);
 
   return (
     <NavigationContainer theme={navTheme}>
-      {isSignedIn ? <LoginStack /> : <DrawerNav />}
+      {isSignedIn ? (
+        <LoginStackNav />
+      ) : movieDataLoaded ? (
+        <DrawerNav />
+      ) : (
+        <StartupScreen />
+      )}
 
       <BottomSheet />
     </NavigationContainer>

@@ -1,6 +1,6 @@
-import { StyleSheet, Platform, TextStyle } from "react-native";
+import { StyleSheet, Platform } from 'react-native';
 
-import { TYPOGRAPHY } from "./typography";
+import { TYPOGRAPHY } from './typography';
 
 const SPACING = {
   xxxsm: 2,
@@ -24,13 +24,13 @@ const LAYOUT = StyleSheet.create({
     flex: 1,
   },
   defaultContainer: {
-    color: "#fff",
+    color: TYPOGRAPHY.COLOR.White,
     flex: 1,
     paddingTop: SPACING.xxxl,
   },
   rowCenter: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   imageGrid: {
     display: 'flex',
@@ -42,122 +42,36 @@ const LAYOUT = StyleSheet.create({
   },
 });
 
-const ELEMENTS = StyleSheet.create({
-  Card: {
-    marginBottom: TYPOGRAPHY.ELEMENTS.Card.marginBottom,
-  },
-  CategoryIcons: {
-    alignItems: "center",
-    marginRight: TYPOGRAPHY.ELEMENTS.CategoryIcons.marginRight,
-  },
-});
-
-const CTA = {
-  Style: StyleSheet.create({
-    primary: {
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: TYPOGRAPHY.COLOR.GreyLight,
-      height: TYPOGRAPHY.BUTTON.primary.height,
-      borderWidth: TYPOGRAPHY.BUTTON.primary.borderWidth,
-      borderRadius: TYPOGRAPHY.BUTTON.primary.borderRadius,
-      paddingVertical: TYPOGRAPHY.BUTTON.primary.paddingVertical,
-      paddingHorizontal: TYPOGRAPHY.BUTTON.primary.paddingHorizontal,
-    },
-    primaryText: {
-      color: TYPOGRAPHY.COLOR.White,
-      fontSize: (TYPOGRAPHY.BUTTON.primary.text as TextStyle).fontSize,
-    },
-    secondary: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
-      borderColor: TYPOGRAPHY.COLOR.GreyLight,
-      backgroundColor: TYPOGRAPHY.COLOR.Dark,
-      height: TYPOGRAPHY.BUTTON.secondary.height,
-      borderWidth: TYPOGRAPHY.BUTTON.secondary.borderWidth,
-      borderRadius: TYPOGRAPHY.BUTTON.secondary.borderRadius,
-    },
-    secondaryText: {
-      textAlign: "center",
-      color: TYPOGRAPHY.COLOR.Grey,
-      fontSize: (TYPOGRAPHY.BUTTON.secondary.text as TextStyle).fontSize,
-    },
-  }),
-  TouchableOpacity: {
-    default: 0.8,
-  },
-};
-
 const TEXT = StyleSheet.create({
   Default: {
-    textAlign: "left",
+    textAlign: 'left',
     fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
     fontSize: 14,
     color: TYPOGRAPHY.COLOR.White,
   },
   DefaultBlack: {
-    textAlign: "left",
+    textAlign: 'left',
     fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
     fontSize: 14,
     color: TYPOGRAPHY.COLOR.Black,
   },
   Secondary: {
-    textAlign: "left",
+    textAlign: 'left',
     fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
     fontSize: 12,
     color: TYPOGRAPHY.COLOR.White,
   },
   Bold: {
-    textAlign: "left",
+    textAlign: 'left',
     fontSize: 14,
     fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
     color: TYPOGRAPHY.COLOR.White,
   },
 });
 
-const TEXT_INPUT = {
-  Style: StyleSheet.create({
-    Default: {
-      color: TYPOGRAPHY.COLOR.Dark,
-      height: TYPOGRAPHY.FONT.input.height,
-      borderRadius: TYPOGRAPHY.FONT.input.borderRadius,
-      backgroundColor: TYPOGRAPHY.COLOR.Border,
-      fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
-      borderColor: TYPOGRAPHY.COLOR.Border,
-      fontSize: TYPOGRAPHY.FONT.input.fontSize,
-      borderWidth: TYPOGRAPHY.FONT.input.borderWidth,
-      paddingHorizontal: TYPOGRAPHY.FONT.input.paddingHorizontal,
-    },
-    Bold: {
-      fontSize: 12,
-      textAlign: "left",
-      borderWidth: 1,
-      fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
-      borderColor: TYPOGRAPHY.COLOR.Border,
-      color: TYPOGRAPHY.COLOR.Dark,
-    },
-  }),
-};
-
-export const BRAND_HEADER = StyleSheet.create({
-  header: {
-    color: TYPOGRAPHY.COLOR.Dark,
-    fontSize: 42,
-    fontWeight: "bold",
-    fontFamily: "impact",
-    letterSpacing: 2,
-  },
-  textWithShadow: {
-    textShadowColor: "rgba(0, 0, 0, 0.3)",
-    textShadowOffset: { width: -0.5, height: 0.5 },
-    textShadowRadius: 5,
-  },
-});
-
 const SHADOWS = StyleSheet.create({
   shadowLight: {
-    shadowColor: "#000",
+    shadowColor: TYPOGRAPHY.COLOR.Black,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -165,10 +79,10 @@ const SHADOWS = StyleSheet.create({
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
 
-    elevation: Platform.OS === "ios" ? 0 : 4,
+    elevation: Platform.OS === 'ios' ? 0 : 4,
   },
   shadowMedium: {
-    shadowColor: "#000",
+    shadowColor: TYPOGRAPHY.COLOR.Black,
     shadowOffset: {
       width: 2,
       height: 2,
@@ -176,10 +90,10 @@ const SHADOWS = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
 
-    elevation: Platform.OS === "ios" ? 0 : 8,
+    elevation: Platform.OS === 'ios' ? 0 : 8,
   },
   shadowLarge: {
-    shadowColor: "#000",
+    shadowColor: TYPOGRAPHY.COLOR.Black,
     shadowOffset: {
       width: 0,
       height: 8,
@@ -187,26 +101,23 @@ const SHADOWS = StyleSheet.create({
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
 
-    elevation: Platform.OS === "ios" ? 0 : 8,
+    elevation: Platform.OS === 'ios' ? 0 : 8,
   },
   shadowInput: {
-    shadowColor: "#000",
+    shadowColor: TYPOGRAPHY.COLOR.Black,
     shadowOffset: {
       width: 0,
       height: 4,
     },
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
-    elevation: Platform.OS === "ios" ? 0 : 8,
+    elevation: Platform.OS === 'ios' ? 0 : 8,
   },
 });
 
 const GLOBAL = {
   LAYOUT,
-  ELEMENTS,
-  CTA,
   TEXT,
-  TEXT_INPUT,
   SPACING,
   SHADOWS,
 };

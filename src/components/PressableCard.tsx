@@ -4,7 +4,7 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  Pressable,
+  TouchableOpacity,
   ImageSourcePropType,
   ViewStyle,
 } from 'react-native';
@@ -38,7 +38,7 @@ const PressableCard = ({
 }: IPressableCard) => {
   return (
     <View style={[{ position: 'relative', width: wrapperWidth }, style]}>
-      <Pressable
+      <TouchableOpacity
         onPress={onClick}
         style={[
           styles(height, width, cardRadius).card,
@@ -56,7 +56,7 @@ const PressableCard = ({
             }
           />
         )}
-        <View style={[{ padding: GLOBAL.SPACING.sm }]}>
+        <View style={{ padding: GLOBAL.SPACING.sm }}>
           {title && (
             <Text
               style={{
@@ -68,7 +68,7 @@ const PressableCard = ({
           )}
           {children}
         </View>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 };

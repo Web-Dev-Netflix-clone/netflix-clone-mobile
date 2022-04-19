@@ -5,18 +5,14 @@ export type BottomTabParams = {
   Downloads: undefined;
 };
 
-export type DrawerStackParams = {
+export type DrawerTabParams = {
   Home: undefined;
   MovieDetail: undefined;
 };
 
-export type AuthStackParams = {
+export type LoginStackParams = {
   Signin: undefined;
   Welcome: undefined;
   Signup: undefined;
   Help: undefined;
-};
-
-export type MovieDetailParams = {
-  MovieDetail2: undefined;
 };

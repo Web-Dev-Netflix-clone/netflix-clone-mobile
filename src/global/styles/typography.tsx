@@ -1,13 +1,11 @@
 const COLOR = {
-  // CTA
   White: '#FFFFFF',
   Black: '#000000',
-  BlackSecondary: '#060606',
+  BlackSecondary: '#060600',
 
   Dark: '#141414',
   DarkSecondary: '#181818',
-  DarkTertiary: '#333333',
-
+  DarkTertiary: '#242424',
   Grey: '#808080',
   GreySecondary: '#4f5054',
   GreyLight: '#c1c1c1',
@@ -35,8 +33,8 @@ const FONT_SIZES = {
   xsm: 10,
   sm: 12,
   md: 16,
-  lg: 24,
-  xl: 32,
+  lg: 20,
+  xl: 26,
   xxl: 40,
   xxxl: 80,
 };
@@ -48,6 +46,17 @@ const FONT = {
   default: {
     fontFamily: 'netflix-sans-medium',
     fontSize: 14,
+    color: COLOR.White,
+  },
+  defaultBlack: {
+    fontFamily: 'netflix-sans-medium',
+    fontSize: 14,
+    color: COLOR.Black,
+  },
+  defaultGrey: {
+    fontFamily: 'netflix-sans-medium',
+    fontSize: 14,
+    color: COLOR.Grey,
   },
   body: {
     fontFamily: 'netflix-sans-medium',
@@ -98,39 +107,9 @@ const FONT = {
   },
 };
 
-const BUTTON = {
-  radius: 5,
-  primary: {
-    height: 48,
-    borderWidth: 0,
-    borderRadius: 0,
-    paddingVertical: 6,
-    justifyContent: 'center',
-    paddingHorizontal: 15,
-    text: {
-      fontSize: 14,
-    },
-  },
-  secondary: {
-    height: 48,
-    borderWidth: 1,
-    borderRadius: 5,
-    text: {
-      fontSize: 14,
-    },
-  },
-};
-
-const ELEMENTS = {
-  CategoryIcons: { marginRight: 20 },
-  Card: { marginBottom: 30 },
-};
-
 const TYPOGRAPHY = {
   COLOR,
   FONT,
-  BUTTON,
-  ELEMENTS,
   FONT_SIZES,
 };
 

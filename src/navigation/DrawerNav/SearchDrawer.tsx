@@ -1,40 +1,58 @@
-import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import React from 'react';
+import { Text } from 'react-native';
 
 import { DrawerContentScrollView } from '@react-navigation/drawer';
 
 import { TYPOGRAPHY } from '../../global/styles/typography';
 
-import CustomDrawerTopBar from './CustomDrawerComponents/CustomDrawerTopBar';
+import SearchBar from './components/SearchBar';
 
-import SearchBar from '../../components/SearchBar';
-import { useActions } from '../../hooks/useActions';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../state';
+
+import { GLOBAL } from '../../global/styles/global';
+import DrawerTopBar from './components/DrawerTopBar';
+import SearchMovieBox from './components/SearchMovieBox';
+import {
+  selectFilteredSearchMovies,
+  selectSearchInput,
+} from '../../state/selectors/selectors';
 
 const SearchDrawer = () => {
-  const searchMovies = useSelector(
-    (state: RootState) => state.movies.allMoviesSearchable
-  );
-
-  useEffect(() => {
-    console.log('SEARCHDRAWER', searchMovies);
-  }, []);
+  const searchMovies = useSelector(selectFilteredSearchMovies);
+  const searchInput = useSelector(selectSearchInput);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: TYPOGRAPHY.COLOR.Black,
-      }}>
+    <>
+      <DrawerTopBar title={'Search'} />
+
+      <SearchBar />
+
       <DrawerContentScrollView
         contentContainerStyle={{
+          paddingTop: GLOBAL.SPACING.md,
           backgroundColor: TYPOGRAPHY.COLOR.Black,
         }}>
-        <CustomDrawerTopBar title={'Search'} />
-        <SearchBar />
+        <Text
+          style={{
+            ...TYPOGRAPHY.FONT.h2,
+            marginBottom: GLOBAL.SPACING.md,
+            marginLeft: GLOBAL.SPACING.sm,
+          }}>
+          Top Searches
+        </Text>
+        {!!searchInput.length &&
+          searchMovies?.map((movie) => {
+            return (
+              <SearchMovieBox
+                key={movie.id}
+                title={movie.title}
+                image={movie.backdrop}
+                movie={movie}
+              />
+            );
+          })}
       </DrawerContentScrollView>
-    </View>
+    </>
   );
 };
 

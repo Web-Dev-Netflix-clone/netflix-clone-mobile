@@ -13,8 +13,8 @@ export const IMGSTYLES = StyleSheet.create({
     resizeMode: 'contain',
   },
   headerLogo: {
-    width: 150,
-    height: 60,
+    width: 160,
+    height: 70,
     resizeMode: 'contain',
   },
   mainImage: {

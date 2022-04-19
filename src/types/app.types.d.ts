@@ -7,6 +7,6 @@ export type NavigationScreenBottom<T extends BottomTabParams> = {
   [K in keyof T]: K;
 }[keyof T];
 
-export type NavigationScreenBottom<T extends DrawerStackParams> = {
+export type NavigationScreenBottom<T extends DrawerTabParams> = {
   [K in keyof T]: K;
 }[keyof T];

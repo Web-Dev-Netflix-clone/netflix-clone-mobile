@@ -6,7 +6,8 @@ export interface MoviesState {
   error: string | null;
   allMovies: IMovie[] | [];
   singleMovie: IMovie;
-  allMoviesSearchable: IMovie[] | [];
+  searchMovies: IMovie[] | [];
+  bottomSheetMovie: any;
   searchInput: string;
 }
 
@@ -25,7 +26,8 @@ const initialState = {
     backdropHighRes: '',
     posterHighRes: '',
   },
-  allMoviesSearchable: [],
+  bottomSheetMovie: {},
+  searchMovies: [],
   searchInput: '',
 };
 
@@ -50,18 +52,25 @@ export const reducer = (
       return {
         ...state,
         singleMovie: action.payload,
+        bottomSheetMovie: action.payload,
       };
 
     case ActionType.ALL_MOVIES:
       return {
         ...state,
-        allMoviesSearchable: action.payload,
+        searchMovies: action.payload,
       };
 
     case ActionType.UPDATE_SEARCH_INPUT:
       return {
         ...state,
         searchInput: action.payload,
+      };
+
+    case ActionType.SET_BOTTOMSHEET_MOVIE:
+      return {
+        ...state,
+        bottomSheetMovie: action.payload,
       };
 
     default:
