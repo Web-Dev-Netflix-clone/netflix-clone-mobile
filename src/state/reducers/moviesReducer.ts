@@ -1,13 +1,14 @@
+import { IMovieDetailsTransform } from '../../types/data.types';
 import { ActionType } from '../action-types';
-import { IMovie, TMoviesAction } from '../actionsInterfaces/moviesInterfaces';
+import { TMoviesAction } from '../actionsInterfaces/moviesInterfaces';
 
 export interface MoviesState {
   loading: boolean;
   error: string | null;
-  allMovies: IMovie[] | [];
-  singleMovie: IMovie;
-  searchMovies: IMovie[] | [];
-  bottomSheetMovie: any;
+  allMovies: IMovieDetailsTransform[] | [];
+  singleMovie: IMovieDetailsTransform;
+  searchMovies: IMovieDetailsTransform[] | [];
+  bottomSheetMovie: IMovieDetailsTransform;
   searchInput: string;
 }
 
@@ -26,7 +27,17 @@ const initialState = {
     backdropHighRes: '',
     posterHighRes: '',
   },
-  bottomSheetMovie: {},
+  bottomSheetMovie: {
+    id: '',
+    description: '',
+    trailer: '',
+    title: '',
+    key: '',
+    poster: '',
+    backdrop: '',
+    backdropHighRes: '',
+    posterHighRes: '',
+  },
   searchMovies: [],
   searchInput: '',
 };

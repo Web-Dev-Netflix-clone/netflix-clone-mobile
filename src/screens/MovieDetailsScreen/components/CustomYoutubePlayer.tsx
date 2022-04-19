@@ -9,7 +9,7 @@ import { TYPOGRAPHY } from '../../../global/styles/typography';
 interface ICustomYoutubePlayer {
   isMute?: boolean;
   setIsMute: (bool: boolean) => void;
-  setPlaying: (bool: any) => void;
+  setPlaying: (bool: boolean) => void;
   playing?: boolean;
   showVideo: number;
   videoHeight: number;
@@ -27,7 +27,7 @@ const CustomYoutubePlayer = ({
 }: ICustomYoutubePlayer) => {
   const controlRef = useRef<YoutubeIframeRef>(null);
 
-  const onStateChange = useCallback((state: any) => {
+  const onStateChange = useCallback((state: string) => {
     if (state === 'ended') {
       controlRef.current?.seekTo(6.5, true);
       setPlaying(true);

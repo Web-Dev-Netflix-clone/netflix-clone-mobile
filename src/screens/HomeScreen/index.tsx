@@ -26,12 +26,6 @@ import { IMGSTYLES } from '../../global/styles/imgStyles';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state';
 import { movieTags } from '../../../assets/mock-data/movieTags';
-import { IMovie } from '../../state/actionsInterfaces/moviesInterfaces';
-
-export interface IMovieSet {
-  genre: string;
-  movies: IMovie[];
-}
 
 const HomeScreen = () => {
   const {

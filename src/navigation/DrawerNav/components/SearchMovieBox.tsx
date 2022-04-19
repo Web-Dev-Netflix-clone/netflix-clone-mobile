@@ -5,10 +5,11 @@ import { IconButton } from 'react-native-paper';
 import { GLOBAL } from '../../../global/styles/global';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { useActions } from '../../../hooks/useActions';
-import { IMovie } from '../../../state/actionsInterfaces/moviesInterfaces';
+
+import { IMovieDetailsTransform } from '../../../types/data.types';
 
 interface ISearchMovieBox {
-  movie: IMovie;
+  movie: IMovieDetailsTransform;
 }
 
 const SearchMovieBox = ({ movie }: ISearchMovieBox) => {
