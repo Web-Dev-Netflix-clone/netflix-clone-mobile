@@ -8,14 +8,14 @@ import {
   selectBottomSheetVisibility,
 } from '../../state/selectors/selectors';
 import { Pressable } from 'react-native';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useActions } from '../../hooks/useActions';
-import { DrawerStackParams } from '../../navigation/navigation';
+import { DrawerTabParams } from '../../navigation/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const BottomSheet = () => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<DrawerStackParams>>();
+    useNavigation<NativeStackNavigationProp<DrawerTabParams>>();
   const { hideBottomSheet } = useActions();
   const bottomSheetVisible = useSelector(selectBottomSheetVisibility);
   const bottomSheetMovie = useSelector(selectBottomSheetMovie);

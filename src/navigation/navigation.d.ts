@@ -5,7 +5,7 @@ export type BottomTabParams = {
   Downloads: undefined;
 };
 
-export type DrawerStackParams = {
+export type DrawerTabParams = {
   Home: undefined;
   MovieDetail: undefined;
 };

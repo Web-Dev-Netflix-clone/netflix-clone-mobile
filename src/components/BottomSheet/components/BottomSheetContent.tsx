@@ -5,7 +5,6 @@ import {
   Image,
   Pressable,
   Dimensions,
-  ImageSourcePropType,
 } from 'react-native';
 import React from 'react';
 import { useActions } from '../../../hooks/useActions';
@@ -22,7 +21,7 @@ const BottomSheetContent = () => {
   const { hideBottomSheet } = useActions();
   const { title, description, poster } = useSelector(selectBottomSheetMovie);
 
-  const runtime = '1h 76m';
+  const runtime = '1h 46m';
   const year = '1982';
 
   return (
