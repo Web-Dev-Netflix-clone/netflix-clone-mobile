@@ -2,8 +2,6 @@ import React, { useCallback } from 'react';
 import { View, FlatList } from 'react-native';
 import ComingSoonItem from './components/ComingSoonItem';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../state';
-import { randomIntFromRange } from '../../utils/utils';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { IMovieDetailsTransform } from '../../types/data.types';
 import { selectComingSoonMovies } from '../../state/selectors/selectors';
