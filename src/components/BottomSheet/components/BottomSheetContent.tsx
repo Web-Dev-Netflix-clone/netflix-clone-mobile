@@ -12,8 +12,10 @@ import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { GLOBAL } from '../../../global/styles/global';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
-import { selectBottomSheetMovie } from '../../../state/selectors/selectors';
-import { RootState } from '../../../state';
+import {
+  selectBottomSheetMovie,
+  selectMovieDetails,
+} from '../../../state/selectors/selectors';
 
 const height = Dimensions.get('window').height;
 const modalHeight = height * 0.4;
@@ -24,9 +26,7 @@ const BottomSheetContent = () => {
     selectBottomSheetMovie
   );
 
-  const movieDetails = useSelector(
-    (state: RootState) => state.movies.movieDetails.movieDetailsResults
-  );
+  const movieDetails = useSelector(selectMovieDetails);
 
   useEffect(() => {
     fetchMovieDetails(id);

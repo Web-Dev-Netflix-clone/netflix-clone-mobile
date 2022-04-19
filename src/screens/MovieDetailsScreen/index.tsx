@@ -20,9 +20,10 @@ import PressableIconBox from '../../components/PressableIconBox';
 import { movieGridData } from '../../../assets/mock-data/movieGridData';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { RootState } from '../../state';
+
 import { useSelector } from 'react-redux';
 import { useActions } from '../../hooks/useActions';
+import { selectMovieDetails } from '../../state/selectors/selectors';
 
 const MovieDetailsScreen = () => {
   const [playing, setPlaying] = useState(true);
@@ -40,9 +41,7 @@ const MovieDetailsScreen = () => {
   const description = params.description;
   const runtime = params.runtime;
 
-  const movieDetails = useSelector(
-    (state: RootState) => state.movies.movieDetails.movieDetailsResults
-  );
+  const movieDetails = useSelector(selectMovieDetails);
 
   useEffect(() => {
     fetchMovieDetails(id);
