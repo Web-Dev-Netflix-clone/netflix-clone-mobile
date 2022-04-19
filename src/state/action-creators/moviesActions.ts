@@ -24,7 +24,14 @@ export const fetchMovieDetails = (movieId: string) => {
         payload: movieDetails,
       });
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: ActionType.SAVE_MOVIE_DETAILS,
+        payload: {
+          movieDetailsResults: { releaseDate: '1520' },
+        },
+      });
+
+      console.log(`error iside fetchMovieDetails thunk... ${error}`);
     }
   };
 };
@@ -101,8 +108,8 @@ export const fetchMovies = () => {
         type: ActionType.ALL_MOVIES,
         payload: allMoviesSearchable,
       });
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(`error iside fetchMovies thunk... ${error}`);
     }
   };
 };
