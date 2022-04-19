@@ -17,10 +17,10 @@ const ComingSoonScreen = () => {
 
   const comingSoon = new Array(10)
     .fill('x')
-    .map((x) => movies[randomIntFromRange(1, movies.length)]);
+    .map(() => movies[randomIntFromRange(1, movies.length)]);
 
   const keyExtractor = useCallback((item) => {
-    return item.id + Math.random().toString();
+    return item.id.toString() + Math.random().toString();
   }, []);
 
   const renderItem = useCallback(({ item }) => {
