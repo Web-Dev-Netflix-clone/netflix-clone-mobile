@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
-import { View, FlatList } from 'react-native';
-import ComingSoonItem from '../components/ComingSoonItem';
-import { useSelector } from 'react-redux';
-import { RootState } from '../state';
-import { IMovie } from '../state/actionsInterfaces/moviesInterfaces';
+import React, { useCallback } from "react";
+import { View, FlatList } from "react-native";
+import ComingSoonItem from "../components/ComingSoonItem";
+import { useSelector } from "react-redux";
+import { RootState } from "../state";
+import { IMovie } from "../state/actionsInterfaces/moviesInterfaces";
 
 export interface IMovieSet {
   genre: string;
@@ -13,31 +13,31 @@ export interface IMovieSet {
 const mockData = [
   {
     id: 1,
-    title: 'The Adam Project',
-    videoId: 'IE8HIsIrq4o',
+    title: "The Adam Project",
+    videoId: "IE8HIsIrq4o",
     description:
-      'After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.',
+      "After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.",
   },
   {
     id: 2,
-    title: 'The Adam Project',
-    videoId: 'IE8HIsIrq4o',
+    title: "The Adam Project",
+    videoId: "IE8HIsIrq4o",
     description:
-      'After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.',
+      "After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.",
   },
   {
     id: 3,
-    title: 'The Adam Project',
-    videoId: 'IE8HIsIrq4o',
+    title: "The Adam Project",
+    videoId: "IE8HIsIrq4o",
     description:
-      'After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.',
+      "After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.",
   },
   {
     id: 4,
-    title: 'The Adam Project',
-    videoId: 'IE8HIsIrq4o',
+    title: "The Adam Project",
+    videoId: "IE8HIsIrq4o",
     description:
-      'After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.',
+      "After accidentally crash-landing in 2022, time-traveling fighter pilot Adam Reed teams up with his 12 year-old self on a mission to save the future.",
   },
 ];
 
@@ -57,14 +57,16 @@ const ComingSoonScreen = () => {
       style={{
         flex: 1,
         marginTop: 100,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#000',
-      }}>
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#000",
+      }}
+    >
       <FlatList
         data={mockData}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
+        initialNumToRender={2}
       />
     </View>
   );
