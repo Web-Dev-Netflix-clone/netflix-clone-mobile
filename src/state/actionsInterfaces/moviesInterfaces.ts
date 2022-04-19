@@ -31,10 +31,16 @@ export interface SetBottomSheetMovie {
   payload: IMovieDetailsTransform;
 }
 
+export interface SaveMovieDetails {
+  type: ActionType.SAVE_MOVIE_DETAILS;
+  payload: IMovieDetailsTransform;
+}
+
 export type TMoviesAction =
   | RequestMoviesSuccess
   | RequestMoviesFailure
   | SingleMovie
   | AllMovies
   | UpdateSearchInput
-  | SetBottomSheetMovie;
+  | SetBottomSheetMovie
+  | SaveMovieDetails;

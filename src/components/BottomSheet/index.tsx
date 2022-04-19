@@ -32,6 +32,7 @@ const BottomSheet = () => {
       <Pressable
         style={{ zIndex: 0 }}
         onPress={() => {
+          //@ts-ignore
           navigation.navigate('MovieDetail', bottomSheetMovie);
           hideBottomSheet();
         }}>

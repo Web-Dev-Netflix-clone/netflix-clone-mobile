@@ -9,6 +9,7 @@ export interface MoviesState {
   singleMovie: IMovieDetailsTransform;
   searchMovies: IMovieDetailsTransform[] | [];
   bottomSheetMovie: IMovieDetailsTransform;
+  movieDetails: any;
   searchInput: string;
 }
 
@@ -26,6 +27,7 @@ const initialState = {
     backdrop: '',
     backdropHighRes: '',
     posterHighRes: '',
+    runtime: '',
   },
   bottomSheetMovie: {
     id: '',
@@ -37,6 +39,10 @@ const initialState = {
     backdrop: '',
     backdropHighRes: '',
     posterHighRes: '',
+    runtime: '',
+  },
+  movieDetails: {
+    releaseDate: '',
   },
   searchMovies: [],
   searchInput: '',
@@ -82,6 +88,12 @@ export const reducer = (
       return {
         ...state,
         bottomSheetMovie: action.payload,
+      };
+
+    case ActionType.SAVE_MOVIE_DETAILS:
+      return {
+        ...state,
+        movieDetails: action.payload,
       };
 
     default:

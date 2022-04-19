@@ -1,6 +1,5 @@
 import { ActionType } from '../action-types';
 import { Action, Dispatch } from 'redux';
-import uuid from 'react-native-uuid';
 
 import axios from 'axios';
 import { IMovieSet } from '../../screens/ComingSoonScreen';
@@ -13,6 +12,23 @@ const API_URL = 'https://afternoon-oasis-79606.herokuapp.com/discover';
 const API_GENRES =
   'https://afternoon-oasis-79606.herokuapp.com/discover/movies';
 
+export const fetchMovieDetails = (movieId: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const request = await axios.get(`${API_URL}/movie?id=${movieId}`);
+
+      const movieDetails = request.data;
+
+      dispatch({
+        type: ActionType.SAVE_MOVIE_DETAILS,
+        payload: movieDetails,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 const transformMoviesObject = (moviesObject: IMoviesObject) => {
   const movies: IMovieSet[] = [];
 
@@ -20,7 +36,7 @@ const transformMoviesObject = (moviesObject: IMoviesObject) => {
     ([key, value]: [key: string, value: IMoviesObject]) => {
       let filteredMovies = value.categoryDetails.map((movie: IMovieDetails) => {
         return {
-          id: uuid.v4().toString(),
+          id: movie.id,
           title: movie.title,
           description: movie.overview,
           backdrop: movie.backdropUrls[0],
@@ -28,6 +44,8 @@ const transformMoviesObject = (moviesObject: IMoviesObject) => {
           poster: movie.posterUrls[0],
           posterHighRes: movie.posterUrls[1],
           trailer: movie.trailerUrl,
+          rating: movie.rating,
+          runtime: movie.runtime,
         };
       });
 

@@ -6,7 +6,7 @@ export interface CarouselData {
 
 export interface IMovieDetails {
   backdropUrls: string[];
-  id: number;
+  id: number | string;
   keywords: string[];
   logo: string;
   logoUrl?: string;
@@ -28,7 +28,7 @@ export interface IMovieSet {
 }
 
 export interface IMovieDetailsTransform {
-  id: string;
+  id: string | number;
   title: string;
   description: string;
   backdrop: string;
@@ -36,4 +36,5 @@ export interface IMovieDetailsTransform {
   poster: string;
   posterHighRes: string;
   trailer: string;
+  runtime: string;
 }
