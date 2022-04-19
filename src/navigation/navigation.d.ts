@@ -7,7 +7,7 @@ export type BottomTabParams = {
 
 export type DrawerTabParams = {
   Home: undefined;
-  MovieDetail: undefined;
+  MovieDetail: any;
 };
 
 export type LoginStackParams = {

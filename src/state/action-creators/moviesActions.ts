@@ -86,11 +86,11 @@ export const fetchMovies = () => {
 
       const selectRandomMovie = Math.floor(Math.random() * movies.length - 1);
 
-      const singleMovie = movies[selectRandomMovie];
+      const heroMovie = movies[selectRandomMovie];
 
       dispatch({
-        type: ActionType.SINGLE_MOVIE,
-        payload: singleMovie,
+        type: ActionType.SAVE_HERO_MOVIE,
+        payload: heroMovie,
       });
 
       const allMoviesSearchable = allMovies.reduce((acc, curr) => {

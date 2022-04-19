@@ -22,7 +22,7 @@ export enum ActionType {
   CHANGE_CURRENTROUTE = 'change_currentroute',
   REQUEST_MOVIES_SUCCESS = 'request_movies_success',
   REQUEST_MOVIES_FAILURE = 'request_movies_failure',
-  SINGLE_MOVIE = 'single_movie',
+  SAVE_HERO_MOVIE = 'save_hero_movie',
   ALL_MOVIES = 'all_movies',
   UPDATE_SEARCH_INPUT = 'update_search_input',
   SET_BOTTOMSHEET_MOVIE = 'set_bottomsheet_movie',
