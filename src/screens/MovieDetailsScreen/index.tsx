@@ -44,9 +44,9 @@ const MovieDetailsScreen = () => {
     (state: RootState) => state.movies.movieDetails.movieDetailsResults
   );
 
-  useEffect(() => {
-    fetchMovieDetails(id);
-  }, [id]);
+  // useEffect(() => {
+  //   fetchMovieDetails(id);
+  // }, [id]);
 
   useEffect(() => {
     const unsubscribe = setTimeout(() => {
@@ -59,8 +59,6 @@ const MovieDetailsScreen = () => {
       clearTimeout(unsubscribe);
     };
   }, []);
-
-  console.log('MOVIEDETAILS', movieDetails);
 
   return (
     <View style={styles.container}>

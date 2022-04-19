@@ -32,8 +32,6 @@ const BottomSheetContent = () => {
     fetchMovieDetails(id);
   }, [id]);
 
-  console.log('movieDetails', movieDetails.releaseDate);
-
   return (
     <View style={styles.container}>
       <View style={styles.closeButton}>

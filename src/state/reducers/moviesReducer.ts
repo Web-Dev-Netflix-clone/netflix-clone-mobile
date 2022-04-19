@@ -42,7 +42,7 @@ const initialState = {
     runtime: '',
   },
   movieDetails: {
-    releaseDate: '',
+    movieDetailsResults: { releaseDate: '' },
   },
   searchMovies: [],
   searchInput: '',
