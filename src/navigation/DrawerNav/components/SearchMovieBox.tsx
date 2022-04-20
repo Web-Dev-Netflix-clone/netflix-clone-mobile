@@ -65,4 +65,4 @@ const SearchMovieBox = ({ movie }: ISearchMovieBox) => {
   );
 };
 
-export default SearchMovieBox;
+export default React.memo(SearchMovieBox);

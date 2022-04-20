@@ -51,9 +51,7 @@ const transformMoviesObject = (moviesObject: IMoviesObject) => {
           backdropHighRes: movie.backdropUrls[1],
           poster: movie.posterUrls[0],
           posterHighRes: movie.posterUrls[1],
-          trailer: movie.trailerUrl
-            ? movie.trailerUrl
-            : Math.random().toString(),
+          trailer: movie.trailerUrl,
           rating: movie.rating,
           runtime: movie.runtime,
         };
@@ -103,9 +101,12 @@ export const fetchMovies = () => {
         payload: heroMovie,
       });
 
-      const allMoviesSearchable = allMovies.reduce((acc, curr) => {
-        return acc.concat(curr.movies);
-      }, [] as IMovieDetailsTransform[]);
+      // https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects
+      const allMoviesSearchable = allMovies
+        .reduce((acc, curr) => {
+          return acc.concat(curr.movies);
+        }, [] as IMovieDetailsTransform[])
+        .filter((v, i, a) => a.findIndex((v2) => v2.id === v.id) === i);
 
       dispatch({
         type: ActionType.ALL_MOVIES,
