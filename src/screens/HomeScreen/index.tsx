@@ -1,14 +1,14 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useState } from 'react';
 import {
-  View,
   ImageBackground,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
   ScrollView,
   Text,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
+  View,
 } from 'react-native';
 import { Button } from 'react-native-paper';
-import { LinearGradient } from 'expo-linear-gradient';
 
 import InfoBar from './components/InfoBar';
 import { TagMapper } from './components/TagMapper';
@@ -17,11 +17,11 @@ import { Ionicons } from '@expo/vector-icons';
 import Lane from '../../components/Lane';
 import StandardLaneCard from '../../components/Lane/LaneRenderItems/StandardLaneCard';
 
-import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
+import { TYPOGRAPHY } from '../../global/styles/typography';
 
-import { useActions } from '../../hooks/useActions';
 import { IMGSTYLES } from '../../global/styles/imgStyles';
+import { useActions } from '../../hooks/useActions';
 
 import { useSelector } from 'react-redux';
 

@@ -1,3 +1,5 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
@@ -6,12 +8,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import { Button, TextInput } from 'react-native-paper';
 import { GLOBAL } from '../../global/styles/global';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { useActions } from '../../hooks/useActions';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { LoginStackParams } from '../../navigation/navigation';
 
 const SignInScreen = () => {

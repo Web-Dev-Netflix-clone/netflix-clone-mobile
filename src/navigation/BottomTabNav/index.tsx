@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 
+import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TYPOGRAPHY } from '../../global/styles/typography';
+import { useActions } from '../../hooks/useActions';
 import ComingSoonScreen from '../../screens/ComingSoonScreen';
 import DownloadsScreen from '../../screens/DownloadsScreen';
 import GamesScreen from '../../screens/GamesScreen';
 import HomeScreen from '../../screens/HomeScreen';
 import { BottomTabParams } from '../navigation';
-import { Ionicons } from '@expo/vector-icons';
-import { useActions } from '../../hooks/useActions';
 
 const BottomTab = createBottomTabNavigator<BottomTabParams>();
 

@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-import PressableCard from '../../PressableCard';
-import { GLOBAL } from '../../../global/styles/global';
+import React from 'react';
 import { ImageSourcePropType, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { GLOBAL } from '../../../global/styles/global';
 import { useActions } from '../../../hooks/useActions';
+import PressableCard from '../../PressableCard';
 
 interface IStandardLaneCard {
   goTo: { key: string; params?: any };

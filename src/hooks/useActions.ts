@@ -2,8 +2,8 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
   appStateActionCreators,
-  userActionCreators,
   moviesActionCreators,
+  userActionCreators,
 } from '../state';
 
 const actionCreators: any = {

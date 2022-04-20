@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, ImageBackground } from 'react-native';
+import { ImageBackground, Text, View } from 'react-native';
+import { Button } from 'react-native-paper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import banner from '../../../assets/netflix-banner/download-screen-resized2.png';
 import { GLOBAL } from '../../global/styles/global';
 import { TYPOGRAPHY } from '../../global/styles/typography';
-import { Button } from 'react-native-paper';
-import banner from '../../../assets/netflix-banner/download-screen-resized2.png';
 
 const DownloadsScreen = () => {
   return (

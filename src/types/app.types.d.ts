@@ -1,7 +1,4 @@
-import {
-  BottomTabParams,
-  DrawerStackParams,
-} from './../navigation/navigation.d';
+import { BottomTabParams, DrawerTabParams } from './../navigation/navigation.d';
 
 export type NavigationScreenBottom<T extends BottomTabParams> = {
   [K in keyof T]: K;

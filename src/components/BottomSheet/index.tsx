@@ -1,17 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import Modal from 'react-native-modal';
+import { useSelector } from 'react-redux';
 import BottomSheetContent from './components/BottomSheetContent';
 
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Pressable } from 'react-native';
+import { useActions } from '../../hooks/useActions';
+import { DrawerTabParams } from '../../navigation/navigation';
 import {
   selectBottomSheetMovie,
   selectBottomSheetVisibility,
 } from '../../state/selectors/selectors';
-import { Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useActions } from '../../hooks/useActions';
-import { DrawerTabParams } from '../../navigation/navigation';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const BottomSheet = () => {
   const navigation =

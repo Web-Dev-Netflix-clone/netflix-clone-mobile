@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import {
   Image,
-  View,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
-  Pressable,
+  View,
 } from 'react-native';
 
 import PressableCard from '../../components/PressableCard';
 
-import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
+import { TYPOGRAPHY } from '../../global/styles/typography';
 
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Button } from 'react-native-paper';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { movieGridData } from '../../../assets/mock-data/movieGridData';
+import PressableIconBox from '../../components/PressableIconBox';
 import CustomYoutubePlayer from './components/CustomYoutubePlayer';
 import PillTag from './components/PillTag';
-import PressableIconBox from '../../components/PressableIconBox';
-import { movieGridData } from '../../../assets/mock-data/movieGridData';
-import { useRoute, useNavigation } from '@react-navigation/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { useSelector } from 'react-redux';
 import { useActions } from '../../hooks/useActions';

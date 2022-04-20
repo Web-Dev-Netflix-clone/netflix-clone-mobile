@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { Feather, Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerActions } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { Image, Pressable, Text, View } from 'react-native';
+import { GLOBAL } from '../../global/styles/global';
+import { TYPOGRAPHY } from '../../global/styles/typography';
 import { BottomNav } from '../BottomTabNav';
 import { DrawerTabParams } from '../navigation';
-import { Ionicons, Feather } from '@expo/vector-icons';
-import { TYPOGRAPHY } from '../../global/styles/typography';
-import { GLOBAL } from '../../global/styles/global';
-import { Image, Pressable, View, Text } from 'react-native';
-import CustomDrawer from './CustomDrawer';
 import Avatar from './components/Avatar';
+import CustomDrawer from './CustomDrawer';
 
 import Animated, {
   Easing,
@@ -24,9 +24,9 @@ import Animated, {
 
 import DiscoverNav from './components/DiscoverNav';
 
-import CategoriesModal from '../../screens/HomeScreen/components/CategoriesModal';
-import { useSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
+import { useSelector } from '../../hooks/useTypedSelector';
+import CategoriesModal from '../../screens/HomeScreen/components/CategoriesModal';
 
 import MovieDetailsScreen from '../../screens/MovieDetailsScreen';
 import {

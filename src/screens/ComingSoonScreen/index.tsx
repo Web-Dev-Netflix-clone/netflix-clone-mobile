@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { View, FlatList } from 'react-native';
-import ComingSoonItem from './components/ComingSoonItem';
+import { FlatList, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { TYPOGRAPHY } from '../../global/styles/typography';
-import { IMovieDetailsTransform } from '../../types/data.types';
 import { selectComingSoonMovies } from '../../state/selectors/selectors';
+import { IMovieDetailsTransform } from '../../types/data.types';
+import ComingSoonItem from './components/ComingSoonItem';
 
 export interface IMovieSet {
   genre: string;

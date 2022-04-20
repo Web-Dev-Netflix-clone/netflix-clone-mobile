@@ -1,14 +1,14 @@
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
+import BottomSheet from '../components/BottomSheet/index';
+import { useSelector } from '../hooks/useTypedSelector';
 import { DrawerNav } from './DrawerNav';
 import { LoginStackNav } from './LoginStack';
-import { useSelector } from '../hooks/useTypedSelector';
-import BottomSheet from '../components/BottomSheet/index';
 
-import StartupScreen from '../screens/StartUpScreen';
-import { useActions } from '../hooks/useActions';
 import { TYPOGRAPHY } from '../global/styles/typography';
+import { useActions } from '../hooks/useActions';
+import StartupScreen from '../screens/StartUpScreen';
 import {
   selectMoviesLength,
   selectSignedInStatus,

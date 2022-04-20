@@ -1,15 +1,15 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
+import { TYPOGRAPHY } from '../../global/styles/typography';
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state';
 
-import SearchDrawer from './SearchDrawer';
-import ProfileDrawer from './ProfileDrawer';
 import MyListDrawer from './MyListDrawer';
+import ProfileDrawer from './ProfileDrawer';
+import SearchDrawer from './SearchDrawer';
 
 const CustomDrawer = () => {
   const searchActive = useSelector(

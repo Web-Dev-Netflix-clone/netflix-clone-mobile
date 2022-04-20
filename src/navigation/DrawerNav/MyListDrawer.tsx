@@ -1,8 +1,8 @@
+import { DrawerContentScrollView } from '@react-navigation/drawer';
 import React from 'react';
 import { Text } from 'react-native';
-import { DrawerContentScrollView } from '@react-navigation/drawer';
-import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
+import { TYPOGRAPHY } from '../../global/styles/typography';
 import DrawerTopBar from './components/DrawerTopBar';
 
 const MyListDrawer = () => {

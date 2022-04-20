@@ -1,12 +1,12 @@
-import { View, Text, StyleSheet, SafeAreaView, Modal } from 'react-native';
-import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { LoginStackParams } from '../../navigation/navigation';
-import { TYPOGRAPHY } from '../../global/styles/typography';
-import WelcomeCarousel from './components/WelcomeCarousel';
+import React, { useState } from 'react';
+import { Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Button, IconButton, TextInput } from 'react-native-paper';
 import { GLOBAL } from '../../global/styles/global';
+import { TYPOGRAPHY } from '../../global/styles/typography';
+import { LoginStackParams } from '../../navigation/navigation';
+import WelcomeCarousel from './components/WelcomeCarousel';
 
 const WelcomeScreen = () => {
   const navigation =

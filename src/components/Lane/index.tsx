@@ -1,11 +1,11 @@
-import React, { FunctionComponent, ReactNode, useCallback } from 'react';
-import { View, Text, FlatList } from 'react-native';
-import { TYPOGRAPHY } from '../../global/styles/typography';
+import React, { FunctionComponent, useCallback } from 'react';
+import { FlatList, Text, View } from 'react-native';
 import { GLOBAL } from '../../global/styles/global';
+import { TYPOGRAPHY } from '../../global/styles/typography';
 import { IMovieDetailsTransform } from '../../types/data.types';
 
 interface ILane {
-  data: IMovieDetailsTransform[];
+  data: IMovieDetailsTransform[] | any[];
   LaneRenderItem: FunctionComponent<any>;
   title: string;
 }

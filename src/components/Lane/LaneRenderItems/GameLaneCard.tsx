@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { GLOBAL } from '../../../global/styles/global';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
-import PressableCard from '../../PressableCard';
 import GameCard from '../../../screens/GamesScreen/components/GameCard';
+import PressableCard from '../../PressableCard';
 
 const GameLaneCard = () => {
   return (

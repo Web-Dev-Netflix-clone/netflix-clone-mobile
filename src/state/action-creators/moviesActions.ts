@@ -1,5 +1,5 @@
-import { ActionType } from '../action-types';
 import { Action, Dispatch } from 'redux';
+import { ActionType } from '../action-types';
 
 import axios from 'axios';
 import { IMovieSet } from '../../screens/ComingSoonScreen';

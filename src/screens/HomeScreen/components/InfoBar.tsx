@@ -1,16 +1,16 @@
-import React from 'react';
-import { View, Text, Pressable } from 'react-native';
-import { Button } from 'react-native-paper';
-import { GLOBAL } from '../../../global/styles/global';
 import { Ionicons } from '@expo/vector-icons';
-import { TYPOGRAPHY } from '../../../global/styles/typography';
-import { useActions } from '../../../hooks/useActions';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React from 'react';
+import { Pressable, Text, View } from 'react-native';
+import { Button } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { useSelector } from 'react-redux';
+import { GLOBAL } from '../../../global/styles/global';
+import { TYPOGRAPHY } from '../../../global/styles/typography';
+import { useActions } from '../../../hooks/useActions';
 import { DrawerTabParams } from '../../../navigation/navigation';
 import { selectHeroMovie } from '../../../state/selectors/selectors';
-import { useSelector } from 'react-redux';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 const InfoBar = () => {
   const heroMovie = useSelector(selectHeroMovie);

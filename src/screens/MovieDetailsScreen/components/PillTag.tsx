@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ViewStyle } from 'react-native';
+import { Text, View, ViewStyle } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { GLOBAL } from '../../../global/styles/global';
 import { TYPOGRAPHY } from '../../../global/styles/typography';

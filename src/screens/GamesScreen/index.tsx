@@ -1,19 +1,19 @@
 import React from 'react';
 import {
-  View,
-  Text,
-  ImageBackground,
   Image,
-  StyleSheet,
+  ImageBackground,
   ScrollView,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
-import { GLOBAL } from '../../global/styles/global';
 import banner from '../../../assets/netflix-games/stranger-things-game-bg2.png';
+import { GLOBAL } from '../../global/styles/global';
 
-import { TYPOGRAPHY } from '../../global/styles/typography';
 import { LinearGradient } from 'expo-linear-gradient';
-import Lane from '../../components/Lane';
 import { DATA } from '../../../assets/mock-data/dummyData';
+import Lane from '../../components/Lane';
+import { TYPOGRAPHY } from '../../global/styles/typography';
 
 import GameLaneCard from '../../components/Lane/LaneRenderItems/GameLaneCard';
 import { IMGSTYLES } from '../../global/styles/imgStyles';

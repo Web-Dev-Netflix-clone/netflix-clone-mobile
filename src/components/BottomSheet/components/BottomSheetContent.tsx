@@ -1,17 +1,17 @@
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import React, { useEffect } from 'react';
 import {
+  Dimensions,
+  Image,
+  Pressable,
   StyleSheet,
   Text,
   View,
-  Image,
-  Pressable,
-  Dimensions,
 } from 'react-native';
-import { useActions } from '../../../hooks/useActions';
-import { TYPOGRAPHY } from '../../../global/styles/typography';
-import { GLOBAL } from '../../../global/styles/global';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
+import { GLOBAL } from '../../../global/styles/global';
+import { TYPOGRAPHY } from '../../../global/styles/typography';
+import { useActions } from '../../../hooks/useActions';
 import {
   selectBottomSheetMovie,
   selectMovieDetails,

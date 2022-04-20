@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { randomIntFromRange } from '../../../utils/utils';
 
@@ -45,7 +45,7 @@ export const TagMapper = ({
         return (
           <Text
             style={{ ...TYPOGRAPHY.FONT.subtitle, color: tagColor }}
-            key={Math.random()}>
+            key={Math.random().toString()}>
             {` ${tag}`}
             <Text style={{ color: symbolColor }}>{` ${symbol} `}</Text>
           </Text>

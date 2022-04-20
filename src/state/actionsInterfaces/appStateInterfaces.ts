@@ -1,8 +1,3 @@
-import {
-  showBottomSheet,
-  hideBottomSheet,
-} from './../action-creators/appStateActions';
-
 import { ActionType } from '../action-types/index';
 
 export interface SearchActive {

@@ -1,10 +1,9 @@
-import React from 'react';
-import PressableCard from '../../PressableCard';
-import image from '../../../assets/images/posters/stranger-things.jpg';
-import { Image, View } from 'react-native';
-import { GLOBAL } from '../../../global/styles/global';
 import { useNavigation } from '@react-navigation/native';
-import { IMovieDetailsTransform } from '../../../types/data.types';
+import React from 'react';
+import { Image, View } from 'react-native';
+import image from '../../../assets/images/posters/stranger-things.jpg';
+import { GLOBAL } from '../../../global/styles/global';
+import PressableCard from '../../PressableCard';
 
 interface IOnlyOnNetflix {
   goTo: { key: string; params?: any };

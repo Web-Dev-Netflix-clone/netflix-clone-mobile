@@ -1,10 +1,10 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import { View, StyleSheet, Modal, ViewStyle, ScrollView } from 'react-native';
+import { Modal, ScrollView, StyleSheet, View, ViewStyle } from 'react-native';
 import { IconButton } from 'react-native-paper';
+import { categoriesData } from '../../../../assets/mock-data/categoriesData';
 import { GLOBAL } from '../../../global/styles/global';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
-import { LinearGradient } from 'expo-linear-gradient';
-import { categoriesData } from '../../../../assets/mock-data/categoriesData';
 
 import { PressableText } from '../../../global/elements/PressableText';
 import { IMGSTYLES } from '../../../global/styles/imgStyles';

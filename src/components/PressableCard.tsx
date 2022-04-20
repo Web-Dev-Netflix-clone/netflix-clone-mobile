@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import {
-  Text,
-  StyleSheet,
-  View,
   ImageBackground,
-  TouchableOpacity,
   ImageSourcePropType,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
   ViewStyle,
 } from 'react-native';
 

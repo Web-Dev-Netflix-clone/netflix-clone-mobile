@@ -1,11 +1,11 @@
+import React, { useRef, useState } from 'react';
 import { View } from 'react-native';
-import React, { useState, useRef } from 'react';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import CAROUSELDATA from '../../../../assets/mock-data/dummyCarouselData';
-import CarouselCardItem, { SLIDER_WIDTH } from './CarouselCardItem';
-import { CarouselData } from '../../../types/data.types';
 import { GLOBAL } from '../../../global/styles/global';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
+import { CarouselData } from '../../../types/data.types';
+import CarouselCardItem, { SLIDER_WIDTH } from './CarouselCardItem';
 
 const WelcomeCarousel = () => {
   const isCarousel = useRef<Carousel<CarouselData>>(null);

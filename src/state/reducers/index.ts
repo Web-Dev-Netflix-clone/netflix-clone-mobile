@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { reducer as userReducer } from './userReducer';
 import { reducer as appStateReducer } from './appStateReducer';
 import { reducer as moviesReducer } from './moviesReducer';
+import { reducer as userReducer } from './userReducer';
 
 const reducers = combineReducers({
   appState: appStateReducer,

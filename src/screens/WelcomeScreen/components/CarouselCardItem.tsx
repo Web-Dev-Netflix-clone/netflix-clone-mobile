@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
-import { CarouselData } from '../../../types/data.types';
-import { TYPOGRAPHY } from '../../../global/styles/typography';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { GLOBAL } from '../../../global/styles/global';
+import { TYPOGRAPHY } from '../../../global/styles/typography';
+import { CarouselData } from '../../../types/data.types';
 
 export const SLIDER_WIDTH = Dimensions.get('window').width;
 export const SLIDER_HEIGHT = Dimensions.get('window').height * 0.8;

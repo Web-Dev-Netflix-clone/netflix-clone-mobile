@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { LoginStackParams } from '../../navigation/navigation';
-import { TYPOGRAPHY } from '../../global/styles/typography';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { Button, Checkbox, TextInput } from 'react-native-paper';
 import { GLOBAL } from '../../global/styles/global';
-import { Button, TextInput, Checkbox } from 'react-native-paper';
+import { TYPOGRAPHY } from '../../global/styles/typography';
+import { LoginStackParams } from '../../navigation/navigation';
 
 const SignUpScreen = () => {
   const navigation =

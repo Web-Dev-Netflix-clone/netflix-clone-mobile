@@ -1,9 +1,9 @@
-import { ImageBackground } from 'react-native';
+import Octicons from '@expo/vector-icons/Octicons';
 import React, { useCallback, useRef } from 'react';
+import { ImageBackground } from 'react-native';
 import Animated, { BounceIn, Easing, Layout } from 'react-native-reanimated';
 import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe';
 import { IMGSTYLES } from '../../../global/styles/imgStyles';
-import Octicons from '@expo/vector-icons/Octicons';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 
 interface ICustomYoutubePlayer {

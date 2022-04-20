@@ -1,7 +1,7 @@
 import {
-  Text,
   Pressable,
   PressableProps,
+  Text,
   TextStyle,
   ViewStyle,
 } from 'react-native';

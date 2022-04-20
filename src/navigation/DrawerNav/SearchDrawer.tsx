@@ -10,12 +10,12 @@ import SearchBar from './components/SearchBar';
 import { useSelector } from 'react-redux';
 
 import { GLOBAL } from '../../global/styles/global';
-import DrawerTopBar from './components/DrawerTopBar';
-import SearchMovieBox from './components/SearchMovieBox';
 import {
   selectFilteredSearchMovies,
   selectSearchInput,
 } from '../../state/selectors/selectors';
+import DrawerTopBar from './components/DrawerTopBar';
+import SearchMovieBox from './components/SearchMovieBox';
 
 const SearchDrawer = () => {
   const searchMovies = useSelector(selectFilteredSearchMovies);

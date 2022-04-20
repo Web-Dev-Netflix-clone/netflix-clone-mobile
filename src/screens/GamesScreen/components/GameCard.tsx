@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  View,
   ImageBackground,
-  ViewStyle,
   ImageSourcePropType,
+  View,
+  ViewStyle,
 } from 'react-native';
 import gameCardImage from '../../../../assets/netflix-games/dungeon-dwarves-card.jpg';
 import { TYPOGRAPHY } from '../../../global/styles/typography';

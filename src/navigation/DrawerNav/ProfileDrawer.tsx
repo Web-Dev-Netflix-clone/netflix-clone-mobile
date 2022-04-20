@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { Button } from 'react-native-paper';
 
@@ -7,18 +7,18 @@ import { Ionicons } from '@expo/vector-icons';
 
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
-import { TYPOGRAPHY } from '../../global/styles/typography';
 import { GLOBAL } from '../../global/styles/global';
+import { TYPOGRAPHY } from '../../global/styles/typography';
 
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { avatarData } from '../../../assets/mock-data/avatarData';
+import { drawerLinks } from '../../../assets/mock-data/drawerLinks';
+import { socialIconsData } from '../../../assets/mock-data/socialIconsData';
+import { useActions } from '../../hooks/useActions';
 import Avatar from './components/Avatar';
 import DrawerTopBar from './components/DrawerTopBar';
-import { socialIconsData } from '../../../assets/mock-data/socialIconsData';
 import SocialBox from './components/SocialBox';
-import { drawerLinks } from '../../../assets/mock-data/drawerLinks';
 import TouchableLink from './components/TouchableLink';
-import { useActions } from '../../hooks/useActions';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ProfileDrawer = () => {
   const { fakeLogout, myListActive } = useActions();

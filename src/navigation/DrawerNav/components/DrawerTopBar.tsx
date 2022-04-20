@@ -1,13 +1,11 @@
+import { Ionicons } from '@expo/vector-icons';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, Pressable, ViewStyle } from 'react-native';
+import { Pressable, Text, View, ViewStyle } from 'react-native';
 import { GLOBAL } from '../../../global/styles/global';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
 import { useActions } from '../../../hooks/useActions';
 
-import { RootState } from '../../../state';
-import { useSelector } from 'react-redux';
 interface ITopBar {
   title: string;
   iconName?: any;

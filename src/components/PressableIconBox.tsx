@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, Pressable } from 'react-native';
-import { GLOBAL } from '../global/styles/global';
+import { Pressable, Text, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { GLOBAL } from '../global/styles/global';
 import { TYPOGRAPHY } from '../global/styles/typography';
 
 interface IPressableIconBox {

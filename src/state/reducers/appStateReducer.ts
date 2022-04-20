@@ -1,5 +1,5 @@
-import { TAppStateAction } from './../actionsInterfaces/appStateInterfaces';
 import { ActionType } from '../action-types';
+import { TAppStateAction } from './../actionsInterfaces/appStateInterfaces';
 
 export interface AppState {
   loading: boolean;
