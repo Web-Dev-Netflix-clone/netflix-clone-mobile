@@ -8,7 +8,10 @@ export const selectCurrentUser = (state: RootState) => {
 export const selectFilteredSearchMovies = (state: RootState) =>
   state.movies.searchMovies
     .map((result) => {
-      return { ...result, title: result.title.toLowerCase() };
+      return {
+        ...result,
+        title: result.title.toLowerCase(),
+      };
     })
     .filter((result) =>
       result.title.includes(state.movies.searchInput.toLowerCase())

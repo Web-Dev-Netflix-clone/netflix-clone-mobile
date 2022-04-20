@@ -1,12 +1,9 @@
 import React from 'react';
 import { Text } from 'react-native';
-
 import { DrawerContentScrollView } from '@react-navigation/drawer';
-
 import { TYPOGRAPHY } from '../../global/styles/typography';
 
 import SearchBar from './components/SearchBar';
-
 import { useSelector } from 'react-redux';
 
 import { GLOBAL } from '../../global/styles/global';
@@ -20,6 +17,10 @@ import SearchMovieBox from './components/SearchMovieBox';
 const SearchDrawer = () => {
   const searchMovies = useSelector(selectFilteredSearchMovies);
   const searchInput = useSelector(selectSearchInput);
+
+  const searchMoviesMap = searchMovies.map((movie) => {
+    return <SearchMovieBox key={Math.random().toString()} movie={movie} />;
+  });
 
   return (
     <>
@@ -40,15 +41,7 @@ const SearchDrawer = () => {
           }}>
           Top Searches
         </Text>
-        {!!searchInput.length &&
-          searchMovies?.map((movie) => {
-            return (
-              <SearchMovieBox
-                key={movie.id.toString() + Math.random().toString()}
-                movie={movie}
-              />
-            );
-          })}
+        {!!searchInput.length ? searchMoviesMap : null}
       </DrawerContentScrollView>
     </>
   );

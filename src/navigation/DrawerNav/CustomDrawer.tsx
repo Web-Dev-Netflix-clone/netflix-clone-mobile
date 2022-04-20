@@ -25,6 +25,7 @@ const CustomDrawer = () => {
         flex: 1,
         backgroundColor: TYPOGRAPHY.COLOR.Black,
         paddingTop: GLOBAL.SPACING.xxxxl,
+        paddingHorizontal: GLOBAL.SPACING.md,
         zIndex: -1,
       }}>
       <SearchDrawer />
@@ -35,6 +36,7 @@ const CustomDrawer = () => {
         flex: 1,
         backgroundColor: TYPOGRAPHY.COLOR.Black,
         paddingTop: GLOBAL.SPACING.xxxxl,
+        paddingHorizontal: GLOBAL.SPACING.md,
       }}>
       <MyListDrawer />
     </View>
@@ -44,6 +46,7 @@ const CustomDrawer = () => {
         flex: 1,
         backgroundColor: TYPOGRAPHY.COLOR.Black,
         paddingTop: GLOBAL.SPACING.xxxxl,
+        paddingHorizontal: GLOBAL.SPACING.md,
       }}>
       <ProfileDrawer />
     </View>

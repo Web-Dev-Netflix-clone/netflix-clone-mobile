@@ -14,8 +14,7 @@ const SearchBar = () => {
       style={{
         ...GLOBAL.LAYOUT.rowCenter,
         backgroundColor: TYPOGRAPHY.COLOR.GreySecondary,
-        paddingVertical: GLOBAL.SPACING.sm,
-        paddingHorizontal: GLOBAL.SPACING.lg,
+        padding: GLOBAL.SPACING.sm,
         justifyContent: 'space-between',
         marginBottom: GLOBAL.SPACING.sm,
       }}>

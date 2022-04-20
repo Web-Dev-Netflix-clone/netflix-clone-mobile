@@ -15,7 +15,11 @@ const API_GENRES =
 export const fetchMovieDetails = (movieId: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const request = await axios.get(`${API_URL}/movie?id=${movieId}`);
+      let request = await axios.get(`${API_URL}/movie?id=${movieId}`);
+
+      if (request.status !== 200) {
+        request = await axios.get(`${API_URL}/movie?id=${580489}`);
+      }
 
       const movieDetails = request.data;
 
@@ -24,14 +28,11 @@ export const fetchMovieDetails = (movieId: string) => {
         payload: movieDetails,
       });
     } catch (error) {
-      dispatch({
-        type: ActionType.SAVE_MOVIE_DETAILS,
-        payload: {
-          movieDetailsResults: { releaseDate: '1520' },
-        },
-      });
-
-      console.log(`error iside fetchMovieDetails thunk... ${error}`);
+      console.log(
+        `error iside fetchMovieDetails thunk... ${error} 
+         failed with movieId ${movieId}
+      `
+      );
     }
   };
 };
@@ -43,14 +44,16 @@ const transformMoviesObject = (moviesObject: IMoviesObject) => {
     ([key, value]: [key: string, value: IMoviesObject]) => {
       let filteredMovies = value.categoryDetails.map((movie: IMovieDetails) => {
         return {
-          id: movie.id,
+          id: movie.id.toString(),
           title: movie.title,
           description: movie.overview,
           backdrop: movie.backdropUrls[0],
           backdropHighRes: movie.backdropUrls[1],
           poster: movie.posterUrls[0],
           posterHighRes: movie.posterUrls[1],
-          trailer: movie.trailerUrl,
+          trailer: movie.trailerUrl
+            ? movie.trailerUrl
+            : Math.random().toString(),
           rating: movie.rating,
           runtime: movie.runtime,
         };

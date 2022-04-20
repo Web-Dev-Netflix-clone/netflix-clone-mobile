@@ -13,6 +13,7 @@ const MyListDrawer = () => {
       <DrawerContentScrollView
         contentContainerStyle={{
           paddingTop: GLOBAL.SPACING.md,
+          paddingHorizontal: GLOBAL.SPACING.md,
           backgroundColor: TYPOGRAPHY.COLOR.Black,
         }}>
         <Text

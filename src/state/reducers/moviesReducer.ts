@@ -1,6 +1,7 @@
 import { IMovieDetailsTransform } from '../../types/data.types';
 import { ActionType } from '../action-types';
 import { TMoviesAction } from '../actionsInterfaces/moviesInterfaces';
+import { moviesInitialState } from './initialState/moviesInitialState';
 
 export interface MoviesState {
   loading: boolean;
@@ -13,43 +14,8 @@ export interface MoviesState {
   searchInput: string;
 }
 
-const initialState = {
-  loading: false,
-  error: null,
-  allMovies: [],
-  heroMovie: {
-    id: '',
-    description: '',
-    trailer: '',
-    title: '',
-    key: '',
-    poster: '',
-    backdrop: '',
-    backdropHighRes: '',
-    posterHighRes: '',
-    runtime: '',
-  },
-  bottomSheetMovie: {
-    id: '',
-    description: '',
-    trailer: '',
-    title: '',
-    key: '',
-    poster: '',
-    backdrop: '',
-    backdropHighRes: '',
-    posterHighRes: '',
-    runtime: '',
-  },
-  movieDetails: {
-    movieDetailsResults: { releaseDate: '2017' },
-  },
-  searchMovies: [],
-  searchInput: '',
-};
-
 export const reducer = (
-  state: MoviesState = initialState,
+  state: MoviesState = moviesInitialState,
   action: TMoviesAction
 ): MoviesState => {
   switch (action.type) {
