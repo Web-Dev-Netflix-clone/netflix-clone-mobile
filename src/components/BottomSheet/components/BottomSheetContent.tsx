@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,7 +7,6 @@ import {
   Pressable,
   Dimensions,
 } from 'react-native';
-import React, { useEffect } from 'react';
 import { useActions } from '../../../hooks/useActions';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { GLOBAL } from '../../../global/styles/global';

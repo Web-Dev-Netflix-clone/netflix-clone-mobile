@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, ImageSourcePropType } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { IconButton } from 'react-native-paper';
 import { GLOBAL } from '../../../global/styles/global';

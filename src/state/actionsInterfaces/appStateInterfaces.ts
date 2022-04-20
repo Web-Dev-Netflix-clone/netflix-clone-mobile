@@ -12,6 +12,13 @@ export interface SearchActive {
 export interface SearchInActive {
   type: ActionType.SEARCH_INACTIVE;
 }
+export interface MyListActive {
+  type: ActionType.MYLIST_ACTIVE;
+}
+
+export interface MyListInActive {
+  type: ActionType.MYLIST_INACTIVE;
+}
 
 export interface HideMainNav {
   type: ActionType.HIDE_MAINNAV;
@@ -52,6 +59,8 @@ export interface changeCurrentRoute {
 export type TAppStateAction =
   | SearchActive
   | SearchInActive
+  | MyListActive
+  | MyListInActive
   | HideMainNav
   | showMainNav
   | scrollYZeroFalse

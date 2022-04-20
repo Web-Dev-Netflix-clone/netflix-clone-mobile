@@ -1,20 +1,23 @@
 import React from 'react';
-import { View, Text, Pressable, StyleProp, ViewStyle } from 'react-native';
+import { View, Text, Pressable, ViewStyle } from 'react-native';
 import { GLOBAL } from '../../../global/styles/global';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { useActions } from '../../../hooks/useActions';
 
+import { RootState } from '../../../state';
+import { useSelector } from 'react-redux';
 interface ITopBar {
   title: string;
   iconName?: any;
   style?: ViewStyle;
+  rightIconName?: any;
 }
 
-const TopBar = ({ title, iconName, style }: ITopBar) => {
+const TopBar = ({ title, iconName, style, rightIconName }: ITopBar) => {
   const navigation = useNavigation();
-  const { searchInActive } = useActions();
+  const { searchInActive, myListInActive, searchActive } = useActions();
 
   return (
     <View
@@ -23,31 +26,50 @@ const TopBar = ({ title, iconName, style }: ITopBar) => {
           ...GLOBAL.LAYOUT.rowCenter,
           backgroundColor: TYPOGRAPHY.COLOR.Black,
           paddingVertical: GLOBAL.SPACING.sm,
+          justifyContent: 'space-between',
         },
         style,
       ]}>
-      <Pressable
-        onPress={() => {
-          searchInActive();
-          navigation.dispatch(DrawerActions.closeDrawer());
-        }}>
-        <Ionicons
-          name={iconName ? iconName : 'arrow-back'}
-          size={28}
-          color={TYPOGRAPHY.COLOR.White}
-          style={{ marginLeft: 10 }}
-        />
-      </Pressable>
+      <View style={GLOBAL.LAYOUT.rowCenter}>
+        <Pressable
+          onPress={() => {
+            searchInActive();
+            myListInActive();
+            navigation.dispatch(DrawerActions.closeDrawer());
+          }}>
+          <Ionicons
+            name={iconName ? iconName : 'arrow-back'}
+            size={28}
+            color={TYPOGRAPHY.COLOR.White}
+            style={{ marginLeft: 10 }}
+          />
+        </Pressable>
 
-      <Text
-        style={{
-          color: TYPOGRAPHY.COLOR.White,
-          marginLeft: GLOBAL.SPACING.md,
-          fontSize: 18,
-          fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
-        }}>
-        {title}
-      </Text>
+        <Text
+          style={{
+            color: TYPOGRAPHY.COLOR.White,
+            marginLeft: GLOBAL.SPACING.md,
+            fontSize: 18,
+            fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
+          }}>
+          {title}
+        </Text>
+      </View>
+
+      {rightIconName && (
+        <Pressable
+          style={{ justifyContent: 'flex-end' }}
+          onPress={() => {
+            searchActive();
+          }}>
+          <Ionicons
+            name={iconName ? iconName : 'search'}
+            size={28}
+            color={TYPOGRAPHY.COLOR.White}
+            style={{ marginRight: 25 }}
+          />
+        </Pressable>
+      )}
     </View>
   );
 };

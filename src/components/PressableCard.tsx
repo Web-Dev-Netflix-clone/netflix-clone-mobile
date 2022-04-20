@@ -14,7 +14,7 @@ import { IMGSTYLES } from '../global/styles/imgStyles';
 import { TYPOGRAPHY } from '../global/styles/typography';
 
 interface IPressableCard {
-  background?: ImageSourcePropType | string;
+  background?: ImageSourcePropType;
   onClick?: () => void;
   title?: string;
   height?: number;
@@ -43,8 +43,6 @@ const PressableCard = ({
         style={[
           styles(height, width, cardRadius).card,
           GLOBAL.SHADOWS.shadowMedium,
-          ,
-          style,
         ]}>
         {background && (
           <ImageBackground

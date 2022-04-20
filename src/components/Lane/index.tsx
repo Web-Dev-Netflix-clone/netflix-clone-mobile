@@ -5,7 +5,7 @@ import { GLOBAL } from '../../global/styles/global';
 import { IMovieDetailsTransform } from '../../types/data.types';
 
 interface ILane {
-  data: IMovieDetailsTransform[] | any;
+  data: IMovieDetailsTransform[];
   LaneRenderItem: FunctionComponent<any>;
   title: string;
 }

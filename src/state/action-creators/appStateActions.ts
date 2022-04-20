@@ -12,6 +12,18 @@ export const searchInActive = () => {
   };
 };
 
+export const myListActive = () => {
+  return {
+    type: ActionType.MYLIST_ACTIVE,
+  };
+};
+
+export const myListInActive = () => {
+  return {
+    type: ActionType.MYLIST_INACTIVE,
+  };
+};
+
 export const hideMainNav = () => {
   return {
     type: ActionType.HIDE_MAINNAV,

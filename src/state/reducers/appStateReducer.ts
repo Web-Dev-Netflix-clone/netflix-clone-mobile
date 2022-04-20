@@ -5,6 +5,7 @@ export interface AppState {
   loading: boolean;
   error: string | null;
   searchActive: boolean;
+  myListActive: boolean;
   hideMainNav: boolean;
   scrollYZero: boolean;
   showBottomSheet: boolean;
@@ -16,6 +17,7 @@ const initialState = {
   loading: false,
   error: null,
   searchActive: false,
+  myListActive: false,
   hideMainNav: false,
   scrollYZero: true,
   showBottomSheet: false,
@@ -32,12 +34,27 @@ export const reducer = (
       return {
         ...state,
         searchActive: true,
+        myListActive: false,
       };
 
     case ActionType.SEARCH_INACTIVE:
       return {
         ...state,
         searchActive: false,
+        myListActive: false,
+      };
+    case ActionType.MYLIST_ACTIVE:
+      return {
+        ...state,
+        searchActive: false,
+        myListActive: true,
+      };
+
+    case ActionType.MYLIST_INACTIVE:
+      return {
+        ...state,
+        searchActive: false,
+        myListActive: false,
       };
 
     case ActionType.HIDE_MAINNAV:

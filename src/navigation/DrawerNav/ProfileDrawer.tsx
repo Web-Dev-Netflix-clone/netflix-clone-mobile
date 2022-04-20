@@ -18,9 +18,10 @@ import SocialBox from './components/SocialBox';
 import { drawerLinks } from '../../../assets/mock-data/drawerLinks';
 import TouchableLink from './components/TouchableLink';
 import { useActions } from '../../hooks/useActions';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ProfileDrawer = () => {
-  const { fakeLogout } = useActions();
+  const { fakeLogout, myListActive } = useActions();
 
   return (
     <>
@@ -145,15 +146,16 @@ const ProfileDrawer = () => {
           paddingVertical: GLOBAL.SPACING.sm,
         }}>
         <Ionicons name='checkmark' size={26} color={TYPOGRAPHY.COLOR.White} />
-        <Text
-          style={{
-            ...TYPOGRAPHY.FONT.h3,
-
-            marginLeft: GLOBAL.SPACING.md,
-            marginBottom: 0,
-          }}>
-          My List
-        </Text>
+        <TouchableOpacity onPress={() => myListActive()}>
+          <Text
+            style={{
+              ...TYPOGRAPHY.FONT.h3,
+              marginLeft: GLOBAL.SPACING.md,
+              marginBottom: 0,
+            }}>
+            My List
+          </Text>
+        </TouchableOpacity>
       </View>
 
       <View
