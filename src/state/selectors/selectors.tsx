@@ -1,5 +1,6 @@
 import { randomIntFromRange } from '../../utils/utils';
 import { RootState } from '../reducers';
+import uuid from 'react-native-uuid';
 
 export const selectCurrentUser = (state: RootState) => {
   return state.userData.user;
@@ -11,6 +12,7 @@ export const selectFilteredSearchMovies = (state: RootState) =>
       return {
         ...result,
         title: result.title.toLowerCase(),
+        id: uuid.v4().toString(),
       };
     })
     .filter((result) =>

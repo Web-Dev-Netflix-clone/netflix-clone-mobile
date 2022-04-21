@@ -1,10 +1,10 @@
+import { DrawerContentScrollView } from '@react-navigation/drawer';
 import React from 'react';
 import { Text } from 'react-native';
-import { DrawerContentScrollView } from '@react-navigation/drawer';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 
-import SearchBar from './components/SearchBar';
 import { useSelector } from 'react-redux';
+import SearchBar from './components/SearchBar';
 
 import { GLOBAL } from '../../global/styles/global';
 import {
@@ -18,8 +18,8 @@ const SearchDrawer = () => {
   const searchMovies = useSelector(selectFilteredSearchMovies);
   const searchInput = useSelector(selectSearchInput);
 
-  const searchMoviesMap = searchMovies.map((movie) => {
-    return <SearchMovieBox key={Math.random().toString()} movie={movie} />;
+  const searchMoviesMap = searchMovies.map((movie: any) => {
+    return <SearchMovieBox key={movie.id} movie={movie} />;
   });
 
   return (
