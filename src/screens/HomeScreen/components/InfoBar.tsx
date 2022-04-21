@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import React from 'react';
+import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -15,6 +15,7 @@ import { selectHeroMovie } from '../../../state/selectors/selectors';
 const InfoBar = () => {
   const heroMovie = useSelector(selectHeroMovie);
   const { showBottomSheet, setBottomSheetMovie } = useActions();
+  const [addToList, setAddToList] = useState(false);
   const navigation =
     useNavigation<NativeStackNavigationProp<DrawerTabParams>>();
 
@@ -27,11 +28,18 @@ const InfoBar = () => {
         paddingVertical: GLOBAL.SPACING.sm,
         backgroundColor: TYPOGRAPHY.COLOR.BlackSecondary,
       }}>
-      <View
+      <Pressable
+        onPress={() => {
+          setAddToList(!addToList);
+        }}
         style={{
           alignItems: 'center',
         }}>
-        <Ionicons name='add' size={30} color={TYPOGRAPHY.COLOR.White} />
+        <Ionicons
+          name={!addToList ? 'add' : 'checkmark'}
+          size={30}
+          color={TYPOGRAPHY.COLOR.White}
+        />
         <Text
           style={{
             fontSize: TYPOGRAPHY.FONT_SIZES.sm,
@@ -39,7 +47,7 @@ const InfoBar = () => {
           }}>
           My List
         </Text>
-      </View>
+      </Pressable>
       <Button
         style={{ backgroundColor: TYPOGRAPHY.COLOR.White, width: '30%' }}
         icon={() => (
