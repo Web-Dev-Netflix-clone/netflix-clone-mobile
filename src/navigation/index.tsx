@@ -6,6 +6,7 @@ import { useSelector } from '../hooks/useTypedSelector';
 import { DrawerNav } from './DrawerNav';
 import { LoginStackNav } from './LoginStack';
 
+import NotificationBox from '../components/NotificationBox';
 import { TYPOGRAPHY } from '../global/styles/typography';
 import { useActions } from '../hooks/useActions';
 import StartupScreen from '../screens/StartUpScreen';
@@ -36,6 +37,7 @@ export const Navigation = () => {
         <StartupScreen />
       )}
 
+      <NotificationBox />
       <BottomSheet />
     </NavigationContainer>
   );
