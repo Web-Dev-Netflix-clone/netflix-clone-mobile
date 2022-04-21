@@ -39,6 +39,12 @@ export const removeMovieFromMyList = (movieId: string) => {
   };
 };
 
+export const showNotificationToggle = () => {
+  return {
+    type: ActionType.SHOW_NOTIFICATION_TOGGLE,
+  };
+};
+
 export const hideMainNav = () => {
   return {
     type: ActionType.HIDE_MAINNAV,

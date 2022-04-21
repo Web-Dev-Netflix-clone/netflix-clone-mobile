@@ -32,6 +32,10 @@ export interface showMainNav {
   type: ActionType.SHOW_MAINNAV;
 }
 
+export interface showNotifcationToggle {
+  type: ActionType.SHOW_NOTIFICATION_TOGGLE;
+}
+
 export interface scrollYZeroTrue {
   type: ActionType.SCROLLY_ZERO_TRUE;
 }
@@ -69,6 +73,7 @@ export type TAppStateAction =
   | RemoveMovieFromMyList
   | HideMainNav
   | showMainNav
+  | showNotifcationToggle
   | scrollYZeroFalse
   | scrollYZeroTrue
   | showBottomSheet

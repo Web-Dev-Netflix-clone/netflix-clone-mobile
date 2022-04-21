@@ -7,6 +7,7 @@ export interface AppState {
   searchActive: boolean;
   myListActive: boolean;
   hideMainNav: boolean;
+  showNotification: boolean;
   scrollYZero: boolean;
   showBottomSheet: boolean;
   showDiscoverNav: boolean;
@@ -20,6 +21,7 @@ const initialState = {
   searchActive: false,
   myListActive: false,
   hideMainNav: false,
+  showNotification: false,
   scrollYZero: true,
   showBottomSheet: false,
   showDiscoverNav: true,
@@ -82,6 +84,12 @@ export const reducer = (
         myList: [...state.myList].filter(
           (movieId) => movieId !== action.payload
         ),
+      };
+
+    case ActionType.SHOW_NOTIFICATION_TOGGLE:
+      return {
+        ...state,
+        showNotification: !state.showNotification,
       };
 
     case ActionType.HIDE_MAINNAV:

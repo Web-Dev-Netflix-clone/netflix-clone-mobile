@@ -14,17 +14,15 @@ import {
   selectMoviesLength,
   selectSignedInStatus,
 } from '../state/selectors/selectors';
+import { RootState } from '../state';
 
 const navTheme = DefaultTheme;
 navTheme.colors.background = TYPOGRAPHY.COLOR.Black;
 export const Navigation = () => {
-  const [notificationVisible, setNotificationVisible] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setNotificationVisible(false);
-    }, 5000);
-  }, []);
+  const { showNotificationToggle } = useActions();
+  const showNotifcation = useSelector(
+    (state: RootState) => state.appState.showNotification
+  );
 
   const { fetchMovies } = useActions();
 
@@ -45,7 +43,7 @@ export const Navigation = () => {
         <StartupScreen />
       )}
 
-      {notificationVisible && <NotificationBox />}
+      {showNotifcation && <NotificationBox />}
       <BottomSheet />
     </NavigationContainer>
   );

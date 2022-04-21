@@ -10,6 +10,7 @@ import { GLOBAL } from '../../../global/styles/global';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { useActions } from '../../../hooks/useActions';
 import { DrawerTabParams } from '../../../navigation/navigation';
+
 import { selectHeroMovie } from '../../../state/selectors/selectors';
 
 const InfoBar = () => {
@@ -19,6 +20,7 @@ const InfoBar = () => {
     setBottomSheetMovie,
     addMovieToMyList,
     removeMovieFromMyList,
+    showNotificationToggle,
   } = useActions();
   const [addToList, setAddToList] = useState(false);
   const navigation =
@@ -40,6 +42,8 @@ const InfoBar = () => {
           !addToList
             ? addMovieToMyList(heroMovie.id)
             : removeMovieFromMyList(heroMovie.id);
+
+          showNotificationToggle();
         }}
         style={{
           alignItems: 'center',
