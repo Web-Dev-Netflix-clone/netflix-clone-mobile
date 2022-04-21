@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import netflixLogo from '../../assets/netflix-logos/netflix-logo-icon-400x300.png';
 import { IMGSTYLES } from '../global/styles/imgStyles';
 import { TYPOGRAPHY } from '../global/styles/typography';

@@ -1,5 +1,5 @@
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import BottomSheet from '../components/BottomSheet/index';
 import { useSelector } from '../hooks/useTypedSelector';
@@ -18,6 +18,14 @@ import {
 const navTheme = DefaultTheme;
 navTheme.colors.background = TYPOGRAPHY.COLOR.Black;
 export const Navigation = () => {
+  const [notificationVisible, setNotificationVisible] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setNotificationVisible(false);
+    }, 5000);
+  }, []);
+
   const { fetchMovies } = useActions();
 
   const isSignedIn = useSelector(selectSignedInStatus);
@@ -37,7 +45,7 @@ export const Navigation = () => {
         <StartupScreen />
       )}
 
-      <NotificationBox />
+      {notificationVisible && <NotificationBox />}
       <BottomSheet />
     </NavigationContainer>
   );
