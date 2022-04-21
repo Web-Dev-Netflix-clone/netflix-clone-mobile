@@ -1,4 +1,3 @@
-import { AddMovieToMyList } from './../actionsInterfaces/appStateInterfaces';
 import { ActionType } from '../action-types';
 
 export const searchActive = () => {
