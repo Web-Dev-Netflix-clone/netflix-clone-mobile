@@ -30,6 +30,14 @@ export const selectComingSoonMovies = (state: RootState) => {
   return comingSoon;
 };
 
+export const selectMyListMovies = (state: RootState) => {
+  const renderList = state.appState.myList.map((movieId: string) => {
+    return state.movies.searchMovies.find((movie) => movie.id === movieId);
+  });
+
+  return renderList;
+};
+
 export const selectBottomSheetMovie = (state: RootState) =>
   state.movies.bottomSheetMovie;
 

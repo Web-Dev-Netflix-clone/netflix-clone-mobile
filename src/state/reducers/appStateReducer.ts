@@ -11,6 +11,7 @@ export interface AppState {
   showBottomSheet: boolean;
   showDiscoverNav: boolean;
   currentRoute: string;
+  myList: any[];
 }
 
 const initialState = {
@@ -23,6 +24,17 @@ const initialState = {
   showBottomSheet: false,
   showDiscoverNav: true,
   currentRoute: '',
+  myList: [
+    '580489',
+    '753232',
+    '297761',
+    '431693',
+    '82700',
+    '41154',
+    '38700',
+    '614917',
+    '8960',
+  ],
 };
 
 export const reducer = (
@@ -55,6 +67,12 @@ export const reducer = (
         ...state,
         searchActive: false,
         myListActive: false,
+      };
+
+    case ActionType.ADD_MOVIE_TO_MYLIST:
+      return {
+        ...state,
+        myList: [...state.myList, action.payload],
       };
 
     case ActionType.HIDE_MAINNAV:

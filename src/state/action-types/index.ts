@@ -13,6 +13,7 @@ export enum ActionType {
   SEARCH_INACTIVE = 'search_inactive',
   MYLIST_ACTIVE = 'mylist_active',
   MYLIST_INACTIVE = 'mylist_inactive',
+  ADD_MOVIE_TO_MYLIST = 'add_movie_to_mylist',
   HIDE_MAINNAV = 'hide_mainnav',
   SHOW_MAINNAV = 'show_mainnav',
   SHOW_BOTTOMSHEET = 'show_bottomsheet',

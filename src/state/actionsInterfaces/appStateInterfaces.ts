@@ -15,6 +15,11 @@ export interface MyListInActive {
   type: ActionType.MYLIST_INACTIVE;
 }
 
+export interface AddMovieToMyList {
+  type: ActionType.ADD_MOVIE_TO_MYLIST;
+  payload: any;
+}
+
 export interface HideMainNav {
   type: ActionType.HIDE_MAINNAV;
 }
@@ -56,6 +61,7 @@ export type TAppStateAction =
   | SearchInActive
   | MyListActive
   | MyListInActive
+  | AddMovieToMyList
   | HideMainNav
   | showMainNav
   | scrollYZeroFalse
