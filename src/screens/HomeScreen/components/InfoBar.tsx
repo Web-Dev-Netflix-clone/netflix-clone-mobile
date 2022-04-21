@@ -14,7 +14,12 @@ import { selectHeroMovie } from '../../../state/selectors/selectors';
 
 const InfoBar = () => {
   const heroMovie = useSelector(selectHeroMovie);
-  const { showBottomSheet, setBottomSheetMovie } = useActions();
+  const {
+    showBottomSheet,
+    setBottomSheetMovie,
+    addMovieToMyList,
+    removeMovieFromMyList,
+  } = useActions();
   const [addToList, setAddToList] = useState(false);
   const navigation =
     useNavigation<NativeStackNavigationProp<DrawerTabParams>>();
@@ -31,6 +36,10 @@ const InfoBar = () => {
       <Pressable
         onPress={() => {
           setAddToList(!addToList);
+
+          !addToList
+            ? addMovieToMyList(heroMovie.id)
+            : removeMovieFromMyList(heroMovie.id);
         }}
         style={{
           alignItems: 'center',

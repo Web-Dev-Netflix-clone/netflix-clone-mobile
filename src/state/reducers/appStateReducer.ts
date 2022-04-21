@@ -11,7 +11,7 @@ export interface AppState {
   showBottomSheet: boolean;
   showDiscoverNav: boolean;
   currentRoute: string;
-  myList: any[];
+  myList: string[];
 }
 
 const initialState = {
@@ -25,10 +25,10 @@ const initialState = {
   showDiscoverNav: true,
   currentRoute: '',
   myList: [
-    '580489',
-    '753232',
-    '297761',
-    '431693',
+    // '580489',
+    // '753232',
+    // '297761',
+    // '431693',
     '82700',
     '41154',
     '38700',
@@ -72,7 +72,16 @@ export const reducer = (
     case ActionType.ADD_MOVIE_TO_MYLIST:
       return {
         ...state,
-        myList: [...state.myList, action.payload],
+        myList: [...state.myList].find((movieId) => movieId === action.payload)
+          ? [...state.myList]
+          : [...state.myList, action.payload],
+      };
+    case ActionType.REMOVE_MOVIE_FROM_MYLIST:
+      return {
+        ...state,
+        myList: [...state.myList].filter(
+          (movieId) => movieId !== action.payload
+        ),
       };
 
     case ActionType.HIDE_MAINNAV:

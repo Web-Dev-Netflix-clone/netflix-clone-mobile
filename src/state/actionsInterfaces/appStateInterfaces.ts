@@ -19,6 +19,10 @@ export interface AddMovieToMyList {
   type: ActionType.ADD_MOVIE_TO_MYLIST;
   payload: any;
 }
+export interface RemoveMovieFromMyList {
+  type: ActionType.REMOVE_MOVIE_FROM_MYLIST;
+  payload: any;
+}
 
 export interface HideMainNav {
   type: ActionType.HIDE_MAINNAV;
@@ -62,6 +66,7 @@ export type TAppStateAction =
   | MyListActive
   | MyListInActive
   | AddMovieToMyList
+  | RemoveMovieFromMyList
   | HideMainNav
   | showMainNav
   | scrollYZeroFalse

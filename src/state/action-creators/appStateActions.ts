@@ -1,3 +1,4 @@
+import { AddMovieToMyList } from './../actionsInterfaces/appStateInterfaces';
 import { ActionType } from '../action-types';
 
 export const searchActive = () => {
@@ -21,6 +22,20 @@ export const myListActive = () => {
 export const myListInActive = () => {
   return {
     type: ActionType.MYLIST_INACTIVE,
+  };
+};
+
+export const addMovieToMyList = (movieId: string) => {
+  return {
+    type: ActionType.ADD_MOVIE_TO_MYLIST,
+    payload: movieId,
+  };
+};
+
+export const removeMovieFromMyList = (movieId: string) => {
+  return {
+    type: ActionType.REMOVE_MOVIE_FROM_MYLIST,
+    payload: movieId,
   };
 };
 
