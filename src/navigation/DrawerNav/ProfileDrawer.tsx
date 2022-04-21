@@ -145,11 +145,12 @@ const ProfileDrawer = () => {
           ...GLOBAL.LAYOUT.rowCenter,
           paddingVertical: GLOBAL.SPACING.sm,
         }}>
-        <Ionicons name='checkmark' size={26} color={TYPOGRAPHY.COLOR.White} />
+        <Ionicons name='checkmark' size={30} color={TYPOGRAPHY.COLOR.White} />
         <TouchableOpacity onPress={() => myListActive()}>
           <Text
             style={{
               ...TYPOGRAPHY.FONT.h3,
+              fontSize: TYPOGRAPHY.FONT_SIZES.md,
               marginLeft: GLOBAL.SPACING.md,
               marginBottom: 0,
             }}>
