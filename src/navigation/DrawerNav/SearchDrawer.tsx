@@ -1,6 +1,6 @@
 import { DrawerContentScrollView } from '@react-navigation/drawer';
-import React from 'react';
-import { Text } from 'react-native';
+import React, { useCallback } from 'react';
+import { FlatList, Text } from 'react-native';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 
 import { useSelector } from 'react-redux';
@@ -18,9 +18,10 @@ const SearchDrawer = () => {
   const searchMovies = useSelector(selectFilteredSearchMovies);
   const searchInput = useSelector(selectSearchInput);
 
-  const searchMoviesMap = searchMovies.map((movie: any) => {
-    return <SearchMovieBox key={movie.id} movie={movie} />;
-  });
+  const keyExtractor = useCallback((item) => item.id, []);
+  const renderItem = useCallback(({ item }: { item: any }) => {
+    return <SearchMovieBox movie={item} />;
+  }, []);
 
   return (
     <>
@@ -28,21 +29,22 @@ const SearchDrawer = () => {
 
       <SearchBar />
 
-      <DrawerContentScrollView
-        contentContainerStyle={{
-          paddingTop: GLOBAL.SPACING.md,
-          backgroundColor: TYPOGRAPHY.COLOR.Black,
+      <Text
+        style={{
+          ...TYPOGRAPHY.FONT.h2,
+          marginBottom: GLOBAL.SPACING.md,
+          marginLeft: GLOBAL.SPACING.sm,
         }}>
-        <Text
-          style={{
-            ...TYPOGRAPHY.FONT.h2,
-            marginBottom: GLOBAL.SPACING.md,
-            marginLeft: GLOBAL.SPACING.sm,
-          }}>
-          Top Searches
-        </Text>
-        {!!searchInput.length ? searchMoviesMap : null}
-      </DrawerContentScrollView>
+        Top Searches
+      </Text>
+
+      {!!searchInput.length && (
+        <FlatList
+          data={searchMovies}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+        />
+      )}
     </>
   );
 };

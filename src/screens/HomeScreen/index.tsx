@@ -44,8 +44,8 @@ const HomeScreen = () => {
   const movie = useSelector(selectHeroMovie);
 
   useEffect(() => {
-    fetchMovieDetails(movie.id ? movie.id : '8960');
-  }, [movie.id]);
+    fetchMovieDetails(movie?.id ? movie?.id : '8960');
+  }, [movie?.id]);
 
   const [offset, setOffSet] = useState(0);
 

@@ -17,10 +17,6 @@ export const fetchMovieDetails = (movieId: string) => {
     try {
       let request = await axios.get(`${API_URL}/movie?id=${movieId}`);
 
-      if (request.status !== 200) {
-        request = await axios.get(`${API_URL}/movie?id=${580489}`);
-      }
-
       const movieDetails = request.data;
 
       dispatch({
@@ -33,6 +29,16 @@ export const fetchMovieDetails = (movieId: string) => {
          failed with movieId ${movieId}
       `
       );
+
+      const workingMovieId = 580489;
+      let request = await axios.get(`${API_URL}/movie?id=${workingMovieId}`);
+
+      const movieDetails = request.data;
+
+      dispatch({
+        type: ActionType.SAVE_MOVIE_DETAILS,
+        payload: movieDetails,
+      });
     }
   };
 };
