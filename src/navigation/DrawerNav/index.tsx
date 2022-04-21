@@ -64,14 +64,14 @@ export const DrawerNav = () => {
   useEffect(() => {
     if (scrollZero) {
       progress.value = withTiming(0, {
-        duration: 100,
+        duration: 50,
         easing: Easing.exp,
       });
     }
 
     if (!scrollZero) {
       progress.value = withTiming(1, {
-        duration: 100,
+        duration: 50,
         easing: Easing.exp,
       });
     }
@@ -90,9 +90,9 @@ export const DrawerNav = () => {
               <View>
                 {!mainNavHiddenToggle && (
                   <Animated.View
-                    entering={FadeInDown.delay(100)}
-                    layout={Layout.easing(Easing.ease).delay(100)}
-                    exiting={FadeOutUp.delay(100)}
+                    entering={FadeInDown.delay(0)}
+                    layout={Layout.easing(Easing.ease).delay(0)}
+                    exiting={FadeOutUp.delay(0)}
                     style={[
                       {
                         backgroundColor: 'rgba(0,0,0,0.7)',
@@ -183,9 +183,9 @@ export const DrawerNav = () => {
 
                 {showDiscoverNav && (
                   <Animated.View
-                    entering={FadeInUp.delay(100)}
-                    layout={Layout.easing(Easing.ease).delay(100)}
-                    exiting={FadeOutUp.delay(100)}
+                    entering={FadeInUp.delay(0)}
+                    layout={Layout.easing(Easing.ease).delay(0)}
+                    exiting={FadeOutUp.delay(0)}
                     style={animatedBgColor}>
                     <DiscoverNav
                       setModalActive={setModalActive}
