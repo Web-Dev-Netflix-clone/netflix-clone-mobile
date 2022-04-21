@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { FlatList, View, VirtualizedList } from "react-native";
+import { FlatList, View } from "react-native";
 import { useSelector } from "react-redux";
 import { TYPOGRAPHY } from "../../global/styles/typography";
 import { selectComingSoonMovies } from "../../state/selectors/selectors";
@@ -22,10 +22,6 @@ const ComingSoonScreen = () => {
     return <ComingSoonItem item={item} />;
   }, []);
 
-  const getItem = (data: { [x: string]: object }, index: number) => {
-    return data[index];
-  };
-
   return (
     <View
       style={{
@@ -38,12 +34,10 @@ const ComingSoonScreen = () => {
       }}
     >
       {comingSoon && (
-        <VirtualizedList
+        <FlatList
           data={comingSoon}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
-          getItem={getItem}
-          getItemCount={(data) => data.length}
           initialNumToRender={2}
         />
       )}
