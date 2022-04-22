@@ -44,7 +44,7 @@ const InfoBar = () => {
             : removeMovieFromMyList(heroMovie.id);
 
           showNotificationToggle(
-            addToList ? 'Add to My List' : 'Remove from My List'
+            !addToList ? 'Add to My List' : 'Remove from My List'
           );
         }}
         style={{

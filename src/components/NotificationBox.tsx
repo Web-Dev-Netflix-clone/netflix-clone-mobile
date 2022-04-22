@@ -23,10 +23,12 @@ const NotifcationBox = ({ iconName, text }: INotificationBox) => {
   useEffect(() => {
     const clear = setTimeout(() => {
       setShowNotification(false);
-      showNotificationToggle('Add to My List');
+      showNotificationToggle('Remove from My List');
     }, 2000);
 
-    return () => clearTimeout(clear);
+    return () => {
+      clearTimeout(clear);
+    };
   }, []);
 
   return showNotication ? (

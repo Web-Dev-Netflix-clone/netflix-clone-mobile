@@ -161,7 +161,7 @@ const ProfileDrawer = () => {
 
       <View
         style={{
-          padding: GLOBAL.SPACING.lg,
+          padding: GLOBAL.SPACING.md,
           borderTopWidth: 1,
           borderTopColor: TYPOGRAPHY.COLOR.GreyLight,
         }}>

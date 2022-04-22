@@ -20,14 +20,14 @@ export const selectFilteredSearchMovies = (state: RootState) =>
     );
 
 export const selectComingSoonMovies = (state: RootState) => {
-  const comingSoon = new Array(10)
-    .fill('x')
-    .map(
-      () =>
-        state.movies.searchMovies[
-          randomIntFromRange(1, state.movies.searchMovies.length - 1)
-        ]
-    );
+  const comingSoon = new Array(10).fill('x').map(() => {
+    return {
+      ...state.movies.searchMovies[
+        randomIntFromRange(1, state.movies.searchMovies.length - 1)
+      ],
+      comingSoonId: uuid.v4(),
+    };
+  });
 
   return comingSoon;
 };

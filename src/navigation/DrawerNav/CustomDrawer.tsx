@@ -24,7 +24,7 @@ const CustomDrawer = () => {
       style={{
         flex: 1,
         backgroundColor: TYPOGRAPHY.COLOR.Black,
-        paddingTop: GLOBAL.SPACING.xxxxl,
+        paddingTop: '7%',
         paddingHorizontal: GLOBAL.SPACING.md,
         zIndex: -1,
       }}>
@@ -35,7 +35,7 @@ const CustomDrawer = () => {
       style={{
         flex: 1,
         backgroundColor: TYPOGRAPHY.COLOR.Black,
-        paddingTop: GLOBAL.SPACING.xxxxl,
+        paddingTop: '7%',
         paddingHorizontal: GLOBAL.SPACING.md,
       }}>
       <MyListDrawer />
@@ -45,7 +45,7 @@ const CustomDrawer = () => {
       style={{
         flex: 1,
         backgroundColor: TYPOGRAPHY.COLOR.Black,
-        paddingTop: GLOBAL.SPACING.xxxxl,
+        paddingTop: '7%',
         paddingHorizontal: GLOBAL.SPACING.md,
       }}>
       <ProfileDrawer />

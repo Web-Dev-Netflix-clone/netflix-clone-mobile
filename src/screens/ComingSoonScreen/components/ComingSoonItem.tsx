@@ -17,19 +17,18 @@ const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
   const controlRef = useRef<YoutubeIframeRef>(null);
   const [playing, setPlaying] = useState(false);
 
-  const onStateChange = useCallback(
-    (state: string) => {
-      if (state === 'ended') {
-        controlRef.current?.seekTo(6.5, true);
-        // setPlaying(true);
-      }
-    },
-    [playing]
-  );
+  const onStateChange = useCallback((state: string) => {
+    if (state === 'ended') {
+      controlRef.current?.seekTo(6.5, true);
+    }
+  }, []);
 
   useEffect(() => {
+    setPlaying(true);
+
     return () => {
       setViewVisible(false);
+      setPlaying(false);
     };
   }, [viewVisible]);
 
@@ -40,6 +39,7 @@ const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
       <VisibilitySensor
         onChange={() => {
           setViewVisible(!viewVisible);
+          setPlaying(true);
         }}>
         {!viewVisible ? (
           <LinearGradient
@@ -55,7 +55,7 @@ const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
               width={380}
               ref={controlRef}
               mute={true}
-              play={false}
+              play={playing}
               videoId={videoId}
               onChangeState={onStateChange}
               initialPlayerParams={{

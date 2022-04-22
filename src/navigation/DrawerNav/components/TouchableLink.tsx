@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import React from 'react';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 
@@ -9,7 +9,11 @@ interface ITouchableLink {
 
 const TouchableLink = ({ title, onClick }: ITouchableLink) => {
   return (
-    <TouchableOpacity onPress={onClick} style={{ paddingVertical: 15 }}>
+    <TouchableOpacity
+      onPress={onClick}
+      style={{
+        paddingVertical: (Dimensions.get('screen').height / 100) * 0.95,
+      }}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Text
           style={{

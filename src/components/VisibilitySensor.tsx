@@ -14,9 +14,9 @@ export interface Props {
   children: React.ReactNode;
 }
 
-const VisibilitySensor: React.FC<Props> = (props) => {
+const VisibilitySensor = (props: Props) => {
   const myView: any = useRef(null);
-  const [lastValue, setLastValue] = useState<boolean>(false);
+  const [lastValue, setLastValue] = useState(false);
   const [dimensions, setDimensions] = useState<IDimensionData>({
     rectTop: 0,
     rectBottom: 0,
