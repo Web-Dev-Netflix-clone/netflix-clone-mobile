@@ -1,5 +1,5 @@
-import { LinearGradient } from 'expo-linear-gradient';
-import React, { useEffect, useState } from 'react';
+import { LinearGradient } from "expo-linear-gradient";
+import React, { useEffect, useState } from "react";
 import {
   ImageBackground,
   NativeScrollEvent,
@@ -7,29 +7,29 @@ import {
   ScrollView,
   Text,
   View,
-} from 'react-native';
-import { Button } from 'react-native-paper';
+} from "react-native";
+import { Button } from "react-native-paper";
 
-import InfoBar from './components/InfoBar';
-import { TagMapper } from './components/TagMapper';
+import InfoBar from "./components/InfoBar";
+import { TagMapper } from "./components/TagMapper";
 
-import { Ionicons } from '@expo/vector-icons';
-import Lane from '../../components/Lane';
-import StandardLaneCard from '../../components/Lane/LaneRenderItems/StandardLaneCard';
+import { Ionicons } from "@expo/vector-icons";
+import Lane from "../../components/Lane";
+import StandardLaneCard from "../../components/Lane/LaneRenderItems/StandardLaneCard";
 
-import { GLOBAL } from '../../global/styles/global';
-import { TYPOGRAPHY } from '../../global/styles/typography';
+import { GLOBAL } from "../../global/styles/global";
+import { TYPOGRAPHY } from "../../global/styles/typography";
 
-import { IMGSTYLES } from '../../global/styles/imgStyles';
-import { useActions } from '../../hooks/useActions';
+import { IMGSTYLES } from "../../global/styles/imgStyles";
+import { useActions } from "../../hooks/useActions";
 
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-import { movieTags } from '../../../assets/mock-data/movieTags';
+import { movieTags } from "../../../assets/mock-data/movieTags";
 import {
   selectAllMovies,
   selectHeroMovie,
-} from '../../state/selectors/selectors';
+} from "../../state/selectors/selectors";
 
 const HomeScreen = () => {
   const {
@@ -44,40 +44,42 @@ const HomeScreen = () => {
   const movie = useSelector(selectHeroMovie);
 
   useEffect(() => {
-    fetchMovieDetails(movie?.id ? movie?.id : '8960');
+    fetchMovieDetails(movie?.id ? movie?.id : "8960");
   }, [movie?.id]);
 
   const [offset, setOffSet] = useState(0);
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const currentOffset = event.nativeEvent.contentOffset.y;
-    const direction = currentOffset > offset ? 'down' : 'up';
+    const direction = currentOffset > offset ? "down" : "up";
     setOffSet(currentOffset);
 
     if (currentOffset < 300) scrollYZeroTrue();
     if (currentOffset !== 0) scrollYZeroFalse();
-    if (direction === 'up') showMainNav();
-    if (direction === 'down' && currentOffset > 75) hideMainNav();
+    if (direction === "up") showMainNav();
+    if (direction === "down" && currentOffset > 75) hideMainNav();
   };
 
   return (
     <ScrollView
-      style={{ position: 'relative' }}
+      style={{ position: "relative" }}
       onScroll={handleScroll}
-      contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={{ height: 600, position: 'relative' }}>
+      contentContainerStyle={{ flexGrow: 1 }}
+    >
+      <View style={{ height: 600, position: "relative" }}>
         <ImageBackground
           source={
             movie?.posterHighRes || movie?.backdropHighRes
               ? { uri: movie.posterHighRes || movie.backdropHighRes }
               : {
-                  uri: 'https://image.tmdb.org/t/p/original/8i1xFqcItT6GKEbY6VDbFnxe7sJ.jpg',
+                  uri: "https://image.tmdb.org/t/p/original/8i1xFqcItT6GKEbY6VDbFnxe7sJ.jpg",
                 }
           }
-          resizeMode='cover'
-          style={{ flex: 1 }}>
+          resizeMode="cover"
+          style={{ flex: 1 }}
+        >
           <LinearGradient
-            colors={['rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0,0.3)']}
+            colors={["rgba(0,0,0, 0.5)", "rgba(0,0,0, 0.2)", "rgba(0,0,0,0.3)"]}
             style={{ ...IMGSTYLES.background, zIndex: 100 }}
           />
         </ImageBackground>
@@ -85,26 +87,27 @@ const HomeScreen = () => {
         <View
           style={{
             marginTop: -40,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'transparent',
-          }}>
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "transparent",
+          }}
+        >
           <TagMapper
             tags={movieTags}
-            symbol={'•'}
+            symbol={"•"}
             tagColor={TYPOGRAPHY.COLOR.White}
-            symbolColor='gold'
+            symbolColor="gold"
           />
         </View>
         <InfoBar />
       </View>
 
       {movies?.map(({ genre, movies }: any) => {
-        if (genre === 'Actor') {
+        if (genre === "Actor") {
           return (
             <Lane
               key={genre}
-              title={'Will Smith'}
+              title={"Will Smith"}
               data={movies}
               LaneRenderItem={StandardLaneCard}
             />
@@ -126,9 +129,10 @@ const HomeScreen = () => {
           backgroundColor: TYPOGRAPHY.COLOR.Black,
           paddingBottom: GLOBAL.SPACING.lg,
           paddingHorizontal: GLOBAL.SPACING.xsm,
-        }}>
+        }}
+      >
         <Ionicons
-          name='shuffle'
+          name="shuffle"
           size={36}
           color={TYPOGRAPHY.COLOR.RedPrimary}
         />
@@ -141,13 +145,14 @@ const HomeScreen = () => {
         <Button
           style={{
             backgroundColor: TYPOGRAPHY.COLOR.White,
-            width: '50%',
+            width: "50%",
           }}
-          icon='shuffle'
+          icon="shuffle"
           color={TYPOGRAPHY.COLOR.Black}
           onPress={() => {
             showBottomSheet();
-          }}>
+          }}
+        >
           Play Something
         </Button>
       </View>
