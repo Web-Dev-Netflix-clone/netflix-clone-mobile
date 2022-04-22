@@ -34,6 +34,7 @@ export interface showMainNav {
 
 export interface showNotifcationToggle {
   type: ActionType.SHOW_NOTIFICATION_TOGGLE;
+  payload: string;
 }
 
 export interface scrollYZeroTrue {

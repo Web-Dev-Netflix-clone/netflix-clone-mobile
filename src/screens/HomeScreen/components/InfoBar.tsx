@@ -43,7 +43,9 @@ const InfoBar = () => {
             ? addMovieToMyList(heroMovie.id)
             : removeMovieFromMyList(heroMovie.id);
 
-          showNotificationToggle();
+          showNotificationToggle(
+            addToList ? 'Add to My List' : 'Remove from My List'
+          );
         }}
         style={{
           alignItems: 'center',

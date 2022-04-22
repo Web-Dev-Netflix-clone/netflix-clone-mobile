@@ -15,7 +15,7 @@ const ComingSoonScreen = () => {
   const comingSoon = useSelector(selectComingSoonMovies);
 
   const keyExtractor = useCallback((item) => {
-    return Math.random().toString();
+    return item.backdropHighRes;
   }, []);
 
   const renderItem = useCallback(({ item }) => {

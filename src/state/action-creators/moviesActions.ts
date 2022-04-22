@@ -107,12 +107,17 @@ export const fetchMovies = () => {
         payload: heroMovie,
       });
 
-      // https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects
+      // reduces all array with movies to a single searchable array
       const allMoviesSearchable = allMovies
         .reduce((acc, curr) => {
           return acc.concat(curr.movies);
         }, [] as IMovieDetailsTransform[])
-        .filter((v, i, a) => a.findIndex((v2) => v2.id === v.id) === i);
+
+        // removes duplicate objects from the array
+        .filter(
+          (element, index, array) =>
+            array.findIndex((element2) => element2.id === element.id) === index
+        );
 
       dispatch({
         type: ActionType.ALL_MOVIES,

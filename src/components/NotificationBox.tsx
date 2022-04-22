@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import netflixLogo from '../../assets/netflix-logos/netflix-logo-icon-400x300.png';
 import { IMGSTYLES } from '../global/styles/imgStyles';
 import { TYPOGRAPHY } from '../global/styles/typography';
+import { useActions } from '../hooks/useActions';
+import { RootState } from '../state';
 
 interface INotificationBox {
   iconName?: string;
@@ -10,7 +13,23 @@ interface INotificationBox {
 }
 
 const NotifcationBox = ({ iconName, text }: INotificationBox) => {
-  return (
+  const { showNotificationToggle } = useActions();
+
+  const [showNotication, setShowNotification] = useState(true);
+  const notifcationMessage = useSelector(
+    (state: RootState) => state.appState.notificationMessage
+  );
+
+  useEffect(() => {
+    const clear = setTimeout(() => {
+      setShowNotification(false);
+      showNotificationToggle('Add to My List');
+    }, 2000);
+
+    return () => clearTimeout(clear);
+  }, []);
+
+  return showNotication ? (
     <View
       style={{
         display: 'flex',
@@ -36,10 +55,10 @@ const NotifcationBox = ({ iconName, text }: INotificationBox) => {
           fontFamily: TYPOGRAPHY.FONT.PrimaryLight,
           marginBottom: 0,
         }}>
-        Added to My List
+        {notifcationMessage}
       </Text>
     </View>
-  );
+  ) : null;
 };
 
 export default NotifcationBox;

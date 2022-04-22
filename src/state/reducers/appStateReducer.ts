@@ -8,6 +8,7 @@ export interface AppState {
   myListActive: boolean;
   hideMainNav: boolean;
   showNotification: boolean;
+  notificationMessage: string;
   scrollYZero: boolean;
   showBottomSheet: boolean;
   showDiscoverNav: boolean;
@@ -22,21 +23,12 @@ const initialState = {
   myListActive: false,
   hideMainNav: false,
   showNotification: false,
+  notificationMessage: 'Add to My List',
   scrollYZero: true,
   showBottomSheet: false,
   showDiscoverNav: true,
   currentRoute: '',
-  myList: [
-    // '580489',
-    // '753232',
-    // '297761',
-    // '431693',
-    '82700',
-    '41154',
-    '38700',
-    '614917',
-    '8960',
-  ],
+  myList: ['41154', '38700', '614917'],
 };
 
 export const reducer = (
@@ -90,6 +82,7 @@ export const reducer = (
       return {
         ...state,
         showNotification: !state.showNotification,
+        notificationMessage: action.payload,
       };
 
     case ActionType.HIDE_MAINNAV:
