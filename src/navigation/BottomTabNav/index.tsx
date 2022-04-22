@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-import { Ionicons } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { TYPOGRAPHY } from '../../global/styles/typography';
-import { useActions } from '../../hooks/useActions';
-import ComingSoonScreen from '../../screens/ComingSoonScreen';
-import DownloadsScreen from '../../screens/DownloadsScreen';
-import GamesScreen from '../../screens/GamesScreen';
-import HomeScreen from '../../screens/HomeScreen';
-import { BottomTabParams } from '../navigation';
+import { Ionicons } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { TYPOGRAPHY } from "../../global/styles/typography";
+import { useActions } from "../../hooks/useActions";
+import ComingSoonScreen from "../../screens/ComingSoonScreen";
+import DownloadsScreen from "../../screens/DownloadsScreen";
+import GamesScreen from "../../screens/GamesScreen";
+import HomeScreen from "../../screens/HomeScreen";
+import { BottomTabParams } from "../navigation";
 
 const BottomTab = createBottomTabNavigator<BottomTabParams>();
 
@@ -21,15 +21,15 @@ export const BottomNav = () => {
       screenOptions={({ navigation, route }) => {
         useEffect(() => {
           // enforces showing the main nav when the screen changes
-          navigation.addListener('focus', () => {
+          navigation.addListener("focus", () => {
             showMainNav();
 
             // dispatches current route to redux store
             changeCurrentRoute(route.name);
 
-            if (route.name !== 'Home2') hideDiscoverNav();
+            if (route.name !== "Home2") hideDiscoverNav();
 
-            if (route.name === 'Home2') showDiscoverNav();
+            if (route.name === "Home2") showDiscoverNav();
           });
 
           return navigation;
@@ -38,70 +38,71 @@ export const BottomNav = () => {
         return {
           headerShown: true,
           tabBarStyle: {
-            display: 'flex',
+            display: "flex",
             backgroundColor: TYPOGRAPHY.COLOR.BlackSecondary,
-            borderTopColor: 'transparent',
+            borderTopColor: "transparent",
           },
-          title: '',
-          tabBarActiveTintColor: TYPOGRAPHY.COLOR.RedPrimary,
-          tabBarInactiveTintColor: TYPOGRAPHY.COLOR.Black,
+          title: "",
+          tabBarActiveTintColor: TYPOGRAPHY.COLOR.White,
+          tabBarInactiveTintColor: TYPOGRAPHY.COLOR.Grey,
           tabBarShowLabel: true,
-          tabBarLabelStyle: { paddingBottom: 0, color: TYPOGRAPHY.COLOR.White },
+          tabBarLabelStyle: { paddingBottom: 0 },
           headerTransparent: true,
         };
-      }}>
+      }}
+    >
       <BottomTab.Screen
-        name='Home2'
+        name="Home2"
         component={HomeScreen}
         options={({}) => ({
-          tabBarLabel: 'Home',
-          tabBarIcon: () => (
+          tabBarLabel: "Home",
+          tabBarIcon: (tabInfo) => (
             <Ionicons
-              name='md-home-outline'
-              size={26}
-              color={TYPOGRAPHY.COLOR.White}
+              name="md-home-outline"
+              size={tabInfo.size}
+              color={tabInfo.color}
             />
           ),
         })}
       />
       <BottomTab.Screen
-        name='Games'
+        name="Games"
         component={GamesScreen}
         options={({}) => ({
-          tabBarLabel: 'Games',
-          tabBarIcon: () => (
+          tabBarLabel: "Games",
+          tabBarIcon: (tabInfo) => (
             <Ionicons
-              name='game-controller-outline'
-              size={26}
-              color={TYPOGRAPHY.COLOR.White}
+              name="game-controller-outline"
+              size={tabInfo.size}
+              color={tabInfo.color}
             />
           ),
         })}
       />
       <BottomTab.Screen
-        name='ComingSoon'
+        name="ComingSoon"
         component={ComingSoonScreen}
         options={({}) => ({
-          tabBarLabel: 'Coming Soon',
-          tabBarIcon: () => (
+          tabBarLabel: "Coming Soon",
+          tabBarIcon: (tabInfo) => (
             <Ionicons
-              name='play-circle-outline'
-              size={26}
-              color={TYPOGRAPHY.COLOR.White}
+              name="play-circle-outline"
+              size={tabInfo.size}
+              color={tabInfo.color}
             />
           ),
         })}
       />
       <BottomTab.Screen
-        name='Downloads'
+        name="Downloads"
         component={DownloadsScreen}
         options={({}) => ({
-          tabBarLabel: 'Downloads',
-          tabBarIcon: () => (
+          tabBarLabel: "Downloads",
+          tabBarIcon: (tabInfo) => (
             <Ionicons
-              name='arrow-down-circle-outline'
-              size={26}
-              color={TYPOGRAPHY.COLOR.White}
+              name="arrow-down-circle-outline"
+              size={tabInfo.size}
+              color={tabInfo.color}
             />
           ),
         })}
