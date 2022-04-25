@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Dimensions, Image, View, StyleSheet } from "react-native";
-import { IMGSTYLES } from "../../global/styles/imgStyles";
 import { TYPOGRAPHY } from "../../global/styles/typography";
 import Animated, {
   useSharedValue,
