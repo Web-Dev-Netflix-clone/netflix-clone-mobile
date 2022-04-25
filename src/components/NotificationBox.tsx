@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, View, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 import netflixLogo from '../../assets/netflix-logos/netflix-logo-icon-400x300.png';
 import { IMGSTYLES } from '../global/styles/imgStyles';
@@ -32,21 +32,7 @@ const NotifcationBox = ({ iconName, text }: INotificationBox) => {
   }, []);
 
   return showNotication ? (
-    <View
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        backgroundColor: 'rgba(79, 80, 84, 0.9)',
-        paddingHorizontal: 20,
-        paddingVertical: 5,
-        alignSelf: 'center',
-        bottom: '15%',
-        borderRadius: 20,
-        zIndex: 1000,
-      }}>
+    <View style={styles.notifcatonBoxStyles}>
       <Image
         style={{ ...IMGSTYLES.tinyLogo, marginRight: 10 }}
         source={netflixLogo}
@@ -64,3 +50,20 @@ const NotifcationBox = ({ iconName, text }: INotificationBox) => {
 };
 
 export default NotifcationBox;
+
+const styles = StyleSheet.create({
+  notifcatonBoxStyles: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    backgroundColor: 'rgba(79, 80, 84, 0.9)',
+    paddingHorizontal: 20,
+    paddingVertical: 5,
+    alignSelf: 'center',
+    bottom: '15%',
+    borderRadius: 20,
+    zIndex: 1000,
+  },
+});
