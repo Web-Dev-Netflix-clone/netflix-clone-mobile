@@ -2,7 +2,7 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerActions } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Image, Pressable, Text, View } from 'react-native';
+import { Image, Pressable, Text, View, StyleSheet } from 'react-native';
 import { GLOBAL } from '../../global/styles/global';
 import { TYPOGRAPHY } from '../../global/styles/typography';
 import { BottomNav } from '../BottomTabNav';
@@ -94,14 +94,7 @@ export const DrawerNav = () => {
                     layout={Layout.easing(Easing.ease).delay(0)}
                     exiting={FadeOutUp.delay(0)}
                     style={[
-                      {
-                        backgroundColor: 'rgba(0,0,0,0.7)',
-                        flexDirection: 'row',
-                        paddingTop: 70,
-                        paddingHorizontal: 20,
-                        paddingBottom: 15,
-                        justifyContent: 'space-between',
-                      },
+                      stylesheet.animatedHeader,
                       scrollZero && animatedBgColor,
                     ]}>
                     {currentRoute === 'Home2' ? (
@@ -233,3 +226,14 @@ export const DrawerNav = () => {
     </Drawer.Navigator>
   );
 };
+
+const stylesheet = StyleSheet.create({
+  animatedHeader: {
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    flexDirection: 'row',
+    paddingTop: 70,
+    paddingHorizontal: 20,
+    paddingBottom: 15,
+    justifyContent: 'space-between',
+  },
+});

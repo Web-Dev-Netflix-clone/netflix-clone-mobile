@@ -36,98 +36,86 @@ const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
 
   return (
     <>
-      <VisibilitySensor
-        onChange={() => {
-          setViewVisible(!viewVisible);
-          setPlaying(true);
-        }}>
-        {!viewVisible ? (
-          <LinearGradient
-            colors={['rgba(0,0,0, .8)', 'rgba(0,0,0, 0.8)', 'rgba(0,0,0,0.6)']}
-            style={{ ...IMGSTYLES.background, zIndex: 100 }}
+      <View style={styles.container}>
+        <View pointerEvents='none' style={styles.videoContainer}>
+          <YoutubePlayer
+            contentScale={1}
+            height={300}
+            width={380}
+            ref={controlRef}
+            mute={true}
+            play={playing}
+            videoId={videoId}
+            onChangeState={onStateChange}
+            initialPlayerParams={{
+              loop: true,
+              controls: false,
+              modestbranding: false,
+              showClosedCaptions: false,
+              start: 0,
+              rel: false,
+            }}
+            forceAndroidAutoplay={false}
           />
-        ) : null}
-        <View style={styles.container}>
-          <View pointerEvents='none' style={styles.videoContainer}>
-            <YoutubePlayer
-              contentScale={1}
-              height={300}
-              width={380}
-              ref={controlRef}
-              mute={true}
-              play={playing}
-              videoId={videoId}
-              onChangeState={onStateChange}
-              initialPlayerParams={{
-                loop: true,
-                controls: false,
-                modestbranding: false,
-                showClosedCaptions: false,
-                start: 0,
-                rel: false,
-              }}
-              forceAndroidAutoplay={false}
-            />
-          </View>
-          <View style={styles.infoContainer}>
-            <View
-              style={{
-                flexDirection: 'row',
-              }}>
-              <View style={styles.header}>
-                <Text
-                  numberOfLines={2}
-                  style={{
-                    fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
-                    color: TYPOGRAPHY.COLOR.White,
-                    fontSize: TYPOGRAPHY.FONT_SIZES.lg,
-                    width: '50%',
-                  }}>
-                  {item.title}
-                </Text>
-                <View style={styles.iconContainer}>
-                  <View style={{ alignItems: 'center' }}>
-                    <Ionicons
-                      name='share-social-outline'
-                      size={28}
-                      color={TYPOGRAPHY.COLOR.White}
-                    />
-                    <Text>Share</Text>
-                  </View>
-                  <View style={{ alignItems: 'center' }}>
-                    <Ionicons
-                      name='add'
-                      size={28}
-                      color={TYPOGRAPHY.COLOR.White}
-                    />
-                    <Text>My List</Text>
-                  </View>
-                  <View style={{ alignItems: 'center' }}>
-                    <Ionicons
-                      name='play-circle'
-                      size={28}
-                      color={TYPOGRAPHY.COLOR.White}
-                    />
-                    <Text>Play</Text>
-                  </View>
+        </View>
+        <View style={styles.infoContainer}>
+          <View
+            style={{
+              flexDirection: 'row',
+            }}>
+            <View style={styles.header}>
+              <Text
+                numberOfLines={2}
+                style={{
+                  fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
+                  color: TYPOGRAPHY.COLOR.White,
+                  fontSize: TYPOGRAPHY.FONT_SIZES.lg,
+                  width: '50%',
+                }}>
+                {item.title}
+              </Text>
+              <View style={styles.iconContainer}>
+                <View style={{ alignItems: 'center' }}>
+                  <Ionicons
+                    name='share-social-outline'
+                    size={28}
+                    color={TYPOGRAPHY.COLOR.White}
+                  />
+                  <Text>Share</Text>
+                </View>
+                <View style={{ alignItems: 'center' }}>
+                  <Ionicons
+                    name='add'
+                    size={28}
+                    color={TYPOGRAPHY.COLOR.White}
+                  />
+                  <Text>My List</Text>
+                </View>
+                <View style={{ alignItems: 'center' }}>
+                  <Ionicons
+                    name='play-circle'
+                    size={28}
+                    color={TYPOGRAPHY.COLOR.White}
+                  />
+                  <Text>Play</Text>
                 </View>
               </View>
             </View>
-            <View>
-              <Text
-                style={{
-                  ...TYPOGRAPHY.FONT.body,
-                  fontSize: TYPOGRAPHY.FONT_SIZES.sm,
-                  color: TYPOGRAPHY.COLOR.GreyLight,
-                }}>
-                {item.description.length > 200
-                  ? item.description.slice(0, 200) + '...'
-                  : item.description}
-              </Text>
-            </View>
+          </View>
+          <View>
+            <Text
+              style={{
+                ...TYPOGRAPHY.FONT.body,
+                fontSize: TYPOGRAPHY.FONT_SIZES.sm,
+                color: TYPOGRAPHY.COLOR.GreyLight,
+              }}>
+              {item.description.length > 200
+                ? item.description.slice(0, 200) + '...'
+                : item.description}
+            </Text>
           </View>
         </View>
-      </VisibilitySensor>
+      </View>
     </>
   );
 };

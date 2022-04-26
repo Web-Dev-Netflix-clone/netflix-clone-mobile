@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import { GLOBAL } from '../../global/styles/global';
 import { TYPOGRAPHY } from '../../global/styles/typography';
@@ -20,37 +20,27 @@ const CustomDrawer = () => {
   );
 
   return searchActive ? (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: TYPOGRAPHY.COLOR.Black,
-        paddingTop: '7%',
-        paddingHorizontal: GLOBAL.SPACING.md,
-        zIndex: -1,
-      }}>
+    <View style={{ ...stylesheet.customDrawerContainer, zIndex: -1 }}>
       <SearchDrawer />
     </View>
   ) : myListActive ? (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: TYPOGRAPHY.COLOR.Black,
-        paddingTop: '7%',
-        paddingHorizontal: GLOBAL.SPACING.md,
-      }}>
+    <View style={stylesheet.customDrawerContainer}>
       <MyListDrawer />
     </View>
   ) : (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: TYPOGRAPHY.COLOR.Black,
-        paddingTop: '7%',
-        paddingHorizontal: GLOBAL.SPACING.md,
-      }}>
+    <View style={stylesheet.customDrawerContainer}>
       <ProfileDrawer />
     </View>
   );
 };
 
 export default CustomDrawer;
+
+const stylesheet = StyleSheet.create({
+  customDrawerContainer: {
+    flex: 1,
+    backgroundColor: TYPOGRAPHY.COLOR.Black,
+    paddingTop: '7%',
+    paddingHorizontal: GLOBAL.SPACING.md,
+  },
+});
