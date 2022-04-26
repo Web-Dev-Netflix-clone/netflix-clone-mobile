@@ -1,11 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 
 import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe';
-import VisibilitySensor from '../../../components/VisibilitySensor';
-import { IMGSTYLES } from '../../../global/styles/imgStyles';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { IMovieDetailsTransform } from '../../../types/data.types';
 
@@ -109,9 +106,9 @@ const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
                 fontSize: TYPOGRAPHY.FONT_SIZES.sm,
                 color: TYPOGRAPHY.COLOR.GreyLight,
               }}>
-              {item.description.length > 200
-                ? item.description.slice(0, 200) + '...'
-                : item.description}
+              {item?.description.length > 200
+                ? item?.description.slice(0, 200) + '...'
+                : item?.description}
             </Text>
           </View>
         </View>

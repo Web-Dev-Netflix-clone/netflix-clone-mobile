@@ -116,10 +116,13 @@ export const fetchMovies = () => {
         }, [] as IMovieDetailsTransform[])
 
         // removes duplicate objects from the array
-        .filter(
-          (element, index, array) =>
-            array.findIndex((element2) => element2.id === element.id) === index
-        );
+        .filter((element, index, array) => {
+          console.log(element);
+          return (
+            array.findIndex((element2) => element2?.id === element?.id) ===
+            index
+          );
+        });
 
       dispatch({
         type: ActionType.ALL_MOVIES,
