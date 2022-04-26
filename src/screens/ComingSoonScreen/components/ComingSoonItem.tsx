@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Ionicons } from '@expo/vector-icons';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
@@ -6,20 +5,8 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe';
 import { TYPOGRAPHY } from '../../../global/styles/typography';
 import { IMovieDetailsTransform } from '../../../types/data.types';
-=======
-import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
 
-import YoutubePlayer, { YoutubeIframeRef } from "react-native-youtube-iframe";
-import VisibilitySensor from "../../../components/VisibilitySensor";
-import { IMGSTYLES } from "../../../global/styles/imgStyles";
-import { TYPOGRAPHY } from "../../../global/styles/typography";
-import { IMovieDetailsTransform } from "../../../types/data.types";
->>>>>>> 7af8163686f45b773d795bba078851b8490e2e6b
-
-const { height, width } = Dimensions.get("window");
+const { height, width } = Dimensions.get('window');
 
 const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
   const [viewVisible, setViewVisible] = useState(false);
@@ -28,7 +15,7 @@ const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
   const [playing, setPlaying] = useState(false);
 
   const onStateChange = useCallback((state: string) => {
-    if (state === "ended") {
+    if (state === 'ended') {
       controlRef.current?.seekTo(6.5, true);
     }
   }, []);
@@ -42,12 +29,12 @@ const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
     };
   }, [viewVisible]);
 
-  const videoId = item.trailer ? item.trailer.split("?v=")[1] : "JfVOs4VSpmA";
+  const videoId = item.trailer ? item.trailer.split('?v=')[1] : 'JfVOs4VSpmA';
 
   return (
     <>
       <View style={styles.container}>
-        <View pointerEvents="none" style={styles.videoContainer}>
+        <View pointerEvents='none' style={styles.videoContainer}>
           <YoutubePlayer
             contentScale={1}
             height={300}
@@ -71,9 +58,8 @@ const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
         <View style={styles.infoContainer}>
           <View
             style={{
-              flexDirection: "row",
-            }}
-          >
+              flexDirection: 'row',
+            }}>
             <View style={styles.header}>
               <Text
                 numberOfLines={2}
@@ -81,31 +67,30 @@ const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
                   fontFamily: TYPOGRAPHY.FONT.PrimaryRegular,
                   color: TYPOGRAPHY.COLOR.White,
                   fontSize: TYPOGRAPHY.FONT_SIZES.lg,
-                  width: "50%",
-                }}
-              >
+                  width: '50%',
+                }}>
                 {item.title}
               </Text>
               <View style={styles.iconContainer}>
-                <View style={{ alignItems: "center" }}>
+                <View style={{ alignItems: 'center' }}>
                   <Ionicons
-                    name="share-social-outline"
+                    name='share-social-outline'
                     size={28}
                     color={TYPOGRAPHY.COLOR.White}
                   />
                   <Text>Share</Text>
                 </View>
-                <View style={{ alignItems: "center" }}>
+                <View style={{ alignItems: 'center' }}>
                   <Ionicons
-                    name="add"
+                    name='add'
                     size={28}
                     color={TYPOGRAPHY.COLOR.White}
                   />
                   <Text>My List</Text>
                 </View>
-                <View style={{ alignItems: "center" }}>
+                <View style={{ alignItems: 'center' }}>
                   <Ionicons
-                    name="play-circle"
+                    name='play-circle'
                     size={28}
                     color={TYPOGRAPHY.COLOR.White}
                   />
@@ -120,10 +105,9 @@ const ComingSoonItem = ({ item }: { item: IMovieDetailsTransform }) => {
                 ...TYPOGRAPHY.FONT.body,
                 fontSize: TYPOGRAPHY.FONT_SIZES.sm,
                 color: TYPOGRAPHY.COLOR.GreyLight,
-              }}
-            >
+              }}>
               {item.description.length > 200
-                ? item.description.slice(0, 200) + "..."
+                ? item.description.slice(0, 200) + '...'
                 : item.description}
             </Text>
           </View>
@@ -139,28 +123,28 @@ const styles = StyleSheet.create({
     width: width,
     height: height * 0.4,
     marginBottom: 10,
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   videoContainer: {
-    height: "60%",
+    height: '60%',
     borderRadius: 10,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   infoContainer: {
-    height: "40%",
-    justifyContent: "space-evenly",
+    height: '40%',
+    justifyContent: 'space-evenly',
   },
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
     paddingTop: 10,
   },
   iconContainer: {
-    flexDirection: "row",
-    width: "40%",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    width: '40%',
+    justifyContent: 'space-around',
   },
 });
 
