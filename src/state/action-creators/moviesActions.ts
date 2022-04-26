@@ -48,20 +48,22 @@ const transformMoviesObject = (moviesObject: IMoviesObject) => {
 
   Object.entries(moviesObject).forEach(
     ([key, value]: [key: string, value: IMoviesObject]) => {
-      let filteredMovies = value.categoryDetails.map((movie: IMovieDetails) => {
-        return {
-          id: movie.id.toString(),
-          title: movie.title,
-          description: movie.overview,
-          backdrop: movie.backdropUrls[0],
-          backdropHighRes: movie.backdropUrls[1],
-          poster: movie.posterUrls[0],
-          posterHighRes: movie.posterUrls[1],
-          trailer: movie.trailerUrl,
-          rating: movie.rating,
-          runtime: movie.runtime,
-        };
-      });
+      let filteredMovies = value?.categoryDetails.map(
+        (movie: IMovieDetails) => {
+          return {
+            id: movie.id.toString(),
+            title: movie.title,
+            description: movie.overview,
+            backdrop: movie.backdropUrls[0],
+            backdropHighRes: movie.backdropUrls[1],
+            poster: movie.posterUrls[0],
+            posterHighRes: movie.posterUrls[1],
+            trailer: movie.trailerUrl,
+            rating: movie.rating,
+            runtime: movie.runtime,
+          };
+        }
+      );
 
       const laneTitleSplit = key.split('Movies')[0];
       const genre =
