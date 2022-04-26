@@ -117,7 +117,6 @@ export const fetchMovies = () => {
 
         // removes duplicate objects from the array
         .filter((element, index, array) => {
-          console.log(element);
           return (
             array.findIndex((element2) => element2?.id === element?.id) ===
             index

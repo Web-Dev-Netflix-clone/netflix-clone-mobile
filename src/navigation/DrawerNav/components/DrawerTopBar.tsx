@@ -23,7 +23,7 @@ const TopBar = ({ title, iconName, style, rightIconName }: ITopBar) => {
         {
           ...GLOBAL.LAYOUT.rowCenter,
           backgroundColor: TYPOGRAPHY.COLOR.Black,
-          paddingVertical: GLOBAL.SPACING.sm,
+          paddingVertical: '6%',
           justifyContent: 'space-between',
         },
         style,
